@@ -1,0 +1,433 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "tokenaudit-fixture-agent"
+            }
+          },
+          {
+            "key": "tokenaudit.fixture",
+            "value": {
+              "stringValue": "sub_minimum"
+            }
+          },
+          {
+            "key": "tokenaudit.synthetic",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tokenaudit-corpus-simulator",
+            "version": "0.1.0"
+          },
+          "spans": [
+            {
+              "traceId": "b4b6c94e27d8400eb2114395a1790d31",
+              "spanId": "9199cca762c8870b",
+              "name": "chat claude-sonnet-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1768467600000000000",
+              "endTimeUnixNano": "1768467601800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-sub_minimum"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "295"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "120"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"cache_control\":{\"type\":\"ephemeral\"},\"content\":\"You are terse. Policy section 1: standard operating guidance for brief ops, item 1. Policy section 2: standard operating guidance for brief ops, item 2. Policy section 3: standard operating guidance for brief ops, item 3. Policy section 4: standard operating guidance for brief ops, item 4. Policy section 5: standard operating guidance for brief ops, item 5. Policy section 6: standard operating guidance for brief ops, item 6. Policy section 7: standard operating guidance for brief ops, item 7. Policy section 8: standard operating guidance for brief ops, item 8. Policy section 9: standard operating guidance for brief ops, item 9. Policy section 10: standard operating guidance for brief ops, item 10. Policy section 11: standard operating guidance for brief ops, item 11. Policy section 12: standard operating guidance for brief ops, item 12. Policy section 13: standard operating guidance for brief ops, item 13. Policy section 14: standard operating guidance for brief ops, item 14. Policy section 15: standard operating guidance for brief ops, item 15. Policy section 16: standard operating guidance for brief ops, item 16. Po\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Task 0: summarize account activity for window 0. \",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 0\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "b4b6c94e27d8400eb2114395a1790d31",
+              "spanId": "88429f1f94b68d3f",
+              "name": "chat claude-sonnet-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1768467620000000000",
+              "endTimeUnixNano": "1768467621800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-sub_minimum"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "295"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "120"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"cache_control\":{\"type\":\"ephemeral\"},\"content\":\"You are terse. Policy section 1: standard operating guidance for brief ops, item 1. Policy section 2: standard operating guidance for brief ops, item 2. Policy section 3: standard operating guidance for brief ops, item 3. Policy section 4: standard operating guidance for brief ops, item 4. Policy section 5: standard operating guidance for brief ops, item 5. Policy section 6: standard operating guidance for brief ops, item 6. Policy section 7: standard operating guidance for brief ops, item 7. Policy section 8: standard operating guidance for brief ops, item 8. Policy section 9: standard operating guidance for brief ops, item 9. Policy section 10: standard operating guidance for brief ops, item 10. Policy section 11: standard operating guidance for brief ops, item 11. Policy section 12: standard operating guidance for brief ops, item 12. Policy section 13: standard operating guidance for brief ops, item 13. Policy section 14: standard operating guidance for brief ops, item 14. Policy section 15: standard operating guidance for brief ops, item 15. Policy section 16: standard operating guidance for brief ops, item 16. Po\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Task 1: summarize account activity for window 1. \",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 1\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "b4b6c94e27d8400eb2114395a1790d31",
+              "spanId": "a55ad0d668fc6f40",
+              "name": "chat claude-sonnet-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1768467640000000000",
+              "endTimeUnixNano": "1768467641800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-sub_minimum"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "295"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "120"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"cache_control\":{\"type\":\"ephemeral\"},\"content\":\"You are terse. Policy section 1: standard operating guidance for brief ops, item 1. Policy section 2: standard operating guidance for brief ops, item 2. Policy section 3: standard operating guidance for brief ops, item 3. Policy section 4: standard operating guidance for brief ops, item 4. Policy section 5: standard operating guidance for brief ops, item 5. Policy section 6: standard operating guidance for brief ops, item 6. Policy section 7: standard operating guidance for brief ops, item 7. Policy section 8: standard operating guidance for brief ops, item 8. Policy section 9: standard operating guidance for brief ops, item 9. Policy section 10: standard operating guidance for brief ops, item 10. Policy section 11: standard operating guidance for brief ops, item 11. Policy section 12: standard operating guidance for brief ops, item 12. Policy section 13: standard operating guidance for brief ops, item 13. Policy section 14: standard operating guidance for brief ops, item 14. Policy section 15: standard operating guidance for brief ops, item 15. Policy section 16: standard operating guidance for brief ops, item 16. Po\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Task 2: summarize account activity for window 2. \",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 2\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "b4b6c94e27d8400eb2114395a1790d31",
+              "spanId": "f9df78bfd7dd1637",
+              "name": "chat claude-sonnet-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1768467660000000000",
+              "endTimeUnixNano": "1768467661800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-sub_minimum"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "295"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "120"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"cache_control\":{\"type\":\"ephemeral\"},\"content\":\"You are terse. Policy section 1: standard operating guidance for brief ops, item 1. Policy section 2: standard operating guidance for brief ops, item 2. Policy section 3: standard operating guidance for brief ops, item 3. Policy section 4: standard operating guidance for brief ops, item 4. Policy section 5: standard operating guidance for brief ops, item 5. Policy section 6: standard operating guidance for brief ops, item 6. Policy section 7: standard operating guidance for brief ops, item 7. Policy section 8: standard operating guidance for brief ops, item 8. Policy section 9: standard operating guidance for brief ops, item 9. Policy section 10: standard operating guidance for brief ops, item 10. Policy section 11: standard operating guidance for brief ops, item 11. Policy section 12: standard operating guidance for brief ops, item 12. Policy section 13: standard operating guidance for brief ops, item 13. Policy section 14: standard operating guidance for brief ops, item 14. Policy section 15: standard operating guidance for brief ops, item 15. Policy section 16: standard operating guidance for brief ops, item 16. Po\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Task 3: summarize account activity for window 3. \",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 3\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "b4b6c94e27d8400eb2114395a1790d31",
+              "spanId": "273224e1cf785e67",
+              "name": "chat claude-sonnet-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1768467680000000000",
+              "endTimeUnixNano": "1768467681800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-sub_minimum"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "295"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "120"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"cache_control\":{\"type\":\"ephemeral\"},\"content\":\"You are terse. Policy section 1: standard operating guidance for brief ops, item 1. Policy section 2: standard operating guidance for brief ops, item 2. Policy section 3: standard operating guidance for brief ops, item 3. Policy section 4: standard operating guidance for brief ops, item 4. Policy section 5: standard operating guidance for brief ops, item 5. Policy section 6: standard operating guidance for brief ops, item 6. Policy section 7: standard operating guidance for brief ops, item 7. Policy section 8: standard operating guidance for brief ops, item 8. Policy section 9: standard operating guidance for brief ops, item 9. Policy section 10: standard operating guidance for brief ops, item 10. Policy section 11: standard operating guidance for brief ops, item 11. Policy section 12: standard operating guidance for brief ops, item 12. Policy section 13: standard operating guidance for brief ops, item 13. Policy section 14: standard operating guidance for brief ops, item 14. Policy section 15: standard operating guidance for brief ops, item 15. Policy section 16: standard operating guidance for brief ops, item 16. Po\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Task 4: summarize account activity for window 4. \",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 4\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

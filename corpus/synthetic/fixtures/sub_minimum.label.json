@@ -1,0 +1,34 @@
+{
+  "fixture": "sub_minimum",
+  "schema": "otel-genai-current",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [
+    "sub_minimum"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "lookback_overflow",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "marked_block_tokens": 283,
+    "model_minimum": 1024
+  },
+  "notes": "A ~300-token block is marked for caching on a model with a 1024-token minimum; the provider silently ignores the marker, so nothing is ever written or read. The content is stable: a correct tool must not call this prefix drift.",
+  "totals": {
+    "calls": 5,
+    "input_tokens": 1475,
+    "cache_read_tokens": 0,
+    "cache_creation_tokens": 0,
+    "output_tokens": 600
+  }
+}

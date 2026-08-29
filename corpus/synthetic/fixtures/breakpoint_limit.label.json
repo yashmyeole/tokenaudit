@@ -1,0 +1,34 @@
+{
+  "fixture": "breakpoint_limit",
+  "schema": "otel-genai-current",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [
+    "breakpoint_limit"
+  ],
+  "must_not_contain": [
+    "context_bloat",
+    "lookback_overflow",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "marked_blocks": 6,
+    "honored": 4
+  },
+  "notes": "Six blocks carry cache markers but the provider honors at most four, so the tail blocks are re-billed on every call. Simulated as silent truncation; confirm live-API behavior for >4 markers before a detector claims this in production.",
+  "totals": {
+    "calls": 4,
+    "input_tokens": 19672,
+    "cache_read_tokens": 10518,
+    "cache_creation_tokens": 3506,
+    "output_tokens": 880
+  }
+}

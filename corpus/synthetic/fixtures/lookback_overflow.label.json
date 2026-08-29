@@ -1,0 +1,34 @@
+{
+  "fixture": "lookback_overflow",
+  "schema": "otel-genai-current",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [
+    "lookback_overflow"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "history_growth_blocks": 24,
+    "lookback_positions": 20
+  },
+  "notes": "The cache marker rides on the newest message while history grows by ~24 blocks per call, so the previously cached prefix lies outside the 20-position lookback window and is never reused.",
+  "totals": {
+    "calls": 3,
+    "input_tokens": 4729,
+    "cache_read_tokens": 2812,
+    "cache_creation_tokens": 1917,
+    "output_tokens": 720
+  }
+}

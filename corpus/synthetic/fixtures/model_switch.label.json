@@ -1,0 +1,36 @@
+{
+  "fixture": "model_switch",
+  "schema": "otel-genai-current",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-opus-4-8",
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [
+    "model_switch"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "lookback_overflow",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "switch_at_call": 3,
+    "from": "claude-sonnet-4-5",
+    "to": "claude-opus-4-8"
+  },
+  "notes": "The session switches models mid-way with an identical prompt; caches are per-model, so the switch throws away the warm cache and pays a re-write.",
+  "totals": {
+    "calls": 6,
+    "input_tokens": 8508,
+    "cache_read_tokens": 5624,
+    "cache_creation_tokens": 2812,
+    "output_tokens": 1200
+  }
+}

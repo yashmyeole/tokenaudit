@@ -1,0 +1,32 @@
+{
+  "fixture": "healthy_cached",
+  "schema": "otel-genai-current",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "lookback_overflow",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "calls": 6
+  },
+  "notes": "A stable marked prefix reused every 20 seconds: one write, then reads. Negative fixture \u2014 a correct tool reports nothing here.",
+  "totals": {
+    "calls": 6,
+    "input_tokens": 8508,
+    "cache_read_tokens": 7030,
+    "cache_creation_tokens": 1406,
+    "output_tokens": 1020
+  }
+}

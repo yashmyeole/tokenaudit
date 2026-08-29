@@ -1,0 +1,34 @@
+{
+  "fixture": "retry_storm",
+  "schema": "otel-genai-current",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [
+    "retry_storm"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "lookback_overflow",
+    "model_switch",
+    "prefix_drift",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "duplicate_calls": 4,
+    "window_seconds": 39
+  },
+  "notes": "Four byte-identical requests complete within 40 seconds \u2014 the client retried on timeouts while the server billed each attempt. No caching is configured, so each duplicate pays the full prompt again.",
+  "totals": {
+    "calls": 5,
+    "input_tokens": 6090,
+    "cache_read_tokens": 0,
+    "cache_creation_tokens": 0,
+    "output_tokens": 1030
+  }
+}

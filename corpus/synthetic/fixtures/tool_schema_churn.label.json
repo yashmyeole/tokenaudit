@@ -1,0 +1,34 @@
+{
+  "fixture": "tool_schema_churn",
+  "schema": "otel-genai-current",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [
+    "tool_schema_churn"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "lookback_overflow",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "churn_at_call": 3,
+    "churn_kind": "reorder"
+  },
+  "notes": "Two tool definitions swap order on one call. Tool definitions sit at the top of the invalidation cascade, so the reorder rebuilds the entire cache. Ground truth attributes this to the tools block, not generic prefix drift; a correct tool reports tool_schema_churn here.",
+  "totals": {
+    "calls": 6,
+    "input_tokens": 17772,
+    "cache_read_tokens": 11800,
+    "cache_creation_tokens": 5900,
+    "output_tokens": 1200
+  }
+}

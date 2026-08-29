@@ -1,0 +1,35 @@
+{
+  "fixture": "ttl_expiry",
+  "schema": "otel-genai-current",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [
+    "ttl_expiry"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "lookback_overflow",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn"
+  ],
+  "evidence": {
+    "gap_after_call": 2,
+    "gap_seconds": 420,
+    "ttl_seconds": 300
+  },
+  "notes": "A 7-minute idle gap exceeds the 5-minute cache lifetime (measured from the start of the request that wrote or last read the entry), so the next call pays a full re-write despite an identical prompt.",
+  "totals": {
+    "calls": 5,
+    "input_tokens": 7090,
+    "cache_read_tokens": 4218,
+    "cache_creation_tokens": 2812,
+    "output_tokens": 800
+  }
+}

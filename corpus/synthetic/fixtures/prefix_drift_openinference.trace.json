@@ -1,0 +1,692 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "tokenaudit-fixture-agent"
+            }
+          },
+          {
+            "key": "tokenaudit.fixture",
+            "value": {
+              "stringValue": "prefix_drift_openinference"
+            }
+          },
+          {
+            "key": "tokenaudit.synthetic",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tokenaudit-corpus-simulator",
+            "version": "0.1.0"
+          },
+          "spans": [
+            {
+              "traceId": "af0e86724c1d52078738f2cc8181f9c5",
+              "spanId": "19c23bc2221489a2",
+              "name": "ChatCompletion",
+              "kind": 3,
+              "startTimeUnixNano": "1768467600000000000",
+              "endTimeUnixNano": "1768467602400000000",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "LLM"
+                  }
+                },
+                {
+                  "key": "llm.system",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.provider",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.model_name",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "session.id",
+                  "value": {
+                    "stringValue": "conv-prefix_drift_openinference"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt",
+                  "value": {
+                    "intValue": "1427"
+                  }
+                },
+                {
+                  "key": "llm.token_count.completion",
+                  "value": {
+                    "intValue": "180"
+                  }
+                },
+                {
+                  "key": "llm.token_count.total",
+                  "value": {
+                    "intValue": "1607"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_read",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_write",
+                  "value": {
+                    "intValue": "1415"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.role",
+                  "value": {
+                    "stringValue": "system"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.content",
+                  "value": {
+                    "stringValue": "You are the fixture agent. [generated: 2026-01-15T09:00:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.role",
+                  "value": {
+                    "stringValue": "user"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.content",
+                  "value": {
+                    "stringValue": "Task 0: summarize account activity for window 0. "
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.role",
+                  "value": {
+                    "stringValue": "assistant"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.content",
+                  "value": {
+                    "stringValue": "reply 0"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "af0e86724c1d52078738f2cc8181f9c5",
+              "spanId": "2775c46a40847934",
+              "name": "ChatCompletion",
+              "kind": 3,
+              "startTimeUnixNano": "1768467620000000000",
+              "endTimeUnixNano": "1768467622400000000",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "LLM"
+                  }
+                },
+                {
+                  "key": "llm.system",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.provider",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.model_name",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "session.id",
+                  "value": {
+                    "stringValue": "conv-prefix_drift_openinference"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt",
+                  "value": {
+                    "intValue": "1427"
+                  }
+                },
+                {
+                  "key": "llm.token_count.completion",
+                  "value": {
+                    "intValue": "180"
+                  }
+                },
+                {
+                  "key": "llm.token_count.total",
+                  "value": {
+                    "intValue": "1607"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_read",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_write",
+                  "value": {
+                    "intValue": "1415"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.role",
+                  "value": {
+                    "stringValue": "system"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.content",
+                  "value": {
+                    "stringValue": "You are the fixture agent. [generated: 2026-01-15T09:01:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.role",
+                  "value": {
+                    "stringValue": "user"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.content",
+                  "value": {
+                    "stringValue": "Task 1: summarize account activity for window 1. "
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.role",
+                  "value": {
+                    "stringValue": "assistant"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.content",
+                  "value": {
+                    "stringValue": "reply 1"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "af0e86724c1d52078738f2cc8181f9c5",
+              "spanId": "090993d53a23971f",
+              "name": "ChatCompletion",
+              "kind": 3,
+              "startTimeUnixNano": "1768467640000000000",
+              "endTimeUnixNano": "1768467642400000000",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "LLM"
+                  }
+                },
+                {
+                  "key": "llm.system",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.provider",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.model_name",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "session.id",
+                  "value": {
+                    "stringValue": "conv-prefix_drift_openinference"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt",
+                  "value": {
+                    "intValue": "1427"
+                  }
+                },
+                {
+                  "key": "llm.token_count.completion",
+                  "value": {
+                    "intValue": "180"
+                  }
+                },
+                {
+                  "key": "llm.token_count.total",
+                  "value": {
+                    "intValue": "1607"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_read",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_write",
+                  "value": {
+                    "intValue": "1415"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.role",
+                  "value": {
+                    "stringValue": "system"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.content",
+                  "value": {
+                    "stringValue": "You are the fixture agent. [generated: 2026-01-15T09:02:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.role",
+                  "value": {
+                    "stringValue": "user"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.content",
+                  "value": {
+                    "stringValue": "Task 2: summarize account activity for window 2. "
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.role",
+                  "value": {
+                    "stringValue": "assistant"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.content",
+                  "value": {
+                    "stringValue": "reply 2"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "af0e86724c1d52078738f2cc8181f9c5",
+              "spanId": "2b2ce4babd8fdd68",
+              "name": "ChatCompletion",
+              "kind": 3,
+              "startTimeUnixNano": "1768467660000000000",
+              "endTimeUnixNano": "1768467662400000000",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "LLM"
+                  }
+                },
+                {
+                  "key": "llm.system",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.provider",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.model_name",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "session.id",
+                  "value": {
+                    "stringValue": "conv-prefix_drift_openinference"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt",
+                  "value": {
+                    "intValue": "1427"
+                  }
+                },
+                {
+                  "key": "llm.token_count.completion",
+                  "value": {
+                    "intValue": "180"
+                  }
+                },
+                {
+                  "key": "llm.token_count.total",
+                  "value": {
+                    "intValue": "1607"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_read",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_write",
+                  "value": {
+                    "intValue": "1415"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.role",
+                  "value": {
+                    "stringValue": "system"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.content",
+                  "value": {
+                    "stringValue": "You are the fixture agent. [generated: 2026-01-15T09:03:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.role",
+                  "value": {
+                    "stringValue": "user"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.content",
+                  "value": {
+                    "stringValue": "Task 3: summarize account activity for window 3. "
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.role",
+                  "value": {
+                    "stringValue": "assistant"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.content",
+                  "value": {
+                    "stringValue": "reply 3"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "af0e86724c1d52078738f2cc8181f9c5",
+              "spanId": "ef6b5806b82b40ab",
+              "name": "ChatCompletion",
+              "kind": 3,
+              "startTimeUnixNano": "1768467680000000000",
+              "endTimeUnixNano": "1768467682400000000",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "LLM"
+                  }
+                },
+                {
+                  "key": "llm.system",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.provider",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.model_name",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "session.id",
+                  "value": {
+                    "stringValue": "conv-prefix_drift_openinference"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt",
+                  "value": {
+                    "intValue": "1427"
+                  }
+                },
+                {
+                  "key": "llm.token_count.completion",
+                  "value": {
+                    "intValue": "180"
+                  }
+                },
+                {
+                  "key": "llm.token_count.total",
+                  "value": {
+                    "intValue": "1607"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_read",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_write",
+                  "value": {
+                    "intValue": "1415"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.role",
+                  "value": {
+                    "stringValue": "system"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.content",
+                  "value": {
+                    "stringValue": "You are the fixture agent. [generated: 2026-01-15T09:04:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.role",
+                  "value": {
+                    "stringValue": "user"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.content",
+                  "value": {
+                    "stringValue": "Task 4: summarize account activity for window 4. "
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.role",
+                  "value": {
+                    "stringValue": "assistant"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.content",
+                  "value": {
+                    "stringValue": "reply 4"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "af0e86724c1d52078738f2cc8181f9c5",
+              "spanId": "3bd2d20f9f12c153",
+              "name": "ChatCompletion",
+              "kind": 3,
+              "startTimeUnixNano": "1768467700000000000",
+              "endTimeUnixNano": "1768467702400000000",
+              "attributes": [
+                {
+                  "key": "openinference.span.kind",
+                  "value": {
+                    "stringValue": "LLM"
+                  }
+                },
+                {
+                  "key": "llm.system",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.provider",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "llm.model_name",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "session.id",
+                  "value": {
+                    "stringValue": "conv-prefix_drift_openinference"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt",
+                  "value": {
+                    "intValue": "1427"
+                  }
+                },
+                {
+                  "key": "llm.token_count.completion",
+                  "value": {
+                    "intValue": "180"
+                  }
+                },
+                {
+                  "key": "llm.token_count.total",
+                  "value": {
+                    "intValue": "1607"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_read",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "llm.token_count.prompt_details.cache_write",
+                  "value": {
+                    "intValue": "1415"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.role",
+                  "value": {
+                    "stringValue": "system"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.0.message.content",
+                  "value": {
+                    "stringValue": "You are the fixture agent. [generated: 2026-01-15T09:05:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.role",
+                  "value": {
+                    "stringValue": "user"
+                  }
+                },
+                {
+                  "key": "llm.input_messages.1.message.content",
+                  "value": {
+                    "stringValue": "Task 5: summarize account activity for window 5. "
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.role",
+                  "value": {
+                    "stringValue": "assistant"
+                  }
+                },
+                {
+                  "key": "llm.output_messages.0.message.content",
+                  "value": {
+                    "stringValue": "reply 5"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

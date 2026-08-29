@@ -1,0 +1,35 @@
+{
+  "fixture": "prefix_drift_no_content",
+  "schema": "otel-genai-current",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": false,
+  "contains": [
+    "prefix_drift"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "lookback_overflow",
+    "model_switch",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "drift_block_index": 0,
+    "calls": 6,
+    "drift_kind": "timestamp"
+  },
+  "notes": "Same session as prefix_drift with message content capture disabled (the OTel default). Usage numbers show the cache never being reused; without content, a tool can prove waste but not the drifting block, and must say so rather than guess.",
+  "totals": {
+    "calls": 6,
+    "input_tokens": 8562,
+    "cache_read_tokens": 0,
+    "cache_creation_tokens": 8490,
+    "output_tokens": 1080
+  }
+}

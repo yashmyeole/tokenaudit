@@ -1,0 +1,32 @@
+{
+  "fixture": "healthy_small",
+  "schema": "otel-genai-current",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "lookback_overflow",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "calls": 3
+  },
+  "notes": "Three tiny uncached calls with nothing marked for caching and too little repeated content to matter. Negative fixture \u2014 in particular, nothing is marked, so sub_minimum must not fire.",
+  "totals": {
+    "calls": 3,
+    "input_tokens": 63,
+    "cache_read_tokens": 0,
+    "cache_creation_tokens": 0,
+    "output_tokens": 120
+  }
+}
