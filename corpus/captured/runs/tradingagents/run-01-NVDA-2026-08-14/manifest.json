@@ -1,0 +1,29 @@
+{
+  "duration_s": 153.2,
+  "instrumentors": [
+    "openinference-instrumentation-openai",
+    "openinference-instrumentation-langchain"
+  ],
+  "max_debate_rounds": 1,
+  "models": {
+    "deep_think": "gpt-5.4-mini",
+    "quick_think": "gpt-5.4-mini"
+  },
+  "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.7",
+  "run_id": "run-01-NVDA-2026-08-14",
+  "smoke": false,
+  "span_count": 114,
+  "started_at": "2026-08-29T23:30:18Z",
+  "ticker": "NVDA",
+  "trade_date": "2026-08-14",
+  "tradingagents_commit": "a33fd4c0f134485a43553a2c23a63cb14adbd88f",
+  "versions": {
+    "langchain-core": "1.6.1",
+    "openai": "3.6.0",
+    "openinference-instrumentation-langchain": "0.1.73",
+    "openinference-instrumentation-openai": "0.1.57",
+    "opentelemetry-sdk": "1.44.0",
+    "tradingagents": "0.3.1"
+  }
+}
