@@ -71,7 +71,7 @@ known-first-party = ["tokenaudit"]
 [tool.mypy]
 python_version = "3.11"
 strict = true
-files = ["src", "tests"]
+files = ["src", "tests", "corpus"]
 mypy_path = "src"
 explicit_package_bases = true
 
