@@ -75,6 +75,16 @@ files = ["src", "tests", "corpus"]
 mypy_path = "src"
 explicit_package_bases = true
 
+# The capture kit runs in its own throwaway venv on the capturing machine;
+# its third-party imports are not (and should not be) project dependencies.
+[[tool.mypy.overrides]]
+module = ["opentelemetry.*", "openinference.*", "tradingagents.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["corpus.captured.*"]
+disallow_subclassing_any = false
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"

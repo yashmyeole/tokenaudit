@@ -19,3 +19,6 @@ htmlcov/
 .vscode/
 .idea/
 .DS_Store
+
+# Capture workdir (throwaway venv + clone, never committed)
+corpus/captured/.work/
