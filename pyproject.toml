@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tokenaudit"
+version = "0.1.0.dev0"
+description = "Root-cause diagnosis of wasted LLM tokens, from the traces your agents already emit"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Yash Manohar Yeole", email = "yashmyeole@gmail.com" }]
+keywords = [
+  "llm",
+  "opentelemetry",
+  "observability",
+  "prompt-caching",
+  "tokens",
+  "cost",
+  "waste",
+  "diagnosis",
+]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: System :: Monitoring",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "mypy>=1.11",
+  "pre-commit>=3.8",
+  "pytest>=8.3",
+  "ruff>=0.6.9",
+]
+
+[project.urls]
+Repository = "https://github.com/yashmyeole/tokenaudit"
+Issues = "https://github.com/yashmyeole/tokenaudit/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tokenaudit"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle errors
+  "W",   # pycodestyle warnings
+  "F",   # pyflakes
+  "I",   # isort
+  "UP",  # pyupgrade
+  "B",   # bugbear
+  "SIM", # simplify
+  "RUF", # ruff-specific
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["tokenaudit"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src", "tests"]
+mypy_path = "src"
+explicit_package_bases = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
