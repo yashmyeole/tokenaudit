@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **`ingest_text(text, source)`**: ingest trace content already in memory
+  (an upload, a stream) — nothing touches disk. `ingest_path` now wraps it.
+- **Hosted demo** (`demo/`, not part of the package): a one-page FastAPI
+  app — drop a trace, get the report; two prerendered samples (the
+  synthetic prefix-drift fixture and the real captured TradingAgents
+  runs). Uploads are parsed in memory and never stored or logged.
 - **CI cost-regression gate**: `tokenaudit check <traces> --baseline
   baseline.json` fails a build (exit 1) on a new HIGH finding or a drop in
   cache read rate / health floor beyond `--max-regression` points; create

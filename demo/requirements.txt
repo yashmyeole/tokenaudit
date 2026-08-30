@@ -1,0 +1,7 @@
+# Dependencies of the hosted demo app ONLY — the tokenaudit package itself
+# stays zero-dependency. httpx is here for FastAPI's TestClient (used by
+# tests/test_demo.py and handy for poking the app locally).
+fastapi>=0.115
+python-multipart>=0.0.9   # FastAPI needs it for multipart file uploads
+uvicorn>=0.30
+httpx2>=0.1   # FastAPI's TestClient backend (tests/test_demo.py, local poking)

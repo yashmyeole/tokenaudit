@@ -1,0 +1,15 @@
+# Keep the demo image lean: the build needs src/, demo/, corpus/, and the
+# packaging files — not local envs, caches, or git history.
+.git
+.venv
+venv
+dist
+build
+*.egg-info
+.mypy_cache
+.pytest_cache
+.ruff_cache
+__pycache__
+docs
+eval
+tests

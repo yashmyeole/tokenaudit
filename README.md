@@ -16,6 +16,8 @@ tokenaudit reads the traces agents already produce and, for each expensive reque
 
 Zero runtime dependencies; reads OTLP/JSON files and OTel SDK JSONL. Try it
 on this repo's real captured runs: `tokenaudit diagnose corpus/captured/runs`.
+Prefer a browser? The [hosted demo](demo/) diagnoses a dropped trace without
+installing anything — uploads are parsed in memory and never stored.
 
 The plan, in one line each:
 
@@ -86,6 +88,7 @@ If you know a tool that already does this, please open an issue — I would genu
 - [x] Evaluation harness: per-detector results published in [eval/results.md](eval/results.md)
 - [x] `tokenaudit diagnose` CLI, HTML report, cache health score
 - [x] CI cost-regression mode: fail a build that tanks the cache hit rate ([docs/ci.md](docs/ci.md))
+- [x] Hosted live demo: drag a trace in, get the report — uploads parsed in memory, never stored ([demo/](demo/))
 - [ ] Case studies on public agents, with reproduction commands
 
 ## Development

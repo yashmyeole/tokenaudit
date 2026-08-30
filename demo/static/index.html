@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>tokenaudit — live demo</title>
+<style>
+:root { color-scheme: light dark;
+  --bg:#ffffff; --fg:#1e2229; --muted:#5b6472; --line:#d9dee6; --card:#f6f8fa;
+  --accent:#1a56db; --err:#b3261e; }
+@media (prefers-color-scheme: dark) { :root {
+  --bg:#14171c; --fg:#e6e9ee; --muted:#9aa4b2; --line:#333a45; --card:#1c2129;
+  --accent:#6ea8ff; --err:#ff6b61; } }
+* { box-sizing:border-box; }
+body { background:var(--bg); color:var(--fg); margin:0 auto; max-width:64rem;
+  padding:1.5rem 1.25rem 3rem; font:15px/1.55 system-ui, sans-serif; }
+h1 { font-size:1.5rem; margin:0; } h1 code { font:inherit; }
+a { color:var(--accent); }
+.muted { color:var(--muted); }
+header { display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; }
+header nav { margin-left:auto; display:flex; gap:1rem; font-size:.9rem; }
+.tag { font-size:.72rem; border:1px solid var(--line); border-radius:99px;
+  padding:.1rem .55rem; color:var(--muted); }
+#drop { border:2px dashed var(--line); border-radius:10px; background:var(--card);
+  padding:1.4rem 1rem; text-align:center; margin:1.2rem 0 .6rem; cursor:pointer; }
+#drop.hover { border-color:var(--accent); }
+#drop b { color:var(--accent); }
+.row { display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; font-size:.9rem; }
+button { font:inherit; font-size:.9rem; color:var(--fg); background:var(--card);
+  border:1px solid var(--line); border-radius:6px; padding:.35rem .8rem; cursor:pointer; }
+button:hover { border-color:var(--accent); }
+button.active { border-color:var(--accent); color:var(--accent); }
+#status { min-height:1.4rem; font-size:.9rem; margin:.5rem 0; }
+#status.err { color:var(--err); }
+iframe { width:100%; height:70vh; border:1px solid var(--line); border-radius:10px;
+  background:var(--bg); margin-top:.4rem; }
+footer { margin-top:1.2rem; font-size:.82rem; color:var(--muted);
+  border-top:1px solid var(--line); padding-top:.7rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1><code>tokenaudit</code></h1>
+  <span class="tag">live demo</span>
+  <nav>
+    <a href="https://github.com/yashmyeole/tokenaudit">GitHub</a>
+    <a href="https://pypi.org/project/tokenaudit/">PyPI</a>
+  </nav>
+</header>
+<p class="muted">Root-cause diagnosis of wasted LLM tokens, from the traces your agents
+already emit. Drop a trace below — or start from a sample report.</p>
+
+<div id="drop" title="Drop trace files or click to browse">
+  <b>Drop trace files here</b> or click to browse<br>
+  <span class="muted">OTLP/JSON or OTel SDK JSONL &middot; up to 20 files, 15&nbsp;MB total</span>
+  <input id="picker" type="file" multiple accept=".json,.jsonl" hidden>
+</div>
+<div class="row">
+  <span class="muted">Samples:</span>
+  <button id="btn-drift">synthetic prefix-drift trace</button>
+  <button id="btn-ta">real TradingAgents capture</button>
+  <span class="muted">— the real capture is 3 unmodified runs of a ~98k★ open-source
+  agent, cached at only ~10.6%.</span>
+</div>
+<p id="status" class="muted"></p>
+<iframe id="report" title="diagnosis report" sandbox=""></iframe>
+
+<footer>
+  <b>Privacy:</b> uploaded traces are parsed in memory and never written to disk,
+  stored, or logged — the server renders your report and forgets you
+  (<a href="https://github.com/yashmyeole/tokenaudit/blob/main/demo/app.py">read the code</a>).
+  No signup, no cookies, no analytics. tokenaudit itself reads hashes and token
+  counts, not prompt text. Reports are static HTML with no scripts.
+</footer>
+
+<script>
+const drop = document.getElementById('drop');
+const picker = document.getElementById('picker');
+const frame = document.getElementById('report');
+const status = document.getElementById('status');
+const buttons = { drift: document.getElementById('btn-drift'),
+                  ta: document.getElementById('btn-ta') };
+
+function say(text, isError) {
+  status.textContent = text;
+  status.className = isError ? 'err' : 'muted';
+}
+function mark(active) {
+  for (const b of Object.values(buttons)) b.classList.remove('active');
+  if (active) active.classList.add('active');
+}
+async function loadSample(name, button, label) {
+  mark(button); say('loading ' + label + ' …');
+  const res = await fetch('/api/sample/' + name);
+  if (!res.ok) { say('sample unavailable', true); return; }
+  frame.srcdoc = await res.text();
+  say(label);
+}
+async function diagnose(fileList) {
+  const files = Array.from(fileList);
+  if (!files.length) return;
+  mark(null);
+  say('diagnosing ' + files.length + ' file(s) …');
+  const form = new FormData();
+  for (const f of files) form.append('traces', f);
+  try {
+    const res = await fetch('/api/diagnose', { method: 'POST', body: form });
+    if (!res.ok) {
+      let detail = res.statusText;
+      try { detail = (await res.json()).detail || detail; } catch (e) {}
+      say(detail, true);
+      return;
+    }
+    frame.srcdoc = await res.text();
+    say('your report — nothing was stored.');
+  } catch (e) {
+    say('request failed: ' + e, true);
+  }
+}
+
+drop.addEventListener('click', () => picker.click());
+picker.addEventListener('change', () => diagnose(picker.files));
+for (const ev of ['dragover', 'dragenter']) drop.addEventListener(ev, e => {
+  e.preventDefault(); drop.classList.add('hover');
+});
+for (const ev of ['dragleave', 'drop']) drop.addEventListener(ev, e => {
+  e.preventDefault(); drop.classList.remove('hover');
+});
+drop.addEventListener('drop', e => diagnose(e.dataTransfer.files));
+buttons.drift.addEventListener('click', () =>
+  loadSample('drift', buttons.drift, 'synthetic prefix-drift demo (labeled fixture)'));
+buttons.ta.addEventListener('click', () =>
+  loadSample('tradingagents', buttons.ta,
+             'real TradingAgents capture (3 runs, unmodified public agent)'));
+
+loadSample('drift', buttons.drift, 'synthetic prefix-drift demo (labeled fixture)');
+</script>
+</body>
+</html>

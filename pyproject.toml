@@ -74,7 +74,7 @@ known-first-party = ["tokenaudit"]
 [tool.mypy]
 python_version = "3.11"
 strict = true
-files = ["src", "tests", "corpus", "eval"]
+files = ["src", "tests", "corpus", "eval", "demo"]
 mypy_path = "src"
 explicit_package_bases = true
 
@@ -91,3 +91,4 @@ disallow_subclassing_any = false
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+pythonpath = ["."]  # lets tests import the demo app (demo/ is not in the package)
