@@ -19,7 +19,17 @@ ROOT = Path(__file__).resolve().parent.parent
 FIXTURES = ROOT / "corpus" / "synthetic" / "fixtures"
 CAPTURED = ROOT / "corpus" / "captured" / "runs" / "tradingagents"
 
-IMPLEMENTED = {"prefix_drift", "sub_minimum", "model_switch"}
+IMPLEMENTED = {
+    "prefix_drift",
+    "sub_minimum",
+    "model_switch",
+    "ttl_expiry",
+    "breakpoint_limit",
+    "lookback_overflow",
+    "tool_schema_churn",
+    "context_bloat",
+    "retry_storm",
+}
 
 
 def _diagnose_fixture(name: str) -> Any:
@@ -130,3 +140,62 @@ def test_unpriceable_requests_never_reach_detectors(tmp_path: Path) -> None:
     assert diagnosis.requests_skipped_unpriceable == 1
     assert diagnosis.requests_examined == 0
     assert diagnosis.findings == ()
+
+
+def test_ttl_expiry_names_the_gap_and_the_window() -> None:
+    diagnosis = _diagnose_fixture("ttl_expiry")
+    (finding,) = diagnosis.findings
+    assert finding.detector_id == "ttl_expiry"
+    (event,) = finding.evidence["events"]
+    assert event["gap_seconds"] == 420
+    assert event["ttl_seconds"] == 300
+    assert finding.evidence["ttl_semantics"] == "from_request_start"
+
+
+def test_breakpoint_limit_counts_markers_against_the_rulebook() -> None:
+    diagnosis = _diagnose_fixture("breakpoint_limit")
+    (finding,) = diagnosis.findings
+    assert finding.detector_id == "breakpoint_limit"
+    assert finding.evidence["marked_blocks"] == 6
+    assert finding.evidence["max_explicit_breakpoints"] == 4
+    assert finding.evidence["unhonored_est_tokens"] >= 1400  # two ~700-token docs
+
+
+def test_lookback_overflow_measures_the_distance() -> None:
+    diagnosis = _diagnose_fixture("lookback_overflow")
+    (finding,) = diagnosis.findings
+    assert finding.detector_id == "lookback_overflow"
+    events = finding.evidence["events"]
+    assert len(events) == 2
+    assert all(e["prefix_distance"] >= e["lookback_positions"] for e in events)
+
+
+def test_tool_schema_churn_detects_alternation_not_drift() -> None:
+    diagnosis = _diagnose_fixture("tool_schema_churn")
+    (finding,) = diagnosis.findings
+    assert finding.detector_id == "tool_schema_churn"
+    assert finding.evidence["distinct_versions"] == 2
+    assert finding.evidence["flips"] == 2
+    assert finding.evidence["detected_via"] == "leading_block_hash"
+
+
+def test_context_bloat_works_from_usage_alone() -> None:
+    diagnosis = _diagnose_fixture("context_bloat")
+    (finding,) = diagnosis.findings
+    assert finding.detector_id == "context_bloat"
+    assert finding.evidence["cache_read_ratio"] == 0.0
+    assert finding.evidence["input_last"] > 2 * finding.evidence["input_first"]
+    assert finding.impact is not None and "no estimates" not in finding.impact.assumption
+    # and it runs even when content capture is off:
+    no_content = _diagnose_fixture("prefix_drift_no_content")
+    assert "context_bloat" in no_content.checked
+
+
+def test_retry_storm_counts_duplicates_from_usage() -> None:
+    diagnosis = _diagnose_fixture("retry_storm")
+    (finding,) = diagnosis.findings
+    assert finding.detector_id == "retry_storm"
+    assert finding.evidence["burst_size"] == 4
+    assert len(finding.evidence["duplicate_span_ids"]) == 3
+    assert finding.impact is not None
+    assert finding.impact.tokens_low == finding.impact.tokens_high  # usage-derived, no range

@@ -58,7 +58,7 @@ If you know a tool that already does this, please open an issue — I would genu
 - [x] Trace reader and normalizer with a data-quality gate (bad telemetry is refused, not zero-filled)
 - [x] Provider caching rulebook: minimums, TTL semantics, invalidation rules — versioned, with sources
 - [x] Detectors, starting with prefix drift, sub-minimum blocks, and model/version switch
-- [ ] Evaluation harness: per-detector precision and recall, published here
+- [x] Evaluation harness: per-detector results published in [eval/results.md](eval/results.md)
 - [ ] `tokenaudit diagnose` CLI, HTML report, cache health score
 - [ ] CI cost-regression mode: fail a build that tanks the cache hit rate
 - [ ] Case studies on public agents, with reproduction commands
