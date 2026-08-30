@@ -15,6 +15,7 @@ from collections import Counter
 from dataclasses import asdict
 from pathlib import Path
 
+from tokenaudit.detect import SessionDiagnosis, diagnose
 from tokenaudit.ingest import UnknownTraceFormatError, ingest_path
 from tokenaudit.model.records import IngestResult
 from tokenaudit.rulebook import load_rulebook
@@ -57,12 +58,44 @@ def _summarize(result: IngestResult) -> str:
     return "\n".join(lines)
 
 
+def _render_diagnosis(diagnosis: SessionDiagnosis) -> str:
+    lines = [
+        f"session {diagnosis.session_id}  "
+        f"({diagnosis.requests_examined} requests examined, "
+        f"{diagnosis.requests_skipped_unpriceable} unpriceable skipped)"
+    ]
+    if not diagnosis.findings:
+        lines.append("  no findings")
+    for finding in diagnosis.findings:
+        lines.append(
+            f"  [{finding.severity.value.upper()}] {finding.detector_id}: {finding.summary}"
+        )
+        if finding.impact is not None:
+            impact = finding.impact
+            tokens = (
+                f"~{impact.tokens_low:,} tokens"
+                if impact.tokens_low == impact.tokens_high
+                else f"~{impact.tokens_low:,}-{impact.tokens_high:,} tokens"
+            )
+            lines.append(f"      waste: {tokens} full-price equivalent ({impact.assumption})")
+        lines.append(f"      fix: {finding.fix.summary}")
+    clean = [d for d in diagnosis.checked if d not in {f.detector_id for f in diagnosis.findings}]
+    if clean:
+        lines.append(f"  checked, clean: {', '.join(clean)}")
+    for detector_id, reason in diagnosis.abstained.items():
+        lines.append(f"  not checked: {detector_id} ({reason})")
+    return "\n".join(lines)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="tokenaudit")
     subparsers = parser.add_subparsers(dest="command", required=True)
     ingest = subparsers.add_parser("ingest", help="normalize trace files")
     ingest.add_argument("paths", nargs="+", type=Path)
     ingest.add_argument("--summary", action="store_true", help="human summary instead of JSON")
+    diag = subparsers.add_parser("diagnose", help="diagnose token waste in trace files")
+    diag.add_argument("paths", nargs="+", type=Path)
+    diag.add_argument("--json", action="store_true", help="machine-readable output")
     subparsers.add_parser("rulebook", help="render the provider caching rulebook as markdown")
     args = parser.parse_args(argv)
 
@@ -78,6 +111,18 @@ def main(argv: list[str] | None = None) -> int:
     except UnknownTraceFormatError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
+
+    if args.command == "diagnose":
+        per_result = [(result, diagnose(result)) for result in results]
+        if args.json:
+            payload = [asdict(d) for _, diagnoses in per_result for d in diagnoses]
+            print(json.dumps(payload, indent=2, default=str))
+        else:
+            for result, diagnoses in per_result:
+                print(result.source)
+                for diagnosis in diagnoses:
+                    print(_render_diagnosis(diagnosis))
+        return 0
 
     if args.summary:
         for result in results:
