@@ -8,6 +8,15 @@ Every LLM cost tool can tell you *how much* you spent and *who* spent it. Almost
 
 tokenaudit reads the traces agents already produce and, for each expensive request, answers four questions: **what was wasted, why, what it cost, and what to change.**
 
+## Quickstart
+
+    pip install tokenaudit
+    tokenaudit diagnose --sample          # diagnose the bundled demo trace
+    tokenaudit diagnose mytraces/ --html report.html
+
+Zero runtime dependencies; reads OTLP/JSON files and OTel SDK JSONL. Try it
+on this repo's real captured runs: `tokenaudit diagnose corpus/captured/runs`.
+
 The plan, in one line each:
 
 - Ingest standard traces — OpenTelemetry GenAI in all three of its cache-field naming generations, OpenInference, raw provider SDK logs — into one normalized accounting model.
@@ -59,7 +68,7 @@ If you know a tool that already does this, please open an issue — I would genu
 - [x] Provider caching rulebook: minimums, TTL semantics, invalidation rules — versioned, with sources
 - [x] Detectors, starting with prefix drift, sub-minimum blocks, and model/version switch
 - [x] Evaluation harness: per-detector results published in [eval/results.md](eval/results.md)
-- [ ] `tokenaudit diagnose` CLI, HTML report, cache health score
+- [x] `tokenaudit diagnose` CLI, HTML report, cache health score
 - [ ] CI cost-regression mode: fail a build that tanks the cache hit rate
 - [ ] Case studies on public agents, with reproduction commands
 
