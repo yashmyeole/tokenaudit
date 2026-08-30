@@ -1,0 +1,11 @@
+{
+  "baseline_format": 1,
+  "cache_read_rate": 0.1057,
+  "cache_read_tokens": 27648,
+  "findings": {},
+  "health_floor": 1.0,
+  "input_tokens": 261611,
+  "requests": 49,
+  "rulebook_version": "2026.08.29",
+  "sessions": 3
+}

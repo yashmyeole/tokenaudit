@@ -1,0 +1,53 @@
+# Composite GitHub Action wrapping `tokenaudit check`.
+#
+# The CLI already appends its markdown summary to $GITHUB_STEP_SUMMARY when
+# that variable is set (it is, inside Actions), so the job's summary page
+# shows the baseline-vs-current table with no extra wiring here.
+name: "tokenaudit check"
+description: >-
+  Fail a build that silently made LLM prompt caching worse: diagnoses a
+  trace run and compares cache health against a baseline committed to
+  the repo.
+branding:
+  icon: "trending-down"
+  color: "orange"
+inputs:
+  traces:
+    description: "Trace file or directory to diagnose (OTLP/JSON or OTel SDK JSONL)"
+    required: true
+  baseline:
+    description: "Path to the committed baseline JSON"
+    required: false
+    default: "tokenaudit-baseline.json"
+  max-regression:
+    description: "Allowed drop in cache read rate / health floor, in percentage points"
+    required: false
+    default: "5.0"
+  strict:
+    description: "Also fail on new non-HIGH findings (true/false)"
+    required: false
+    default: "false"
+  version:
+    description: "tokenaudit version to install (default: latest release on PyPI)"
+    required: false
+    default: ""
+runs:
+  using: "composite"
+  steps:
+    - name: Install tokenaudit
+      shell: bash
+      env:
+        TOKENAUDIT_VERSION: ${{ inputs.version }}
+      run: python -m pip install --quiet "tokenaudit${TOKENAUDIT_VERSION:+==$TOKENAUDIT_VERSION}"
+    - name: Check for cache cost regression
+      shell: bash
+      env:
+        TRACES: ${{ inputs.traces }}
+        BASELINE: ${{ inputs.baseline }}
+        MAX_REGRESSION: ${{ inputs.max-regression }}
+        STRICT: ${{ inputs.strict }}
+      run: |
+        extra=""
+        if [ "$STRICT" = "true" ]; then extra="--strict"; fi
+        tokenaudit check "$TRACES" --baseline "$BASELINE" \
+          --max-regression "$MAX_REGRESSION" $extra

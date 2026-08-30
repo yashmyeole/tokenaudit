@@ -31,3 +31,20 @@ jobs:
         run: mypy
       - name: Tests
         run: pytest
+
+  # Dogfood: run the cost-regression gate on this repo's own captured
+  # TradingAgents runs. Installs the local checkout (external users take
+  # `uses: yashmyeole/tokenaudit@main` instead, which installs from PyPI).
+  cache-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install local checkout
+        run: pip install .
+      - name: tokenaudit check
+        run: >-
+          tokenaudit check corpus/captured/runs
+          --baseline tokenaudit-baseline.json
