@@ -1,0 +1,668 @@
+{
+  "breakpoint_limit": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "clean"
+      }
+    },
+    "negatives_abstained": 1,
+    "negatives_clean": 14,
+    "positives_abstained": 0,
+    "positives_found": 1,
+    "positives_missed": 0
+  },
+  "context_bloat": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "context_bloat": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "clean"
+      }
+    },
+    "negatives_abstained": 3,
+    "negatives_clean": 12,
+    "positives_abstained": 0,
+    "positives_found": 1,
+    "positives_missed": 0
+  },
+  "lookback_overflow": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "lookback_overflow": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "clean"
+      }
+    },
+    "negatives_abstained": 1,
+    "negatives_clean": 14,
+    "positives_abstained": 0,
+    "positives_found": 1,
+    "positives_missed": 0
+  },
+  "model_switch": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "model_switch": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "clean"
+      }
+    },
+    "negatives_abstained": 1,
+    "negatives_clean": 14,
+    "positives_abstained": 0,
+    "positives_found": 1,
+    "positives_missed": 0
+  },
+  "prefix_drift": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "prefix_drift_no_content": {
+        "expected": true,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "clean"
+      }
+    },
+    "negatives_abstained": 0,
+    "negatives_clean": 12,
+    "positives_abstained": 1,
+    "positives_found": 3,
+    "positives_missed": 0
+  },
+  "retry_storm": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "retry_storm": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "clean"
+      }
+    },
+    "negatives_abstained": 1,
+    "negatives_clean": 14,
+    "positives_abstained": 0,
+    "positives_found": 1,
+    "positives_missed": 0
+  },
+  "sub_minimum": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "sub_minimum": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "clean"
+      }
+    },
+    "negatives_abstained": 1,
+    "negatives_clean": 14,
+    "positives_abstained": 0,
+    "positives_found": 1,
+    "positives_missed": 0
+  },
+  "tool_schema_churn": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_churn": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "clean"
+      }
+    },
+    "negatives_abstained": 1,
+    "negatives_clean": 14,
+    "positives_abstained": 0,
+    "positives_found": 1,
+    "positives_missed": 0
+  },
+  "ttl_expiry": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": true,
+        "outcome": "fired"
+      }
+    },
+    "negatives_abstained": 3,
+    "negatives_clean": 12,
+    "positives_abstained": 0,
+    "positives_found": 1,
+    "positives_missed": 0
+  }
+}
