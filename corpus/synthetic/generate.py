@@ -53,27 +53,35 @@ from pathlib import Path
 from typing import Any
 
 # --------------------------------------------------------------------------- #
-# Constants: the provider rulebook slice this simulator needs.
-# Verified 2026-08-29 against the provider docs; the full sourced rulebook
-# lands in rulebook/*.yaml in a later phase and becomes the single source.
+# Provider constants come from the packaged rulebook (the single source of
+# truth; every entry is sourced and dated there). The byte-exact regeneration
+# test in tests/test_corpus.py guards this coupling: a rulebook edit either
+# leaves these fixtures unchanged or forces a deliberate corpus update.
 # --------------------------------------------------------------------------- #
 
-# Anthropic: minimum cacheable prompt length is model-tiered.
-# https://platform.claude.com/docs/en/build-with-claude/prompt-caching
-ANTHROPIC_MIN_CACHEABLE = {
-    "claude-opus-5": 512,
-    "claude-sonnet-4-5": 1024,
-    "claude-opus-4-8": 1024,
-    "claude-haiku-4-5": 4096,
-}
-ANTHROPIC_TTL_S = 300  # 5m default, measured from the START of the request
-ANTHROPIC_MAX_BREAKPOINTS = 4  # explicit cache_control blocks per request
-ANTHROPIC_LOOKBACK_POSITIONS = 20  # positions checked per breakpoint
+_RULEBOOK_DIR = Path(__file__).resolve().parents[2] / "src" / "tokenaudit" / "rulebook"
 
-# OpenAI: automatic prefix caching, no explicit markers.
-# https://developers.openai.com/api/docs/guides/prompt-caching
-OPENAI_MIN_CACHEABLE = {"gpt-5.6": 1024}
-OPENAI_TTL_S = 1800  # "30m", SLIDING from most recent write or reuse
+
+def _provider_rules(filename: str) -> dict[str, Any]:
+    with open(_RULEBOOK_DIR / filename, encoding="utf-8") as fh:
+        loaded: dict[str, Any] = json.load(fh)
+    return loaded
+
+
+_ANTHROPIC = _provider_rules("anthropic.json")
+_OPENAI = _provider_rules("openai.json")
+
+ANTHROPIC_MIN_CACHEABLE: dict[str, int] = {
+    model: entry["min_cacheable_tokens"] for model, entry in _ANTHROPIC["models"].items()
+}
+ANTHROPIC_TTL_S: int = _ANTHROPIC["ttl"][0]["seconds"]  # 5m, from the START of the request
+ANTHROPIC_MAX_BREAKPOINTS: int = _ANTHROPIC["max_explicit_breakpoints"]
+ANTHROPIC_LOOKBACK_POSITIONS: int = _ANTHROPIC["lookback_positions"]
+
+OPENAI_MIN_CACHEABLE: dict[str, int] = {
+    model: entry["min_cacheable_tokens"] for model, entry in _OPENAI["models"].items()
+}
+OPENAI_TTL_S: int = _OPENAI["models"]["gpt-5.6"]["ttl"][0]["seconds"]  # sliding from last use
 
 FAILURE_MODES = (
     "prefix_drift",

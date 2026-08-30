@@ -17,6 +17,7 @@ from pathlib import Path
 
 from tokenaudit.ingest import UnknownTraceFormatError, ingest_path
 from tokenaudit.model.records import IngestResult
+from tokenaudit.rulebook import load_rulebook
 
 
 def _trace_files(path: Path) -> list[Path]:
@@ -62,7 +63,12 @@ def main(argv: list[str] | None = None) -> int:
     ingest = subparsers.add_parser("ingest", help="normalize trace files")
     ingest.add_argument("paths", nargs="+", type=Path)
     ingest.add_argument("--summary", action="store_true", help="human summary instead of JSON")
+    subparsers.add_parser("rulebook", help="render the provider caching rulebook as markdown")
     args = parser.parse_args(argv)
+
+    if args.command == "rulebook":
+        print(load_rulebook().render_markdown())
+        return 0
 
     results = []
     try:
