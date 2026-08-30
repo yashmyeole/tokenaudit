@@ -46,15 +46,19 @@ class RawSpan:
 
 def load_file(path: Path) -> tuple[str, list[RawSpan]]:
     """Parse a trace file; returns ``(container_id, spans)`` or raises."""
-    text = path.read_text(encoding="utf-8")
+    return load_text(path.read_text(encoding="utf-8"), str(path))
+
+
+def load_text(text: str, source: str) -> tuple[str, list[RawSpan]]:
+    """Parse trace text already in memory; ``source`` labels errors/results."""
     stripped = text.lstrip()
     if not stripped:
-        raise UnknownTraceFormatError(f"{path}: empty file")
+        raise UnknownTraceFormatError(f"{source}: empty file")
     if stripped.startswith("{") and '"resourceSpans"' in stripped[:2000]:
-        return "otlp-json", _load_otlp(text, path)
+        return "otlp-json", _load_otlp(text, source)
     if stripped.startswith("{"):
-        return "otel-sdk-jsonl", _load_sdk_jsonl(text, path)
-    raise UnknownTraceFormatError(f"{path}: not JSON trace data")
+        return "otel-sdk-jsonl", _load_sdk_jsonl(text, source)
+    raise UnknownTraceFormatError(f"{source}: not JSON trace data")
 
 
 # --------------------------------------------------------------------------- #
@@ -78,14 +82,14 @@ def _otlp_attrs(items: list[dict[str, Any]]) -> dict[str, AttrValue]:
     return {a["key"]: _otlp_value(a["value"]) for a in items}
 
 
-def _load_otlp(text: str, path: Path) -> list[RawSpan]:
+def _load_otlp(text: str, source: str) -> list[RawSpan]:
     try:
         documents = [json.loads(text)]
     except json.JSONDecodeError:
         try:  # some exporters write one OTLP export request per line
             documents = [json.loads(line) for line in text.splitlines() if line.strip()]
         except json.JSONDecodeError as exc:
-            raise UnknownTraceFormatError(f"{path}: invalid JSON ({exc})") from exc
+            raise UnknownTraceFormatError(f"{source}: invalid JSON ({exc})") from exc
 
     spans: list[RawSpan] = []
     for doc in documents:
@@ -107,7 +111,7 @@ def _load_otlp(text: str, path: Path) -> list[RawSpan]:
                         )
                     )
     if not spans:
-        raise UnknownTraceFormatError(f"{path}: OTLP document contains no spans")
+        raise UnknownTraceFormatError(f"{source}: OTLP document contains no spans")
     return spans
 
 
@@ -136,7 +140,7 @@ def _clean_attrs(attrs: dict[str, Any]) -> dict[str, AttrValue]:
     return out
 
 
-def _load_sdk_jsonl(text: str, path: Path) -> list[RawSpan]:
+def _load_sdk_jsonl(text: str, source: str) -> list[RawSpan]:
     spans: list[RawSpan] = []
     for lineno, line in enumerate(text.splitlines(), start=1):
         if not line.strip():
@@ -144,16 +148,16 @@ def _load_sdk_jsonl(text: str, path: Path) -> list[RawSpan]:
         try:
             obj = json.loads(line)
         except json.JSONDecodeError as exc:
-            raise UnknownTraceFormatError(f"{path}:{lineno}: invalid JSON line ({exc})") from exc
+            raise UnknownTraceFormatError(f"{source}:{lineno}: invalid JSON line ({exc})") from exc
         context = obj.get("context")
         if not isinstance(context, dict) or "attributes" not in obj:
             raise UnknownTraceFormatError(
-                f"{path}:{lineno}: not an OTel SDK span object (missing context/attributes)"
+                f"{source}:{lineno}: not an OTel SDK span object (missing context/attributes)"
             )
         trace_id = _hex_id(context.get("trace_id"))
         span_id = _hex_id(context.get("span_id"))
         if trace_id is None or span_id is None:
-            raise UnknownTraceFormatError(f"{path}:{lineno}: span without trace/span id")
+            raise UnknownTraceFormatError(f"{source}:{lineno}: span without trace/span id")
         resource = obj.get("resource", {}).get("attributes", {})
         spans.append(
             RawSpan(
@@ -168,5 +172,5 @@ def _load_sdk_jsonl(text: str, path: Path) -> list[RawSpan]:
             )
         )
     if not spans:
-        raise UnknownTraceFormatError(f"{path}: no spans found")
+        raise UnknownTraceFormatError(f"{source}: no spans found")
     return spans
