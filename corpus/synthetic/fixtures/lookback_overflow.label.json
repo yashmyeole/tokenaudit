@@ -26,9 +26,9 @@
   "notes": "The cache marker rides on the newest message while history grows by ~24 blocks per call, so the previously cached prefix lies outside the 20-position lookback window and is never reused.",
   "totals": {
     "calls": 3,
-    "input_tokens": 4729,
+    "input_tokens": 21534,
     "cache_read_tokens": 2812,
-    "cache_creation_tokens": 1917,
+    "cache_creation_tokens": 18686,
     "output_tokens": 720
   }
 }

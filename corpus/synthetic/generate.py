@@ -568,15 +568,18 @@ def fx_lookback_overflow() -> Fixture:
     sys_b = _stable_system()
     calls = []
     for i in range(3):
-        # History grows by ~24 small blocks per call; the only marker rides on
-        # the newest message, so the previous cached prefix sits further back
-        # than the 20-position lookback window and is never found.
-        history = tuple(
-            Block("user" if j % 2 == 0 else "assistant", f"turn {j}: note {j} for case {j}.")
-            for j in range(i * 24)
-        )
-        tail = Block("user", f"Latest question {i}: reconcile entries.", True)
-        calls.append(Call((sys_b, *history, tail), "claude-sonnet-4-5", i * 20, 2800, 240))
+        # History grows by 24 sizable blocks per call and the moving marker
+        # rides the NEWEST history block, so each new breakpoint sits 24
+        # positions past the previously cached prefix - beyond the
+        # 20-position lookback - and the identical, still-live prefix is
+        # never found again. Only the sys-block breakpoint keeps reading.
+        n = (i + 1) * 24
+        history = [
+            Block("user" if j % 2 == 0 else "assistant", filler(f"turn {j}", 120)) for j in range(n)
+        ]
+        last = history[-1]
+        history[-1] = Block(last.role, last.text, True)
+        calls.append(Call((sys_b, *history, _convo(i)), "claude-sonnet-4-5", i * 20, 2800, 240))
     return Fixture(
         name="lookback_overflow",
         schema="otel-genai-current",
