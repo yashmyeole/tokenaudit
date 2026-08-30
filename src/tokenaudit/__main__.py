@@ -13,11 +13,14 @@ import json
 import sys
 from collections import Counter
 from dataclasses import asdict
+from importlib.resources import files
 from pathlib import Path
 
+from tokenaudit import __version__
 from tokenaudit.detect import SessionDiagnosis, diagnose
 from tokenaudit.ingest import UnknownTraceFormatError, ingest_path
 from tokenaudit.model.records import IngestResult
+from tokenaudit.report import render_html
 from tokenaudit.rulebook import load_rulebook
 
 
@@ -89,13 +92,18 @@ def _render_diagnosis(diagnosis: SessionDiagnosis) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="tokenaudit")
+    parser.add_argument("--version", action="version", version=f"tokenaudit {__version__}")
     subparsers = parser.add_subparsers(dest="command", required=True)
     ingest = subparsers.add_parser("ingest", help="normalize trace files")
     ingest.add_argument("paths", nargs="+", type=Path)
     ingest.add_argument("--summary", action="store_true", help="human summary instead of JSON")
     diag = subparsers.add_parser("diagnose", help="diagnose token waste in trace files")
-    diag.add_argument("paths", nargs="+", type=Path)
+    diag.add_argument("paths", nargs="*", type=Path)
     diag.add_argument("--json", action="store_true", help="machine-readable output")
+    diag.add_argument("--html", type=Path, help="also write a self-contained HTML report")
+    diag.add_argument(
+        "--sample", action="store_true", help="diagnose the bundled sample trace (a demo)"
+    )
     subparsers.add_parser("rulebook", help="render the provider caching rulebook as markdown")
     args = parser.parse_args(argv)
 
@@ -103,9 +111,14 @@ def main(argv: list[str] | None = None) -> int:
         print(load_rulebook().render_markdown())
         return 0
 
+    paths = list(args.paths)
+    if args.command == "diagnose" and args.sample:
+        paths.append(Path(str(files("tokenaudit.examples").joinpath("sample.trace.json"))))
+    if not paths:
+        parser.error("no trace paths given (or use: tokenaudit diagnose --sample)")
     results = []
     try:
-        for path in args.paths:
+        for path in paths:
             for trace_file in _trace_files(path):
                 results.append(ingest_path(trace_file))
     except UnknownTraceFormatError as exc:
@@ -114,6 +127,9 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "diagnose":
         per_result = [(result, diagnose(result)) for result in results]
+        if args.html:
+            args.html.write_text(render_html(per_result, load_rulebook()), encoding="utf-8")
+            print(f"wrote {args.html}", file=sys.stderr)
         if args.json:
             payload = [asdict(d) for _, diagnoses in per_result for d in diagnoses]
             print(json.dumps(payload, indent=2, default=str))
