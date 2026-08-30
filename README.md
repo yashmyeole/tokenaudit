@@ -24,6 +24,22 @@ The plan, in one line each:
 - Price each finding against a counterfactual — what the bill would have been under the fix — as a bounded range, never a point guess.
 - Publish per-detector precision and recall against a labeled corpus, so you know how much to trust each finding.
 
+## Catch regressions in CI
+
+Prompt-caching regressions are silent: no test fails when a reordered tool
+list doubles your input bill. If CI already produces traces, fail the pull
+request instead ([full docs](docs/ci.md)):
+
+```yaml
+- uses: yashmyeole/tokenaudit@main
+  with:
+    traces: traces/
+    baseline: tokenaudit-baseline.json   # tokenaudit check traces/ --baseline ... --update
+```
+
+This repo gates itself: every build re-diagnoses the captured
+TradingAgents runs against [tokenaudit-baseline.json](tokenaudit-baseline.json).
+
 ## Prior art
 
 This space is crowded, and being precise about what already exists is the point of this section.
@@ -69,7 +85,7 @@ If you know a tool that already does this, please open an issue — I would genu
 - [x] Detectors, starting with prefix drift, sub-minimum blocks, and model/version switch
 - [x] Evaluation harness: per-detector results published in [eval/results.md](eval/results.md)
 - [x] `tokenaudit diagnose` CLI, HTML report, cache health score
-- [ ] CI cost-regression mode: fail a build that tanks the cache hit rate
+- [x] CI cost-regression mode: fail a build that tanks the cache hit rate ([docs/ci.md](docs/ci.md))
 - [ ] Case studies on public agents, with reproduction commands
 
 ## Development

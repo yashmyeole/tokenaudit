@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- **CI cost-regression gate**: `tokenaudit check <traces> --baseline
+  baseline.json` fails a build (exit 1) on a new HIGH finding or a drop in
+  cache read rate / health floor beyond `--max-regression` points; create
+  or refresh the baseline with `--update`. Ships as a composite GitHub
+  Action (`action.yml`) with a markdown summary written to the job page
+  (and to a file via `--markdown`, for PR comments). See `docs/ci.md`.
+
 ## 0.1.0 — 2026-08-30
 
 First usable release.
