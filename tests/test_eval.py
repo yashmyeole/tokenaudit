@@ -10,7 +10,14 @@ EVAL = ROOT / "eval"
 
 def test_published_results_match_a_fresh_run(tmp_path: Path) -> None:
     subprocess.run(
-        [sys.executable, str(EVAL / "run_eval.py"), "--out", str(tmp_path)],
+        [
+            sys.executable,
+            str(EVAL / "run_eval.py"),
+            "--out",
+            str(tmp_path),
+            "--record-out",
+            str(tmp_path),
+        ],
         check=True,
         capture_output=True,
     )
@@ -18,6 +25,10 @@ def test_published_results_match_a_fresh_run(tmp_path: Path) -> None:
         assert (tmp_path / name).read_bytes() == (EVAL / name).read_bytes(), (
             f"{name} drifted; regenerate with: python eval/run_eval.py"
         )
+    packaged = ROOT / "src" / "tokenaudit" / "detect" / "corpus_record.json"
+    assert (tmp_path / "corpus_record.json").read_bytes() == packaged.read_bytes(), (
+        "packaged corpus record drifted; regenerate with: python eval/run_eval.py"
+    )
 
 
 def test_results_show_no_misses_and_no_false_alarms() -> None:

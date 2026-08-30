@@ -109,15 +109,41 @@ def render(tallies: dict[str, dict[str, Any]]) -> str:
     return "\n".join(lines)
 
 
+def corpus_record(tallies: dict[str, dict[str, Any]]) -> dict[str, dict[str, int]]:
+    """The slice of the tallies that ships inside the package (see
+    tokenaudit.report.corpus_record): raw counts, never a probability."""
+    return {
+        detector_id: {
+            "positives_found": tally["positives_found"],
+            "positives_total": (
+                tally["positives_found"] + tally["positives_missed"] + tally["positives_abstained"]
+            ),
+            "false_alarms": tally["false_alarms"],
+            "negatives_checked": tally["negatives_clean"] + tally["false_alarms"],
+        }
+        for detector_id, tally in tallies.items()
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="evaluate detectors against the corpus")
     parser.add_argument("--out", type=Path, default=Path(__file__).parent)
+    parser.add_argument(
+        "--record-out",
+        type=Path,
+        default=ROOT / "src" / "tokenaudit" / "detect",
+        help="where corpus_record.json (packaged with the library) is written",
+    )
     args = parser.parse_args()
     tallies = evaluate()
     args.out.mkdir(parents=True, exist_ok=True)
     (args.out / "results.md").write_text(render(tallies), encoding="utf-8")
     (args.out / "results.json").write_text(
         json.dumps(tallies, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    args.record_out.mkdir(parents=True, exist_ok=True)
+    (args.record_out / "corpus_record.json").write_text(
+        json.dumps(corpus_record(tallies), indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
     total_false = sum(t["false_alarms"] for t in tallies.values())
     total_missed = sum(t["positives_missed"] for t in tallies.values())

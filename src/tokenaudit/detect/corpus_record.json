@@ -1,0 +1,56 @@
+{
+  "breakpoint_limit": {
+    "false_alarms": 0,
+    "negatives_checked": 14,
+    "positives_found": 1,
+    "positives_total": 1
+  },
+  "context_bloat": {
+    "false_alarms": 0,
+    "negatives_checked": 12,
+    "positives_found": 1,
+    "positives_total": 1
+  },
+  "lookback_overflow": {
+    "false_alarms": 0,
+    "negatives_checked": 14,
+    "positives_found": 1,
+    "positives_total": 1
+  },
+  "model_switch": {
+    "false_alarms": 0,
+    "negatives_checked": 14,
+    "positives_found": 1,
+    "positives_total": 1
+  },
+  "prefix_drift": {
+    "false_alarms": 0,
+    "negatives_checked": 12,
+    "positives_found": 3,
+    "positives_total": 4
+  },
+  "retry_storm": {
+    "false_alarms": 0,
+    "negatives_checked": 14,
+    "positives_found": 1,
+    "positives_total": 1
+  },
+  "sub_minimum": {
+    "false_alarms": 0,
+    "negatives_checked": 14,
+    "positives_found": 1,
+    "positives_total": 1
+  },
+  "tool_schema_churn": {
+    "false_alarms": 0,
+    "negatives_checked": 14,
+    "positives_found": 1,
+    "positives_total": 1
+  },
+  "ttl_expiry": {
+    "false_alarms": 0,
+    "negatives_checked": 12,
+    "positives_found": 1,
+    "positives_total": 1
+  }
+}
