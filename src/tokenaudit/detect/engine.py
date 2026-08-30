@@ -17,9 +17,15 @@ from dataclasses import replace
 
 from tokenaudit.detect.base import Abstain, Detector
 from tokenaudit.detect.findings import Finding, SessionDiagnosis, Severity
+from tokenaudit.detect.rules.breakpoint_limit import BreakpointLimitDetector
+from tokenaudit.detect.rules.context_bloat import ContextBloatDetector
+from tokenaudit.detect.rules.lookback_overflow import LookbackOverflowDetector
 from tokenaudit.detect.rules.model_switch import ModelSwitchDetector
 from tokenaudit.detect.rules.prefix_drift import PrefixDriftDetector
+from tokenaudit.detect.rules.retry_storm import RetryStormDetector
 from tokenaudit.detect.rules.sub_minimum import SubMinimumDetector
+from tokenaudit.detect.rules.tool_schema_churn import ToolSchemaChurnDetector
+from tokenaudit.detect.rules.ttl_expiry import TtlExpiryDetector
 from tokenaudit.model.records import IngestResult, Session
 from tokenaudit.rulebook import Rulebook, load_rulebook
 
@@ -27,6 +33,12 @@ DETECTORS: tuple[Detector, ...] = (
     PrefixDriftDetector(),
     SubMinimumDetector(),
     ModelSwitchDetector(),
+    TtlExpiryDetector(),
+    BreakpointLimitDetector(),
+    LookbackOverflowDetector(),
+    ToolSchemaChurnDetector(),
+    ContextBloatDetector(),
+    RetryStormDetector(),
 )
 
 _SEVERITY_ORDER = {Severity.HIGH: 0, Severity.MEDIUM: 1, Severity.LOW: 2}
