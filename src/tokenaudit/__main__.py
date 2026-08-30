@@ -1,15 +1,18 @@
-"""Command-line entry point: ``python -m tokenaudit ingest <paths>``.
+"""The ``tokenaudit`` command-line interface (also ``python -m tokenaudit``).
 
-Prints the normalized ingest result as JSON (default) or a human summary
-(``--summary``). A dedicated console script with a fuller CLI arrives with
-the report phase; this stays argparse-only so the package keeps zero
-runtime dependencies.
+Subcommands: ``ingest`` (normalize traces to JSON or a summary),
+``diagnose`` (findings as text, ``--json`` or an ``--html`` report),
+``rulebook`` (render the provider caching rules), and ``check`` (the CI
+gate: compare a run against a committed baseline and fail on regression).
+Stays argparse-only so the package keeps zero runtime dependencies
+(DECISIONS 006).
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from collections import Counter
 from dataclasses import asdict
@@ -17,6 +20,15 @@ from importlib.resources import files
 from pathlib import Path
 
 from tokenaudit import __version__
+from tokenaudit.ci import (
+    BaselineError,
+    compare,
+    read_baseline,
+    render_markdown,
+    render_text,
+    snapshot,
+    write_baseline,
+)
 from tokenaudit.detect import SessionDiagnosis, diagnose
 from tokenaudit.ingest import UnknownTraceFormatError, ingest_path
 from tokenaudit.model.records import IngestResult
@@ -105,6 +117,27 @@ def main(argv: list[str] | None = None) -> int:
         "--sample", action="store_true", help="diagnose the bundled sample trace (a demo)"
     )
     subparsers.add_parser("rulebook", help="render the provider caching rulebook as markdown")
+    check = subparsers.add_parser(
+        "check", help="CI gate: fail when caching regressed against a committed baseline"
+    )
+    check.add_argument("paths", nargs="+", type=Path)
+    check.add_argument(
+        "--baseline", type=Path, required=True, help="baseline JSON (commit it to your repo)"
+    )
+    check.add_argument(
+        "--update", action="store_true", help="write the baseline from this run and exit"
+    )
+    check.add_argument(
+        "--max-regression",
+        type=float,
+        default=5.0,
+        metavar="POINTS",
+        help="allowed drop in cache read rate / health floor, in percentage points (default 5.0)",
+    )
+    check.add_argument("--strict", action="store_true", help="also fail on new non-HIGH findings")
+    check.add_argument(
+        "--markdown", type=Path, help="also write a PR-comment-sized markdown summary"
+    )
     args = parser.parse_args(argv)
 
     if args.command == "rulebook":
@@ -124,6 +157,32 @@ def main(argv: list[str] | None = None) -> int:
     except UnknownTraceFormatError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
+
+    if args.command == "check":
+        rulebook = load_rulebook()
+        current = snapshot([(result, diagnose(result)) for result in results], rulebook)
+        if current.input_tokens == 0:
+            print("error: no input tokens in these traces; nothing to compare", file=sys.stderr)
+            return 2
+        if args.update:
+            write_baseline(current, args.baseline)
+            print(f"wrote baseline {args.baseline} — commit it to your repo")
+            return 0
+        try:
+            baseline = read_baseline(args.baseline)
+        except BaselineError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+        report = compare(baseline, current, args.max_regression, strict=args.strict)
+        print(render_text(report, current))
+        markdown = render_markdown(report, current)
+        if args.markdown:
+            args.markdown.write_text(markdown, encoding="utf-8")
+        summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+        if summary_path:
+            with open(summary_path, "a", encoding="utf-8") as handle:
+                handle.write(markdown)
+        return 0 if report.passed else 1
 
     if args.command == "diagnose":
         per_result = [(result, diagnose(result)) for result in results]
