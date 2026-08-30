@@ -1,0 +1,36 @@
+{
+  "provider": "anthropic",
+  "verified_on": "2026-08-29",
+  "source_url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+  "ttl_semantics": "from_request_start",
+  "invalidation_cascade": ["tools", "system", "messages"],
+  "supports_explicit_cache": true,
+  "supports_implicit_cache": false,
+  "accounting_shape": "exclusive",
+  "max_explicit_breakpoints": 4,
+  "lookback_positions": 20,
+  "cache_read_multiplier": 0.1,
+  "ttl": [
+    { "name": "5m", "seconds": 300, "write_multiplier": 1.25 },
+    { "name": "1h", "seconds": 3600, "write_multiplier": 2.0 }
+  ],
+  "notes": "Minimum cacheable prompt length is model-tiered and does not track model size. The system may add one automatic top-level breakpoint, which consumes one of the four explicit slots. A breakpoint checks at most 20 positions, counting itself as the first. TTL runs from the START of the request that wrote or last read the entry. Raw SDK usage fields are exclusive: total input = input_tokens + cache_read_input_tokens + cache_creation_input_tokens.",
+  "models": {
+    "claude-opus-5": { "min_cacheable_tokens": 512, "base_input_price_per_mtok": 5.0 },
+    "claude-fable-5": { "min_cacheable_tokens": 512, "base_input_price_per_mtok": null },
+    "claude-mythos-5": { "min_cacheable_tokens": 512, "base_input_price_per_mtok": null },
+    "claude-opus-4-8": { "min_cacheable_tokens": 1024, "base_input_price_per_mtok": null },
+    "claude-sonnet-5": { "min_cacheable_tokens": 1024, "base_input_price_per_mtok": null },
+    "claude-sonnet-4-6": { "min_cacheable_tokens": 1024, "base_input_price_per_mtok": null },
+    "claude-sonnet-4-5": { "min_cacheable_tokens": 1024, "base_input_price_per_mtok": null },
+    "claude-opus-4-1": { "min_cacheable_tokens": 1024, "base_input_price_per_mtok": null },
+    "claude-opus-4": { "min_cacheable_tokens": 1024, "base_input_price_per_mtok": null },
+    "claude-sonnet-4": { "min_cacheable_tokens": 1024, "base_input_price_per_mtok": null },
+    "claude-mythos-preview": { "min_cacheable_tokens": 2048, "base_input_price_per_mtok": null },
+    "claude-opus-4-7": { "min_cacheable_tokens": 2048, "base_input_price_per_mtok": null },
+    "claude-haiku-3-5": { "min_cacheable_tokens": 2048, "base_input_price_per_mtok": null },
+    "claude-opus-4-6": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
+    "claude-opus-4-5": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
+    "claude-haiku-4-5": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null }
+  }
+}

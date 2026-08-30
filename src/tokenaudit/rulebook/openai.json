@@ -1,0 +1,45 @@
+{
+  "provider": "openai",
+  "verified_on": "2026-08-29",
+  "source_url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+  "ttl_semantics": "sliding_from_last_use",
+  "invalidation_cascade": ["model", "tools", "params", "messages"],
+  "supports_implicit_cache": true,
+  "accounting_shape": "nested",
+  "lookback_positions": null,
+  "cache_read_multiplier": 0.1,
+  "notes": "Caching is automatic (prefix-based). Invalidated by model changes; tool definition, schema or ORDERING changes; and parameter flips (reasoning.effort, text.verbosity, text.format). prompt_cache_key influences routing so matching prefixes land on the machine holding the cache. Usage fields are nested: input_tokens_details.cached_tokens sits INSIDE the input total, and there is no separately billed cache-write count in usage (cache writes bill at 1.25x within input).",
+  "models": {
+    "gpt-5.6": {
+      "min_cacheable_tokens": 1024,
+      "max_explicit_breakpoints": 4,
+      "supports_explicit_cache": true,
+      "ttl": [{ "name": "30m", "seconds": 1800, "write_multiplier": 1.25 }],
+      "base_input_price_per_mtok": null
+    },
+    "gpt-5.5": {
+      "min_cacheable_tokens": 2048,
+      "max_explicit_breakpoints": null,
+      "supports_explicit_cache": false,
+      "ttl": [{ "name": "in_memory", "seconds": null, "write_multiplier": null }],
+      "ttl_notes": "typically 5-10 min of inactivity, up to 1h; a 24h retention option exists; exact windows not published",
+      "base_input_price_per_mtok": null
+    },
+    "gpt-5.4": {
+      "min_cacheable_tokens": 2048,
+      "max_explicit_breakpoints": null,
+      "supports_explicit_cache": false,
+      "ttl": [{ "name": "in_memory", "seconds": null, "write_multiplier": null }],
+      "ttl_notes": "typically 5-10 min of inactivity, up to 1h; a 24h retention option exists; exact windows not published",
+      "base_input_price_per_mtok": null
+    },
+    "gpt-5.4-mini": {
+      "min_cacheable_tokens": 2048,
+      "max_explicit_breakpoints": null,
+      "supports_explicit_cache": false,
+      "ttl": [{ "name": "in_memory", "seconds": null, "write_multiplier": null }],
+      "ttl_notes": "typically 5-10 min of inactivity, up to 1h; a 24h retention option exists; exact windows not published",
+      "base_input_price_per_mtok": null
+    }
+  }
+}

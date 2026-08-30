@@ -1,0 +1,23 @@
+{
+  "provider": "google",
+  "verified_on": "2026-08-29",
+  "source_url": "https://ai.google.dev/gemini-api/docs/caching",
+  "ttl_semantics": null,
+  "invalidation_cascade": null,
+  "supports_explicit_cache": false,
+  "supports_implicit_cache": true,
+  "accounting_shape": "nested",
+  "max_explicit_breakpoints": null,
+  "lookback_positions": null,
+  "cache_read_multiplier": null,
+  "ttl": [],
+  "notes": "The Interactions API supports implicit caching only; explicit cache objects are not supported there, so 'you never created a cache' is not a valid finding on that path. Cached tokens surface as usage.total_cached_tokens. TTL and discount rate are not published alongside the minimums; they are recorded as unknown rather than guessed.",
+  "models": {
+    "gemini-3.7-flash": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
+    "gemini-3.6-flash": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
+    "gemini-3.5-flash": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
+    "gemini-3.1-pro-preview": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
+    "gemini-2.5-flash": { "min_cacheable_tokens": 2048, "base_input_price_per_mtok": null },
+    "gemini-2.5-pro": { "min_cacheable_tokens": 2048, "base_input_price_per_mtok": null }
+  }
+}
