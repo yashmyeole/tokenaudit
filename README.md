@@ -54,9 +54,9 @@ If you know a tool that already does this, please open an issue — I would genu
 ## Roadmap
 
 - [x] Prior-art survey, positioning, project scaffold
-- [ ] Labeled trace corpus: synthetic known-answer fixtures + captured runs from real public agents
-- [ ] Trace reader and normalizer with a data-quality gate (bad telemetry is refused, not zero-filled)
-- [ ] Provider caching rulebook: minimums, TTL semantics, invalidation rules — versioned, with sources
+- [x] Labeled trace corpus: synthetic known-answer fixtures + captured runs from real public agents
+- [x] Trace reader and normalizer with a data-quality gate (bad telemetry is refused, not zero-filled)
+- [x] Provider caching rulebook: minimums, TTL semantics, invalidation rules — versioned, with sources
 - [ ] Detectors, starting with prefix drift, sub-minimum blocks, and model/version switch
 - [ ] Evaluation harness: per-detector precision and recall, published here
 - [ ] `tokenaudit diagnose` CLI, HTML report, cache health score

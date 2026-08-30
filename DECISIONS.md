@@ -23,3 +23,9 @@ Explicit patent grant, and it matches the ecosystem this project sits in (OpenTe
 ## 004 — src layout and strict mypy from the first commit (2026-08-29)
 
 src/ layout so tests import the installed package rather than the working directory. `mypy --strict` costs nothing to adopt on an empty package and a lot to adopt later; the detector engine will be pure functions, which is exactly the code strict typing is cheap for.
+
+## 005 — The rulebook is JSON inside the package, not YAML beside it (2026-08-30)
+
+**Decision:** provider caching constants live in `src/tokenaudit/rulebook/*.json`, loaded with the standard library via `importlib.resources`, and ship inside the wheel.
+
+**Why:** the package has zero runtime dependencies, and adding a YAML parser just to read our own constants would end that for no gain — sources and notes are data fields, so YAML's comments aren't needed. Packaging the data means the installed CLI works without a repo checkout. Two boundaries drawn at the same time: trace field-name *mappings* stay in `ingest/dialects.py` (one owner, no code/data drift), and prices appear only where verified — unknown numbers are `null` with a note, never a guess. The corpus generator now reads these same files, so the simulator and the detectors share one set of constants, with the byte-exact corpus regeneration test guarding every edit.
