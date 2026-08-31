@@ -69,9 +69,19 @@ git -C "$CLONE" checkout --quiet "$BASE_COMMIT"
 "$VPY" -m pip install --quiet opentelemetry-sdk \
   openinference-instrumentation-openai openinference-instrumentation-langchain
 
-# Plumbing check before spending money (Phase-2 smoke, no API calls).
+# Plumbing checks before spending money (no API calls, no key needed).
 "$VPY" "$CAPTURED/runner.py" --smoke --out "$WORK/smoke-exp" >/dev/null
 echo "exporter plumbing OK"
+"$VPY" "$HERE/exp_runner.py" --selftest   # the control tee must see the SDK's HTTP path
+"$VPY" - <<'PY' || { echo "network/DNS check failed — is the machine online?"; exit 1; }
+import socket, sys
+try:
+    socket.getaddrinfo("api.openai.com", 443)
+except OSError as exc:
+    print(f"cannot resolve api.openai.com: {exc}", file=sys.stderr)
+    raise SystemExit(1)
+print("network OK: api.openai.com resolves")
+PY
 
 mkdir -p "$RUNS"
 

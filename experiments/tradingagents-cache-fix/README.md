@@ -86,7 +86,8 @@ minutes) cannot carry one run's prefixes into the next:
 - **baseline** — TradingAgents @ `a33fd4c`, traced exactly as in Phase 2.
 - **patched** — same commit + the patch, same tracing.
 - **control** — baseline code, *no* OpenTelemetry: usage is recorded by a
-  passive httpx tee that only copies each response's `usage` object. It
+  passive tee over the SDK's own HTTP module that only copies each
+  response's `usage` object (see the measurement log below). It
   answers the auditor question "does tracing itself change cache
   behavior?" — if untraced hit rates sit inside the traced runs' spread,
   observation isn't moving the number. (tokenaudit never sits in the
@@ -115,6 +116,32 @@ Cost: ~8 runs x ~100k tokens of gpt-5.4-mini — around a dollar. Wall time
   (BUY/HOLD/SELL) and report lengths are captured per run in
   `decision.txt`/`manifest.json` so any behavior drift is visible, but this
   experiment measures cost, not decision quality.
+
+## Measurement log (errata)
+
+Kept because a controlled experiment's credibility depends on what went
+wrong being visible, not only what worked.
+
+- **2026-08-31 — the first control runs measured nothing.** The untraced
+  arm records usage with a passive tee over the HTTP client. That tee
+  patched `httpx`, but the OpenAI SDK in the capture venv uses `httpx2`
+  (both generations are installed side by side), so it wrapped a module no
+  request ever passed through and wrote a 0-byte `usage.jsonl`. An earlier
+  diagnosis blamed sync-vs-async clients; the stack trace from a later run
+  disproved that — the SDK's call is a plain sync `send`, just in the other
+  module. Fixed by deriving the module from the installed SDK
+  (`_http_modules` in `exp_runner.py`), patching every candidate, exiting
+  non-zero when a control run ends with an empty tee, and adding
+  `exp_runner.py --selftest`, which proves the tee records a mocked OpenAI
+  response through the SDK's own module before any run starts. The six
+  traced runs were unaffected — they use OpenTelemetry instrumentation, not
+  the tee — and `analyze.py` reports an empty control as "no data", never
+  as a 0% hit rate.
+- **2026-08-31 — a control rerun died mid-run on DNS failure**
+  (`[Errno 8] nodename nor servname provided`, both Reddit and
+  api.openai.com): the machine's network dropped. No data was affected;
+  both scripts now check that `api.openai.com` resolves before spending
+  cooldowns or tokens.
 
 ## Running it
 
