@@ -28,32 +28,62 @@ import runner  # noqa: E402  (build_provider, instrument, run_analysis, _pkg_ver
 
 
 def install_usage_tee(out_path: Path) -> None:
-    """Record the usage block of every OpenAI JSON response; change nothing."""
+    """Record the usage block of every OpenAI JSON response; change nothing.
+
+    Both httpx clients are patched: langchain-openai drives the *async*
+    client even under a synchronous ``.invoke()``, which is exactly how the
+    first version of this tee recorded zero requests — the sync-only patch
+    never saw the traffic. (httpx caches a response's content after the
+    first read, so reading it here does not disturb the SDK's own read.)
+    """
     import httpx
 
-    original = httpx.Client.send
     fh = out_path.open("a", encoding="utf-8")
 
-    def send(self: Any, request: Any, **kwargs: Any) -> Any:
-        response = original(self, request, **kwargs)
+    def record(request: Any, response: Any, content: bytes) -> None:
         try:
-            content_type = response.headers.get("content-type", "")
-            if "api.openai.com" in str(request.url) and content_type.startswith("application/json"):
-                data = json.loads(response.read())
-                if isinstance(data, dict) and data.get("usage"):
-                    fh.write(
-                        json.dumps(
-                            {"model": data.get("model"), "usage": data["usage"]},
-                            separators=(",", ":"),
-                        )
-                        + "\n"
+            data = json.loads(content)
+            if isinstance(data, dict) and data.get("usage"):
+                fh.write(
+                    json.dumps(
+                        {"model": data.get("model"), "usage": data["usage"]},
+                        separators=(",", ":"),
                     )
-                    fh.flush()
+                    + "\n"
+                )
+                fh.flush()
         except Exception:  # never let observation break the run
+            pass
+
+    def wanted(request: Any, response: Any) -> bool:
+        content_type = response.headers.get("content-type", "")
+        return "api.openai.com" in str(request.url) and content_type.startswith("application/json")
+
+    sync_send = httpx.Client.send
+
+    def send(self: Any, request: Any, **kwargs: Any) -> Any:
+        response = sync_send(self, request, **kwargs)
+        try:
+            if wanted(request, response):
+                record(request, response, response.read())
+        except Exception:
             pass
         return response
 
     httpx.Client.send = send  # type: ignore[method-assign]
+
+    async_send = httpx.AsyncClient.send
+
+    async def asend(self: Any, request: Any, **kwargs: Any) -> Any:
+        response = await async_send(self, request, **kwargs)
+        try:
+            if wanted(request, response):
+                record(request, response, await response.aread())
+        except Exception:
+            pass
+        return response
+
+    httpx.AsyncClient.send = asend  # type: ignore[method-assign]
 
 
 def main() -> None:
@@ -110,6 +140,12 @@ def main() -> None:
     (args.out / "manifest.json").write_text(
         json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
+    if args.control and (args.out / "usage.jsonl").stat().st_size == 0:
+        print(
+            f"WARNING: {args.out.name}: the usage tee recorded nothing — "
+            "the control run has no measurement and must be re-run",
+            file=sys.stderr,
+        )
     print(f"{args.out.name} [{args.arm}/{observation}]: {manifest['duration_s']}s")
 
 
