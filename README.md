@@ -8,6 +8,8 @@ Every LLM cost tool can tell you *how much* you spent and *who* spent it. Almost
 
 tokenaudit reads the traces agents already produce and, for each expensive request, answers four questions: **what was wasted, why, what it cost, and what to change.**
 
+It works: diagnosing one of those documented cases produced a 9-file patch that took TradingAgents' cache hit rate from **7.5% to 32.4% (4.3×)** in a controlled, pre-registered before/after experiment — the [first case study](docs/case-studies/tradingagents.md).
+
 ## Quickstart
 
     pip install tokenaudit
@@ -89,7 +91,7 @@ If you know a tool that already does this, please open an issue — I would genu
 - [x] `tokenaudit diagnose` CLI, HTML report, cache health score
 - [x] CI cost-regression mode: fail a build that tanks the cache hit rate ([docs/ci.md](docs/ci.md))
 - [x] Hosted live demo: drag a trace in, get the report — uploads parsed in memory, never stored ([demo/](demo/))
-- [ ] Case studies on public agents, with reproduction commands
+- [x] Case studies on public agents, with reproduction commands ([TradingAgents: 4.3× cache hit rate](docs/case-studies/tradingagents.md))
 
 ## Development
 
