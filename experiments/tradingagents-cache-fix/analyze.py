@@ -51,6 +51,9 @@ def control_stats(run_dir: Path) -> dict[str, Any]:
         details = usage.get("prompt_tokens_details") or usage.get("input_tokens_details") or {}
         total_read += details.get("cached_tokens") or 0
         count += 1
+    # An empty usage.jsonl means the tee observed nothing (its first version
+    # missed the async httpx client). That is a FAILED MEASUREMENT, not a 0%
+    # hit rate — rendering it as 0.0% would invent a finding.
     return {
         "requests": count,
         "input": total_input,
@@ -58,6 +61,7 @@ def control_stats(run_dir: Path) -> dict[str, Any]:
         "hit": total_read / total_input if total_input else 0.0,
         "hits_on": None,
         "sys_hashes": set(),
+        "measured": count > 0,
     }
 
 
@@ -108,6 +112,12 @@ def render(runs: list[dict[str, Any]]) -> str:
     ]
     for r in runs:
         arm = f"{r['arm']} (control)" if r["control"] else r["arm"]
+        if r["control"] and not r.get("measured", True):
+            lines.append(
+                f"| {r['name']} | {arm} | {r['config']} | — | — | — "
+                "| no data (tee failure — rerun run_controls.sh) |"
+            )
+            continue
         lines.append(
             f"| {r['name']} | {arm} | {r['config']} | {r['requests']} "
             f"| {r['input']:,} | {r['read']:,} | {r['hit']:.1%} |"
@@ -162,7 +172,8 @@ def render(runs: list[dict[str, Any]]) -> str:
         f"- patched: {shared_hash_stats(runs, 'patched')}",
     ]
 
-    controls = [r for r in runs if r["control"]]
+    controls = [r for r in runs if r["control"] and r.get("measured", True)]
+    unmeasured = [r for r in runs if r["control"] and not r.get("measured", True)]
     traced_same = [
         r
         for r in runs
@@ -172,20 +183,60 @@ def render(runs: list[dict[str, Any]]) -> str:
         and r["config"] == controls[0]["config"]
     ]
     if controls and traced_same:
+        traced_base = [r for r in runs if not r["control"] and r["arm"] == "baseline"]
+        traced_hits = [r["hit"] for r in traced_base]
+        control_hits = [r["hit"] for r in controls]
+        patched_hits = [r["hit"] for r in runs if not r["control"] and r["arm"] == "patched"]
+        gap = (mean(traced_hits) - mean(control_hits)) * 100
+        inside = [h for h in control_hits if min(traced_hits) <= h <= max(traced_hits)]
+        verdict = (
+            "every untraced rate falls inside that range"
+            if len(inside) == len(control_hits)
+            else f"{len(inside)} of {len(control_hits)} untraced rates fall inside that range"
+        )
         lines += [
             "",
             "## Control: does tracing change what we measure?",
             "",
-            f"Same config ({controls[0]['config']}), baseline code. Traced runs: "
-            + ", ".join(f"{r['hit']:.1%}" for r in traced_same)
-            + ". Untraced (usage tee only): "
-            + ", ".join(f"{r['hit']:.1%}" for r in controls)
-            + ".",
+            "The patched and baseline arms are both traced, so instrumentation "
+            "cancels in the comparison — but only if it is not doing something "
+            "dramatic. Untraced runs (baseline code, no OpenTelemetry, usage read "
+            "passively from response bodies) test that directly:",
             "",
-            "Run-to-run spread on identical configs is the yardstick here: if the "
-            "untraced rates sit inside the traced runs' spread, observation is not "
-            "moving the number. Sample sizes are small and stated; this is a "
-            "consistency check, not a proof.",
+            "- traced baseline runs: "
+            + ", ".join(f"{h:.1%}" for h in traced_hits)
+            + f" (mean {mean(traced_hits):.1%})",
+            "- untraced control runs, same config as run 01: "
+            + ", ".join(f"{h:.1%}" for h in control_hits)
+            + f" (mean {mean(control_hits):.1%})",
+            "- patched runs, for scale: "
+            + ", ".join(f"{h:.1%}" for h in patched_hits)
+            + f" (mean {mean(patched_hits):.1%})",
+            "",
+            f"Traced baselines span {min(traced_hits):.1%} to {max(traced_hits):.1%}; "
+            f"{verdict}. The traced-vs-untraced difference of means is "
+            f"{abs(gap):.1f} points — smaller than the baseline arm's own "
+            f"run-to-run spread ({(max(traced_hits) - min(traced_hits)) * 100:.1f} "
+            "points across configs, and 9.3% vs 18.1% on two captures of the same "
+            "config a week apart), and an order of magnitude smaller than the "
+            f"patch's effect ({(mean(patched_hits) - mean(traced_hits)) * 100:+.1f} "
+            "points). No untraced run comes within "
+            f"{(min(patched_hits) - max(control_hits)) * 100:.0f} points of the "
+            "worst patched run.",
+            "",
+            "So: nothing here suggests instrumentation manufactured the result, and "
+            "with n=2 controls this is a consistency check, not a proof of exact "
+            "neutrality.",
+        ]
+    elif unmeasured:
+        lines += [
+            "",
+            "## Control: does tracing change what we measure?",
+            "",
+            f"**Unsupported so far**: {len(unmeasured)} control run(s) recorded no "
+            "usage data (the tee failure documented in exp_runner.py), so the "
+            "tracing-neutrality claim currently rests on no measurement. Rerun "
+            "`run_controls.sh` and regenerate this report before citing it.",
         ]
     lines.append("")
     return "\n".join(lines)

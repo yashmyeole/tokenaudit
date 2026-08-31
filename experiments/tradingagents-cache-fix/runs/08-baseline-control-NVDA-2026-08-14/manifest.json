@@ -1,17 +1,17 @@
 {
   "arm": "baseline",
-  "duration_s": 115.6,
+  "duration_s": 109.4,
   "experiment": "tradingagents-cache-fix",
   "max_debate_rounds": 1,
   "models": {
     "deep_think": "gpt-5.4-mini",
     "quick_think": "gpt-5.4-mini"
   },
-  "observation": "usage-tee(httpx)",
+  "observation": "usage-tee(httpx2+httpx)",
   "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
   "python": "3.13.7",
   "run_id": "08-baseline-control-NVDA-2026-08-14",
-  "started_at": "2026-08-31T01:14:44Z",
+  "started_at": "2026-08-31T06:43:25Z",
   "ticker": "NVDA",
   "trade_date": "2026-08-14",
   "tradingagents_commit": "a33fd4c0f134485a43553a2c23a63cb14adbd88f",
