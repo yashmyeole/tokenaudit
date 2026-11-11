@@ -2,7 +2,7 @@
 
 **Root-cause diagnosis of wasted LLM tokens — from the traces your agents already emit.**
 
-> Status: early development, pre-0.1. Interfaces will change.
+> Status: alpha (0.2.0). Interfaces may change before 1.0.
 
 Every LLM cost tool can tell you *how much* you spent and *who* spent it. Almost none can tell you *why a specific request wasted money*. The biggest lever on an LLM bill — prompt caching, up to a 10× discount on repeated input — fails silently: change one byte of a cached prefix, drop below a model's minimum cacheable size, let a timer expire, and the provider just bills you full price. No error, no warning. There are [documented](https://barndoor.ai/what-happens-to-your-llm-bill-when-prompt-caching-fails/) [cases](https://github.com/TauricResearch/TradingAgents/issues/750) of agents running at ~0% cache hit rate for months, at 30–40% unnecessary cost, because of a single line of prompt construction.
 
@@ -18,8 +18,8 @@ It works: diagnosing one of those documented cases produced a 9-file patch that 
 
 Zero runtime dependencies; reads OTLP/JSON files and OTel SDK JSONL. Try it
 on this repo's real captured runs: `tokenaudit diagnose corpus/captured/runs`.
-Prefer a browser? The [hosted demo](demo/) diagnoses a dropped trace without
-installing anything — uploads are parsed in memory and never stored.
+Prefer a browser? The [demo app](demo/) diagnoses a dropped trace; uploads
+are parsed in memory and never stored.
 
 The plan, in one line each:
 
@@ -35,7 +35,7 @@ list doubles your input bill. If CI already produces traces, fail the pull
 request instead ([full docs](docs/ci.md)):
 
 ```yaml
-- uses: yashmyeole/tokenaudit@main
+- uses: yashmyeole/tokenaudit@v0.2.0
   with:
     traces: traces/
     baseline: tokenaudit-baseline.json   # tokenaudit check traces/ --baseline ... --update
@@ -90,8 +90,12 @@ If you know a tool that already does this, please open an issue — I would genu
 - [x] Evaluation harness: per-detector results published in [eval/results.md](eval/results.md)
 - [x] `tokenaudit diagnose` CLI, HTML report, cache health score
 - [x] CI cost-regression mode: fail a build that tanks the cache hit rate ([docs/ci.md](docs/ci.md))
-- [x] Hosted live demo: drag a trace in, get the report — uploads parsed in memory, never stored ([demo/](demo/))
+- [x] Demo app: drag a trace in, get the report ([demo/](demo/))
 - [x] Case studies on public agents, with reproduction commands ([TradingAgents: 4.3× cache hit rate](docs/case-studies/tradingagents.md))
+- [ ] Detectors for misordered shared context and cross-run prefix drift
+- [ ] Counterfactual pricing with per-model read rates and dollar ranges
+- [ ] Raw provider SDK log ingest, tool-schema bloat detector
+- [ ] Public demo deployment, case study on an Anthropic-model agent
 
 ## Development
 
@@ -99,6 +103,9 @@ If you know a tool that already does this, please open an issue — I would genu
     pip install -e ".[dev]"
     pre-commit install
     pytest
+
+To release, bump the version in `pyproject.toml` and `src/tokenaudit/__init__.py`,
+update CHANGELOG.md, and push a `vX.Y.Z` tag.
 
 ## License
 
