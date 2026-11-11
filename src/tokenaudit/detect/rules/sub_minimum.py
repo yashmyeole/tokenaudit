@@ -40,6 +40,13 @@ class SubMinimumDetector(Detector):
         if any(rules is None for rules in rules_by_model.values()):
             unknown = sorted(m or "?" for m, rules in rules_by_model.items() if rules is None)
             raise Abstain(f"model(s) not in the rulebook, minimum unknown: {unknown}")
+        unpublished = sorted(
+            m or "?"
+            for m, rules in rules_by_model.items()
+            if rules and rules.min_cacheable_tokens is None
+        )
+        if unpublished:
+            raise Abstain(f"no published minimum for: {unpublished}")
 
         # The marked prefix must be under the minimum on every call, and the
         # session must show zero cache activity — one observed write or read
@@ -51,7 +58,9 @@ class SubMinimumDetector(Detector):
             assert end is not None  # guarded above
             prefixes.append((r, blocks_tokens(blocks[: end + 1])))
         minimum = max(
-            rules.min_cacheable_tokens for rules in rules_by_model.values() if rules is not None
+            rules.min_cacheable_tokens
+            for rules in rules_by_model.values()
+            if rules is not None and rules.min_cacheable_tokens is not None
         )
         if any(tokens >= minimum for _, tokens in prefixes):
             return []

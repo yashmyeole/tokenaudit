@@ -1,6 +1,6 @@
 {
   "provider": "google",
-  "verified_on": "2026-08-29",
+  "verified_on": "2026-11-10",
   "source_url": "https://ai.google.dev/gemini-api/docs/caching",
   "ttl_semantics": null,
   "invalidation_cascade": null,
@@ -11,11 +11,11 @@
   "lookback_positions": null,
   "cache_read_multiplier": null,
   "ttl": [],
-  "notes": "The Interactions API supports implicit caching only; explicit cache objects are not supported there, so 'you never created a cache' is not a valid finding on that path. Cached tokens surface as usage.total_cached_tokens. TTL and discount rate are not published alongside the minimums; they are recorded as unknown rather than guessed.",
+  "notes": "Implicit caching is on by default for Gemini 2.5 and newer. Explicit caches exist only through generateContent on Gemini 3 and 2.5, not in the Interactions API or on Gemini 4, so 'you never created a cache' is not a valid finding there. On Gemini 4, a turn that adds fewer than 2,050 tokens re-processes the last 2,050 tokens of the previous request at the standard rate. Cached tokens appear as usage.total_cached_tokens. TTL and discount are not published, so they are null.",
   "models": {
-    "gemini-3.7-flash": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
+    "gemini-4-argon": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
+    "gemini-3.8-flash": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
     "gemini-3.6-flash": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
-    "gemini-3.5-flash": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
     "gemini-3.1-pro-preview": { "min_cacheable_tokens": 4096, "base_input_price_per_mtok": null },
     "gemini-2.5-flash": { "min_cacheable_tokens": 2048, "base_input_price_per_mtok": null },
     "gemini-2.5-pro": { "min_cacheable_tokens": 2048, "base_input_price_per_mtok": null }

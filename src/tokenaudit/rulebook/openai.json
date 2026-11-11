@@ -1,6 +1,6 @@
 {
   "provider": "openai",
-  "verified_on": "2026-08-29",
+  "verified_on": "2026-11-10",
   "source_url": "https://developers.openai.com/api/docs/guides/prompt-caching",
   "ttl_semantics": "sliding_from_last_use",
   "invalidation_cascade": ["model", "tools", "params", "messages"],
@@ -8,38 +8,163 @@
   "accounting_shape": "nested",
   "lookback_positions": null,
   "cache_read_multiplier": 0.1,
-  "notes": "Caching is automatic (prefix-based). Invalidated by model changes; tool definition, schema or ORDERING changes; and parameter flips (reasoning.effort, text.verbosity, text.format). prompt_cache_key influences routing so matching prefixes land on the machine holding the cache. Usage fields are nested: input_tokens_details.cached_tokens sits INSIDE the input total, and there is no separately billed cache-write count in usage (cache writes bill at 1.25x within input).",
+  "notes": "Automatic, prefix-based caching. GPT-5.6 and later: 1,024-token minimum, explicit breakpoints (up to four cache writes per request, the automatic one included), and a 30m or 12h minimum lifetime. Earlier models: the minimum varies with request settings, writes cost nothing extra, retention is in_memory (about 5-10 min idle, up to 1h) or 24h, and cached_tokens rounds down to a multiple of 128. Invalidated by changes to model, tools (including order), parallel_tool_calls, text.format, reasoning.effort, text.verbosity or context_management. prompt_cache_key affects routing before 5.6. Usage is nested: input_tokens_details.cached_tokens (and cache_write_tokens on 5.6+) are counted inside input_tokens.",
   "models": {
+    "gpt-6.1-sol": {
+      "min_cacheable_tokens": 1024,
+      "max_explicit_breakpoints": 4,
+      "supports_explicit_cache": true,
+      "ttl": [
+        { "name": "30m", "seconds": 1800, "write_multiplier": 1.25 },
+        { "name": "12h", "seconds": 43200, "write_multiplier": 2.5 }
+      ],
+      "ttl_notes": "12h is Responses API only",
+      "cache_read_multiplier": 0.05,
+      "base_input_price_per_mtok": null,
+      "price_notes": "input and cache rates double above 272K input tokens"
+    },
+    "gpt-6.1-terra": {
+      "min_cacheable_tokens": 1024,
+      "max_explicit_breakpoints": 4,
+      "supports_explicit_cache": true,
+      "ttl": [
+        { "name": "30m", "seconds": 1800, "write_multiplier": 1.25 },
+        { "name": "12h", "seconds": 43200, "write_multiplier": 2.5 }
+      ],
+      "ttl_notes": "12h is Responses API only",
+      "cache_read_multiplier": 0.05,
+      "base_input_price_per_mtok": null,
+      "price_notes": "input and cache rates double above 272K input tokens"
+    },
+    "gpt-6-astra": {
+      "min_cacheable_tokens": 1024,
+      "max_explicit_breakpoints": 4,
+      "supports_explicit_cache": true,
+      "ttl": [
+        { "name": "30m", "seconds": 1800, "write_multiplier": 1.25 },
+        { "name": "12h", "seconds": 43200, "write_multiplier": 2.5 }
+      ],
+      "ttl_notes": "12h is Responses API only",
+      "cache_read_multiplier": 0.1,
+      "base_input_price_per_mtok": null,
+      "price_notes": "input and cache rates double above 272K input tokens"
+    },
+    "gpt-6-sol": {
+      "min_cacheable_tokens": 1024,
+      "max_explicit_breakpoints": 4,
+      "supports_explicit_cache": true,
+      "ttl": [
+        { "name": "30m", "seconds": 1800, "write_multiplier": 1.25 },
+        { "name": "12h", "seconds": 43200, "write_multiplier": 2.5 }
+      ],
+      "ttl_notes": "12h is Responses API only",
+      "cache_read_multiplier": 0.1,
+      "base_input_price_per_mtok": null,
+      "price_notes": "input and cache rates double above 272K input tokens"
+    },
+    "gpt-6-luna": {
+      "min_cacheable_tokens": 1024,
+      "max_explicit_breakpoints": 4,
+      "supports_explicit_cache": true,
+      "ttl": [
+        { "name": "30m", "seconds": 1800, "write_multiplier": 1.25 },
+        { "name": "12h", "seconds": 43200, "write_multiplier": 2.5 }
+      ],
+      "ttl_notes": "12h is Responses API only",
+      "cache_read_multiplier": 0.1,
+      "base_input_price_per_mtok": null,
+      "price_notes": "input and cache rates double above 272K input tokens"
+    },
     "gpt-5.6": {
       "min_cacheable_tokens": 1024,
       "max_explicit_breakpoints": 4,
       "supports_explicit_cache": true,
-      "ttl": [{ "name": "30m", "seconds": 1800, "write_multiplier": 1.25 }],
-      "base_input_price_per_mtok": null
+      "ttl": [
+        { "name": "30m", "seconds": 1800, "write_multiplier": 1.25 },
+        { "name": "12h", "seconds": 43200, "write_multiplier": 2.5 }
+      ],
+      "ttl_notes": "12h is Responses API only",
+      "cache_read_multiplier": 0.1,
+      "base_input_price_per_mtok": null,
+      "price_notes": "input and cache rates double above 272K input tokens"
+    },
+    "gpt-5.6-sol": {
+      "min_cacheable_tokens": 1024,
+      "max_explicit_breakpoints": 4,
+      "supports_explicit_cache": true,
+      "ttl": [
+        { "name": "30m", "seconds": 1800, "write_multiplier": 1.25 },
+        { "name": "12h", "seconds": 43200, "write_multiplier": 2.5 }
+      ],
+      "ttl_notes": "12h is Responses API only",
+      "cache_read_multiplier": 0.1,
+      "base_input_price_per_mtok": null,
+      "price_notes": "input and cache rates double above 272K input tokens"
+    },
+    "gpt-5.6-terra": {
+      "min_cacheable_tokens": 1024,
+      "max_explicit_breakpoints": 4,
+      "supports_explicit_cache": true,
+      "ttl": [
+        { "name": "30m", "seconds": 1800, "write_multiplier": 1.25 },
+        { "name": "12h", "seconds": 43200, "write_multiplier": 2.5 }
+      ],
+      "ttl_notes": "12h is Responses API only",
+      "cache_read_multiplier": 0.1,
+      "base_input_price_per_mtok": null,
+      "price_notes": "input and cache rates double above 272K input tokens"
+    },
+    "gpt-5.6-luna": {
+      "min_cacheable_tokens": 1024,
+      "max_explicit_breakpoints": 4,
+      "supports_explicit_cache": true,
+      "ttl": [
+        { "name": "30m", "seconds": 1800, "write_multiplier": 1.25 },
+        { "name": "12h", "seconds": 43200, "write_multiplier": 2.5 }
+      ],
+      "ttl_notes": "12h is Responses API only",
+      "cache_read_multiplier": 0.1,
+      "base_input_price_per_mtok": null,
+      "price_notes": "input and cache rates double above 272K input tokens"
     },
     "gpt-5.5": {
-      "min_cacheable_tokens": 2048,
+      "min_cacheable_tokens": null,
+      "min_cacheable_notes": "varies with request settings (tools, images, output schema, reasoning effort, verbosity)",
       "max_explicit_breakpoints": null,
       "supports_explicit_cache": false,
-      "ttl": [{ "name": "in_memory", "seconds": null, "write_multiplier": null }],
-      "ttl_notes": "typically 5-10 min of inactivity, up to 1h; a 24h retention option exists; exact windows not published",
-      "base_input_price_per_mtok": null
+      "ttl": [
+        { "name": "24h", "seconds": null, "write_multiplier": 1.0 }
+      ],
+      "ttl_notes": "24h retention only; typically about 30 min, up to 24h",
+      "cache_read_multiplier": 0.1,
+      "base_input_price_per_mtok": null,
+      "price_notes": "input and cache rates double above 272K input tokens"
     },
     "gpt-5.4": {
-      "min_cacheable_tokens": 2048,
+      "min_cacheable_tokens": null,
+      "min_cacheable_notes": "varies with request settings (tools, images, output schema, reasoning effort, verbosity)",
       "max_explicit_breakpoints": null,
       "supports_explicit_cache": false,
-      "ttl": [{ "name": "in_memory", "seconds": null, "write_multiplier": null }],
-      "ttl_notes": "typically 5-10 min of inactivity, up to 1h; a 24h retention option exists; exact windows not published",
-      "base_input_price_per_mtok": null
+      "ttl": [
+        { "name": "in_memory", "seconds": null, "write_multiplier": 1.0 },
+        { "name": "24h", "seconds": null, "write_multiplier": 1.0 }
+      ],
+      "ttl_notes": "in_memory: about 5-10 min idle, up to 1h; 24h: typically about 30 min, up to 24h",
+      "cache_read_multiplier": 0.1,
+      "base_input_price_per_mtok": null,
+      "price_notes": "input and cache rates double above 272K input tokens"
     },
     "gpt-5.4-mini": {
-      "min_cacheable_tokens": 2048,
+      "min_cacheable_tokens": null,
+      "min_cacheable_notes": "varies with request settings (tools, images, output schema, reasoning effort, verbosity)",
       "max_explicit_breakpoints": null,
       "supports_explicit_cache": false,
-      "ttl": [{ "name": "in_memory", "seconds": null, "write_multiplier": null }],
-      "ttl_notes": "typically 5-10 min of inactivity, up to 1h; a 24h retention option exists; exact windows not published",
-      "base_input_price_per_mtok": null
+      "ttl": [
+        { "name": "in_memory", "seconds": null, "write_multiplier": 1.0 }
+      ],
+      "ttl_notes": "in_memory only; about 5-10 min idle, up to 1h",
+      "cache_read_multiplier": 0.1,
+      "base_input_price_per_mtok": 0.75
     }
   }
 }

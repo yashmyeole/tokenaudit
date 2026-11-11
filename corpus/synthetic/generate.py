@@ -79,7 +79,9 @@ ANTHROPIC_MAX_BREAKPOINTS: int = _ANTHROPIC["max_explicit_breakpoints"]
 ANTHROPIC_LOOKBACK_POSITIONS: int = _ANTHROPIC["lookback_positions"]
 
 OPENAI_MIN_CACHEABLE: dict[str, int] = {
-    model: entry["min_cacheable_tokens"] for model, entry in _OPENAI["models"].items()
+    model: entry["min_cacheable_tokens"]
+    for model, entry in _OPENAI["models"].items()
+    if entry["min_cacheable_tokens"] is not None
 }
 OPENAI_TTL_S: int = _OPENAI["models"]["gpt-5.6"]["ttl"][0]["seconds"]  # sliding from last use
 
