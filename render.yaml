@@ -1,0 +1,10 @@
+# The hosted demo (demo/). Deploy: Render dashboard > New > Blueprint > this repo.
+services:
+  - type: web
+    name: tokenaudit-demo
+    runtime: docker
+    plan: free
+    dockerfilePath: ./demo/Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    autoDeploy: true

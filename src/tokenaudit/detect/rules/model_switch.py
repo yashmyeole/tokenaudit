@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from itertools import pairwise
 
+from tokenaudit.counterfactual import impact, rates
 from tokenaudit.detect.base import (
     TOKEN_ESTIMATE_NOTE,
     Abstain,
@@ -18,7 +19,7 @@ from tokenaudit.detect.base import (
     last_marked_index,
     require_content,
 )
-from tokenaudit.detect.findings import Finding, Fix, Impact, Severity
+from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Request, Session
 from tokenaudit.rulebook import Rulebook
 
@@ -64,6 +65,7 @@ class ModelSwitchDetector(Detector):
         for a, b, shared in boundaries:
             observed_rewrite = (b.usage.cache_creation or 0) > 0 or b.usage.cache_read == 0
             rules = rulebook.lookup(b.model, b.provider)
+            rebilled = shared * rates(rules).waste(b)
             findings.append(
                 Finding(
                     detector_id=self.detector_id,
@@ -82,17 +84,14 @@ class ModelSwitchDetector(Detector):
                         "shared_prefix_est_tokens": shared,
                         "observed_rewrite_after_switch": observed_rewrite,
                     },
-                    impact=Impact(
-                        tokens_low=shared if observed_rewrite else 0,
-                        tokens_high=shared,
-                        usd_low=None,
-                        usd_high=None,
-                        assumption=(
-                            "the shared prefix is re-billed once at the new model instead of "
-                            f"read from cache; {TOKEN_ESTIMATE_NOTE}; low bound requires an "
-                            "observed rewrite after the switch"
-                        ),
-                        rulebook_version=rulebook.version,
+                    impact=impact(
+                        rebilled if observed_rewrite else 0,
+                        rebilled,
+                        rates(rules),
+                        rulebook,
+                        "the shared prefix is re-billed once at the new model instead of read "
+                        f"from cache; {TOKEN_ESTIMATE_NOTE}; low bound requires an observed "
+                        "rewrite after the switch",
                     ),
                     fix=Fix(
                         summary=(

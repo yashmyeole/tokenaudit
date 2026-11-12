@@ -16,7 +16,8 @@ It works: diagnosing one of those documented cases produced a 9-file patch that 
     tokenaudit diagnose --sample          # diagnose the bundled demo trace
     tokenaudit diagnose mytraces/ --html report.html
 
-Zero runtime dependencies; reads OTLP/JSON files and OTel SDK JSONL. Try it
+Zero runtime dependencies; reads OTLP/JSON files, OTel SDK JSONL, and raw
+OpenAI or Anthropic request/response logs. Try it
 on this repo's real captured runs: `tokenaudit diagnose corpus/captured/runs`.
 Prefer a browser? The [demo app](demo/) diagnoses a dropped trace; uploads
 are parsed in memory and never stored.
@@ -24,7 +25,7 @@ are parsed in memory and never stored.
 The plan, in one line each:
 
 - Ingest standard traces — OpenTelemetry GenAI in all three of its cache-field naming generations, OpenInference, raw provider SDK logs — into one normalized accounting model.
-- Run a library of deterministic detectors for the silent failure modes: prefix drift, sub-minimum cache blocks, model switches, TTL expiry, breakpoint and lookback limits, tool-schema churn and bloat, context bloat, retry storms, shared content sent behind different openings, and per-session values that stop a prompt being reused across sessions.
+- Run a library of deterministic detectors for the silent failure modes: prefix drift, sub-minimum cache blocks, model switches, TTL expiry, breakpoint and lookback limits, tool-schema churn and bloat, context bloat, retry storms, shared content sent behind different openings, per-session values that stop a prompt being reused across sessions, and prompts that never ask a cache-on-request provider to cache them.
 - Price each finding against a counterfactual — what the bill would have been under the fix — as a bounded range, never a point guess.
 - Publish per-detector precision and recall against a labeled corpus, so you know how much to trust each finding.
 
@@ -93,9 +94,11 @@ If you know a tool that already does this, please open an issue — I would genu
 - [x] Demo app: drag a trace in, get the report ([demo/](demo/))
 - [x] Case studies on public agents, with reproduction commands ([TradingAgents: 4.3× cache hit rate](docs/case-studies/tradingagents.md))
 - [x] Detectors for misordered shared context and cross-session drift: they now find the TradingAgents problems on their own ([case study, section 6](docs/case-studies/tradingagents.md#6-what-tokenaudit-reports-now))
-- [ ] Counterfactual pricing with per-model read rates and dollar ranges
-- [ ] Raw provider SDK log ingest, tool-schema bloat detector
-- [ ] Public demo deployment, case study on an Anthropic-model agent
+- [x] Counterfactual pricing with per-model read and write rates and dollar ranges
+- [x] Raw provider SDK log ingest (OpenAI Responses, Chat Completions, Anthropic Messages), tool-schema bloat detector
+- [x] A detector for prompts that never ask Anthropic to cache them
+- [ ] Public demo deployment (`render.yaml` is ready; see [demo/](demo/))
+- [ ] Case study on an Anthropic-model agent (the harness is ready: [experiments/tradingagents-claude](experiments/tradingagents-claude/))
 
 ## Development
 

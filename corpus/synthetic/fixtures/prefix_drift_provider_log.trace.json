@@ -1,0 +1,284 @@
+[
+  {
+    "synthetic": true,
+    "timestamp": "2026-01-15T09:00:00Z",
+    "duration_ms": 2400,
+    "session_id": "conv-prefix_drift_provider_log",
+    "request": {
+      "model": "claude-sonnet-4-5",
+      "max_tokens": 1024,
+      "system": [
+        {
+          "type": "text",
+          "text": "You are the fixture agent. [generated: 2026-01-15T09:00:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Task 0: summarize account activity for window 0. "
+            }
+          ]
+        }
+      ]
+    },
+    "response": {
+      "id": "msg_4ab26951741ad2ad",
+      "type": "message",
+      "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 0"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1415,
+        "output_tokens": 180
+      }
+    }
+  },
+  {
+    "synthetic": true,
+    "timestamp": "2026-01-15T09:00:20Z",
+    "duration_ms": 2400,
+    "session_id": "conv-prefix_drift_provider_log",
+    "request": {
+      "model": "claude-sonnet-4-5",
+      "max_tokens": 1024,
+      "system": [
+        {
+          "type": "text",
+          "text": "You are the fixture agent. [generated: 2026-01-15T09:01:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Task 1: summarize account activity for window 1. "
+            }
+          ]
+        }
+      ]
+    },
+    "response": {
+      "id": "msg_454b1513a5c198a7",
+      "type": "message",
+      "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 1"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1415,
+        "output_tokens": 180
+      }
+    }
+  },
+  {
+    "synthetic": true,
+    "timestamp": "2026-01-15T09:00:40Z",
+    "duration_ms": 2400,
+    "session_id": "conv-prefix_drift_provider_log",
+    "request": {
+      "model": "claude-sonnet-4-5",
+      "max_tokens": 1024,
+      "system": [
+        {
+          "type": "text",
+          "text": "You are the fixture agent. [generated: 2026-01-15T09:02:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Task 2: summarize account activity for window 2. "
+            }
+          ]
+        }
+      ]
+    },
+    "response": {
+      "id": "msg_6e7b2a5db9d78090",
+      "type": "message",
+      "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 2"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1415,
+        "output_tokens": 180
+      }
+    }
+  },
+  {
+    "synthetic": true,
+    "timestamp": "2026-01-15T09:01:00Z",
+    "duration_ms": 2400,
+    "session_id": "conv-prefix_drift_provider_log",
+    "request": {
+      "model": "claude-sonnet-4-5",
+      "max_tokens": 1024,
+      "system": [
+        {
+          "type": "text",
+          "text": "You are the fixture agent. [generated: 2026-01-15T09:03:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Task 3: summarize account activity for window 3. "
+            }
+          ]
+        }
+      ]
+    },
+    "response": {
+      "id": "msg_6ad58eeafb5f4a4c",
+      "type": "message",
+      "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 3"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1415,
+        "output_tokens": 180
+      }
+    }
+  },
+  {
+    "synthetic": true,
+    "timestamp": "2026-01-15T09:01:20Z",
+    "duration_ms": 2400,
+    "session_id": "conv-prefix_drift_provider_log",
+    "request": {
+      "model": "claude-sonnet-4-5",
+      "max_tokens": 1024,
+      "system": [
+        {
+          "type": "text",
+          "text": "You are the fixture agent. [generated: 2026-01-15T09:04:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Task 4: summarize account activity for window 4. "
+            }
+          ]
+        }
+      ]
+    },
+    "response": {
+      "id": "msg_a1d24a0646d67d5b",
+      "type": "message",
+      "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 4"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1415,
+        "output_tokens": 180
+      }
+    }
+  },
+  {
+    "synthetic": true,
+    "timestamp": "2026-01-15T09:01:40Z",
+    "duration_ms": 2400,
+    "session_id": "conv-prefix_drift_provider_log",
+    "request": {
+      "model": "claude-sonnet-4-5",
+      "max_tokens": 1024,
+      "system": [
+        {
+          "type": "text",
+          "text": "You are the fixture agent. [generated: 2026-01-15T09:05:00Z] Policy section 1: standard operating guidance for fixture ops, item 1. Policy section 2: standard operating guidance for fixture ops, item 2. Policy section 3: standard operating guidance for fixture ops, item 3. Policy section 4: standard operating guidance for fixture ops, item 4. Policy section 5: standard operating guidance for fixture ops, item 5. Policy section 6: standard operating guidance for fixture ops, item 6. Policy section 7: standard operating guidance for fixture ops, item 7. Policy section 8: standard operating guidance for fixture ops, item 8. Policy section 9: standard operating guidance for fixture ops, item 9. Policy section 10: standard operating guidance for fixture ops, item 10. Policy section 11: standard operating guidance for fixture ops, item 11. Policy section 12: standard operating guidance for fixture ops, item 12. Policy section 13: standard operating guidance for fixture ops, item 13. Policy section 14: standard operating guidance for fixture ops, item 14. Policy section 15: standard operating guidance for fixture ops, item 15. Policy section 16: standard operating guidance for fixture ops, item 16. Policy section 17: standard operating guidance for fixture ops, item 17. Policy section 18: standard operating guidance for fixture ops, item 18. Policy section 19: standard operating guidance for fixture ops, item 19. Policy section 20: standard operating guidance for fixture ops, item 20. Policy section 21: standard operating guidance for fixture ops, item 21. Policy section 22: standard operating guidance for fixture ops, item 22. Policy section 23: standard operating guidance for fixture ops, item 23. Policy section 24: standard operating guidance for fixture ops, item 24. Policy section 25: standard operating guidance for fixture ops, item 25. Policy section 26: standard operating guidance for fixture ops, item 26. Policy section 27: standard operating guidance for fixture ops, item 27. Policy section 28: standard operating guidance for fixture ops, item 28. Policy section 29: standard operating guidance for fixture ops, item 29. Policy section 30: standard operating guidance for fixture ops, item 30. Policy section 31: standard operating guidance for fixture ops, item 31. Policy section 32: standard operating guidance for fixture ops, item 32. Policy section 33: standard operating guidance for fixture ops, item 33. Policy section 34: standard operating guidance for fixture ops, item 34. Policy section 35: standard operating guidance for fixture ops, item 35. Policy section 36: standard operating guidance for fixture ops, item 36. Policy section 37: standard operating guidance for fixture ops, item 37. Policy section 38: standard operating guidance for fixture ops, item 38. Policy section 39: standard operating guidance for fixture ops, item 39. Policy section 40: standard operating guidance for fixture ops, item 40. Policy section 41: standard operating guidance for fixture ops, item 41. Policy section 42: standard operating guidance for fixture ops, item 42. Policy section 43: standard operating guidance for fixture ops, item 43. Policy section 44: standard operating guidance for fixture ops, item 44. Policy section 45: standard operating guidance for fixture ops, item 45. Policy section 46: standard operating guidance for fixture ops, item 46. Policy section 47: standard operating guidance for fixture ops, item 47. Policy section 48: standard operating guidance for fixture ops, item 48. Policy section 49: standard operating guidance for fixture ops, item 49. Policy section 50: standard operating guidance for fixture ops, item 50. Policy section 51: standard operating guidance for fixture ops, item 51. Policy section 52: standard operating guidance for fixture ops, item 52. Policy section 53: standard operating guidance for fixture ops, item 53. Policy section 54: standard operating guidance for fixture ops, item 54. Policy section 55: standard operating guidance for fixture ops, item 55. Policy section 56: standard operating guidance for fixture ops, item 56. Policy section 57: standard operating guidance for fixture ops, item 57. Policy section 58: standard operating guidance for fixture ops, item 58. Policy section 59: standard operating guidance for fixture ops, item 59. Policy section 60: standard operating guidance for fixture ops, item 60. Policy section 61: standard operating guidance for fixture ops, item 61. Policy section 62: standard operating guidance for fixture ops, item 62. Policy section 63: standard operating guidance for fixture ops, item 63. Policy section 64: standard operating guidance for fixture ops, item 64. Policy section 65: standard operating guidance for fixture ops, item 65. Policy section 66: standard operating guidance for fixture ops, item 66. Policy section 67: standard operating guidance for fixture ops, item 67. Policy section 68: standard operating guidance for fixture ops, item 68. Policy section 69: standard operating guidance for fixture ops, item 69. Policy section 70: standard operating guidance for fixture ops, item 70. Policy section 71: standard operating guidance for fixture ops, item 71. Policy section 72: standard operating guidance for fixture ops, item 72. Policy section 73: standard operating guidance for fixture ops, item 73. Policy section 74: standard operating guidance for fixture ops, item 74. Policy section 75: standard operating guidance for fixture ops, item 75. Policy section 76: standard operating guidance for fixture ops, item 76. Policy section 77: standard operating guidance for fixture ops, item 7",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "text",
+              "text": "Task 5: summarize account activity for window 5. "
+            }
+          ]
+        }
+      ]
+    },
+    "response": {
+      "id": "msg_0e5607d33b61f2e3",
+      "type": "message",
+      "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 5"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1415,
+        "output_tokens": 180
+      }
+    }
+  }
+]

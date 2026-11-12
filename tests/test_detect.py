@@ -37,6 +37,8 @@ PER_SESSION = {
     "context_bloat",
     "retry_storm",
     "misordered_shared_context",
+    "tool_schema_bloat",
+    "missing_cache_markers",
 }
 IMPLEMENTED = PER_SESSION | {"cross_session_drift"}
 
@@ -108,8 +110,8 @@ def test_no_content_session_gets_abstention_not_a_guess() -> None:
 def test_healthy_sessions_are_checked_and_clean_not_abstained() -> None:
     diagnosis = _diagnose_fixture("healthy_cached")
     assert diagnosis.findings == ()
-    assert set(diagnosis.checked) == PER_SESSION
-    assert diagnosis.abstained == {}
+    assert set(diagnosis.checked) == PER_SESSION - {"tool_schema_bloat"}
+    assert set(diagnosis.abstained) == {"tool_schema_bloat"}  # this agent has no tools
 
 
 def test_misordered_shared_context_finding_is_verifiable() -> None:
@@ -122,7 +124,57 @@ def test_misordered_shared_context_finding_is_verifiable() -> None:
     assert finding.impact is not None
     assert finding.impact.tokens_low == 0  # the trace never reports cache reads
     assert finding.impact.tokens_high > 4000
-    assert "0.1x input for gpt-5.6" in finding.impact.assumption
+    assert "cached reads at 0.1x input" in finding.impact.assumption
+    assert "gpt-5.6" in finding.impact.assumption
+
+
+def test_tool_schema_bloat_finding_is_verifiable() -> None:
+    diagnosis = _diagnose_fixture("tool_schema_bloat")
+    (finding,) = diagnosis.findings
+    assert finding.detector_id == "tool_schema_bloat"
+    assert finding.severity is Severity.MEDIUM
+    assert finding.evidence["unused_tool_count"] == 10
+    assert "search_docs" not in finding.evidence["unused_tools"]
+    assert finding.evidence["requests"] == 6
+    assert finding.impact is not None
+    # one cache write at 1.25x, then five reads at 0.1x
+    assert finding.impact.tokens_low < finding.impact.tokens_high
+    assert finding.impact.usd_high is not None
+
+
+def test_tool_schema_bloat_counts_a_tool_used_once_as_used() -> None:
+    diagnosis = _diagnose_fixture("tool_schema_rotating")
+    assert diagnosis.findings == ()
+    assert "tool_schema_bloat" in diagnosis.checked
+
+
+def test_tool_schema_bloat_abstains_without_tool_calls() -> None:
+    from tokenaudit.detect.rules.tool_schema_bloat import ToolSchemaBloatDetector
+
+    (session,) = ingest_path(FIXTURES / "tool_schema_bloat.trace.json").sessions
+    blind = replace(session, requests=tuple(replace(r, tool_calls=None) for r in session.requests))
+    with pytest.raises(Exception, match="tool calls"):
+        ToolSchemaBloatDetector().check(blind, load_rulebook())
+
+
+def test_missing_cache_markers_finding_is_verifiable() -> None:
+    diagnosis = _diagnose_fixture("missing_cache_markers")
+    (finding,) = diagnosis.findings
+    assert finding.detector_id == "missing_cache_markers"
+    assert finding.severity is Severity.HIGH
+    assert finding.evidence["requests_affected"] == 4
+    assert finding.evidence["largest_repeated_prefix_tokens"] >= 2600
+    assert finding.evidence["distinct_prefixes"] == 1
+    assert finding.impact is not None
+    # four repeats at 0.9x, less one 0.25x write premium
+    assert finding.impact.tokens_low < finding.impact.tokens_high
+    assert finding.fix.doc_url is not None
+
+
+def test_missing_cache_markers_ignores_repeats_after_the_cache_would_expire() -> None:
+    diagnosis = _diagnose_fixture("unmarked_far_apart")
+    assert diagnosis.findings == ()
+    assert "missing_cache_markers" in diagnosis.checked
 
 
 def test_cross_session_drift_finding_is_verifiable() -> None:
@@ -206,6 +258,9 @@ def test_captured_tradingagents_runs_diagnose_cleanly() -> None:
             f for f in diagnosis.findings if f.detector_id == "misordered_shared_context"
         ]
         assert misordered.evidence["requests_affected"] == 6
+        # each analyst only gets its own tools and calls all of them
+        assert "tool_schema_bloat" in diagnosis.checked
+        assert "tool_schema_bloat" not in fired
 
 
 def test_captured_runs_show_the_date_in_the_analyst_prompt() -> None:

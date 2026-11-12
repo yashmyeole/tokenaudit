@@ -8,6 +8,7 @@ though it is byte-identical and still alive.
 
 from __future__ import annotations
 
+from tokenaudit.counterfactual import impact, rates
 from tokenaudit.detect.base import (
     TOKEN_ESTIMATE_NOTE,
     Abstain,
@@ -16,7 +17,7 @@ from tokenaudit.detect.base import (
     blocks_tokens,
     consecutive_pairs,
 )
-from tokenaudit.detect.findings import Finding, Fix, Impact, Severity
+from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Session
 from tokenaudit.rulebook import Rulebook
 
@@ -64,12 +65,14 @@ class LookbackOverflowDetector(Detector):
         if not events:
             return []
 
+        first = events[0][0].second
+        rate = rates(rulebook.lookup(first.model, first.provider))
         per_event = []
         for pair, _, _, _ in events:
             shared_tokens = blocks_tokens((pair.second.blocks or ())[: _shared_prefix_len(pair)])
-            per_event.append(max(shared_tokens - (pair.second.usage.cache_read or 0), 0))
-        tokens_high = round(0.9 * sum(per_event))
-        tokens_low = tokens_high  # every event already required an observed shortfall
+            shortfall = max(shared_tokens - (pair.second.usage.cache_read or 0), 0)
+            per_event.append(shortfall * rate.waste(pair.second))
+        wasted = sum(per_event)  # every event already required an observed shortfall
 
         pair, marker, distance, lookback = events[0]
         rules = rulebook.lookup(pair.second.model, pair.second.provider)
@@ -95,17 +98,14 @@ class LookbackOverflowDetector(Detector):
                     for p, m, d, lb in events
                 ],
             },
-            impact=Impact(
-                tokens_low=tokens_low,
-                tokens_high=tokens_high,
-                usd_low=None,
-                usd_high=None,
-                assumption=(
-                    "the out-of-reach identical prefix would have been read at the cached "
-                    f"rate (0.9x delta); {TOKEN_ESTIMATE_NOTE}; low bound counts events "
-                    "with an observed zero cache read"
-                ),
-                rulebook_version=rulebook.version,
+            impact=impact(
+                wasted,
+                wasted,
+                rate,
+                rulebook,
+                "the out-of-reach identical prefix would have been read at the cached rate; "
+                f"{TOKEN_ESTIMATE_NOTE}; low bound counts events with an observed zero "
+                "cache read",
             ),
             fix=Fix(
                 summary=(

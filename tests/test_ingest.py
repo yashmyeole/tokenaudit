@@ -57,6 +57,7 @@ def test_dialect_variants_normalize_identically() -> None:
         "prefix_drift_legacy_flat",
         "prefix_drift_openinference",
         "prefix_drift_no_content",
+        "prefix_drift_provider_log",
     ]
     sequences = []
     for name in variants:
@@ -72,7 +73,18 @@ def test_dialect_variants_normalize_identically() -> None:
                 for r in requests
             ]
         )
-    assert sequences[0] == sequences[1] == sequences[2] == sequences[3]
+    assert all(sequence == sequences[0] for sequence in sequences)
+
+
+def test_raw_provider_log_reads_like_the_trace() -> None:
+    traced = ingest_path(FIXTURES / "prefix_drift.trace.json")
+    logged = ingest_path(FIXTURES / "prefix_drift_provider_log.trace.json")
+    assert logged.container == "provider-log"
+    assert [r.blocks for r in logged.requests] == [r.blocks for r in traced.requests]
+    assert [r.start_unix_nano for r in logged.requests] == [
+        r.start_unix_nano for r in traced.requests
+    ]
+    assert all("exclusive_counts_converted" in r.quality for r in logged.requests)
 
 
 def test_captured_runs_reproduce_capture_time_measurements() -> None:
@@ -210,3 +222,56 @@ def test_ingest_output_never_prints_line_digests(capsys: pytest.CaptureFixture[s
     assert main(["ingest", str(fixture)]) == 0
     printed = capsys.readouterr().out
     assert '"sha256"' in printed and "segments" not in printed
+
+
+EXPERIMENT = ROOT / "experiments" / "tradingagents-cache-fix" / "runs"
+
+
+def test_control_runs_logged_raw_usage_now_ingest() -> None:
+    if not EXPERIMENT.is_dir():
+        pytest.skip("experiment runs live in the repo, not the sdist")
+    rates = []
+    for run in ("03-baseline-control-NVDA-2026-08-14", "08-baseline-control-NVDA-2026-08-14"):
+        result = ingest_path(EXPERIMENT / run / "usage.jsonl")
+        assert result.container == "provider-log"
+        requests = result.requests
+        assert all("no_timestamp" in r.quality and r.blocks is None for r in requests)
+        read = sum(r.usage.cache_read or 0 for r in requests)
+        rates.append(round(100 * read / sum(r.usage.input_total or 0 for r in requests), 1))
+    assert rates == [8.6, 3.4]  # the control figures published in the case study
+
+
+def test_chat_completions_log_without_timestamps(tmp_path: Path) -> None:
+    from tokenaudit.detect import diagnose
+
+    system = "You are a careful assistant.\n" + "\n".join(f"rule {n}" for n in range(500))
+    lines = []
+    for n in range(3):
+        request = {
+            "model": "gpt-5.4-mini",
+            "messages": [
+                {"role": "system", "content": system},
+                {"role": "user", "content": f"question {n}"},
+            ],
+        }
+        response = {
+            "id": f"chatcmpl-{n}",
+            "object": "chat.completion",
+            "model": "gpt-5.4-mini",
+            "usage": {
+                "prompt_tokens": 1300,
+                "prompt_tokens_details": {"cached_tokens": 1280 if n else 0},
+                "completion_tokens": 40,
+            },
+        }
+        lines.append(json.dumps({"request": request, "response": response}))
+    path = tmp_path / "chat.jsonl"
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    result = ingest_path(path)
+    requests = result.requests
+    assert [r.usage.cache_read for r in requests] == [0, 1280, 1280]
+    assert all(r.blocks and r.blocks[0].role == "system" for r in requests)
+    (diagnosis,) = diagnose(result)
+    assert "timestamps" in diagnosis.abstained["ttl_expiry"]
+    assert "timestamps" in diagnosis.abstained["misordered_shared_context"]

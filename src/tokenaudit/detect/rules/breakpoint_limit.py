@@ -9,6 +9,7 @@ before this claim is made in a published case study.
 
 from __future__ import annotations
 
+from tokenaudit.counterfactual import impact, rates
 from tokenaudit.detect.base import (
     TOKEN_ESTIMATE_NOTE,
     Abstain,
@@ -16,7 +17,7 @@ from tokenaudit.detect.base import (
     blocks_tokens,
     require_content,
 )
-from tokenaudit.detect.findings import Finding, Fix, Impact, Severity
+from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Session
 from tokenaudit.rulebook import Rulebook
 
@@ -52,11 +53,11 @@ class BreakpointLimitDetector(Detector):
         # Stable-tail check: the low bound needs the unhonored region to be
         # identical across calls, otherwise it wouldn't have cached anyway.
         tails = {tuple(b.sha256 for b in (requests[i].blocks or ()))[-2:] for i, _, _ in over}
-        tokens_high = round(0.9 * unhonored_tokens * repeat_calls)
-        tokens_low = tokens_high if len(tails) == 1 else 0
-
         first_idx, marked_count, _ = over[0]
         rules = rulebook.lookup(requests[first_idx].model, requests[first_idx].provider)
+        rate = rates(rules)
+        high = unhonored_tokens * repeat_calls * rate.waste()
+        low = high if len(tails) == 1 else 0
         finding = Finding(
             detector_id=self.detector_id,
             severity=Severity.MEDIUM,
@@ -78,17 +79,13 @@ class BreakpointLimitDetector(Detector):
                     "confirm live-API behavior before publishing this claim"
                 ),
             },
-            impact=Impact(
-                tokens_low=tokens_low,
-                tokens_high=tokens_high,
-                usd_low=None,
-                usd_high=None,
-                assumption=(
-                    "the region past the last honored marker would have been cached and read "
-                    f"on repeat calls (0.9x delta); {TOKEN_ESTIMATE_NOTE}; low bound requires "
-                    "a byte-stable tail"
-                ),
-                rulebook_version=rulebook.version,
+            impact=impact(
+                low,
+                high,
+                rate,
+                rulebook,
+                "the region past the last honored marker would have been cached and read "
+                f"on repeat calls; {TOKEN_ESTIMATE_NOTE}; low bound requires a byte-stable tail",
             ),
             fix=Fix(
                 summary=(

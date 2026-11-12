@@ -17,13 +17,14 @@ from __future__ import annotations
 
 from itertools import pairwise
 
+from tokenaudit.counterfactual import impact, rates
 from tokenaudit.detect.base import (
     TOKEN_ESTIMATE_NOTE,
     Detector,
     blocks_tokens,
     require_content,
 )
-from tokenaudit.detect.findings import Finding, Fix, Impact, Severity
+from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Request, Session
 from tokenaudit.rulebook import Rulebook
 
@@ -70,15 +71,13 @@ class ToolSchemaChurnDetector(Detector):
         ]
         # Everything under the cascade is invalidated on each flip: the whole
         # prompt of the request after the flip, bounded by what was cacheable.
-        per_flip = [blocks_tokens((r.blocks or ())[:-1]) for r in flip_spans]
+        example = flip_spans[0]
+        rules = rulebook.lookup(example.model, example.provider)
+        rate = rates(rules)
+        per_flip = [blocks_tokens((r.blocks or ())[:-1]) * rate.waste(r) for r in flip_spans]
         observed = sum(
             1 for r in flip_spans if r.usage.cache_read == 0 or (r.usage.cache_creation or 0) > 0
         )
-        tokens_high = round(0.9 * sum(per_flip))
-        tokens_low = round(0.9 * sum(sorted(per_flip)[:observed]))
-
-        example = flip_spans[0]
-        rules = rulebook.lookup(example.model, example.provider)
         finding = Finding(
             detector_id=self.detector_id,
             severity=Severity.MEDIUM,
@@ -96,17 +95,13 @@ class ToolSchemaChurnDetector(Detector):
                 "distinct_versions": distinct,
                 "flip_span_ids": [r.span_id for r in flip_spans],
             },
-            impact=Impact(
-                tokens_low=tokens_low,
-                tokens_high=tokens_high,
-                usd_low=None,
-                usd_high=None,
-                assumption=(
-                    "each flip re-bills the cacheable prompt that would otherwise have been "
-                    f"read (0.9x delta); {TOKEN_ESTIMATE_NOTE}; low bound counts flips with "
-                    "an observed miss"
-                ),
-                rulebook_version=rulebook.version,
+            impact=impact(
+                sum(sorted(per_flip)[:observed]),
+                sum(per_flip),
+                rate,
+                rulebook,
+                "each flip re-bills the cacheable prompt that would otherwise have been "
+                f"read; {TOKEN_ESTIMATE_NOTE}; low bound counts flips with an observed miss",
             ),
             fix=Fix(
                 summary=(

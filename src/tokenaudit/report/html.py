@@ -12,6 +12,7 @@ from __future__ import annotations
 import html as html_escape
 from importlib.metadata import version
 
+from tokenaudit.counterfactual import format_usd
 from tokenaudit.detect.findings import Finding, SessionDiagnosis
 from tokenaudit.model.records import IngestResult, Session
 from tokenaudit.report.corpus_record import describe
@@ -66,8 +67,10 @@ def _finding_html(finding: Finding) -> str:
             if finding.impact.tokens_low == finding.impact.tokens_high
             else f"~{finding.impact.tokens_low:,}&ndash;{finding.impact.tokens_high:,}"
         )
+        usd = format_usd(finding.impact)
+        cost = f" &middot; <b>{_e(usd)}</b>" if usd else ""
         impact = (
-            f"<p><b>{tokens} tokens</b> full-price equivalent "
+            f"<p><b>{tokens} tokens</b> full-price equivalent{cost} "
             f"<span class='muted'>({_e(finding.impact.assumption)})</span></p>"
         )
     record = describe(finding.detector_id)

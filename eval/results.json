@@ -42,6 +42,14 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -66,6 +74,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "retry_storm": {
         "expected": false,
         "outcome": "clean"
@@ -82,17 +94,37 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
       "ttl_expiry": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 28,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -140,6 +172,14 @@
         "expected": false,
         "outcome": "abstained"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -164,6 +204,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "retry_storm": {
         "expected": false,
         "outcome": "clean"
@@ -180,17 +224,37 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
       "ttl_expiry": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
-    "negatives_abstained": 9,
-    "negatives_clean": 12,
+    "negatives_abstained": 10,
+    "negatives_clean": 19,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -238,6 +302,14 @@
         "expected": false,
         "outcome": "abstained"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "abstained"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "abstained"
@@ -262,6 +334,10 @@
         "expected": false,
         "outcome": "abstained"
       },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
       "retry_storm": {
         "expected": false,
         "outcome": "abstained"
@@ -278,16 +354,36 @@
         "expected": false,
         "outcome": "abstained"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "abstained"
       },
       "ttl_expiry": {
         "expected": false,
         "outcome": "abstained"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "abstained"
       }
     },
-    "negatives_abstained": 19,
+    "negatives_abstained": 27,
     "negatives_clean": 2,
     "positives_abstained": 0,
     "positives_found": 1,
@@ -336,6 +432,14 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -360,6 +464,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "retry_storm": {
         "expected": false,
         "outcome": "clean"
@@ -376,17 +484,37 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
       "ttl_expiry": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 28,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -434,6 +562,14 @@
         "expected": true,
         "outcome": "fired"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -458,6 +594,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "retry_storm": {
         "expected": false,
         "outcome": "clean"
@@ -474,17 +614,167 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
       "ttl_expiry": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 27,
+    "positives_abstained": 0,
+    "positives_found": 2,
+    "positives_missed": 0
+  },
+  "missing_cache_markers": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "cross_session_distinct": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "cross_session_drift": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "cross_session_stable": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "misordered_shared_context": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "missing_cache_markers": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "shared_context_first": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "shared_context_small": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "clean"
+      }
+    },
+    "negatives_abstained": 1,
+    "negatives_clean": 28,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -532,6 +822,14 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": true,
         "outcome": "fired"
@@ -556,6 +854,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "retry_storm": {
         "expected": false,
         "outcome": "clean"
@@ -572,17 +874,37 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
       "ttl_expiry": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 28,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -630,6 +952,14 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -654,6 +984,10 @@
         "expected": true,
         "outcome": "fired"
       },
+      "prefix_drift_provider_log": {
+        "expected": true,
+        "outcome": "fired"
+      },
       "retry_storm": {
         "expected": false,
         "outcome": "clean"
@@ -670,19 +1004,39 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
       "ttl_expiry": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 0,
-    "negatives_clean": 18,
+    "negatives_clean": 25,
     "positives_abstained": 1,
-    "positives_found": 3,
+    "positives_found": 4,
     "positives_missed": 0
   },
   "retry_storm": {
@@ -728,6 +1082,14 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -752,6 +1114,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "retry_storm": {
         "expected": true,
         "outcome": "fired"
@@ -768,17 +1134,37 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
       "ttl_expiry": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 28,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -826,6 +1212,14 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -850,6 +1244,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "retry_storm": {
         "expected": false,
         "outcome": "clean"
@@ -866,19 +1264,169 @@
         "expected": true,
         "outcome": "fired"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
       "ttl_expiry": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 28,
     "positives_abstained": 0,
     "positives_found": 1,
+    "positives_missed": 0
+  },
+  "tool_schema_bloat": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "cross_session_distinct": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "cross_session_drift": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "cross_session_stable": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "misordered_shared_context": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "shared_context_first": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "shared_context_small": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "tool_schema_bloat": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "abstained"
+      }
+    },
+    "negatives_abstained": 26,
+    "negatives_clean": 2,
+    "positives_abstained": 0,
+    "positives_found": 2,
     "positives_missed": 0
   },
   "tool_schema_churn": {
@@ -924,6 +1472,14 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -948,6 +1504,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "retry_storm": {
         "expected": false,
         "outcome": "clean"
@@ -964,17 +1524,37 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
         "expected": true,
         "outcome": "fired"
       },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "ttl_expiry": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 28,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -1022,6 +1602,14 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -1046,6 +1634,10 @@
         "expected": false,
         "outcome": "abstained"
       },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
       "retry_storm": {
         "expected": false,
         "outcome": "clean"
@@ -1062,17 +1654,37 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
       "ttl_expiry": {
         "expected": true,
         "outcome": "fired"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
-    "negatives_abstained": 3,
-    "negatives_clean": 18,
+    "negatives_abstained": 4,
+    "negatives_clean": 25,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0

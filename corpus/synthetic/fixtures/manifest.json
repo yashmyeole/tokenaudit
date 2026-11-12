@@ -160,6 +160,45 @@
       "calls": 9
     },
     {
+      "fixture": "tool_schema_bloat",
+      "schema": "openinference",
+      "provider_shape": "anthropic",
+      "contains": [
+        "tool_schema_bloat"
+      ],
+      "calls": 6
+    },
+    {
+      "fixture": "tool_schema_lean",
+      "schema": "openinference",
+      "provider_shape": "anthropic",
+      "contains": [],
+      "calls": 6
+    },
+    {
+      "fixture": "tool_schema_rotating",
+      "schema": "openinference",
+      "provider_shape": "anthropic",
+      "contains": [],
+      "calls": 8
+    },
+    {
+      "fixture": "missing_cache_markers",
+      "schema": "otel-genai-current",
+      "provider_shape": "anthropic",
+      "contains": [
+        "missing_cache_markers"
+      ],
+      "calls": 5
+    },
+    {
+      "fixture": "unmarked_far_apart",
+      "schema": "otel-genai-current",
+      "provider_shape": "anthropic",
+      "contains": [],
+      "calls": 5
+    },
+    {
       "fixture": "prefix_drift_legacy_flat",
       "schema": "otel-genai-legacy-flat",
       "provider_shape": "anthropic",
@@ -183,6 +222,33 @@
       "provider_shape": "anthropic",
       "contains": [
         "prefix_drift"
+      ],
+      "calls": 6
+    },
+    {
+      "fixture": "prefix_drift_provider_log",
+      "schema": "provider-log",
+      "provider_shape": "anthropic",
+      "contains": [
+        "prefix_drift"
+      ],
+      "calls": 6
+    },
+    {
+      "fixture": "misordered_shared_context_provider_log",
+      "schema": "provider-log",
+      "provider_shape": "openai",
+      "contains": [
+        "misordered_shared_context"
+      ],
+      "calls": 3
+    },
+    {
+      "fixture": "tool_schema_bloat_provider_log",
+      "schema": "provider-log",
+      "provider_shape": "anthropic",
+      "contains": [
+        "tool_schema_bloat"
       ],
       "calls": 6
     }

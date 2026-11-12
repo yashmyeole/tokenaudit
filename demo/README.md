@@ -20,6 +20,10 @@ real-capture sample):
 
 ## Deploy on Render (free tier)
 
+The repo root has a `render.yaml`, so the quickest path is render.com → New →
+**Blueprint** → connect `yashmyeole/tokenaudit` → Apply. To set it up by hand
+instead:
+
 1. render.com → New → **Web Service** → connect `yashmyeole/tokenaudit`.
 2. Language: **Docker**; Dockerfile path: `demo/Dockerfile`;
    root directory: leave at repo root.

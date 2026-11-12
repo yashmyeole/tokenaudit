@@ -48,6 +48,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -97,6 +98,8 @@ FAILURE_MODES = (
     "retry_storm",
     "misordered_shared_context",
     "cross_session_drift",
+    "tool_schema_bloat",
+    "missing_cache_markers",
 )
 
 # Fixed simulated clock: 2026-01-15T09:00:00Z. Never use the wall clock.
@@ -149,6 +152,25 @@ class Block:
 
 
 @dataclass(frozen=True)
+class Tool:
+    """One tool definition sent with a request."""
+
+    name: str
+    description: str
+
+    def schema(self) -> dict[str, Any]:
+        return {
+            "name": self.name,
+            "description": self.description,
+            "parameters": {
+                "type": "object",
+                "properties": {"query": {"type": "string"}},
+                "required": ["query"],
+            },
+        }
+
+
+@dataclass(frozen=True)
 class Call:
     """One LLM request in a session."""
 
@@ -158,6 +180,16 @@ class Call:
     duration_ms: int
     output_tokens: int
     conversation: str | None = None  # defaults to one conversation per fixture
+    tools: tuple[Tool, ...] = ()
+    tool_calls: tuple[str, ...] = ()  # tools the response calls
+
+    @property
+    def prompt(self) -> tuple[Block, ...]:
+        """Blocks as the cache sees them: tool definitions come first."""
+        if not self.tools:
+            return self.blocks
+        defs = json.dumps([t.schema() for t in self.tools], separators=(",", ":"), sort_keys=True)
+        return (Block("tools", defs), *self.blocks)
 
 
 @dataclass(frozen=True)
@@ -212,15 +244,16 @@ class AnthropicCacheSim:
 
     def simulate(self, call: Call) -> Usage:
         now = BASE_EPOCH_S + call.t_offset_s
-        marked = [i for i, b in enumerate(call.blocks) if b.cache_marker]
+        blocks = call.prompt
+        marked = [i for i, b in enumerate(blocks) if b.cache_marker]
         honored = marked[:ANTHROPIC_MAX_BREAKPOINTS]
-        block_tok = [tokens(b.text) for b in call.blocks]
+        block_tok = [tokens(b.text) for b in blocks]
         min_cacheable = ANTHROPIC_MIN_CACHEABLE[call.model]
 
         # Longest live cached prefix among honored breakpoints, best first.
         read_upto = -1
         for bp in sorted(honored, reverse=True):
-            key = (call.model, self._chain(call.blocks, bp))
+            key = (call.model, self._chain(blocks, bp))
             entry = self._entries.get(key)
             if entry is None or entry.expires_at_s <= now:
                 continue
@@ -245,7 +278,7 @@ class AnthropicCacheSim:
                 cache_creation = sum(block_tok[read_upto + 1 : write_upto + 1])
                 for bp in honored:
                     if bp > read_upto:
-                        key = (call.model, self._chain(call.blocks, bp))
+                        key = (call.model, self._chain(blocks, bp))
                         self._entries[key] = _CacheEntry(
                             prefix_len=bp + 1, expires_at_s=now + ANTHROPIC_TTL_S
                         )
@@ -269,12 +302,13 @@ class OpenAICacheSim:
 
     def simulate(self, call: Call) -> Usage:
         now = BASE_EPOCH_S + call.t_offset_s
-        block_tok = [tokens(b.text) for b in call.blocks]
+        blocks = call.prompt
+        block_tok = [tokens(b.text) for b in blocks]
         min_cacheable = OPENAI_MIN_CACHEABLE[call.model]
 
         cached_tokens = 0
-        for upto in range(len(call.blocks) - 1, -1, -1):
-            key = (call.model, AnthropicCacheSim._chain(call.blocks, upto))
+        for upto in range(len(blocks) - 1, -1, -1):
+            key = (call.model, AnthropicCacheSim._chain(blocks, upto))
             entry = self._seen.get(key)
             if entry is not None and entry.expires_at_s > now:
                 cached_tokens = sum(block_tok[: upto + 1])
@@ -286,7 +320,7 @@ class OpenAICacheSim:
         for upto, tok in enumerate(block_tok):
             running += tok
             if running >= min_cacheable:
-                key = (call.model, AnthropicCacheSim._chain(call.blocks, upto))
+                key = (call.model, AnthropicCacheSim._chain(blocks, upto))
                 self._seen[key] = _CacheEntry(prefix_len=upto + 1, expires_at_s=now + OPENAI_TTL_S)
 
         # OpenAI usage is nested: cached_tokens is a detail of the input
@@ -366,12 +400,15 @@ def emit_current(
             attrs.append(_attr("gen_ai.usage.cache_creation.input_tokens", usage.cache_creation))
         if content:
             attrs.append(_attr("gen_ai.input.messages", _messages_json(call.blocks)))
+            parts: list[dict[str, Any]] = [{"type": "text", "content": f"reply {i}"}]
+            parts += [{"type": "tool_call", "name": name} for name in call.tool_calls]
             out = json.dumps(
-                [{"role": "assistant", "parts": [{"type": "text", "content": f"reply {i}"}]}],
-                separators=(",", ":"),
-                sort_keys=True,
+                [{"role": "assistant", "parts": parts}], separators=(",", ":"), sort_keys=True
             )
             attrs.append(_attr("gen_ai.output.messages", out))
+            if call.tools:
+                defs = json.dumps([t.schema() for t in call.tools], sort_keys=True)
+                attrs.append(_attr("gen_ai.tool.definitions", defs))
         span["attributes"] = attrs
         spans.append(span)
     return _wrap(fixture, spans)
@@ -424,11 +461,101 @@ def emit_openinference(
         for j, b in enumerate(call.blocks):
             attrs.append(_attr(f"llm.input_messages.{j}.message.role", b.role))
             attrs.append(_attr(f"llm.input_messages.{j}.message.content", b.text))
+        for k, tool in enumerate(call.tools):
+            attrs.append(_attr(f"llm.tools.{k}.tool.json_schema", json.dumps(tool.schema())))
         attrs.append(_attr("llm.output_messages.0.message.role", "assistant"))
         attrs.append(_attr("llm.output_messages.0.message.content", f"reply {i}"))
+        for k, name in enumerate(call.tool_calls):
+            key = f"llm.output_messages.0.message.tool_calls.{k}.tool_call.function.name"
+            attrs.append(_attr(key, name))
         span["attributes"] = attrs
         spans.append(span)
     return _wrap(fixture, spans)
+
+
+def _part(block: Block) -> dict[str, Any]:
+    part: dict[str, Any] = {"type": "text", "text": block.text}
+    if block.cache_marker:
+        part["cache_control"] = {"type": "ephemeral"}
+    return part
+
+
+def emit_provider_log(
+    fixture: str, provider: str, calls: list[Call], usages: list[Usage]
+) -> list[dict[str, Any]]:
+    """Raw provider log: logged request/response pairs, as an SDK user would keep them."""
+    records: list[dict[str, Any]] = []
+    for i, (call, usage) in enumerate(zip(calls, usages, strict=True)):
+        _, span_id = _ids(fixture, i)
+        if provider == "anthropic":
+            system = [_part(b) for b in call.blocks if b.role == "system"]
+            request: dict[str, Any] = {"model": call.model, "max_tokens": 1024}
+            if system:
+                request["system"] = system
+            request["messages"] = [
+                {"role": b.role, "content": [_part(b)]} for b in call.blocks if b.role != "system"
+            ]
+            if call.tools:
+                request["tools"] = [
+                    {"name": t.name, "description": t.description, "input_schema": params}
+                    for t in call.tools
+                    for params in [t.schema()["parameters"]]
+                ]
+            content: list[dict[str, Any]] = [{"type": "text", "text": f"reply {i}"}]
+            content += [
+                {"type": "tool_use", "id": f"toolu_{span_id}_{k}", "name": name, "input": {}}
+                for k, name in enumerate(call.tool_calls)
+            ]
+            response: dict[str, Any] = {
+                "id": f"msg_{span_id}",
+                "type": "message",
+                "model": call.model,
+                "content": content,
+                "usage": {
+                    "input_tokens": usage.uncached_input,
+                    "cache_read_input_tokens": usage.cache_read,
+                    "cache_creation_input_tokens": usage.cache_creation,
+                    "output_tokens": usage.output,
+                },
+            }
+        else:
+            request = {
+                "model": call.model,
+                "input": [{"role": b.role, "content": b.text} for b in call.blocks],
+            }
+            if call.tools:
+                request["tools"] = [{"type": "function", **t.schema()} for t in call.tools]
+            output: list[dict[str, Any]] = [
+                {"type": "message", "role": "assistant", "content": f"reply {i}"}
+            ]
+            output += [
+                {"type": "function_call", "call_id": f"call_{span_id}_{k}", "name": name}
+                for k, name in enumerate(call.tool_calls)
+            ]
+            response = {
+                "id": f"resp_{span_id}",
+                "object": "response",
+                "model": call.model,
+                "output": output,
+                "usage": {
+                    "input_tokens": usage.total_input,
+                    "input_tokens_details": {"cached_tokens": usage.cache_read},
+                    "output_tokens": usage.output,
+                },
+            }
+        records.append(
+            {
+                "synthetic": True,
+                "timestamp": time.strftime(
+                    "%Y-%m-%dT%H:%M:%SZ", time.gmtime(BASE_EPOCH_S + call.t_offset_s)
+                ),
+                "duration_ms": call.duration_ms,
+                "session_id": call.conversation or f"conv-{fixture}",
+                "request": request,
+                "response": response,
+            }
+        )
+    return records
 
 
 def _wrap(fixture: str, spans: list[dict[str, Any]]) -> dict[str, Any]:
@@ -924,6 +1051,141 @@ def fx_cross_session_distinct() -> Fixture:
     )
 
 
+_TOOL_NAMES = (
+    "search_docs",
+    "get_ticket",
+    "create_ticket",
+    "update_ticket",
+    "list_customers",
+    "get_invoice",
+    "refund_payment",
+    "send_email",
+    "schedule_call",
+    "export_report",
+    "translate_text",
+    "lookup_order",
+)
+
+
+def _tools(names: tuple[str, ...], n_tokens: int = 350) -> tuple[Tool, ...]:
+    return tuple(Tool(name, filler(f"the {name} tool", n_tokens)) for name in names)
+
+
+def _tool_loop(tools: tuple[Tool, ...], called: list[str]) -> list[Call]:
+    sys_b = _stable_system(1200)
+    return [
+        Call(
+            (sys_b, _convo(i)),
+            "claude-sonnet-4-5",
+            i * 20,
+            2400,
+            180,
+            tools=tools,
+            tool_calls=(name,),
+        )
+        for i, name in enumerate(called)
+    ]
+
+
+def fx_tool_schema_bloat() -> Fixture:
+    tools = _tools(_TOOL_NAMES)
+    called = ["search_docs", "get_ticket"] * 3
+    return Fixture(
+        name="tool_schema_bloat",
+        schema="openinference",
+        provider_shape="anthropic",
+        contains=["tool_schema_bloat"],
+        evidence={"tools_defined": len(tools), "tools_called": 2, "calls": len(called)},
+        notes=(
+            "A support agent is handed a shared registry of twelve tools and only ever "
+            "calls two of them. The prompt is otherwise well cached; the ten unused "
+            "definitions are still input on every request."
+        ),
+        calls=_tool_loop(tools, called),
+    )
+
+
+def fx_tool_schema_lean() -> Fixture:
+    tools = _tools(_TOOL_NAMES[:3])
+    called = ["search_docs", "get_ticket", "create_ticket"] * 2
+    return Fixture(
+        name="tool_schema_lean",
+        schema="openinference",
+        provider_shape="anthropic",
+        contains=[],
+        evidence={"tools_defined": len(tools), "tools_called": 3, "calls": len(called)},
+        notes=(
+            "The same agent with only the three tools it uses. Negative fixture: "
+            "every definition is called at least once."
+        ),
+        calls=_tool_loop(tools, called),
+    )
+
+
+def fx_tool_schema_rotating() -> Fixture:
+    tools = _tools(_TOOL_NAMES[:8])
+    called = list(_TOOL_NAMES[:8])
+    return Fixture(
+        name="tool_schema_rotating",
+        schema="openinference",
+        provider_shape="anthropic",
+        contains=[],
+        evidence={"tools_defined": len(tools), "tools_called": 8, "calls": len(called)},
+        notes=(
+            "Eight tools, one called per request, each a different one. Near-miss: "
+            "every single request leaves seven tools unused, but across the session "
+            "all eight are needed, so a correct tool reports nothing here."
+        ),
+        calls=_tool_loop(tools, called),
+    )
+
+
+def _unmarked_agents(gap_s: int) -> list[Call]:
+    system = Block("system", "You are the research desk. " + filler("research desk", 2600))
+    return [
+        Call(
+            (system, Block("user", f"Brief {i}: " + filler(f"brief {i}", 300))),
+            "claude-sonnet-4-5",
+            i * gap_s,
+            2800,
+            220,
+        )
+        for i in range(5)
+    ]
+
+
+def fx_missing_cache_markers() -> Fixture:
+    return Fixture(
+        name="missing_cache_markers",
+        schema="otel-genai-current",
+        provider_shape="anthropic",
+        contains=["missing_cache_markers"],
+        evidence={"calls": 5, "repeated_prefix_tokens": 2606, "gap_s": 30},
+        notes=(
+            "Five requests 30 seconds apart share a 2,600-token system prompt on a "
+            "provider that only caches marked prefixes, and nothing is marked. Every "
+            "repeat is billed at full price."
+        ),
+        calls=_unmarked_agents(30),
+    )
+
+
+def fx_unmarked_far_apart() -> Fixture:
+    return Fixture(
+        name="unmarked_far_apart",
+        schema="otel-genai-current",
+        provider_shape="anthropic",
+        contains=[],
+        evidence={"calls": 5, "gap_s": 900},
+        notes=(
+            "The same unmarked requests fifteen minutes apart. Near-miss: a 5-minute "
+            "cache entry would have expired before each repeat, so markers would not "
+            "have helped and a correct tool reports nothing here."
+        ),
+        calls=_unmarked_agents(900),
+    )
+
+
 def build_fixtures() -> list[Fixture]:
     fixtures = [
         fx_prefix_drift(),
@@ -945,6 +1207,11 @@ def build_fixtures() -> list[Fixture]:
         fx_cross_session_drift(),
         fx_cross_session_stable(),
         fx_cross_session_distinct(),
+        fx_tool_schema_bloat(),
+        fx_tool_schema_lean(),
+        fx_tool_schema_rotating(),
+        fx_missing_cache_markers(),
+        fx_unmarked_far_apart(),
     ]
 
     # Schema variants of prefix_drift: same session, older/other trace dialects,
@@ -979,6 +1246,33 @@ def build_fixtures() -> list[Fixture]:
     )
     fixtures.append(nc)
 
+    raw = fx_prefix_drift()
+    raw.name = "prefix_drift_provider_log"
+    raw.schema = "provider-log"
+    raw.notes = (
+        "Same session as prefix_drift, as a raw Anthropic request/response log. Anthropic "
+        "reports input_tokens EXCLUDING cache reads and writes; ingest must convert."
+    )
+    fixtures.append(raw)
+
+    raw_openai = fx_misordered_shared_context()
+    raw_openai.name = "misordered_shared_context_provider_log"
+    raw_openai.schema = "provider-log"
+    raw_openai.notes = (
+        "Same session as misordered_shared_context, as a raw OpenAI Responses log with "
+        "nested usage (cached_tokens inside input_tokens)."
+    )
+    fixtures.append(raw_openai)
+
+    raw_tools = fx_tool_schema_bloat()
+    raw_tools.name = "tool_schema_bloat_provider_log"
+    raw_tools.schema = "provider-log"
+    raw_tools.notes = (
+        "Same session as tool_schema_bloat, as a raw Anthropic log: definitions in "
+        "request.tools, calls as tool_use blocks in the response content."
+    )
+    fixtures.append(raw_tools)
+
     return fixtures
 
 
@@ -987,12 +1281,15 @@ def build_fixtures() -> list[Fixture]:
 # --------------------------------------------------------------------------- #
 
 
-def render(fx: Fixture) -> tuple[dict[str, Any], dict[str, Any]]:
+def render(fx: Fixture) -> tuple[dict[str, Any] | list[dict[str, Any]], dict[str, Any]]:
     sim: AnthropicCacheSim | OpenAICacheSim
     sim = OpenAICacheSim() if fx.provider_shape == "openai" else AnthropicCacheSim()
     usages = [sim.simulate(c) for c in fx.calls]
 
-    if fx.schema == "otel-genai-current":
+    trace: dict[str, Any] | list[dict[str, Any]]
+    if fx.schema == "provider-log":
+        trace = emit_provider_log(fx.name, fx.provider_shape, fx.calls, usages)
+    elif fx.schema == "otel-genai-current":
         trace = emit_current(fx.name, fx.provider_shape, fx.calls, usages, fx.content_captured)
     elif fx.schema == "otel-genai-legacy-flat":
         trace = emit_legacy(fx.name, fx.provider_shape, fx.calls, usages)

@@ -1,0 +1,15 @@
+diff --git a/tradingagents/llm_clients/anthropic_client.py b/tradingagents/llm_clients/anthropic_client.py
+index ab0a21c..7c7a5e8 100644
+--- a/tradingagents/llm_clients/anthropic_client.py
++++ b/tradingagents/llm_clients/anthropic_client.py
+@@ -72,6 +72,10 @@ class AnthropicClient(BaseLLMClient):
+                 continue
+             llm_kwargs[key] = self.kwargs[key]
+ 
++        # Anthropic caches nothing unless asked. A top-level cache_control turns on
++        # automatic caching: each call caches its prompt and the next call reads it.
++        llm_kwargs["model_kwargs"] = {"extra_body": {"cache_control": {"type": "ephemeral"}}}
++
+         return NormalizedChatAnthropic(**llm_kwargs)
+ 
+     def validate_model(self) -> bool:

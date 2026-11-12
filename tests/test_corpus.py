@@ -31,6 +31,8 @@ FAILURE_MODES = {
     "retry_storm",
     "misordered_shared_context",
     "cross_session_drift",
+    "tool_schema_bloat",
+    "missing_cache_markers",
 }
 
 
@@ -107,9 +109,14 @@ def test_current_gen_accounting_is_nested() -> None:
 
 def test_schema_dialects_agree_on_totals() -> None:
     """The same session emitted in three dialects must describe the same money."""
-    variants = ["prefix_drift", "prefix_drift_legacy_flat", "prefix_drift_openinference"]
+    variants = [
+        "prefix_drift",
+        "prefix_drift_legacy_flat",
+        "prefix_drift_openinference",
+        "prefix_drift_provider_log",
+    ]
     totals = [_load(FIXTURES / f"{v}.label.json")["totals"] for v in variants]
-    assert totals[0] == totals[1] == totals[2]
+    assert totals[0] == totals[1] == totals[2] == totals[3]
 
 
 def test_legacy_prompt_tokens_exclude_cache() -> None:
@@ -135,6 +142,10 @@ def test_no_content_variant_has_no_messages() -> None:
 
 def test_all_fixtures_are_marked_synthetic() -> None:
     for path in FIXTURES.glob("*.trace.json"):
+        records = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(records, list):  # raw provider log
+            assert all(record["synthetic"] is True for record in records), path.name
+            continue
         trace = _load(path)
         resource_attrs = {
             a["key"]: a["value"] for a in trace["resourceSpans"][0]["resource"]["attributes"]

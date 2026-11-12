@@ -1,0 +1,38 @@
+{
+  "fixture": "tool_schema_rotating",
+  "schema": "openinference",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "cross_session_drift",
+    "lookback_overflow",
+    "misordered_shared_context",
+    "missing_cache_markers",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_bloat",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "tools_defined": 8,
+    "tools_called": 8,
+    "calls": 8
+  },
+  "notes": "Eight tools, one called per request, each a different one. Near-miss: every single request leaves seven tools unused, but across the session all eight are needed, so a correct tool reports nothing here.",
+  "totals": {
+    "calls": 8,
+    "input_tokens": 34288,
+    "cache_read_tokens": 29918,
+    "cache_creation_tokens": 4274,
+    "output_tokens": 1440
+  }
+}

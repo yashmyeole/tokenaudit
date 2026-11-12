@@ -15,8 +15,9 @@ from __future__ import annotations
 
 from itertools import pairwise
 
+from tokenaudit.counterfactual import impact, rates
 from tokenaudit.detect.base import Abstain, Detector
-from tokenaudit.detect.findings import Finding, Fix, Impact, Severity
+from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Session
 from tokenaudit.rulebook import Rulebook
 
@@ -58,8 +59,10 @@ class ContextBloatDetector(Detector):
         confirmed = [
             amount for (a, b), amount in zip(pairwise(inputs), resent, strict=True) if b >= a
         ]
-        tokens_high = round(0.9 * sum(resent))
-        tokens_low = round(0.9 * sum(confirmed))
+        last = requests[-1]
+        rate = rates(rulebook.lookup(last.model, last.provider))
+        high = sum(resent) * rate.waste()
+        low = sum(confirmed) * rate.waste()
 
         finding = Finding(
             detector_id=self.detector_id,
@@ -80,17 +83,14 @@ class ContextBloatDetector(Detector):
                 "cache_read_ratio": round(total_read / total_input, 4),
                 "cache_markers_present": False,
             },
-            impact=Impact(
-                tokens_low=tokens_low,
-                tokens_high=tokens_high,
-                usd_low=None,
-                usd_high=None,
-                assumption=(
-                    "each call re-sends the prior call's content (monotonic growth pattern); "
-                    "amounts come from reported usage, not estimates; 0.9x cached-rate delta; "
-                    "low bound counts only confirmed growth steps"
-                ),
-                rulebook_version=rulebook.version,
+            impact=impact(
+                low,
+                high,
+                rate,
+                rulebook,
+                "each call re-sends the prior call's content (monotonic growth pattern); "
+                "amounts come from reported usage, not estimates; low bound counts only "
+                "confirmed growth steps",
             ),
             fix=Fix(
                 summary=(

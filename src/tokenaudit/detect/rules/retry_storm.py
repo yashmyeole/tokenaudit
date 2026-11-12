@@ -9,8 +9,9 @@ reads is waste by definition, whatever the caching setup.
 
 from __future__ import annotations
 
-from tokenaudit.detect.base import Detector, require_content
-from tokenaudit.detect.findings import Finding, Fix, Impact, Severity
+from tokenaudit.counterfactual import impact, rates
+from tokenaudit.detect.base import Detector, require_content, require_timestamps
+from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Request, Session
 from tokenaudit.rulebook import Rulebook
 
@@ -27,6 +28,7 @@ class RetryStormDetector(Detector):
 
     def check(self, session: Session, rulebook: Rulebook) -> list[Finding]:
         requests = require_content(session, minimum_requests=_MIN_DUPLICATES)
+        require_timestamps(requests)
 
         bursts: list[list[Request]] = []
         current: list[Request] = []
@@ -75,18 +77,15 @@ class RetryStormDetector(Detector):
                         "wasted_output_tokens": wasted_output,
                         "prompt_chain_sha256": _chain(burst[0])[0],
                     },
-                    impact=Impact(
-                        tokens_low=wasted_input,
-                        tokens_high=wasted_input,
-                        usd_low=None,
-                        usd_high=None,
-                        assumption=(
-                            "duplicates of an identical prompt within the burst window are "
-                            "retries; billed input beyond cache reads comes from reported "
-                            "usage, no estimation (duplicate output tokens reported separately "
-                            "in evidence)"
-                        ),
-                        rulebook_version=rulebook.version,
+                    impact=impact(
+                        wasted_input,
+                        wasted_input,
+                        rates(rulebook.lookup(burst[0].model, burst[0].provider)),
+                        rulebook,
+                        "duplicates of an identical prompt within the burst window are "
+                        "retries; billed input beyond cache reads comes from reported usage, "
+                        "no estimation (duplicate output tokens reported separately in "
+                        "evidence)",
                     ),
                     fix=Fix(
                         summary=(

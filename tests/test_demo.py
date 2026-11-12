@@ -49,6 +49,15 @@ def test_upload_returns_a_report_with_the_finding() -> None:
     assert "<script" not in response.text  # reports stay script-free
 
 
+def test_raw_provider_log_upload_is_diagnosed() -> None:
+    log = ROOT / "corpus" / "synthetic" / "fixtures" / "tool_schema_bloat_provider_log.trace.json"
+    response = client.post(
+        "/api/diagnose", files=[("traces", ("requests.jsonl", log.read_bytes()))]
+    )
+    assert response.status_code == 200
+    assert "tool_schema_bloat" in response.text
+
+
 def test_unrecognized_upload_is_refused_loudly_not_zeroed() -> None:
     response = client.post(
         "/api/diagnose", files=[("traces", ("notes.json", b'{"hello": "world"}'))]

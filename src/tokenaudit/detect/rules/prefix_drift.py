@@ -23,6 +23,7 @@ labeled negative case:
 
 from __future__ import annotations
 
+from tokenaudit.counterfactual import impact, rates
 from tokenaudit.detect.base import (
     TOKEN_ESTIMATE_NOTE,
     Abstain,
@@ -32,7 +33,7 @@ from tokenaudit.detect.base import (
     consecutive_pairs,
     last_marked_index,
 )
-from tokenaudit.detect.findings import Finding, Fix, Impact, Severity
+from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Session
 from tokenaudit.rulebook import Rulebook
 
@@ -83,28 +84,27 @@ class PrefixDriftDetector(Detector):
         # Counterfactual, one fix at a time: with a stable prefix, everything
         # from the divergence point through the cacheable region would have
         # been read at the cached rate instead of re-billed.
-        per_pair: list[int] = []
+        example = affected[0]
+        rules = rulebook.lookup(example.second.model, example.second.provider)
+        rate = rates(rules)
+        per_pair: list[float] = []
         observed_misses = 0
         for pair in affected:
             blocks = pair.second.blocks or ()
             end = last_marked_index(blocks)
             end = end if end is not None and end >= index else len(blocks) - 2
-            per_pair.append(blocks_tokens(blocks[index : end + 1]))
+            per_pair.append(blocks_tokens(blocks[index : end + 1]) * rate.waste(pair.second))
             usage = pair.second.usage
             if usage.cache_read == 0 or (
                 usage.cache_creation is not None and usage.cache_creation > 0
             ):
                 observed_misses += 1
-        tokens_high = round(0.9 * sum(per_pair))
-        tokens_low = round(0.9 * sum(sorted(per_pair)[:observed_misses]))
 
-        example = affected[0]
         a = example.first.blocks or ()
         b = example.second.blocks or ()
         drift_kind = (
             "same_length_mutation" if a[index].chars == b[index].chars else "small_mutation"
         )
-        rules = rulebook.lookup(example.second.model, example.second.provider)
 
         finding = Finding(
             detector_id=self.detector_id,
@@ -128,17 +128,14 @@ class PrefixDriftDetector(Detector):
                 "example_after_sha256": b[index].sha256,
                 "example_span_ids": [example.first.span_id, example.second.span_id],
             },
-            impact=Impact(
-                tokens_low=tokens_low,
-                tokens_high=tokens_high,
-                usd_low=None,
-                usd_high=None,
-                assumption=(
-                    "difference between full-price and cached-read rates (0.9x) on the "
-                    f"invalidated prefix region; {TOKEN_ESTIMATE_NOTE}; low bound counts "
-                    "only pairs with an observed cache miss"
-                ),
-                rulebook_version=rulebook.version,
+            impact=impact(
+                sum(sorted(per_pair)[:observed_misses]),
+                sum(per_pair),
+                rate,
+                rulebook,
+                "the invalidated prefix region is read from cache instead of re-billed; "
+                f"{TOKEN_ESTIMATE_NOTE}; low bound counts only pairs with an observed "
+                "cache miss",
             ),
             fix=Fix(
                 summary=(
