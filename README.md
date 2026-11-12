@@ -12,6 +12,10 @@ It works: diagnosing one of those documented cases produced a 9-file patch that 
 
 On Claude it found the opposite problem: switching on caching for every request made the same agent's input bill 7.2% higher, because most of its prompts are sent once and every cache write costs 1.25×. The [second case study](docs/case-studies/tradingagents-claude.md) shows where the money went and what to cache instead.
 
+<img src="https://raw.githubusercontent.com/yashmyeole/tokenaudit/main/docs/images/report-claude.png" width="720" alt="tokenaudit HTML report for a TradingAgents run on Claude with automatic caching: 19,308 tokens read from cache, 119,307 written to it, and two HIGH findings, misordered_shared_context and unread_cache_writes">
+
+*The report for one of those Claude runs: caching wrote 119k tokens, read back 19k, and cost more than it saved.*
+
 ## Quickstart
 
     pip install tokenaudit
