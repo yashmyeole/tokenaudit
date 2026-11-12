@@ -25,7 +25,7 @@ from datetime import datetime
 from typing import Any
 
 from tokenaudit.ingest.containers import UnknownTraceFormatError
-from tokenaudit.ingest.dialects import block_digest
+from tokenaudit.ingest.dialects import block_digest, tool_defs
 from tokenaudit.model.records import BlockDigest, Request, TokenUsage
 
 FLAG_EXCLUSIVE_CONVERTED = "exclusive_counts_converted"
@@ -180,6 +180,30 @@ def _blocks(kind: str, request: dict[str, Any]) -> tuple[BlockDigest, ...] | Non
     return tuple(blocks) or None
 
 
+def _response_calls(response: dict[str, Any]) -> tuple[str, ...] | None:
+    """Names of tools the response called, or None when the output wasn't logged."""
+    if isinstance(response.get("output"), list):  # OpenAI Responses
+        return tuple(
+            str(item.get("name"))
+            for item in response["output"]
+            if isinstance(item, dict) and item.get("type") == "function_call"
+        )
+    if isinstance(response.get("choices"), list):  # OpenAI Chat Completions
+        calls = []
+        for choice in response["choices"]:
+            message = choice.get("message", {}) if isinstance(choice, dict) else {}
+            for call in message.get("tool_calls") or []:
+                calls.append(str((call.get("function") or {}).get("name")))
+        return tuple(calls)
+    if isinstance(response.get("content"), list):  # Anthropic Messages
+        return tuple(
+            str(block.get("name"))
+            for block in response["content"]
+            if isinstance(block, dict) and block.get("type") == "tool_use"
+        )
+    return None
+
+
 def _timestamp_ns(record: dict[str, Any], response: dict[str, Any]) -> int | None:
     value = record.get("timestamp", response.get("created_at", response.get("created")))
     if isinstance(value, int | float) and not isinstance(value, bool):
@@ -236,6 +260,8 @@ def load_provider_log(text: str, source: str) -> list[Request]:
                 conversation_id=str(session) if session is not None else None,
                 source=source,
                 quality=tuple(quality),
+                tool_defs=tool_defs(tools) if tools else None,
+                tool_calls=_response_calls(response),
             )
         )
     return requests

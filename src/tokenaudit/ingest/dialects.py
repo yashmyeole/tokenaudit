@@ -27,7 +27,7 @@ import json
 import re
 
 from tokenaudit.ingest.containers import AttrValue, RawSpan
-from tokenaudit.model.records import BlockDigest, Request, Segment, TokenUsage
+from tokenaudit.model.records import BlockDigest, Request, Segment, TokenUsage, ToolDef
 
 FLAG_LEGACY_EXCLUSIVE_ASSUMED = "legacy_exclusive_assumed"
 FLAG_PROVIDER_ATTR_DEPRECATED = "provider_attr_deprecated"
@@ -35,6 +35,10 @@ FLAG_PROVIDER_ATTR_DEPRECATED = "provider_attr_deprecated"
 _MSG_INDEX = re.compile(r"^llm\.input_messages\.(\d+)\.message\.(role|content)$")
 _LEGACY_INDEX = re.compile(r"^gen_ai\.prompt\.(\d+)\.(role|content)$")
 _TOOL_INDEX = re.compile(r"^llm\.tools\.(\d+)\.tool\.json_schema$")
+_OUT_TOOL_CALL = re.compile(
+    r"^llm\.output_messages\.\d+\.message\.tool_calls\.\d+\.tool_call\.function\.name$"
+)
+_OUT_MESSAGE = re.compile(r"^llm\.output_messages\.\d+\.message\.")
 
 
 def _digest(role: str, text: str) -> str:
@@ -48,6 +52,27 @@ def _segments(role: str, text: str) -> tuple[Segment, ...]:
         chars = len(line) + (1 if i < len(lines) - 1 else 0)
         if chars:
             out.append(Segment(_digest(role, line)[:16], chars))
+    return tuple(out)
+
+
+def tool_name(definition: object) -> str | None:
+    """Name of a tool definition in any common shape (OpenAI, Anthropic, flat)."""
+    if not isinstance(definition, dict):
+        return None
+    name = definition.get("name")
+    function = definition.get("function")
+    if name is None and isinstance(function, dict):
+        name = function.get("name")
+    return str(name) if name is not None else None
+
+
+def tool_defs(definitions: object) -> tuple[ToolDef, ...] | None:
+    if not isinstance(definitions, list):
+        return None
+    out = []
+    for definition in definitions:
+        text = json.dumps(definition, sort_keys=True, separators=(",", ":"))
+        out.append(ToolDef(tool_name(definition) or "?", len(text)))
     return tuple(out)
 
 
@@ -145,7 +170,33 @@ def _extract_current(raw: RawSpan, source: str) -> Request:
         conversation_id=_str_or_none(attrs, "gen_ai.conversation.id"),
         source=source,
         quality=tuple(quality),
+        tool_defs=_json_tool_defs(_str_or_none(attrs, "gen_ai.tool.definitions")),
+        tool_calls=_structured_calls(_str_or_none(attrs, "gen_ai.output.messages")),
     )
+
+
+def _json_tool_defs(value: str | None) -> tuple[ToolDef, ...] | None:
+    if not value:
+        return None
+    try:
+        return tool_defs(json.loads(value))
+    except json.JSONDecodeError:
+        return None
+
+
+def _structured_calls(value: str | None) -> tuple[str, ...] | None:
+    if not value:
+        return None
+    try:
+        messages = json.loads(value)
+    except json.JSONDecodeError:
+        return None
+    calls = []
+    for message in messages if isinstance(messages, list) else []:
+        for part in message.get("parts", []) if isinstance(message, dict) else []:
+            if isinstance(part, dict) and part.get("type") == "tool_call" and part.get("name"):
+                calls.append(str(part["name"]))
+    return tuple(calls)
 
 
 # --------------------------------------------------------------------------- #
@@ -253,7 +304,33 @@ def _extract_openinference(raw: RawSpan, source: str) -> Request:
         conversation_id=_str_or_none(attrs, "session.id"),
         source=source,
         quality=(),
+        tool_defs=_openinference_tools(attrs),
+        tool_calls=_openinference_calls(attrs),
     )
+
+
+def _openinference_tools(attrs: dict[str, AttrValue]) -> tuple[ToolDef, ...] | None:
+    schemas: dict[int, str] = {}
+    for key, value in attrs.items():
+        match = _TOOL_INDEX.match(key)
+        if match:
+            schemas[int(match.group(1))] = str(value)
+    if not schemas:
+        return None
+    out = []
+    for index in sorted(schemas):
+        try:
+            name = tool_name(json.loads(schemas[index]))
+        except json.JSONDecodeError:
+            name = None
+        out.append(ToolDef(name or "?", len(schemas[index])))
+    return tuple(out)
+
+
+def _openinference_calls(attrs: dict[str, AttrValue]) -> tuple[str, ...] | None:
+    if not any(_OUT_MESSAGE.match(key) for key in attrs):
+        return None
+    return tuple(str(v) for k, v in sorted(attrs.items()) if _OUT_TOOL_CALL.match(k))
 
 
 def richness(request: Request) -> tuple[int, int]:

@@ -42,6 +42,14 @@ class BlockDigest:
 
 
 @dataclass(frozen=True)
+class ToolDef:
+    """One tool definition sent with a request: its name and schema length."""
+
+    name: str
+    chars: int
+
+
+@dataclass(frozen=True)
 class TokenUsage:
     """Billing outcome of one request, in canonical nested accounting."""
 
@@ -81,6 +89,8 @@ class Request:
     source: str
     quality: tuple[str, ...] = ()
     unpriceable: bool = False
+    tool_defs: tuple[ToolDef, ...] | None = None  # None: definitions not captured
+    tool_calls: tuple[str, ...] | None = None  # tools the response called; None: unknown
 
     @property
     def model(self) -> str | None:
