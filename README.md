@@ -2,7 +2,7 @@
 
 **Root-cause diagnosis of wasted LLM tokens — from the traces your agents already emit.**
 
-> Status: alpha (0.4.0). Interfaces may change before 1.0.
+> Status: alpha (0.5.0). Interfaces may change before 1.0.
 
 Every LLM cost tool can tell you *how much* you spent and *who* spent it. Almost none can tell you *why a specific request wasted money*. The biggest lever on an LLM bill — prompt caching, up to a 10× discount on repeated input — fails silently: change one byte of a cached prefix, drop below a model's minimum cacheable size, let a timer expire, and the provider just bills you full price. No error, no warning. There are [documented](https://barndoor.ai/what-happens-to-your-llm-bill-when-prompt-caching-fails/) [cases](https://github.com/TauricResearch/TradingAgents/issues/750) of agents running at ~0% cache hit rate for months, at 30–40% unnecessary cost, because of a single line of prompt construction.
 
