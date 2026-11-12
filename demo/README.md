@@ -1,5 +1,8 @@
 # Hosted demo
 
+Live at https://tokenaudit-demo.onrender.com (free instance; the first load
+after a quiet spell can take a minute).
+
 A one-page FastAPI app: drop a trace, get the diagnosis report back.
 Uploads are parsed in memory with `tokenaudit.ingest.ingest_text` and never
 written to disk, stored, or logged; the two sample reports are prerendered

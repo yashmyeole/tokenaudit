@@ -19,8 +19,10 @@ It works: diagnosing one of those documented cases produced a 9-file patch that 
 Zero runtime dependencies; reads OTLP/JSON files, OTel SDK JSONL, and raw
 OpenAI or Anthropic request/response logs. Try it
 on this repo's real captured runs: `tokenaudit diagnose corpus/captured/runs`.
-Prefer a browser? The [demo app](demo/) diagnoses a dropped trace; uploads
-are parsed in memory and never stored.
+Prefer a browser? The [live demo](https://tokenaudit-demo.onrender.com)
+diagnoses a dropped trace; uploads are parsed in memory and never stored. It
+runs on a free instance that sleeps when idle, so the first load can take a
+minute.
 
 The plan, in one line each:
 
@@ -97,7 +99,7 @@ If you know a tool that already does this, please open an issue — I would genu
 - [x] Counterfactual pricing with per-model read and write rates and dollar ranges
 - [x] Raw provider SDK log ingest (OpenAI Responses, Chat Completions, Anthropic Messages), tool-schema bloat detector
 - [x] A detector for prompts that never ask Anthropic to cache them
-- [ ] Public demo deployment (`render.yaml` is ready; see [demo/](demo/))
+- [x] Public demo deployment: [tokenaudit-demo.onrender.com](https://tokenaudit-demo.onrender.com)
 - [ ] Case study on an Anthropic-model agent (the harness is ready: [experiments/tradingagents-claude](experiments/tradingagents-claude/))
 
 ## Development
