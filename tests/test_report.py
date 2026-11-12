@@ -66,3 +66,14 @@ def test_cli_sample_and_html(tmp_path: Path, capsys) -> None:  # type: ignore[no
     stdout = capsys.readouterr().out
     assert "prefix_drift" in stdout
     assert out.read_text(encoding="utf-8").startswith("<!doctype html>")
+
+
+def test_session_summary_separates_cache_writes_from_full_price() -> None:
+    fixtures = Path(__file__).parent.parent / "corpus" / "synthetic" / "fixtures"
+    result = ingest_path(fixtures / "unread_cache_writes.trace.json")
+    html = render_html([(result, diagnose(result))], load_rulebook())
+    session = result.sessions[0]
+    written = sum(r.usage.cache_creation or 0 for r in session.requests)
+    total = sum(r.usage.input_total or 0 for r in session.requests)
+    assert f"{written:,} written to cache" in html
+    assert f"{total - written:,} billed at full input price" in html

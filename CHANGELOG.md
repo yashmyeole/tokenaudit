@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- The HTML report's session summary separates tokens written to the cache
+  from tokens billed at full price, and the bar shows writes in their own
+  colour. It used to count writes as full price.
+
 ## 0.5.0 — 2026-11-12
 
 From the [TradingAgents on Claude case study](docs/case-studies/tradingagents-claude.md):

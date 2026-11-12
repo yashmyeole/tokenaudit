@@ -91,8 +91,11 @@ def _session_html(session: Session, diagnosis: SessionDiagnosis, rulebook: Ruleb
     total_read = sum(r.usage.cache_read or 0 for r in session.requests)
     hit = f"{total_read / total_input:.1%}" if total_input else "n/a"
     score = health_score(session, diagnosis, rulebook)
-    full_price = max(total_input - total_read, 0)
+    total_written = sum(r.usage.cache_creation or 0 for r in session.requests)
+    full_price = max(total_input - total_read - total_written, 0)
     read_pct = (total_read / total_input * 100) if total_input else 0
+    write_pct = (total_written / total_input * 100) if total_input else 0
+    written = f"{total_written:,} written to cache &middot; " if total_written else ""
 
     findings_html = "".join(_finding_html(f) for f in diagnosis.findings) or (
         "<p class='muted'>No findings.</p>"
@@ -115,10 +118,13 @@ def _session_html(session: Session, diagnosis: SessionDiagnosis, rulebook: Ruleb
         f"<div><b>{_e(render_score(score))}</b>"
         f"<span class='muted'>cache health (floor)</span></div>"
         f"</div>"
-        f"<div class='bar' role='img' aria-label='cached vs full-price input'>"
+        f"<div class='bar' role='img' aria-label='input read from cache, written to it, "
+        f"and billed in full'>"
         f"<span style='width:{read_pct:.1f}%;background:var(--ok)'></span>"
-        f"<span style='width:{100 - read_pct:.1f}%;background:var(--line)'></span></div>"
-        f"<p class='muted'>{total_read:,} tokens read from cache &middot; "
+        f"<span style='width:{write_pct:.1f}%;background:var(--medium)'></span>"
+        f"<span style='width:{max(100 - read_pct - write_pct, 0):.1f}%;"
+        f"background:var(--line)'></span></div>"
+        f"<p class='muted'>{total_read:,} tokens read from cache &middot; {written}"
         f"{full_price:,} billed at full input price</p>"
         f"{findings_html}<ul class='muted'>{checked_html}{notes_html}</ul>"
     )
