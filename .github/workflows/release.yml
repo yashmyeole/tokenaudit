@@ -1,0 +1,83 @@
+name: Release
+
+# Publishes to PyPI when a vX.Y.Z tag is pushed. Uses trusted publishing:
+# the PyPI project needs a GitHub publisher for release.yml (environment pypi).
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check tag matches version
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg="$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml","rb"))["project"]["version"])')"
+          mod="$(sed -n 's/^__version__ = "\(.*\)"$/\1/p' src/tokenaudit/__init__.py)"
+          echo "tag=$tag pyproject=$pkg __version__=$mod"
+          test "$tag" = "$pkg" && test "$tag" = "$mod"
+      - name: Lint, type check, test
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]" -r demo/requirements.txt
+          ruff check .
+          ruff format --check .
+          mypy
+          pytest
+      - name: Build
+        run: |
+          pip install build
+          python -m build
+      - name: Smoke test wheel
+        run: |
+          python -m venv /tmp/smoke
+          /tmp/smoke/bin/pip install dist/*.whl
+          /tmp/smoke/bin/tokenaudit --version
+          /tmp/smoke/bin/tokenaudit diagnose --sample > /dev/null
+          /tmp/smoke/bin/tokenaudit check corpus/captured/runs --baseline tokenaudit-baseline.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+
+  github-release:
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          awk -v v="$version" '
+            $0 ~ "^## " v "( |$)" { on = 1; next }
+            on && /^## / { exit }
+            on { print }
+          ' CHANGELOG.md > notes.md
+          gh release create "$GITHUB_REF_NAME" dist/* --title "$GITHUB_REF_NAME" --notes-file notes.md
