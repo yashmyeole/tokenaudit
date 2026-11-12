@@ -1,0 +1,24 @@
+{
+  "arm": "patched",
+  "duration_s": 80.0,
+  "experiment": "tradingagents-cache-fix",
+  "max_debate_rounds": 1,
+  "models": {
+    "deep_think": "gpt-5.4-mini",
+    "quick_think": "gpt-5.4-mini"
+  },
+  "observation": "openinference-instrumentation-openai,openinference-instrumentation-langchain",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.7",
+  "run_id": "02-patched-NVDA-2026-08-14",
+  "started_at": "2026-11-12T14:23:42Z",
+  "ticker": "NVDA",
+  "trade_date": "2026-08-14",
+  "tradingagents_commit": "b0cc4b634d5e24b1a936294a8bea0127db06a407",
+  "versions": {
+    "langchain-core": "1.8.0",
+    "openai": "3.6.0",
+    "opentelemetry-sdk": "1.44.0",
+    "tradingagents": "0.7.1"
+  }
+}

@@ -158,6 +158,11 @@ for a second pair in the opposite order). Each run gets its own decision log,
 because upstream now feeds earlier decisions for the same ticker into later
 runs, which would otherwise make the two arms see different prompts.
 
+Result (one pair, 2026-11-12): cache hit rate 15.7% -> 38.8%, +23,296 cached
+tokens, and both runs reached the same decision. One pair confirms the
+August result rather than measuring it precisely. Details:
+[results-v0.7.md](results-v0.7.md).
+
 ## Running it
 
     export OPENAI_API_KEY=...      # stays in your shell
