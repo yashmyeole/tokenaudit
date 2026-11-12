@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.0 — unreleased
+## 0.4.0 — 2026-11-12
 
 Upgrading adds findings to traces with these patterns, and changes the
 impact of some existing ones: re-baseline `tokenaudit check` after upgrading.
