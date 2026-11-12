@@ -14,10 +14,13 @@ own rates from the rulebook:
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
-from tokenaudit.detect.findings import Impact
 from tokenaudit.model.records import Request
 from tokenaudit.rulebook import ModelRules, Rulebook
+
+if TYPE_CHECKING:
+    from tokenaudit.detect.findings import Impact
 
 DEFAULT_READ = 0.1
 
@@ -64,6 +67,9 @@ def _usd(tokens: int, price: float | None) -> float | None:
 
 
 def impact(low: float, high: float, rate: Rates, rulebook: Rulebook, assumption: str) -> Impact:
+    # imported here: the detect package imports this module while it loads
+    from tokenaudit.detect.findings import Impact
+
     tokens_low, tokens_high = round(low), round(high)
     return Impact(
         tokens_low=tokens_low,

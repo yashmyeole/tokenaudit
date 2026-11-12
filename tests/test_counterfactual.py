@@ -63,3 +63,13 @@ def test_prefix_drift_counts_the_write_premium() -> None:
     # every call re-wrote the ~1,400-token prefix at 1.25x instead of reading it at 0.1x
     assert finding.impact.tokens_high >= round(1.15 * 5 * 1400)
     assert finding.impact.usd_high is not None and finding.impact.usd_high > 0
+
+
+def test_imports_on_its_own() -> None:
+    import subprocess
+    import sys
+
+    result = subprocess.run(
+        [sys.executable, "-c", "import tokenaudit.counterfactual"], capture_output=True, text=True
+    )
+    assert result.returncode == 0, result.stderr
