@@ -48,3 +48,11 @@ Three calls made together for the 0.1.0 release, all in service of the same prin
 
 **Boundaries:** line digests never leave the process (`tokenaudit ingest` drops them), because a hash of a short line is easy to guess. Cross-session findings count toward a CI gate's findings but not toward the health floor, since whether sessions share a cache depends on when they ran; the low impact bound only counts sessions that started within the model's cache lifetime of each other. Each new detector defers to an existing one where they overlap: a short edit near the start of a prompt is prefix drift, and a value that changes on every call within a session is prefix drift too.
 
+## 008 — Price against the fix, per model; new detectors yield to older ones (2026-11-12)
+
+**Decision:** a finding's impact is what the affected tokens cost minus what they would have cost under the fix, using the model's read and write multipliers from the rulebook. A request that wrote the cache is charged the write premium, not full price. Dollars appear only when the rulebook has a verified input price; tiered prices (Haiku 5.5) stay in tokens.
+
+**Why:** a flat discount overstated waste on models with cheaper reads and ignored that a miss on Anthropic often costs more than a plain request, because it writes the cache. Keeping the rates in one module means a rulebook update reprices every detector at once.
+
+**Boundaries:** `tool_schema_bloat` prints tool names, which are identifiers a developer chose rather than prompt text. It counts a tool as used if any request with the same tool set called it, so a shared registry where every tool is used by some agent is not flagged; telling agents apart needs more than a trace carries. `missing_cache_markers` only counts block-aligned prefixes repeated within the cache lifetime, since a breakpoint sits at a block's end and a later repeat would have missed anyway. It leaves growing conversations to `context_bloat` and byte-identical re-sends to `retry_storm`, whose fixes fit those cases better.
+

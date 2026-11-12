@@ -1,22 +1,57 @@
 # Changelog
 
-## Unreleased
+## 0.4.0 — unreleased
 
-- Two new detectors, using per-line digests that ingest now keeps in memory:
-  - `misordered_shared_context`: the same reports or documents sent to
-    several agents, each behind its own role text, so the prefix cache never
-    reuses them.
-  - `cross_session_drift`: a date, user or ticker near the start of a long
-    prompt, which keeps it from being reused across sessions.
-- They find the TradingAgents problems the case study diagnosed by hand. The
-  captured runs, previously reported as clean, now show both findings and a
-  25% health floor (was 100%).
-- Upgrading will add findings to traces with these patterns: re-baseline
-  `tokenaudit check` after upgrading.
-- `diagnose` and `check` report a cross-session section when given more than
-  one session; `ingest` output leaves out the line digests.
-- Six new corpus fixtures (one positive and two near-misses per detector).
-- Impact for the new detectors uses each model's read rate from the rulebook.
+Upgrading adds findings to traces with these patterns, and changes the
+impact of some existing ones: re-baseline `tokenaudit check` after upgrading.
+
+New detectors, each with a positive corpus fixture and near-miss negatives:
+
+- `misordered_shared_context`: the same reports or documents sent to several
+  agents, each behind its own role text, so the prefix cache never reuses
+  them.
+- `cross_session_drift`: a date, user or ticker near the start of a long
+  prompt, which keeps it from being reused across sessions.
+- `tool_schema_bloat`: tool definitions sent on every request and never
+  called by any request carrying the same tool set.
+- `missing_cache_markers`: a provider that only caches on request
+  (Anthropic), a session with no markers and no cache activity, and requests
+  re-sending a prefix an earlier one sent within the cache lifetime.
+
+The first two find the TradingAgents problems the case study diagnosed by
+hand. The captured runs, previously reported as clean, now show both
+findings and a 25% health floor (was 100%).
+
+Pricing:
+
+- Every finding is priced with its model's read and write rates from the
+  rulebook. A request that wrote the cache is charged the write premium
+  (1.25x on Anthropic's 5-minute cache) instead of full price, and the
+  assumption line names the rates used.
+- `diagnose` and the HTML report show a dollar range when the rulebook has a
+  verified input price for the model.
+
+Ingest:
+
+- Raw provider logs: JSONL or a JSON array of logged request/response pairs
+  from the OpenAI Responses, OpenAI Chat Completions and Anthropic Messages
+  APIs. Anthropic's exclusive token counts are converted; records without
+  timestamps are flagged and time-based detectors abstain.
+- Tool definitions (name and size) and the tools each response called, from
+  OpenInference, `gen_ai.tool.definitions` in current OTel GenAI, and raw
+  logs.
+- Per-line digests kept in memory for the new detectors; `ingest` output
+  leaves them out.
+
+Also:
+
+- `diagnose` and `check` report a cross-session section when given more
+  than one session.
+- Demo: a `render.yaml` blueprint for one-click deploys, and raw provider
+  logs are accepted as uploads.
+- The capture runner records Anthropic runs (`--provider anthropic`);
+  `experiments/tradingagents-claude/` is ready to run with an API key.
+- The corpus has 30 fixtures (was 16).
 
 ## 0.2.0 — 2026-11-10
 
