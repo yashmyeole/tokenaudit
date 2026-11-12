@@ -199,6 +199,22 @@
       "calls": 5
     },
     {
+      "fixture": "unread_cache_writes",
+      "schema": "otel-genai-current",
+      "provider_shape": "anthropic",
+      "contains": [
+        "unread_cache_writes"
+      ],
+      "calls": 5
+    },
+    {
+      "fixture": "cache_writes_reused",
+      "schema": "otel-genai-current",
+      "provider_shape": "anthropic",
+      "contains": [],
+      "calls": 6
+    },
+    {
       "fixture": "prefix_drift_legacy_flat",
       "schema": "otel-genai-legacy-flat",
       "provider_shape": "anthropic",

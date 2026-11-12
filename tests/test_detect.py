@@ -39,6 +39,7 @@ PER_SESSION = {
     "misordered_shared_context",
     "tool_schema_bloat",
     "missing_cache_markers",
+    "unread_cache_writes",
 }
 IMPLEMENTED = PER_SESSION | {"cross_session_drift"}
 
@@ -175,6 +176,42 @@ def test_missing_cache_markers_ignores_repeats_after_the_cache_would_expire() ->
     diagnosis = _diagnose_fixture("unmarked_far_apart")
     assert diagnosis.findings == ()
     assert "missing_cache_markers" in diagnosis.checked
+
+
+def test_missing_cache_markers_counts_tools_and_needs_the_same_tools() -> None:
+    from tokenaudit.detect.base import shared_prefix
+    from tokenaudit.model.records import ToolDef
+
+    (session,) = ingest_path(FIXTURES / "missing_cache_markers.trace.json").sessions
+    a, b = session.requests[:2]
+    tools = (ToolDef("search", 800),)
+    plain, _ = shared_prefix(a, b)
+    with_tools, _ = shared_prefix(replace(a, tool_defs=tools), replace(b, tool_defs=tools))
+    assert with_tools == plain + 800
+    assert shared_prefix(replace(a, tool_defs=tools), b) == (0, ())
+
+
+def test_unread_cache_writes_finding_is_verifiable() -> None:
+    diagnosis = _diagnose_fixture("unread_cache_writes")
+    (finding,) = diagnosis.findings
+    assert finding.detector_id == "unread_cache_writes"
+    assert finding.severity is Severity.HIGH  # nothing was read, so caching only cost money
+    assert finding.evidence["requests_affected"] == 5
+    assert finding.evidence["read_saving_tokens"] == 0
+    assert finding.impact is not None
+    # the 0.25x write premium on everything written
+    assert finding.impact.tokens_low == round(finding.evidence["unread_write_tokens"] * 0.25)
+
+
+def test_unread_cache_writes_ignores_writes_that_get_read() -> None:
+    diagnosis = _diagnose_fixture("cache_writes_reused")
+    assert diagnosis.findings == ()
+    assert "unread_cache_writes" in diagnosis.checked
+
+
+def test_unread_cache_writes_is_clean_when_nothing_asked_for_caching() -> None:
+    diagnosis = _diagnose_fixture("missing_cache_markers")
+    assert "unread_cache_writes" in diagnosis.checked
 
 
 def test_cross_session_drift_finding_is_verifiable() -> None:

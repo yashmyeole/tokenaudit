@@ -33,6 +33,7 @@ FAILURE_MODES = {
     "cross_session_drift",
     "tool_schema_bloat",
     "missing_cache_markers",
+    "unread_cache_writes",
 }
 
 

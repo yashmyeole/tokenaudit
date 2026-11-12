@@ -100,6 +100,7 @@ FAILURE_MODES = (
     "cross_session_drift",
     "tool_schema_bloat",
     "missing_cache_markers",
+    "unread_cache_writes",
 )
 
 # Fixed simulated clock: 2026-01-15T09:00:00Z. Never use the wall clock.
@@ -1186,6 +1187,57 @@ def fx_unmarked_far_apart() -> Fixture:
     )
 
 
+_STAGES = ("bull researcher", "bear researcher", "research manager", "trader", "risk judge")
+
+
+def fx_unread_cache_writes() -> Fixture:
+    calls = [
+        Call(
+            (Block("user", f"You are the {stage}. " + filler(f"{stage} brief", size), True),),
+            "claude-sonnet-4-5",
+            i * 25,
+            3200,
+            400,
+        )
+        for i, (stage, size) in enumerate(zip(_STAGES, (1800, 2600, 3400, 2200, 3000), strict=True))
+    ]
+    return Fixture(
+        name="unread_cache_writes",
+        schema="otel-genai-current",
+        provider_shape="anthropic",
+        contains=["unread_cache_writes"],
+        evidence={"calls": 5, "written_never_read": 5},
+        notes=(
+            "A five-stage pipeline that marks every prompt for caching, as automatic "
+            "caching does. Each stage sends its prompt once, so every write is billed "
+            "at 1.25x and nothing reads it back."
+        ),
+        calls=calls,
+    )
+
+
+def fx_cache_writes_reused() -> Fixture:
+    calls = []
+    for i, stage in enumerate(_STAGES[:3]):
+        system = Block("system", f"You are the {stage}. " + filler(f"{stage} brief", 2000), True)
+        for turn in range(2):
+            start = i * 60 + turn * 20
+            calls.append(Call((system, _convo(turn)), "claude-sonnet-4-5", start, 2400, 200))
+    return Fixture(
+        name="cache_writes_reused",
+        schema="otel-genai-current",
+        provider_shape="anthropic",
+        contains=[],
+        evidence={"calls": 6, "written_never_read": 0},
+        notes=(
+            "Three agents, each called twice, with only the stable system prompt marked. "
+            "Near-miss: every write is read back by the agent's next call, so a correct "
+            "tool reports nothing here."
+        ),
+        calls=calls,
+    )
+
+
 def build_fixtures() -> list[Fixture]:
     fixtures = [
         fx_prefix_drift(),
@@ -1212,6 +1264,8 @@ def build_fixtures() -> list[Fixture]:
         fx_tool_schema_rotating(),
         fx_missing_cache_markers(),
         fx_unmarked_far_apart(),
+        fx_unread_cache_writes(),
+        fx_cache_writes_reused(),
     ]
 
     # Schema variants of prefix_drift: same session, older/other trace dialects,

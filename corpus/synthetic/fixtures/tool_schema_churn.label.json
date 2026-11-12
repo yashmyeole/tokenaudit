@@ -21,7 +21,8 @@
     "retry_storm",
     "sub_minimum",
     "tool_schema_bloat",
-    "ttl_expiry"
+    "ttl_expiry",
+    "unread_cache_writes"
   ],
   "evidence": {
     "churn_at_call": 3,

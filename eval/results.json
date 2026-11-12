@@ -6,6 +6,10 @@
         "expected": true,
         "outcome": "fired"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "clean"
@@ -121,10 +125,14 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 28,
+    "negatives_clean": 30,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -136,6 +144,10 @@
         "expected": false,
         "outcome": "abstained"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "context_bloat": {
         "expected": true,
         "outcome": "fired"
@@ -251,10 +263,14 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 10,
-    "negatives_clean": 19,
+    "negatives_clean": 21,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -266,6 +282,10 @@
         "expected": false,
         "outcome": "abstained"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "abstained"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "abstained"
@@ -381,9 +401,13 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "abstained"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "abstained"
       }
     },
-    "negatives_abstained": 27,
+    "negatives_abstained": 29,
     "negatives_clean": 2,
     "positives_abstained": 0,
     "positives_found": 1,
@@ -396,6 +420,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "clean"
@@ -511,10 +539,14 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 28,
+    "negatives_clean": 30,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -526,6 +558,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "clean"
@@ -641,10 +677,14 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 27,
+    "negatives_clean": 29,
     "positives_abstained": 0,
     "positives_found": 2,
     "positives_missed": 0
@@ -656,6 +696,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "clean"
@@ -771,10 +815,14 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 28,
+    "negatives_clean": 30,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -786,6 +834,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "clean"
@@ -901,10 +953,14 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 28,
+    "negatives_clean": 30,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -916,6 +972,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "clean"
@@ -1031,10 +1091,14 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 0,
-    "negatives_clean": 25,
+    "negatives_clean": 27,
     "positives_abstained": 1,
     "positives_found": 4,
     "positives_missed": 0
@@ -1046,6 +1110,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "clean"
@@ -1161,10 +1229,14 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 28,
+    "negatives_clean": 30,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -1176,6 +1248,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "clean"
@@ -1291,10 +1367,14 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 28,
+    "negatives_clean": 30,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -1306,6 +1386,10 @@
         "expected": false,
         "outcome": "abstained"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "abstained"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "abstained"
@@ -1421,9 +1505,13 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "abstained"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "abstained"
       }
     },
-    "negatives_abstained": 26,
+    "negatives_abstained": 28,
     "negatives_clean": 2,
     "positives_abstained": 0,
     "positives_found": 2,
@@ -1436,6 +1524,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "clean"
@@ -1551,10 +1643,14 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "clean"
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 28,
+    "negatives_clean": 30,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -1566,6 +1662,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "context_bloat": {
         "expected": false,
         "outcome": "clean"
@@ -1681,10 +1781,152 @@
       "unmarked_far_apart": {
         "expected": false,
         "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": false,
+        "outcome": "abstained"
+      }
+    },
+    "negatives_abstained": 5,
+    "negatives_clean": 26,
+    "positives_abstained": 0,
+    "positives_found": 1,
+    "positives_missed": 0
+  },
+  "unread_cache_writes": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "cache_writes_reused": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "cross_session_distinct": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "cross_session_drift": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "cross_session_stable": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "misordered_shared_context": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "missing_cache_markers": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "shared_context_first": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "shared_context_small": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "unmarked_far_apart": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "unread_cache_writes": {
+        "expected": true,
+        "outcome": "fired"
       }
     },
     "negatives_abstained": 4,
-    "negatives_clean": 25,
+    "negatives_clean": 27,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0

@@ -1,0 +1,39 @@
+{
+  "fixture": "unread_cache_writes",
+  "schema": "otel-genai-current",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [
+    "unread_cache_writes"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "cross_session_drift",
+    "lookback_overflow",
+    "misordered_shared_context",
+    "missing_cache_markers",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_bloat",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "calls": 5,
+    "written_never_read": 5
+  },
+  "notes": "A five-stage pipeline that marks every prompt for caching, as automatic caching does. Each stage sends its prompt once, so every write is billed at 1.25x and nothing reads it back.",
+  "totals": {
+    "calls": 5,
+    "input_tokens": 13032,
+    "cache_read_tokens": 0,
+    "cache_creation_tokens": 13032,
+    "output_tokens": 2000
+  }
+}

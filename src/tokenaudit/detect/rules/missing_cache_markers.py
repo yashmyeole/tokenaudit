@@ -7,7 +7,9 @@ before, pays full price for every repeat.
 
 Only block-aligned prefixes count, since a breakpoint sits at the end of a
 block, and only repeats within the cache lifetime, since a marker would not
-have helped a request that came later. A conversation that grows call by
+have helped a request that came later. Tool definitions come first in the
+prompt, so they count toward the shared prefix, and requests with different
+tools share nothing. A conversation that grows call by
 call is left to context_bloat, and a byte-identical re-send to retry_storm:
 both report the same waste with a fix that fits it better.
 """
@@ -18,9 +20,10 @@ from tokenaudit.counterfactual import impact, rates
 from tokenaudit.detect.base import (
     Abstain,
     Detector,
-    est_tokens,
+    prefix_tokens,
     require_content,
     require_timestamps,
+    shared_prefix,
 )
 from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.detect.rules.context_bloat import ContextBloatDetector
@@ -30,15 +33,6 @@ from tokenaudit.rulebook import Rulebook
 _DEFAULT_TTL_S = 300
 _MIN_REPEATS = 2
 _HIGH_SHARE = 0.10
-
-
-def _shared_blocks(a: Request, b: Request) -> int:
-    count = 0
-    for x, y in zip(a.blocks or (), b.blocks or (), strict=False):
-        if x.sha256 != y.sha256:
-            break
-        count += 1
-    return count
 
 
 class MissingCacheMarkersDetector(Detector):
@@ -84,19 +78,17 @@ class MissingCacheMarkersDetector(Detector):
             if rule is None:
                 continue
             ttl_s = (rule.ttl[0].seconds if rule.ttl else None) or _DEFAULT_TTL_S
-            best = 0
+            tokens = 0
             best_key: tuple[str, ...] = ()
             for earlier in explicit_only[:i]:
                 if earlier.model != request.model:
                     continue
                 if request.start_unix_nano - earlier.start_unix_nano > ttl_s * 1_000_000_000:
                     continue
-                shared = _shared_blocks(earlier, request)
-                blocks = (request.blocks or ())[:shared]
-                chars = sum(b.chars for b in blocks)
-                if chars > best:
-                    best, best_key = chars, tuple(b.sha256 for b in blocks)
-            tokens = est_tokens(best) if best else 0
+                chars, key = shared_prefix(earlier, request)
+                shared = prefix_tokens(earlier, chars) if chars else 0
+                if shared > tokens:
+                    tokens, best_key = shared, key
             if tokens and tokens >= (rule.min_cacheable_tokens or 1024):
                 repeats.append((request, tokens))
                 written.setdefault(best_key, tokens)
@@ -134,8 +126,8 @@ class MissingCacheMarkersDetector(Detector):
                 rate,
                 rulebook,
                 "each repeat would have been a cache read; low bound subtracts the write "
-                "premium for caching each distinct prefix once; block sizes estimated at "
-                "~4 chars/token",
+                "premium for caching each distinct prefix once; prefixes sized from the "
+                "earlier request's reported tokens",
             ),
             fix=Fix(
                 summary=(

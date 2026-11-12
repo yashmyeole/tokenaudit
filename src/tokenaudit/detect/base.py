@@ -115,6 +115,36 @@ def longest_shared_run(a: Sequence[Segment], b: Sequence[Segment]) -> SharedRun 
     return best
 
 
+def shared_prefix(a: Request, b: Request) -> tuple[int, tuple[str, ...]]:
+    """Chars of the cacheable prefix two requests share, and a key naming it."""
+    tools = a.tool_defs or ()
+    if tools != (b.tool_defs or ()):
+        return 0, ()
+    blocks = []
+    for x, y in zip(a.blocks or (), b.blocks or (), strict=False):
+        if x.sha256 != y.sha256:
+            break
+        blocks.append(y)
+    chars = sum(t.chars for t in tools) + sum(block.chars for block in blocks)
+    key = tuple(f"tool:{t.name}" for t in tools) + tuple(block.sha256 for block in blocks)
+    return chars, key
+
+
+def prefix_tokens(earlier: Request, chars: int) -> int:
+    """Size a prefix of `earlier` from its reported token count.
+
+    Character counts are a poor guide for prompts full of numbers and JSON,
+    so scale by the request's own tokens per character when it has them.
+    """
+    total = sum(t.chars for t in earlier.tool_defs or ()) + sum(
+        b.chars for b in earlier.blocks or ()
+    )
+    reported = earlier.usage.input_total
+    if reported and total:
+        return min(reported, round(reported * chars / total))
+    return est_tokens(chars)
+
+
 def last_marked_index(blocks: tuple[BlockDigest, ...]) -> int | None:
     marked = [i for i, b in enumerate(blocks) if b.cache_marker]
     return marked[-1] if marked else None

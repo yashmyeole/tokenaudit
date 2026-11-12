@@ -20,7 +20,8 @@
     "sub_minimum",
     "tool_schema_bloat",
     "tool_schema_churn",
-    "ttl_expiry"
+    "ttl_expiry",
+    "unread_cache_writes"
   ],
   "evidence": {
     "growth_blocks_per_call": 2,

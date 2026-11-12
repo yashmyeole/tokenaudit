@@ -21,7 +21,8 @@
     "retry_storm",
     "sub_minimum",
     "tool_schema_bloat",
-    "tool_schema_churn"
+    "tool_schema_churn",
+    "unread_cache_writes"
   ],
   "evidence": {
     "gap_after_call": 2,

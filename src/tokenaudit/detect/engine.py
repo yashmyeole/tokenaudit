@@ -31,6 +31,7 @@ from tokenaudit.detect.rules.sub_minimum import SubMinimumDetector
 from tokenaudit.detect.rules.tool_schema_bloat import ToolSchemaBloatDetector
 from tokenaudit.detect.rules.tool_schema_churn import ToolSchemaChurnDetector
 from tokenaudit.detect.rules.ttl_expiry import TtlExpiryDetector
+from tokenaudit.detect.rules.unread_cache_writes import UnreadCacheWritesDetector
 from tokenaudit.model.records import IngestResult, Session
 from tokenaudit.rulebook import Rulebook, load_rulebook
 
@@ -44,6 +45,7 @@ DETECTORS: tuple[Detector, ...] = (
     ToolSchemaChurnDetector(),
     ToolSchemaBloatDetector(),
     MissingCacheMarkersDetector(),
+    UnreadCacheWritesDetector(),
     ContextBloatDetector(),
     RetryStormDetector(),
     MisorderedSharedContextDetector(),
