@@ -1,10 +1,11 @@
 """Capture one real TradingAgents run as OpenTelemetry spans in a JSONL file.
 
 Zero-modification capture: TradingAgents' code is untouched. Instrumentation
-wraps the OpenAI SDK and LangChain at process level — the same zero-integration
-posture tokenaudit itself takes. Spans are written line-by-line using the OTel
-Python SDK's own ``ReadableSpan.to_json()`` rendering, with no custom mapping,
-so the captured dialect is exactly what the SDK produces in the wild.
+wraps the provider SDK (OpenAI or Anthropic) and LangChain at process level,
+the same zero-integration posture tokenaudit itself takes. Spans are written
+line-by-line using the OTel Python SDK's own ``ReadableSpan.to_json()``
+rendering, with no custom mapping, so the captured dialect is exactly what
+the SDK produces in the wild.
 
 This script is executed by ``capture_tradingagents.sh`` inside a throwaway
 virtualenv on the machine that holds the API key. It is not part of the
@@ -66,16 +67,22 @@ def build_provider(trace_file: Path, run_id: str, ta_commit: str) -> TracerProvi
     return provider
 
 
-def instrument(provider: TracerProvider) -> list[str]:
+def instrument(provider: TracerProvider, llm_provider: str = "openai") -> list[str]:
     """Attach OpenInference instrumentors; return the ones that activated."""
     active: list[str] = []
     try:
-        from openinference.instrumentation.openai import OpenAIInstrumentor
+        if llm_provider == "anthropic":
+            from openinference.instrumentation.anthropic import AnthropicInstrumentor
 
-        OpenAIInstrumentor().instrument(tracer_provider=provider)
-        active.append("openinference-instrumentation-openai")
+            AnthropicInstrumentor().instrument(tracer_provider=provider)
+            active.append("openinference-instrumentation-anthropic")
+        else:
+            from openinference.instrumentation.openai import OpenAIInstrumentor
+
+            OpenAIInstrumentor().instrument(tracer_provider=provider)
+            active.append("openinference-instrumentation-openai")
     except Exception as exc:
-        print(f"warning: OpenAI instrumentor not active: {exc}", file=sys.stderr)
+        print(f"warning: {llm_provider} SDK instrumentor not active: {exc}", file=sys.stderr)
     try:
         from openinference.instrumentation.langchain import LangChainInstrumentor
 
@@ -88,12 +95,14 @@ def instrument(provider: TracerProvider) -> list[str]:
     return active
 
 
-def run_analysis(ticker: str, date: str, deep: str, quick: str, rounds: int) -> str:
+def run_analysis(
+    ticker: str, date: str, deep: str, quick: str, rounds: int, llm_provider: str = "openai"
+) -> str:
     from tradingagents.default_config import DEFAULT_CONFIG
     from tradingagents.graph.trading_graph import TradingAgentsGraph
 
     config = dict(DEFAULT_CONFIG)
-    config["llm_provider"] = "openai"
+    config["llm_provider"] = llm_provider
     config["deep_think_llm"] = deep
     config["quick_think_llm"] = quick
     config["max_debate_rounds"] = rounds
@@ -119,6 +128,7 @@ def main() -> None:
     parser.add_argument("--deep", default="gpt-5.4-mini")
     parser.add_argument("--quick", default="gpt-5.4-mini")
     parser.add_argument("--rounds", type=int, default=1)
+    parser.add_argument("--provider", choices=["openai", "anthropic"], default="openai")
     parser.add_argument("--ta-commit", default="unknown")
     parser.add_argument("--smoke", action="store_true", help="plumbing test, no API calls")
     args = parser.parse_args()
@@ -134,6 +144,7 @@ def main() -> None:
         "smoke": args.smoke,
         "ticker": args.ticker,
         "trade_date": args.date,
+        "llm_provider": args.provider,
         "models": {"deep_think": args.deep, "quick_think": args.quick},
         "max_debate_rounds": args.rounds,
         "tradingagents_commit": args.ta_commit,
@@ -146,8 +157,11 @@ def main() -> None:
                 "tradingagents",
                 "opentelemetry-sdk",
                 "openinference-instrumentation-openai",
+                "openinference-instrumentation-anthropic",
                 "openinference-instrumentation-langchain",
                 "openai",
+                "anthropic",
+                "langchain-anthropic",
                 "langchain-core",
             )
         },
@@ -164,8 +178,10 @@ def main() -> None:
         manifest["instrumentors"] = []
         decision = "smoke"
     else:
-        manifest["instrumentors"] = instrument(provider)
-        decision = run_analysis(args.ticker, args.date, args.deep, args.quick, args.rounds)
+        manifest["instrumentors"] = instrument(provider, args.provider)
+        decision = run_analysis(
+            args.ticker, args.date, args.deep, args.quick, args.rounds, args.provider
+        )
         (args.out / "decision.txt").write_text(decision + "\n", encoding="utf-8")
 
     provider.force_flush()
