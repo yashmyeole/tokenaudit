@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+- Two new detectors, using per-line digests that ingest now keeps in memory:
+  - `misordered_shared_context`: the same reports or documents sent to
+    several agents, each behind its own role text, so the prefix cache never
+    reuses them.
+  - `cross_session_drift`: a date, user or ticker near the start of a long
+    prompt, which keeps it from being reused across sessions.
+- They find the TradingAgents problems the case study diagnosed by hand. The
+  captured runs, previously reported as clean, now show both findings and a
+  25% health floor (was 100%).
+- Upgrading will add findings to traces with these patterns: re-baseline
+  `tokenaudit check` after upgrading.
+- `diagnose` and `check` report a cross-session section when given more than
+  one session; `ingest` output leaves out the line digests.
+- Six new corpus fixtures (one positive and two near-misses per detector).
+- Impact for the new detectors uses each model's read rate from the rulebook.
+
 ## 0.2.0 — 2026-11-10
 
 - Fix the GitHub Action for external users. It installed the latest PyPI

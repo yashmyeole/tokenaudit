@@ -27,7 +27,7 @@ import json
 import re
 
 from tokenaudit.ingest.containers import AttrValue, RawSpan
-from tokenaudit.model.records import BlockDigest, Request, TokenUsage
+from tokenaudit.model.records import BlockDigest, Request, Segment, TokenUsage
 
 FLAG_LEGACY_EXCLUSIVE_ASSUMED = "legacy_exclusive_assumed"
 FLAG_PROVIDER_ATTR_DEPRECATED = "provider_attr_deprecated"
@@ -39,6 +39,26 @@ _TOOL_INDEX = re.compile(r"^llm\.tools\.(\d+)\.tool\.json_schema$")
 
 def _digest(role: str, text: str) -> str:
     return hashlib.sha256(f"{role}\x00{text}".encode()).hexdigest()
+
+
+def _segments(role: str, text: str) -> tuple[Segment, ...]:
+    lines = text.split("\n")
+    out = []
+    for i, line in enumerate(lines):
+        chars = len(line) + (1 if i < len(lines) - 1 else 0)
+        if chars:
+            out.append(Segment(_digest(role, line)[:16], chars))
+    return tuple(out)
+
+
+def _block(role: str, text: str, cache_marker: bool = False) -> BlockDigest:
+    return BlockDigest(
+        role=role,
+        sha256=_digest(role, text),
+        chars=len(text),
+        cache_marker=cache_marker,
+        segments=_segments(role, text),
+    )
 
 
 def _int_or_none(attrs: dict[str, AttrValue], key: str) -> int | None:
@@ -83,9 +103,7 @@ def _blocks_from_structured(messages_json: str) -> tuple[BlockDigest, ...]:
         parts = message.get("parts", [])
         text = "".join(str(p.get("content", "")) for p in parts if isinstance(p, dict))
         marker = any(isinstance(p, dict) and "cache_control" in p for p in parts)
-        blocks.append(
-            BlockDigest(role=role, sha256=_digest(role, text), chars=len(text), cache_marker=marker)
-        )
+        blocks.append(_block(role, text, marker))
     return tuple(blocks)
 
 
@@ -149,7 +167,7 @@ def _blocks_from_indexed(
     for index in sorted(parts):
         role = parts[index].get("role", "")
         text = parts[index].get("content", "")
-        blocks.append(BlockDigest(role=role, sha256=_digest(role, text), chars=len(text)))
+        blocks.append(_block(role, text))
     return tuple(blocks)
 
 

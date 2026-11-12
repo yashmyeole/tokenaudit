@@ -12,7 +12,9 @@
   "must_not_contain": [
     "breakpoint_limit",
     "context_bloat",
+    "cross_session_drift",
     "lookback_overflow",
+    "misordered_shared_context",
     "model_switch",
     "prefix_drift",
     "sub_minimum",

@@ -1,0 +1,34 @@
+{
+  "fixture": "cross_session_stable",
+  "schema": "otel-genai-current",
+  "provider_shape": "openai",
+  "models": [
+    "gpt-5.6"
+  ],
+  "content_captured": true,
+  "contains": [],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "cross_session_drift",
+    "lookback_overflow",
+    "misordered_shared_context",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "sessions": 4
+  },
+  "notes": "The same four sessions with the account and date moved into the user message. The system prompt is identical everywhere and is read from cache across sessions. Negative fixture for cross_session_drift.",
+  "totals": {
+    "calls": 12,
+    "input_tokens": 18291,
+    "cache_read_tokens": 16599,
+    "cache_creation_tokens": 0,
+    "output_tokens": 1920
+  }
+}

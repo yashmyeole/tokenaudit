@@ -2,8 +2,11 @@
   "baseline_format": 1,
   "cache_read_rate": 0.1057,
   "cache_read_tokens": 27648,
-  "findings": {},
-  "health_floor": 1.0,
+  "findings": {
+    "cross_session_drift": "high",
+    "misordered_shared_context": "high"
+  },
+  "health_floor": 0.2533,
   "input_tokens": 261611,
   "requests": 49,
   "rulebook_version": "2026.11.10",

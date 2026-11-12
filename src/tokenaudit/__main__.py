@@ -18,6 +18,7 @@ from collections import Counter
 from dataclasses import asdict
 from importlib.resources import files
 from pathlib import Path
+from typing import Any
 
 from tokenaudit import __version__
 from tokenaudit.ci import (
@@ -29,7 +30,7 @@ from tokenaudit.ci import (
     snapshot,
     write_baseline,
 )
-from tokenaudit.detect import SessionDiagnosis, diagnose
+from tokenaudit.detect import SessionDiagnosis, diagnose, diagnose_across
 from tokenaudit.ingest import UnknownTraceFormatError, ingest_path
 from tokenaudit.model.records import IngestResult
 from tokenaudit.report import render_html
@@ -45,6 +46,20 @@ def _trace_files(path: Path) -> list[Path]:
             raise UnknownTraceFormatError(f"{path}: no trace files found")
         return found
     raise UnknownTraceFormatError(f"{path}: no such file or directory")
+
+
+def _without_segments(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {k: _without_segments(v) for k, v in value.items() if k != "segments"}
+    if isinstance(value, list | tuple):
+        return [_without_segments(v) for v in value]
+    return value
+
+
+def _across(results: list[IngestResult]) -> SessionDiagnosis | None:
+    if sum(len(r.sessions) for r in results) < 2:
+        return None
+    return diagnose_across(results)
 
 
 def _summarize(result: IngestResult) -> str:
@@ -160,7 +175,9 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "check":
         rulebook = load_rulebook()
-        current = snapshot([(result, diagnose(result)) for result in results], rulebook)
+        current = snapshot(
+            [(result, diagnose(result)) for result in results], rulebook, _across(results)
+        )
         if current.input_tokens == 0:
             print("error: no input tokens in these traces; nothing to compare", file=sys.stderr)
             return 2
@@ -186,24 +203,31 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "diagnose":
         per_result = [(result, diagnose(result)) for result in results]
+        across = _across(results)
         if args.html:
-            args.html.write_text(render_html(per_result, load_rulebook()), encoding="utf-8")
+            html = render_html(per_result, load_rulebook(), across)
+            args.html.write_text(html, encoding="utf-8")
             print(f"wrote {args.html}", file=sys.stderr)
         if args.json:
             payload = [asdict(d) for _, diagnoses in per_result for d in diagnoses]
+            if across is not None:
+                payload.append(asdict(across))
             print(json.dumps(payload, indent=2, default=str))
         else:
             for result, diagnoses in per_result:
                 print(result.source)
                 for diagnosis in diagnoses:
                     print(_render_diagnosis(diagnosis))
+            if across is not None:
+                print("across sessions")
+                print(_render_diagnosis(across))
         return 0
 
     if args.summary:
         for result in results:
             print(_summarize(result))
     else:
-        print(json.dumps([asdict(result) for result in results], indent=2))
+        print(json.dumps([_without_segments(asdict(r)) for r in results], indent=2))
     return 0
 
 

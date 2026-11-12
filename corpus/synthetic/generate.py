@@ -95,6 +95,8 @@ FAILURE_MODES = (
     "tool_schema_churn",
     "context_bloat",
     "retry_storm",
+    "misordered_shared_context",
+    "cross_session_drift",
 )
 
 # Fixed simulated clock: 2026-01-15T09:00:00Z. Never use the wall clock.
@@ -116,6 +118,16 @@ def filler(topic: str, n_tokens: int) -> str:
         i += 1
         out.append(f"Policy section {i}: standard operating guidance for {topic}, item {i}. ")
     return "".join(out)[: n_tokens * 4]
+
+
+def notes(topic: str, n_tokens: int) -> str:
+    """Deterministic multi-line text of about ``n_tokens``, one note per line."""
+    lines: list[str] = []
+    i = 0
+    while sum(len(line) + 1 for line in lines) < n_tokens * 4:
+        i += 1
+        lines.append(f"- {topic} note {i}: figures and commentary for line item {i}.")
+    return "\n".join(lines)
 
 
 # --------------------------------------------------------------------------- #
@@ -145,6 +157,7 @@ class Call:
     t_offset_s: int  # seconds after BASE_EPOCH_S at which the request starts
     duration_ms: int
     output_tokens: int
+    conversation: str | None = None  # defaults to one conversation per fixture
 
 
 @dataclass(frozen=True)
@@ -344,7 +357,7 @@ def emit_current(
             _attr("gen_ai.provider.name", provider),
             _attr("gen_ai.request.model", call.model),
             _attr("gen_ai.response.model", call.model),
-            _attr("gen_ai.conversation.id", f"conv-{fixture}"),
+            _attr("gen_ai.conversation.id", call.conversation or f"conv-{fixture}"),
             _attr("gen_ai.usage.input_tokens", usage.total_input),
             _attr("gen_ai.usage.output_tokens", usage.output),
         ]
@@ -747,6 +760,170 @@ def fx_openai_healthy() -> Fixture:
     )
 
 
+_REPORTS = "Shared reports\n" + notes("market", 1400) + "\n" + notes("news", 1200)
+
+
+def _role(agent: str) -> str:
+    return f"You are the {agent}.\n" + notes(f"{agent} instructions", 150)
+
+
+def fx_misordered_shared_context() -> Fixture:
+    calls = [
+        Call(
+            (Block("user", _role(agent) + "\n\n" + _REPORTS + "\n\nGive your view."),),
+            "gpt-5.6",
+            i * 40,
+            3200,
+            220,
+        )
+        for i, agent in enumerate(["bull analyst", "bear analyst", "research judge"])
+    ]
+    return Fixture(
+        name="misordered_shared_context",
+        schema="otel-genai-current",
+        provider_shape="openai",
+        contains=["misordered_shared_context"],
+        evidence={"agents": 3, "shared_tokens": tokens(_REPORTS), "affected_calls": 2},
+        notes=(
+            "Three agents get the same ~2,600 tokens of reports in one message, each "
+            "behind its own role text. The prefix differs from the first line, so none "
+            "of the shared reports is ever read from cache."
+        ),
+        calls=calls,
+    )
+
+
+def fx_shared_context_first() -> Fixture:
+    calls = [
+        Call(
+            (Block("user", _REPORTS), Block("user", _role(agent) + "\n\nGive your view.")),
+            "gpt-5.6",
+            i * 40,
+            3200,
+            220,
+        )
+        for i, agent in enumerate(["bull analyst", "bear analyst", "research judge"])
+    ]
+    return Fixture(
+        name="shared_context_first",
+        schema="otel-genai-current",
+        provider_shape="openai",
+        contains=[],
+        evidence={"agents": 3, "shared_tokens": tokens(_REPORTS)},
+        notes=(
+            "The same three agents with the reports first and the role text after them. "
+            "The reports are a common prefix and are read from cache. Negative fixture "
+            "for misordered_shared_context."
+        ),
+        calls=calls,
+    )
+
+
+def fx_shared_context_small() -> Fixture:
+    footer = notes("disclaimer", 300)
+    calls = [
+        Call(
+            (Block("user", _role(agent) + "\n\n" + footer),),
+            "gpt-5.6",
+            i * 40,
+            1400,
+            150,
+        )
+        for i, agent in enumerate(["bull analyst", "bear analyst", "research judge"])
+    ]
+    return Fixture(
+        name="shared_context_small",
+        schema="otel-genai-current",
+        provider_shape="openai",
+        contains=[],
+        evidence={"agents": 3, "shared_tokens": tokens(footer)},
+        notes=(
+            "Agents share a ~300-token footer behind their role text: below any cacheable "
+            "minimum, so reordering would save nothing. Near-miss negative for "
+            "misordered_shared_context."
+        ),
+        calls=calls,
+    )
+
+
+_POLICY = notes("support policy", 1500)
+
+
+def _support_sessions(system_for: dict[str, str], user_prefix: dict[str, str]) -> list[Call]:
+    calls = []
+    for s, account in enumerate(system_for):
+        system = Block("system", system_for[account])
+        for k in range(3):
+            turn = Block("user", f"{user_prefix[account]}Question {k} about the last invoice.")
+            calls.append(
+                Call((system, turn), "gpt-5.6", s * 60 + k * 20, 1900, 160, f"session-{account}")
+            )
+    return calls
+
+
+def fx_cross_session_drift() -> Fixture:
+    accounts = ["acme", "globex", "initech", "umbrella"]
+    system_for = {
+        a: f"You are the support agent for {a}. Today is 2026-01-{15 + i:02d}.\n" + _POLICY
+        for i, a in enumerate(accounts)
+    }
+    return Fixture(
+        name="cross_session_drift",
+        schema="otel-genai-current",
+        provider_shape="openai",
+        contains=["cross_session_drift"],
+        evidence={"sessions": 4, "volatile_line": 0, "shared_tail_tokens": tokens(_POLICY)},
+        notes=(
+            "Four sessions, a minute apart, use one system prompt whose first line holds "
+            "the account name and date. Each session caches its own prompt, but the "
+            "~1,500 identical tokens after that line are never shared across sessions."
+        ),
+        calls=_support_sessions(system_for, {a: "" for a in accounts}),
+    )
+
+
+def fx_cross_session_stable() -> Fixture:
+    accounts = ["acme", "globex", "initech", "umbrella"]
+    system = "You are the support agent.\n" + _POLICY
+    return Fixture(
+        name="cross_session_stable",
+        schema="otel-genai-current",
+        provider_shape="openai",
+        contains=[],
+        evidence={"sessions": 4},
+        notes=(
+            "The same four sessions with the account and date moved into the user "
+            "message. The system prompt is identical everywhere and is read from cache "
+            "across sessions. Negative fixture for cross_session_drift."
+        ),
+        calls=_support_sessions(
+            {a: system for a in accounts},
+            {a: f"Account {a}, 2026-01-{15 + i:02d}. " for i, a in enumerate(accounts)},
+        ),
+    )
+
+
+def fx_cross_session_distinct() -> Fixture:
+    agents = ["billing", "shipping", "returns"]
+    system_for = {
+        a: f"You are the {a} agent.\n" + notes(f"{a} policy", 1500) + "\nAnswer concisely."
+        for a in agents
+    }
+    return Fixture(
+        name="cross_session_distinct",
+        schema="otel-genai-current",
+        provider_shape="openai",
+        contains=[],
+        evidence={"sessions": 3},
+        notes=(
+            "Three sessions run three different agents whose long system prompts share "
+            "only their last line. Different prompts, not one prompt with a changing "
+            "value: near-miss negative for cross_session_drift."
+        ),
+        calls=_support_sessions(system_for, {a: "" for a in agents}),
+    )
+
+
 def build_fixtures() -> list[Fixture]:
     fixtures = [
         fx_prefix_drift(),
@@ -762,6 +939,12 @@ def build_fixtures() -> list[Fixture]:
         fx_healthy_incremental(),
         fx_healthy_small(),
         fx_openai_healthy(),
+        fx_misordered_shared_context(),
+        fx_shared_context_first(),
+        fx_shared_context_small(),
+        fx_cross_session_drift(),
+        fx_cross_session_stable(),
+        fx_cross_session_distinct(),
     ]
 
     # Schema variants of prefix_drift: same session, older/other trace dialects,

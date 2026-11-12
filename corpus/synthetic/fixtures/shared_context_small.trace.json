@@ -1,0 +1,239 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "tokenaudit-fixture-agent"
+            }
+          },
+          {
+            "key": "tokenaudit.fixture",
+            "value": {
+              "stringValue": "shared_context_small"
+            }
+          },
+          {
+            "key": "tokenaudit.synthetic",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tokenaudit-corpus-simulator",
+            "version": "0.1.0"
+          },
+          "spans": [
+            {
+              "traceId": "01c2f4039d3b5d275f701ac27628e696",
+              "spanId": "907d3682f0c2ca72",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467600000000000",
+              "endTimeUnixNano": "1768467601400000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-shared_context_small"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "469"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "150"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the bull analyst.\\n- bull analyst instructions note 1: figures and commentary for line item 1.\\n- bull analyst instructions note 2: figures and commentary for line item 2.\\n- bull analyst instructions note 3: figures and commentary for line item 3.\\n- bull analyst instructions note 4: figures and commentary for line item 4.\\n- bull analyst instructions note 5: figures and commentary for line item 5.\\n- bull analyst instructions note 6: figures and commentary for line item 6.\\n- bull analyst instructions note 7: figures and commentary for line item 7.\\n- bull analyst instructions note 8: figures and commentary for line item 8.\\n\\n- disclaimer note 1: figures and commentary for line item 1.\\n- disclaimer note 2: figures and commentary for line item 2.\\n- disclaimer note 3: figures and commentary for line item 3.\\n- disclaimer note 4: figures and commentary for line item 4.\\n- disclaimer note 5: figures and commentary for line item 5.\\n- disclaimer note 6: figures and commentary for line item 6.\\n- disclaimer note 7: figures and commentary for line item 7.\\n- disclaimer note 8: figures and commentary for line item 8.\\n- disclaimer note 9: figures and commentary for line item 9.\\n- disclaimer note 10: figures and commentary for line item 10.\\n- disclaimer note 11: figures and commentary for line item 11.\\n- disclaimer note 12: figures and commentary for line item 12.\\n- disclaimer note 13: figures and commentary for line item 13.\\n- disclaimer note 14: figures and commentary for line item 14.\\n- disclaimer note 15: figures and commentary for line item 15.\\n- disclaimer note 16: figures and commentary for line item 16.\\n- disclaimer note 17: figures and commentary for line item 17.\\n- disclaimer note 18: figures and commentary for line item 18.\\n- disclaimer note 19: figures and commentary for line item 19.\\n- disclaimer note 20: figures and commentary for line item 20.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 0\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "01c2f4039d3b5d275f701ac27628e696",
+              "spanId": "9502df2aa9dcd1ef",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467640000000000",
+              "endTimeUnixNano": "1768467641400000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-shared_context_small"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "469"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "150"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the bear analyst.\\n- bear analyst instructions note 1: figures and commentary for line item 1.\\n- bear analyst instructions note 2: figures and commentary for line item 2.\\n- bear analyst instructions note 3: figures and commentary for line item 3.\\n- bear analyst instructions note 4: figures and commentary for line item 4.\\n- bear analyst instructions note 5: figures and commentary for line item 5.\\n- bear analyst instructions note 6: figures and commentary for line item 6.\\n- bear analyst instructions note 7: figures and commentary for line item 7.\\n- bear analyst instructions note 8: figures and commentary for line item 8.\\n\\n- disclaimer note 1: figures and commentary for line item 1.\\n- disclaimer note 2: figures and commentary for line item 2.\\n- disclaimer note 3: figures and commentary for line item 3.\\n- disclaimer note 4: figures and commentary for line item 4.\\n- disclaimer note 5: figures and commentary for line item 5.\\n- disclaimer note 6: figures and commentary for line item 6.\\n- disclaimer note 7: figures and commentary for line item 7.\\n- disclaimer note 8: figures and commentary for line item 8.\\n- disclaimer note 9: figures and commentary for line item 9.\\n- disclaimer note 10: figures and commentary for line item 10.\\n- disclaimer note 11: figures and commentary for line item 11.\\n- disclaimer note 12: figures and commentary for line item 12.\\n- disclaimer note 13: figures and commentary for line item 13.\\n- disclaimer note 14: figures and commentary for line item 14.\\n- disclaimer note 15: figures and commentary for line item 15.\\n- disclaimer note 16: figures and commentary for line item 16.\\n- disclaimer note 17: figures and commentary for line item 17.\\n- disclaimer note 18: figures and commentary for line item 18.\\n- disclaimer note 19: figures and commentary for line item 19.\\n- disclaimer note 20: figures and commentary for line item 20.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 1\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "01c2f4039d3b5d275f701ac27628e696",
+              "spanId": "8ff50f6971a122dc",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467680000000000",
+              "endTimeUnixNano": "1768467681400000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-shared_context_small"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "473"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "150"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the research judge.\\n- research judge instructions note 1: figures and commentary for line item 1.\\n- research judge instructions note 2: figures and commentary for line item 2.\\n- research judge instructions note 3: figures and commentary for line item 3.\\n- research judge instructions note 4: figures and commentary for line item 4.\\n- research judge instructions note 5: figures and commentary for line item 5.\\n- research judge instructions note 6: figures and commentary for line item 6.\\n- research judge instructions note 7: figures and commentary for line item 7.\\n- research judge instructions note 8: figures and commentary for line item 8.\\n\\n- disclaimer note 1: figures and commentary for line item 1.\\n- disclaimer note 2: figures and commentary for line item 2.\\n- disclaimer note 3: figures and commentary for line item 3.\\n- disclaimer note 4: figures and commentary for line item 4.\\n- disclaimer note 5: figures and commentary for line item 5.\\n- disclaimer note 6: figures and commentary for line item 6.\\n- disclaimer note 7: figures and commentary for line item 7.\\n- disclaimer note 8: figures and commentary for line item 8.\\n- disclaimer note 9: figures and commentary for line item 9.\\n- disclaimer note 10: figures and commentary for line item 10.\\n- disclaimer note 11: figures and commentary for line item 11.\\n- disclaimer note 12: figures and commentary for line item 12.\\n- disclaimer note 13: figures and commentary for line item 13.\\n- disclaimer note 14: figures and commentary for line item 14.\\n- disclaimer note 15: figures and commentary for line item 15.\\n- disclaimer note 16: figures and commentary for line item 16.\\n- disclaimer note 17: figures and commentary for line item 17.\\n- disclaimer note 18: figures and commentary for line item 18.\\n- disclaimer note 19: figures and commentary for line item 19.\\n- disclaimer note 20: figures and commentary for line item 20.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 2\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

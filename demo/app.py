@@ -23,7 +23,7 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException, Request, Response, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse
 
-from tokenaudit.detect import diagnose
+from tokenaudit.detect import diagnose, diagnose_across
 from tokenaudit.ingest import UnknownTraceFormatError, ingest_text
 from tokenaudit.report import render_html
 from tokenaudit.rulebook import load_rulebook
@@ -41,11 +41,10 @@ app = FastAPI(title="tokenaudit demo", docs_url=None, redoc_url=None, openapi_ur
 def _diagnose_to_html(named_texts: list[tuple[str, str]]) -> str:
     """Ingest + diagnose in memory and render the self-contained report."""
     rulebook = load_rulebook()
-    per_result = []
-    for name, text in named_texts:
-        result = ingest_text(text, name)
-        per_result.append((result, diagnose(result)))
-    return render_html(per_result, rulebook)
+    results = [ingest_text(text, name) for name, text in named_texts]
+    per_result = [(result, diagnose(result)) for result in results]
+    across = diagnose_across(results) if sum(len(r.sessions) for r in results) > 1 else None
+    return render_html(per_result, rulebook, across)
 
 
 def _prerender_samples() -> dict[str, str]:

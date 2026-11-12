@@ -198,3 +198,15 @@ def test_placeholder_outputs_are_flagged(tmp_path: Path) -> None:
     requests = ingest_path(trace).requests
     assert len(requests) == 6
     assert all(FLAG_PLACEHOLDER_OUTPUT in r.quality for r in requests)
+
+
+def test_ingest_output_never_prints_line_digests(capsys: pytest.CaptureFixture[str]) -> None:
+    from tokenaudit.__main__ import main
+
+    fixture = FIXTURES / "misordered_shared_context.trace.json"
+    result = ingest_path(fixture)
+    block = result.requests[0].blocks[0]  # type: ignore[index]
+    assert block.segments and sum(s.chars for s in block.segments) == block.chars
+    assert main(["ingest", str(fixture)]) == 0
+    printed = capsys.readouterr().out
+    assert '"sha256"' in printed and "segments" not in printed
