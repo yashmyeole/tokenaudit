@@ -16,7 +16,9 @@ This experiment measures that, and what one line changes.
   `AnthropicClient`. Nothing else changes: no prompt is reordered.
 
 Six runs on `claude-sonnet-5` (deep and quick), alternating arms across three
-ticker/date pairs, ten minutes apart so no run reads another's cache.
+ticker/date pairs, two minutes apart. Baseline requests never touch the cache,
+and consecutive patched runs always have a baseline run between them, so no
+patched run can read another's 5-minute cache entries.
 
 ## Prediction, written before the runs
 
@@ -46,10 +48,11 @@ was involved:
 ## Run it
 
     export ANTHROPIC_API_KEY=...   # stays in your shell
-    bash experiments/tradingagents-claude/run.sh
+    caffeinate -i bash experiments/tradingagents-claude/run.sh
 
-It reuses the capture virtualenv under `corpus/captured/.work`. Wall time is
-roughly an hour and a half, mostly cooldowns. The OpenAI runs used 82k-96k
+`caffeinate -i` keeps a Mac awake; drop it elsewhere. The script reuses the
+capture virtualenv under `corpus/captured/.work`. Wall time is roughly 30-60
+minutes, depending on how fast the model answers. The OpenAI runs used 82k-96k
 input and ~14k output tokens each, so expect a few dollars in total at
 Sonnet 5 prices; check Anthropic's current price list before starting. Set
 `MODEL` to try another Claude model; Haiku 4.5 needs 4,096 tokens before

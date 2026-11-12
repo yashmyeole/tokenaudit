@@ -2,8 +2,9 @@
 # TradingAgents on Claude, before and after turning on prompt caching.
 # See README.md for the design and what to expect.
 #
-# 6 runs, alternating arms, COOLDOWN seconds apart so one run's cache
-# entries (5-minute lifetime) are gone before the next starts:
+# 6 runs, alternating arms, COOLDOWN seconds apart. Baseline requests never
+# read or write the cache, and every pair of patched runs has a baseline run
+# and two cooldowns between them, longer than the 5-minute cache lifetime:
 #
 #   1 baseline NVDA:2026-08-14   2 patched NVDA:2026-08-14
 #   3 baseline AAPL:2026-08-14   4 patched AAPL:2026-08-14
@@ -16,7 +17,7 @@
 #   export ANTHROPIC_API_KEY=...   # never committed, never leaves this shell
 #   bash experiments/tradingagents-claude/run.sh
 #
-# Optional env: MODEL (default claude-sonnet-5), COOLDOWN (default 600)
+# Optional env: MODEL (default claude-sonnet-5), COOLDOWN (default 120)
 
 set -euo pipefail
 
@@ -28,7 +29,7 @@ CLONE="$WORK/TradingAgents"
 RUNS="$HERE/runs"
 BASE_COMMIT="9fa1196fffbcfd9de5146d2dd2869df84ab99838"
 MODEL="${MODEL:-claude-sonnet-5}"
-COOLDOWN="${COOLDOWN:-600}"
+COOLDOWN="${COOLDOWN:-120}"
 
 : "${ANTHROPIC_API_KEY:?Set ANTHROPIC_API_KEY in your environment first}"
 
