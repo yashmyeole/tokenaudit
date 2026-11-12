@@ -121,8 +121,21 @@ def _session_html(session: Session, diagnosis: SessionDiagnosis, rulebook: Ruleb
     )
 
 
+def _across_html(diagnosis: SessionDiagnosis) -> str:
+    findings_html = "".join(_finding_html(f) for f in diagnosis.findings) or (
+        "<p class='muted'>No findings.</p>"
+    )
+    fired = {f.detector_id for f in diagnosis.findings}
+    bits = [f"checked, clean: {d}" for d in diagnosis.checked if d not in fired]
+    bits += [f"not checked — {d}: {r}" for d, r in diagnosis.abstained.items()]
+    items = "".join(f"<li>{_e(bit)}</li>" for bit in bits)
+    return f"<h2>Across sessions</h2>{findings_html}<ul class='muted'>{items}</ul>"
+
+
 def render_html(
-    results: list[tuple[IngestResult, list[SessionDiagnosis]]], rulebook: Rulebook
+    results: list[tuple[IngestResult, list[SessionDiagnosis]]],
+    rulebook: Rulebook,
+    across: SessionDiagnosis | None = None,
 ) -> str:
     sections = []
     for result, diagnoses in results:
@@ -133,6 +146,8 @@ def render_html(
             if d.session_id in sessions
         )
         sections.append(f"<h2 class='muted'><code>{_e(result.source)}</code></h2>{body}")
+    if across is not None:
+        sections.append(_across_html(across))
     try:
         tool_version = version("tokenaudit")
     except Exception:  # pragma: no cover - not installed

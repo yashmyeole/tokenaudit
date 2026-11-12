@@ -1,0 +1,37 @@
+{
+  "fixture": "cross_session_drift",
+  "schema": "otel-genai-current",
+  "provider_shape": "openai",
+  "models": [
+    "gpt-5.6"
+  ],
+  "content_captured": true,
+  "contains": [
+    "cross_session_drift"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "lookback_overflow",
+    "misordered_shared_context",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "sessions": 4,
+    "volatile_line": 0,
+    "shared_tail_tokens": 1502
+  },
+  "notes": "Four sessions, a minute apart, use one system prompt whose first line holds the account name and date. Each session caches its own prompt, but the ~1,500 identical tokens after that line are never shared across sessions.",
+  "totals": {
+    "calls": 12,
+    "input_tokens": 18303,
+    "cache_read_tokens": 12138,
+    "cache_creation_tokens": 0,
+    "output_tokens": 1920
+  }
+}

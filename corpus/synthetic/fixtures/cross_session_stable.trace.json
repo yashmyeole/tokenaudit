@@ -1,0 +1,986 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "tokenaudit-fixture-agent"
+            }
+          },
+          {
+            "key": "tokenaudit.fixture",
+            "value": {
+              "stringValue": "cross_session_stable"
+            }
+          },
+          {
+            "key": "tokenaudit.synthetic",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tokenaudit-corpus-simulator",
+            "version": "0.1.0"
+          },
+          "spans": [
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "b5c16f03f6e26212",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467600000000000",
+              "endTimeUnixNano": "1768467601900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-acme"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1524"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account acme, 2026-01-15. Question 0 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 0\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "0fcb5b2fbfe1b082",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467620000000000",
+              "endTimeUnixNano": "1768467621900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-acme"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1524"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1509"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account acme, 2026-01-15. Question 1 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 1\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "9b87ac3d983d624d",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467640000000000",
+              "endTimeUnixNano": "1768467641900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-acme"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1524"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1509"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account acme, 2026-01-15. Question 2 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 2\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "fc766e129e4feebb",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467660000000000",
+              "endTimeUnixNano": "1768467661900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-globex"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1524"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1509"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account globex, 2026-01-16. Question 0 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 3\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "bc7fc41ae03f1e0e",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467680000000000",
+              "endTimeUnixNano": "1768467681900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-globex"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1524"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1509"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account globex, 2026-01-16. Question 1 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 4\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "831b72f72747b860",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467700000000000",
+              "endTimeUnixNano": "1768467701900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-globex"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1524"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1509"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account globex, 2026-01-16. Question 2 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 5\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "6c9c25dafad4e9e1",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467720000000000",
+              "endTimeUnixNano": "1768467721900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-initech"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1524"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1509"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account initech, 2026-01-17. Question 0 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 6\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "2e8d26e93aa9cd4b",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467740000000000",
+              "endTimeUnixNano": "1768467741900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-initech"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1524"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1509"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account initech, 2026-01-17. Question 1 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 7\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "07d8bd9e4e70887c",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467760000000000",
+              "endTimeUnixNano": "1768467761900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-initech"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1524"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1509"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account initech, 2026-01-17. Question 2 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 8\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "17ffe33eb928baa0",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467780000000000",
+              "endTimeUnixNano": "1768467781900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-umbrella"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1525"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1509"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account umbrella, 2026-01-18. Question 0 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 9\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "7d2764de3bbc50e4",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467800000000000",
+              "endTimeUnixNano": "1768467801900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-umbrella"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1525"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1509"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account umbrella, 2026-01-18. Question 1 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 10\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "5f544eceaaf2b33175dba33c4c0e3a36",
+              "spanId": "ab0e2ac0f7a64ebe",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467820000000000",
+              "endTimeUnixNano": "1768467821900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-umbrella"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1525"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1509"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the support agent.\\n- support policy note 1: figures and commentary for line item 1.\\n- support policy note 2: figures and commentary for line item 2.\\n- support policy note 3: figures and commentary for line item 3.\\n- support policy note 4: figures and commentary for line item 4.\\n- support policy note 5: figures and commentary for line item 5.\\n- support policy note 6: figures and commentary for line item 6.\\n- support policy note 7: figures and commentary for line item 7.\\n- support policy note 8: figures and commentary for line item 8.\\n- support policy note 9: figures and commentary for line item 9.\\n- support policy note 10: figures and commentary for line item 10.\\n- support policy note 11: figures and commentary for line item 11.\\n- support policy note 12: figures and commentary for line item 12.\\n- support policy note 13: figures and commentary for line item 13.\\n- support policy note 14: figures and commentary for line item 14.\\n- support policy note 15: figures and commentary for line item 15.\\n- support policy note 16: figures and commentary for line item 16.\\n- support policy note 17: figures and commentary for line item 17.\\n- support policy note 18: figures and commentary for line item 18.\\n- support policy note 19: figures and commentary for line item 19.\\n- support policy note 20: figures and commentary for line item 20.\\n- support policy note 21: figures and commentary for line item 21.\\n- support policy note 22: figures and commentary for line item 22.\\n- support policy note 23: figures and commentary for line item 23.\\n- support policy note 24: figures and commentary for line item 24.\\n- support policy note 25: figures and commentary for line item 25.\\n- support policy note 26: figures and commentary for line item 26.\\n- support policy note 27: figures and commentary for line item 27.\\n- support policy note 28: figures and commentary for line item 28.\\n- support policy note 29: figures and commentary for line item 29.\\n- support policy note 30: figures and commentary for line item 30.\\n- support policy note 31: figures and commentary for line item 31.\\n- support policy note 32: figures and commentary for line item 32.\\n- support policy note 33: figures and commentary for line item 33.\\n- support policy note 34: figures and commentary for line item 34.\\n- support policy note 35: figures and commentary for line item 35.\\n- support policy note 36: figures and commentary for line item 36.\\n- support policy note 37: figures and commentary for line item 37.\\n- support policy note 38: figures and commentary for line item 38.\\n- support policy note 39: figures and commentary for line item 39.\\n- support policy note 40: figures and commentary for line item 40.\\n- support policy note 41: figures and commentary for line item 41.\\n- support policy note 42: figures and commentary for line item 42.\\n- support policy note 43: figures and commentary for line item 43.\\n- support policy note 44: figures and commentary for line item 44.\\n- support policy note 45: figures and commentary for line item 45.\\n- support policy note 46: figures and commentary for line item 46.\\n- support policy note 47: figures and commentary for line item 47.\\n- support policy note 48: figures and commentary for line item 48.\\n- support policy note 49: figures and commentary for line item 49.\\n- support policy note 50: figures and commentary for line item 50.\\n- support policy note 51: figures and commentary for line item 51.\\n- support policy note 52: figures and commentary for line item 52.\\n- support policy note 53: figures and commentary for line item 53.\\n- support policy note 54: figures and commentary for line item 54.\\n- support policy note 55: figures and commentary for line item 55.\\n- support policy note 56: figures and commentary for line item 56.\\n- support policy note 57: figures and commentary for line item 57.\\n- support policy note 58: figures and commentary for line item 58.\\n- support policy note 59: figures and commentary for line item 59.\\n- support policy note 60: figures and commentary for line item 60.\\n- support policy note 61: figures and commentary for line item 61.\\n- support policy note 62: figures and commentary for line item 62.\\n- support policy note 63: figures and commentary for line item 63.\\n- support policy note 64: figures and commentary for line item 64.\\n- support policy note 65: figures and commentary for line item 65.\\n- support policy note 66: figures and commentary for line item 66.\\n- support policy note 67: figures and commentary for line item 67.\\n- support policy note 68: figures and commentary for line item 68.\\n- support policy note 69: figures and commentary for line item 69.\\n- support policy note 70: figures and commentary for line item 70.\\n- support policy note 71: figures and commentary for line item 71.\\n- support policy note 72: figures and commentary for line item 72.\\n- support policy note 73: figures and commentary for line item 73.\\n- support policy note 74: figures and commentary for line item 74.\\n- support policy note 75: figures and commentary for line item 75.\\n- support policy note 76: figures and commentary for line item 76.\\n- support policy note 77: figures and commentary for line item 77.\\n- support policy note 78: figures and commentary for line item 78.\\n- support policy note 79: figures and commentary for line item 79.\\n- support policy note 80: figures and commentary for line item 80.\\n- support policy note 81: figures and commentary for line item 81.\\n- support policy note 82: figures and commentary for line item 82.\\n- support policy note 83: figures and commentary for line item 83.\\n- support policy note 84: figures and commentary for line item 84.\\n- support policy note 85: figures and commentary for line item 85.\\n- support policy note 86: figures and commentary for line item 86.\\n- support policy note 87: figures and commentary for line item 87.\\n- support policy note 88: figures and commentary for line item 88.\\n- support policy note 89: figures and commentary for line item 89.\\n- support policy note 90: figures and commentary for line item 90.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Account umbrella, 2026-01-18. Question 2 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 11\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

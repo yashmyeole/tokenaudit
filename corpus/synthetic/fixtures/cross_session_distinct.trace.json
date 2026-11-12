@@ -1,0 +1,749 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "tokenaudit-fixture-agent"
+            }
+          },
+          {
+            "key": "tokenaudit.fixture",
+            "value": {
+              "stringValue": "cross_session_distinct"
+            }
+          },
+          {
+            "key": "tokenaudit.synthetic",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tokenaudit-corpus-simulator",
+            "version": "0.1.0"
+          },
+          "spans": [
+            {
+              "traceId": "f343d50ab261fe76d9e9ad835d0899e5",
+              "spanId": "a83b91416330a9a3",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467600000000000",
+              "endTimeUnixNano": "1768467601900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-billing"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1522"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the billing agent.\\n- billing policy note 1: figures and commentary for line item 1.\\n- billing policy note 2: figures and commentary for line item 2.\\n- billing policy note 3: figures and commentary for line item 3.\\n- billing policy note 4: figures and commentary for line item 4.\\n- billing policy note 5: figures and commentary for line item 5.\\n- billing policy note 6: figures and commentary for line item 6.\\n- billing policy note 7: figures and commentary for line item 7.\\n- billing policy note 8: figures and commentary for line item 8.\\n- billing policy note 9: figures and commentary for line item 9.\\n- billing policy note 10: figures and commentary for line item 10.\\n- billing policy note 11: figures and commentary for line item 11.\\n- billing policy note 12: figures and commentary for line item 12.\\n- billing policy note 13: figures and commentary for line item 13.\\n- billing policy note 14: figures and commentary for line item 14.\\n- billing policy note 15: figures and commentary for line item 15.\\n- billing policy note 16: figures and commentary for line item 16.\\n- billing policy note 17: figures and commentary for line item 17.\\n- billing policy note 18: figures and commentary for line item 18.\\n- billing policy note 19: figures and commentary for line item 19.\\n- billing policy note 20: figures and commentary for line item 20.\\n- billing policy note 21: figures and commentary for line item 21.\\n- billing policy note 22: figures and commentary for line item 22.\\n- billing policy note 23: figures and commentary for line item 23.\\n- billing policy note 24: figures and commentary for line item 24.\\n- billing policy note 25: figures and commentary for line item 25.\\n- billing policy note 26: figures and commentary for line item 26.\\n- billing policy note 27: figures and commentary for line item 27.\\n- billing policy note 28: figures and commentary for line item 28.\\n- billing policy note 29: figures and commentary for line item 29.\\n- billing policy note 30: figures and commentary for line item 30.\\n- billing policy note 31: figures and commentary for line item 31.\\n- billing policy note 32: figures and commentary for line item 32.\\n- billing policy note 33: figures and commentary for line item 33.\\n- billing policy note 34: figures and commentary for line item 34.\\n- billing policy note 35: figures and commentary for line item 35.\\n- billing policy note 36: figures and commentary for line item 36.\\n- billing policy note 37: figures and commentary for line item 37.\\n- billing policy note 38: figures and commentary for line item 38.\\n- billing policy note 39: figures and commentary for line item 39.\\n- billing policy note 40: figures and commentary for line item 40.\\n- billing policy note 41: figures and commentary for line item 41.\\n- billing policy note 42: figures and commentary for line item 42.\\n- billing policy note 43: figures and commentary for line item 43.\\n- billing policy note 44: figures and commentary for line item 44.\\n- billing policy note 45: figures and commentary for line item 45.\\n- billing policy note 46: figures and commentary for line item 46.\\n- billing policy note 47: figures and commentary for line item 47.\\n- billing policy note 48: figures and commentary for line item 48.\\n- billing policy note 49: figures and commentary for line item 49.\\n- billing policy note 50: figures and commentary for line item 50.\\n- billing policy note 51: figures and commentary for line item 51.\\n- billing policy note 52: figures and commentary for line item 52.\\n- billing policy note 53: figures and commentary for line item 53.\\n- billing policy note 54: figures and commentary for line item 54.\\n- billing policy note 55: figures and commentary for line item 55.\\n- billing policy note 56: figures and commentary for line item 56.\\n- billing policy note 57: figures and commentary for line item 57.\\n- billing policy note 58: figures and commentary for line item 58.\\n- billing policy note 59: figures and commentary for line item 59.\\n- billing policy note 60: figures and commentary for line item 60.\\n- billing policy note 61: figures and commentary for line item 61.\\n- billing policy note 62: figures and commentary for line item 62.\\n- billing policy note 63: figures and commentary for line item 63.\\n- billing policy note 64: figures and commentary for line item 64.\\n- billing policy note 65: figures and commentary for line item 65.\\n- billing policy note 66: figures and commentary for line item 66.\\n- billing policy note 67: figures and commentary for line item 67.\\n- billing policy note 68: figures and commentary for line item 68.\\n- billing policy note 69: figures and commentary for line item 69.\\n- billing policy note 70: figures and commentary for line item 70.\\n- billing policy note 71: figures and commentary for line item 71.\\n- billing policy note 72: figures and commentary for line item 72.\\n- billing policy note 73: figures and commentary for line item 73.\\n- billing policy note 74: figures and commentary for line item 74.\\n- billing policy note 75: figures and commentary for line item 75.\\n- billing policy note 76: figures and commentary for line item 76.\\n- billing policy note 77: figures and commentary for line item 77.\\n- billing policy note 78: figures and commentary for line item 78.\\n- billing policy note 79: figures and commentary for line item 79.\\n- billing policy note 80: figures and commentary for line item 80.\\n- billing policy note 81: figures and commentary for line item 81.\\n- billing policy note 82: figures and commentary for line item 82.\\n- billing policy note 83: figures and commentary for line item 83.\\n- billing policy note 84: figures and commentary for line item 84.\\n- billing policy note 85: figures and commentary for line item 85.\\n- billing policy note 86: figures and commentary for line item 86.\\n- billing policy note 87: figures and commentary for line item 87.\\n- billing policy note 88: figures and commentary for line item 88.\\n- billing policy note 89: figures and commentary for line item 89.\\n- billing policy note 90: figures and commentary for line item 90.\\nAnswer concisely.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Question 0 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 0\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "f343d50ab261fe76d9e9ad835d0899e5",
+              "spanId": "fafed36b670d2997",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467620000000000",
+              "endTimeUnixNano": "1768467621900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-billing"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1522"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1514"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the billing agent.\\n- billing policy note 1: figures and commentary for line item 1.\\n- billing policy note 2: figures and commentary for line item 2.\\n- billing policy note 3: figures and commentary for line item 3.\\n- billing policy note 4: figures and commentary for line item 4.\\n- billing policy note 5: figures and commentary for line item 5.\\n- billing policy note 6: figures and commentary for line item 6.\\n- billing policy note 7: figures and commentary for line item 7.\\n- billing policy note 8: figures and commentary for line item 8.\\n- billing policy note 9: figures and commentary for line item 9.\\n- billing policy note 10: figures and commentary for line item 10.\\n- billing policy note 11: figures and commentary for line item 11.\\n- billing policy note 12: figures and commentary for line item 12.\\n- billing policy note 13: figures and commentary for line item 13.\\n- billing policy note 14: figures and commentary for line item 14.\\n- billing policy note 15: figures and commentary for line item 15.\\n- billing policy note 16: figures and commentary for line item 16.\\n- billing policy note 17: figures and commentary for line item 17.\\n- billing policy note 18: figures and commentary for line item 18.\\n- billing policy note 19: figures and commentary for line item 19.\\n- billing policy note 20: figures and commentary for line item 20.\\n- billing policy note 21: figures and commentary for line item 21.\\n- billing policy note 22: figures and commentary for line item 22.\\n- billing policy note 23: figures and commentary for line item 23.\\n- billing policy note 24: figures and commentary for line item 24.\\n- billing policy note 25: figures and commentary for line item 25.\\n- billing policy note 26: figures and commentary for line item 26.\\n- billing policy note 27: figures and commentary for line item 27.\\n- billing policy note 28: figures and commentary for line item 28.\\n- billing policy note 29: figures and commentary for line item 29.\\n- billing policy note 30: figures and commentary for line item 30.\\n- billing policy note 31: figures and commentary for line item 31.\\n- billing policy note 32: figures and commentary for line item 32.\\n- billing policy note 33: figures and commentary for line item 33.\\n- billing policy note 34: figures and commentary for line item 34.\\n- billing policy note 35: figures and commentary for line item 35.\\n- billing policy note 36: figures and commentary for line item 36.\\n- billing policy note 37: figures and commentary for line item 37.\\n- billing policy note 38: figures and commentary for line item 38.\\n- billing policy note 39: figures and commentary for line item 39.\\n- billing policy note 40: figures and commentary for line item 40.\\n- billing policy note 41: figures and commentary for line item 41.\\n- billing policy note 42: figures and commentary for line item 42.\\n- billing policy note 43: figures and commentary for line item 43.\\n- billing policy note 44: figures and commentary for line item 44.\\n- billing policy note 45: figures and commentary for line item 45.\\n- billing policy note 46: figures and commentary for line item 46.\\n- billing policy note 47: figures and commentary for line item 47.\\n- billing policy note 48: figures and commentary for line item 48.\\n- billing policy note 49: figures and commentary for line item 49.\\n- billing policy note 50: figures and commentary for line item 50.\\n- billing policy note 51: figures and commentary for line item 51.\\n- billing policy note 52: figures and commentary for line item 52.\\n- billing policy note 53: figures and commentary for line item 53.\\n- billing policy note 54: figures and commentary for line item 54.\\n- billing policy note 55: figures and commentary for line item 55.\\n- billing policy note 56: figures and commentary for line item 56.\\n- billing policy note 57: figures and commentary for line item 57.\\n- billing policy note 58: figures and commentary for line item 58.\\n- billing policy note 59: figures and commentary for line item 59.\\n- billing policy note 60: figures and commentary for line item 60.\\n- billing policy note 61: figures and commentary for line item 61.\\n- billing policy note 62: figures and commentary for line item 62.\\n- billing policy note 63: figures and commentary for line item 63.\\n- billing policy note 64: figures and commentary for line item 64.\\n- billing policy note 65: figures and commentary for line item 65.\\n- billing policy note 66: figures and commentary for line item 66.\\n- billing policy note 67: figures and commentary for line item 67.\\n- billing policy note 68: figures and commentary for line item 68.\\n- billing policy note 69: figures and commentary for line item 69.\\n- billing policy note 70: figures and commentary for line item 70.\\n- billing policy note 71: figures and commentary for line item 71.\\n- billing policy note 72: figures and commentary for line item 72.\\n- billing policy note 73: figures and commentary for line item 73.\\n- billing policy note 74: figures and commentary for line item 74.\\n- billing policy note 75: figures and commentary for line item 75.\\n- billing policy note 76: figures and commentary for line item 76.\\n- billing policy note 77: figures and commentary for line item 77.\\n- billing policy note 78: figures and commentary for line item 78.\\n- billing policy note 79: figures and commentary for line item 79.\\n- billing policy note 80: figures and commentary for line item 80.\\n- billing policy note 81: figures and commentary for line item 81.\\n- billing policy note 82: figures and commentary for line item 82.\\n- billing policy note 83: figures and commentary for line item 83.\\n- billing policy note 84: figures and commentary for line item 84.\\n- billing policy note 85: figures and commentary for line item 85.\\n- billing policy note 86: figures and commentary for line item 86.\\n- billing policy note 87: figures and commentary for line item 87.\\n- billing policy note 88: figures and commentary for line item 88.\\n- billing policy note 89: figures and commentary for line item 89.\\n- billing policy note 90: figures and commentary for line item 90.\\nAnswer concisely.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Question 1 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 1\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "f343d50ab261fe76d9e9ad835d0899e5",
+              "spanId": "b07addb9b73fa135",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467640000000000",
+              "endTimeUnixNano": "1768467641900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-billing"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1522"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1514"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the billing agent.\\n- billing policy note 1: figures and commentary for line item 1.\\n- billing policy note 2: figures and commentary for line item 2.\\n- billing policy note 3: figures and commentary for line item 3.\\n- billing policy note 4: figures and commentary for line item 4.\\n- billing policy note 5: figures and commentary for line item 5.\\n- billing policy note 6: figures and commentary for line item 6.\\n- billing policy note 7: figures and commentary for line item 7.\\n- billing policy note 8: figures and commentary for line item 8.\\n- billing policy note 9: figures and commentary for line item 9.\\n- billing policy note 10: figures and commentary for line item 10.\\n- billing policy note 11: figures and commentary for line item 11.\\n- billing policy note 12: figures and commentary for line item 12.\\n- billing policy note 13: figures and commentary for line item 13.\\n- billing policy note 14: figures and commentary for line item 14.\\n- billing policy note 15: figures and commentary for line item 15.\\n- billing policy note 16: figures and commentary for line item 16.\\n- billing policy note 17: figures and commentary for line item 17.\\n- billing policy note 18: figures and commentary for line item 18.\\n- billing policy note 19: figures and commentary for line item 19.\\n- billing policy note 20: figures and commentary for line item 20.\\n- billing policy note 21: figures and commentary for line item 21.\\n- billing policy note 22: figures and commentary for line item 22.\\n- billing policy note 23: figures and commentary for line item 23.\\n- billing policy note 24: figures and commentary for line item 24.\\n- billing policy note 25: figures and commentary for line item 25.\\n- billing policy note 26: figures and commentary for line item 26.\\n- billing policy note 27: figures and commentary for line item 27.\\n- billing policy note 28: figures and commentary for line item 28.\\n- billing policy note 29: figures and commentary for line item 29.\\n- billing policy note 30: figures and commentary for line item 30.\\n- billing policy note 31: figures and commentary for line item 31.\\n- billing policy note 32: figures and commentary for line item 32.\\n- billing policy note 33: figures and commentary for line item 33.\\n- billing policy note 34: figures and commentary for line item 34.\\n- billing policy note 35: figures and commentary for line item 35.\\n- billing policy note 36: figures and commentary for line item 36.\\n- billing policy note 37: figures and commentary for line item 37.\\n- billing policy note 38: figures and commentary for line item 38.\\n- billing policy note 39: figures and commentary for line item 39.\\n- billing policy note 40: figures and commentary for line item 40.\\n- billing policy note 41: figures and commentary for line item 41.\\n- billing policy note 42: figures and commentary for line item 42.\\n- billing policy note 43: figures and commentary for line item 43.\\n- billing policy note 44: figures and commentary for line item 44.\\n- billing policy note 45: figures and commentary for line item 45.\\n- billing policy note 46: figures and commentary for line item 46.\\n- billing policy note 47: figures and commentary for line item 47.\\n- billing policy note 48: figures and commentary for line item 48.\\n- billing policy note 49: figures and commentary for line item 49.\\n- billing policy note 50: figures and commentary for line item 50.\\n- billing policy note 51: figures and commentary for line item 51.\\n- billing policy note 52: figures and commentary for line item 52.\\n- billing policy note 53: figures and commentary for line item 53.\\n- billing policy note 54: figures and commentary for line item 54.\\n- billing policy note 55: figures and commentary for line item 55.\\n- billing policy note 56: figures and commentary for line item 56.\\n- billing policy note 57: figures and commentary for line item 57.\\n- billing policy note 58: figures and commentary for line item 58.\\n- billing policy note 59: figures and commentary for line item 59.\\n- billing policy note 60: figures and commentary for line item 60.\\n- billing policy note 61: figures and commentary for line item 61.\\n- billing policy note 62: figures and commentary for line item 62.\\n- billing policy note 63: figures and commentary for line item 63.\\n- billing policy note 64: figures and commentary for line item 64.\\n- billing policy note 65: figures and commentary for line item 65.\\n- billing policy note 66: figures and commentary for line item 66.\\n- billing policy note 67: figures and commentary for line item 67.\\n- billing policy note 68: figures and commentary for line item 68.\\n- billing policy note 69: figures and commentary for line item 69.\\n- billing policy note 70: figures and commentary for line item 70.\\n- billing policy note 71: figures and commentary for line item 71.\\n- billing policy note 72: figures and commentary for line item 72.\\n- billing policy note 73: figures and commentary for line item 73.\\n- billing policy note 74: figures and commentary for line item 74.\\n- billing policy note 75: figures and commentary for line item 75.\\n- billing policy note 76: figures and commentary for line item 76.\\n- billing policy note 77: figures and commentary for line item 77.\\n- billing policy note 78: figures and commentary for line item 78.\\n- billing policy note 79: figures and commentary for line item 79.\\n- billing policy note 80: figures and commentary for line item 80.\\n- billing policy note 81: figures and commentary for line item 81.\\n- billing policy note 82: figures and commentary for line item 82.\\n- billing policy note 83: figures and commentary for line item 83.\\n- billing policy note 84: figures and commentary for line item 84.\\n- billing policy note 85: figures and commentary for line item 85.\\n- billing policy note 86: figures and commentary for line item 86.\\n- billing policy note 87: figures and commentary for line item 87.\\n- billing policy note 88: figures and commentary for line item 88.\\n- billing policy note 89: figures and commentary for line item 89.\\n- billing policy note 90: figures and commentary for line item 90.\\nAnswer concisely.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Question 2 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 2\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "f343d50ab261fe76d9e9ad835d0899e5",
+              "spanId": "16ce48d8e3917e5f",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467660000000000",
+              "endTimeUnixNano": "1768467661900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-shipping"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1527"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the shipping agent.\\n- shipping policy note 1: figures and commentary for line item 1.\\n- shipping policy note 2: figures and commentary for line item 2.\\n- shipping policy note 3: figures and commentary for line item 3.\\n- shipping policy note 4: figures and commentary for line item 4.\\n- shipping policy note 5: figures and commentary for line item 5.\\n- shipping policy note 6: figures and commentary for line item 6.\\n- shipping policy note 7: figures and commentary for line item 7.\\n- shipping policy note 8: figures and commentary for line item 8.\\n- shipping policy note 9: figures and commentary for line item 9.\\n- shipping policy note 10: figures and commentary for line item 10.\\n- shipping policy note 11: figures and commentary for line item 11.\\n- shipping policy note 12: figures and commentary for line item 12.\\n- shipping policy note 13: figures and commentary for line item 13.\\n- shipping policy note 14: figures and commentary for line item 14.\\n- shipping policy note 15: figures and commentary for line item 15.\\n- shipping policy note 16: figures and commentary for line item 16.\\n- shipping policy note 17: figures and commentary for line item 17.\\n- shipping policy note 18: figures and commentary for line item 18.\\n- shipping policy note 19: figures and commentary for line item 19.\\n- shipping policy note 20: figures and commentary for line item 20.\\n- shipping policy note 21: figures and commentary for line item 21.\\n- shipping policy note 22: figures and commentary for line item 22.\\n- shipping policy note 23: figures and commentary for line item 23.\\n- shipping policy note 24: figures and commentary for line item 24.\\n- shipping policy note 25: figures and commentary for line item 25.\\n- shipping policy note 26: figures and commentary for line item 26.\\n- shipping policy note 27: figures and commentary for line item 27.\\n- shipping policy note 28: figures and commentary for line item 28.\\n- shipping policy note 29: figures and commentary for line item 29.\\n- shipping policy note 30: figures and commentary for line item 30.\\n- shipping policy note 31: figures and commentary for line item 31.\\n- shipping policy note 32: figures and commentary for line item 32.\\n- shipping policy note 33: figures and commentary for line item 33.\\n- shipping policy note 34: figures and commentary for line item 34.\\n- shipping policy note 35: figures and commentary for line item 35.\\n- shipping policy note 36: figures and commentary for line item 36.\\n- shipping policy note 37: figures and commentary for line item 37.\\n- shipping policy note 38: figures and commentary for line item 38.\\n- shipping policy note 39: figures and commentary for line item 39.\\n- shipping policy note 40: figures and commentary for line item 40.\\n- shipping policy note 41: figures and commentary for line item 41.\\n- shipping policy note 42: figures and commentary for line item 42.\\n- shipping policy note 43: figures and commentary for line item 43.\\n- shipping policy note 44: figures and commentary for line item 44.\\n- shipping policy note 45: figures and commentary for line item 45.\\n- shipping policy note 46: figures and commentary for line item 46.\\n- shipping policy note 47: figures and commentary for line item 47.\\n- shipping policy note 48: figures and commentary for line item 48.\\n- shipping policy note 49: figures and commentary for line item 49.\\n- shipping policy note 50: figures and commentary for line item 50.\\n- shipping policy note 51: figures and commentary for line item 51.\\n- shipping policy note 52: figures and commentary for line item 52.\\n- shipping policy note 53: figures and commentary for line item 53.\\n- shipping policy note 54: figures and commentary for line item 54.\\n- shipping policy note 55: figures and commentary for line item 55.\\n- shipping policy note 56: figures and commentary for line item 56.\\n- shipping policy note 57: figures and commentary for line item 57.\\n- shipping policy note 58: figures and commentary for line item 58.\\n- shipping policy note 59: figures and commentary for line item 59.\\n- shipping policy note 60: figures and commentary for line item 60.\\n- shipping policy note 61: figures and commentary for line item 61.\\n- shipping policy note 62: figures and commentary for line item 62.\\n- shipping policy note 63: figures and commentary for line item 63.\\n- shipping policy note 64: figures and commentary for line item 64.\\n- shipping policy note 65: figures and commentary for line item 65.\\n- shipping policy note 66: figures and commentary for line item 66.\\n- shipping policy note 67: figures and commentary for line item 67.\\n- shipping policy note 68: figures and commentary for line item 68.\\n- shipping policy note 69: figures and commentary for line item 69.\\n- shipping policy note 70: figures and commentary for line item 70.\\n- shipping policy note 71: figures and commentary for line item 71.\\n- shipping policy note 72: figures and commentary for line item 72.\\n- shipping policy note 73: figures and commentary for line item 73.\\n- shipping policy note 74: figures and commentary for line item 74.\\n- shipping policy note 75: figures and commentary for line item 75.\\n- shipping policy note 76: figures and commentary for line item 76.\\n- shipping policy note 77: figures and commentary for line item 77.\\n- shipping policy note 78: figures and commentary for line item 78.\\n- shipping policy note 79: figures and commentary for line item 79.\\n- shipping policy note 80: figures and commentary for line item 80.\\n- shipping policy note 81: figures and commentary for line item 81.\\n- shipping policy note 82: figures and commentary for line item 82.\\n- shipping policy note 83: figures and commentary for line item 83.\\n- shipping policy note 84: figures and commentary for line item 84.\\n- shipping policy note 85: figures and commentary for line item 85.\\n- shipping policy note 86: figures and commentary for line item 86.\\n- shipping policy note 87: figures and commentary for line item 87.\\n- shipping policy note 88: figures and commentary for line item 88.\\n- shipping policy note 89: figures and commentary for line item 89.\\nAnswer concisely.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Question 0 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 3\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "f343d50ab261fe76d9e9ad835d0899e5",
+              "spanId": "9ad588634fce6fdb",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467680000000000",
+              "endTimeUnixNano": "1768467681900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-shipping"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1527"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1519"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the shipping agent.\\n- shipping policy note 1: figures and commentary for line item 1.\\n- shipping policy note 2: figures and commentary for line item 2.\\n- shipping policy note 3: figures and commentary for line item 3.\\n- shipping policy note 4: figures and commentary for line item 4.\\n- shipping policy note 5: figures and commentary for line item 5.\\n- shipping policy note 6: figures and commentary for line item 6.\\n- shipping policy note 7: figures and commentary for line item 7.\\n- shipping policy note 8: figures and commentary for line item 8.\\n- shipping policy note 9: figures and commentary for line item 9.\\n- shipping policy note 10: figures and commentary for line item 10.\\n- shipping policy note 11: figures and commentary for line item 11.\\n- shipping policy note 12: figures and commentary for line item 12.\\n- shipping policy note 13: figures and commentary for line item 13.\\n- shipping policy note 14: figures and commentary for line item 14.\\n- shipping policy note 15: figures and commentary for line item 15.\\n- shipping policy note 16: figures and commentary for line item 16.\\n- shipping policy note 17: figures and commentary for line item 17.\\n- shipping policy note 18: figures and commentary for line item 18.\\n- shipping policy note 19: figures and commentary for line item 19.\\n- shipping policy note 20: figures and commentary for line item 20.\\n- shipping policy note 21: figures and commentary for line item 21.\\n- shipping policy note 22: figures and commentary for line item 22.\\n- shipping policy note 23: figures and commentary for line item 23.\\n- shipping policy note 24: figures and commentary for line item 24.\\n- shipping policy note 25: figures and commentary for line item 25.\\n- shipping policy note 26: figures and commentary for line item 26.\\n- shipping policy note 27: figures and commentary for line item 27.\\n- shipping policy note 28: figures and commentary for line item 28.\\n- shipping policy note 29: figures and commentary for line item 29.\\n- shipping policy note 30: figures and commentary for line item 30.\\n- shipping policy note 31: figures and commentary for line item 31.\\n- shipping policy note 32: figures and commentary for line item 32.\\n- shipping policy note 33: figures and commentary for line item 33.\\n- shipping policy note 34: figures and commentary for line item 34.\\n- shipping policy note 35: figures and commentary for line item 35.\\n- shipping policy note 36: figures and commentary for line item 36.\\n- shipping policy note 37: figures and commentary for line item 37.\\n- shipping policy note 38: figures and commentary for line item 38.\\n- shipping policy note 39: figures and commentary for line item 39.\\n- shipping policy note 40: figures and commentary for line item 40.\\n- shipping policy note 41: figures and commentary for line item 41.\\n- shipping policy note 42: figures and commentary for line item 42.\\n- shipping policy note 43: figures and commentary for line item 43.\\n- shipping policy note 44: figures and commentary for line item 44.\\n- shipping policy note 45: figures and commentary for line item 45.\\n- shipping policy note 46: figures and commentary for line item 46.\\n- shipping policy note 47: figures and commentary for line item 47.\\n- shipping policy note 48: figures and commentary for line item 48.\\n- shipping policy note 49: figures and commentary for line item 49.\\n- shipping policy note 50: figures and commentary for line item 50.\\n- shipping policy note 51: figures and commentary for line item 51.\\n- shipping policy note 52: figures and commentary for line item 52.\\n- shipping policy note 53: figures and commentary for line item 53.\\n- shipping policy note 54: figures and commentary for line item 54.\\n- shipping policy note 55: figures and commentary for line item 55.\\n- shipping policy note 56: figures and commentary for line item 56.\\n- shipping policy note 57: figures and commentary for line item 57.\\n- shipping policy note 58: figures and commentary for line item 58.\\n- shipping policy note 59: figures and commentary for line item 59.\\n- shipping policy note 60: figures and commentary for line item 60.\\n- shipping policy note 61: figures and commentary for line item 61.\\n- shipping policy note 62: figures and commentary for line item 62.\\n- shipping policy note 63: figures and commentary for line item 63.\\n- shipping policy note 64: figures and commentary for line item 64.\\n- shipping policy note 65: figures and commentary for line item 65.\\n- shipping policy note 66: figures and commentary for line item 66.\\n- shipping policy note 67: figures and commentary for line item 67.\\n- shipping policy note 68: figures and commentary for line item 68.\\n- shipping policy note 69: figures and commentary for line item 69.\\n- shipping policy note 70: figures and commentary for line item 70.\\n- shipping policy note 71: figures and commentary for line item 71.\\n- shipping policy note 72: figures and commentary for line item 72.\\n- shipping policy note 73: figures and commentary for line item 73.\\n- shipping policy note 74: figures and commentary for line item 74.\\n- shipping policy note 75: figures and commentary for line item 75.\\n- shipping policy note 76: figures and commentary for line item 76.\\n- shipping policy note 77: figures and commentary for line item 77.\\n- shipping policy note 78: figures and commentary for line item 78.\\n- shipping policy note 79: figures and commentary for line item 79.\\n- shipping policy note 80: figures and commentary for line item 80.\\n- shipping policy note 81: figures and commentary for line item 81.\\n- shipping policy note 82: figures and commentary for line item 82.\\n- shipping policy note 83: figures and commentary for line item 83.\\n- shipping policy note 84: figures and commentary for line item 84.\\n- shipping policy note 85: figures and commentary for line item 85.\\n- shipping policy note 86: figures and commentary for line item 86.\\n- shipping policy note 87: figures and commentary for line item 87.\\n- shipping policy note 88: figures and commentary for line item 88.\\n- shipping policy note 89: figures and commentary for line item 89.\\nAnswer concisely.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Question 1 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 4\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "f343d50ab261fe76d9e9ad835d0899e5",
+              "spanId": "86ac7aac1a306434",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467700000000000",
+              "endTimeUnixNano": "1768467701900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-shipping"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1527"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1519"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the shipping agent.\\n- shipping policy note 1: figures and commentary for line item 1.\\n- shipping policy note 2: figures and commentary for line item 2.\\n- shipping policy note 3: figures and commentary for line item 3.\\n- shipping policy note 4: figures and commentary for line item 4.\\n- shipping policy note 5: figures and commentary for line item 5.\\n- shipping policy note 6: figures and commentary for line item 6.\\n- shipping policy note 7: figures and commentary for line item 7.\\n- shipping policy note 8: figures and commentary for line item 8.\\n- shipping policy note 9: figures and commentary for line item 9.\\n- shipping policy note 10: figures and commentary for line item 10.\\n- shipping policy note 11: figures and commentary for line item 11.\\n- shipping policy note 12: figures and commentary for line item 12.\\n- shipping policy note 13: figures and commentary for line item 13.\\n- shipping policy note 14: figures and commentary for line item 14.\\n- shipping policy note 15: figures and commentary for line item 15.\\n- shipping policy note 16: figures and commentary for line item 16.\\n- shipping policy note 17: figures and commentary for line item 17.\\n- shipping policy note 18: figures and commentary for line item 18.\\n- shipping policy note 19: figures and commentary for line item 19.\\n- shipping policy note 20: figures and commentary for line item 20.\\n- shipping policy note 21: figures and commentary for line item 21.\\n- shipping policy note 22: figures and commentary for line item 22.\\n- shipping policy note 23: figures and commentary for line item 23.\\n- shipping policy note 24: figures and commentary for line item 24.\\n- shipping policy note 25: figures and commentary for line item 25.\\n- shipping policy note 26: figures and commentary for line item 26.\\n- shipping policy note 27: figures and commentary for line item 27.\\n- shipping policy note 28: figures and commentary for line item 28.\\n- shipping policy note 29: figures and commentary for line item 29.\\n- shipping policy note 30: figures and commentary for line item 30.\\n- shipping policy note 31: figures and commentary for line item 31.\\n- shipping policy note 32: figures and commentary for line item 32.\\n- shipping policy note 33: figures and commentary for line item 33.\\n- shipping policy note 34: figures and commentary for line item 34.\\n- shipping policy note 35: figures and commentary for line item 35.\\n- shipping policy note 36: figures and commentary for line item 36.\\n- shipping policy note 37: figures and commentary for line item 37.\\n- shipping policy note 38: figures and commentary for line item 38.\\n- shipping policy note 39: figures and commentary for line item 39.\\n- shipping policy note 40: figures and commentary for line item 40.\\n- shipping policy note 41: figures and commentary for line item 41.\\n- shipping policy note 42: figures and commentary for line item 42.\\n- shipping policy note 43: figures and commentary for line item 43.\\n- shipping policy note 44: figures and commentary for line item 44.\\n- shipping policy note 45: figures and commentary for line item 45.\\n- shipping policy note 46: figures and commentary for line item 46.\\n- shipping policy note 47: figures and commentary for line item 47.\\n- shipping policy note 48: figures and commentary for line item 48.\\n- shipping policy note 49: figures and commentary for line item 49.\\n- shipping policy note 50: figures and commentary for line item 50.\\n- shipping policy note 51: figures and commentary for line item 51.\\n- shipping policy note 52: figures and commentary for line item 52.\\n- shipping policy note 53: figures and commentary for line item 53.\\n- shipping policy note 54: figures and commentary for line item 54.\\n- shipping policy note 55: figures and commentary for line item 55.\\n- shipping policy note 56: figures and commentary for line item 56.\\n- shipping policy note 57: figures and commentary for line item 57.\\n- shipping policy note 58: figures and commentary for line item 58.\\n- shipping policy note 59: figures and commentary for line item 59.\\n- shipping policy note 60: figures and commentary for line item 60.\\n- shipping policy note 61: figures and commentary for line item 61.\\n- shipping policy note 62: figures and commentary for line item 62.\\n- shipping policy note 63: figures and commentary for line item 63.\\n- shipping policy note 64: figures and commentary for line item 64.\\n- shipping policy note 65: figures and commentary for line item 65.\\n- shipping policy note 66: figures and commentary for line item 66.\\n- shipping policy note 67: figures and commentary for line item 67.\\n- shipping policy note 68: figures and commentary for line item 68.\\n- shipping policy note 69: figures and commentary for line item 69.\\n- shipping policy note 70: figures and commentary for line item 70.\\n- shipping policy note 71: figures and commentary for line item 71.\\n- shipping policy note 72: figures and commentary for line item 72.\\n- shipping policy note 73: figures and commentary for line item 73.\\n- shipping policy note 74: figures and commentary for line item 74.\\n- shipping policy note 75: figures and commentary for line item 75.\\n- shipping policy note 76: figures and commentary for line item 76.\\n- shipping policy note 77: figures and commentary for line item 77.\\n- shipping policy note 78: figures and commentary for line item 78.\\n- shipping policy note 79: figures and commentary for line item 79.\\n- shipping policy note 80: figures and commentary for line item 80.\\n- shipping policy note 81: figures and commentary for line item 81.\\n- shipping policy note 82: figures and commentary for line item 82.\\n- shipping policy note 83: figures and commentary for line item 83.\\n- shipping policy note 84: figures and commentary for line item 84.\\n- shipping policy note 85: figures and commentary for line item 85.\\n- shipping policy note 86: figures and commentary for line item 86.\\n- shipping policy note 87: figures and commentary for line item 87.\\n- shipping policy note 88: figures and commentary for line item 88.\\n- shipping policy note 89: figures and commentary for line item 89.\\nAnswer concisely.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Question 2 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 5\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "f343d50ab261fe76d9e9ad835d0899e5",
+              "spanId": "f40b191c7719637b",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467720000000000",
+              "endTimeUnixNano": "1768467721900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-returns"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1522"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the returns agent.\\n- returns policy note 1: figures and commentary for line item 1.\\n- returns policy note 2: figures and commentary for line item 2.\\n- returns policy note 3: figures and commentary for line item 3.\\n- returns policy note 4: figures and commentary for line item 4.\\n- returns policy note 5: figures and commentary for line item 5.\\n- returns policy note 6: figures and commentary for line item 6.\\n- returns policy note 7: figures and commentary for line item 7.\\n- returns policy note 8: figures and commentary for line item 8.\\n- returns policy note 9: figures and commentary for line item 9.\\n- returns policy note 10: figures and commentary for line item 10.\\n- returns policy note 11: figures and commentary for line item 11.\\n- returns policy note 12: figures and commentary for line item 12.\\n- returns policy note 13: figures and commentary for line item 13.\\n- returns policy note 14: figures and commentary for line item 14.\\n- returns policy note 15: figures and commentary for line item 15.\\n- returns policy note 16: figures and commentary for line item 16.\\n- returns policy note 17: figures and commentary for line item 17.\\n- returns policy note 18: figures and commentary for line item 18.\\n- returns policy note 19: figures and commentary for line item 19.\\n- returns policy note 20: figures and commentary for line item 20.\\n- returns policy note 21: figures and commentary for line item 21.\\n- returns policy note 22: figures and commentary for line item 22.\\n- returns policy note 23: figures and commentary for line item 23.\\n- returns policy note 24: figures and commentary for line item 24.\\n- returns policy note 25: figures and commentary for line item 25.\\n- returns policy note 26: figures and commentary for line item 26.\\n- returns policy note 27: figures and commentary for line item 27.\\n- returns policy note 28: figures and commentary for line item 28.\\n- returns policy note 29: figures and commentary for line item 29.\\n- returns policy note 30: figures and commentary for line item 30.\\n- returns policy note 31: figures and commentary for line item 31.\\n- returns policy note 32: figures and commentary for line item 32.\\n- returns policy note 33: figures and commentary for line item 33.\\n- returns policy note 34: figures and commentary for line item 34.\\n- returns policy note 35: figures and commentary for line item 35.\\n- returns policy note 36: figures and commentary for line item 36.\\n- returns policy note 37: figures and commentary for line item 37.\\n- returns policy note 38: figures and commentary for line item 38.\\n- returns policy note 39: figures and commentary for line item 39.\\n- returns policy note 40: figures and commentary for line item 40.\\n- returns policy note 41: figures and commentary for line item 41.\\n- returns policy note 42: figures and commentary for line item 42.\\n- returns policy note 43: figures and commentary for line item 43.\\n- returns policy note 44: figures and commentary for line item 44.\\n- returns policy note 45: figures and commentary for line item 45.\\n- returns policy note 46: figures and commentary for line item 46.\\n- returns policy note 47: figures and commentary for line item 47.\\n- returns policy note 48: figures and commentary for line item 48.\\n- returns policy note 49: figures and commentary for line item 49.\\n- returns policy note 50: figures and commentary for line item 50.\\n- returns policy note 51: figures and commentary for line item 51.\\n- returns policy note 52: figures and commentary for line item 52.\\n- returns policy note 53: figures and commentary for line item 53.\\n- returns policy note 54: figures and commentary for line item 54.\\n- returns policy note 55: figures and commentary for line item 55.\\n- returns policy note 56: figures and commentary for line item 56.\\n- returns policy note 57: figures and commentary for line item 57.\\n- returns policy note 58: figures and commentary for line item 58.\\n- returns policy note 59: figures and commentary for line item 59.\\n- returns policy note 60: figures and commentary for line item 60.\\n- returns policy note 61: figures and commentary for line item 61.\\n- returns policy note 62: figures and commentary for line item 62.\\n- returns policy note 63: figures and commentary for line item 63.\\n- returns policy note 64: figures and commentary for line item 64.\\n- returns policy note 65: figures and commentary for line item 65.\\n- returns policy note 66: figures and commentary for line item 66.\\n- returns policy note 67: figures and commentary for line item 67.\\n- returns policy note 68: figures and commentary for line item 68.\\n- returns policy note 69: figures and commentary for line item 69.\\n- returns policy note 70: figures and commentary for line item 70.\\n- returns policy note 71: figures and commentary for line item 71.\\n- returns policy note 72: figures and commentary for line item 72.\\n- returns policy note 73: figures and commentary for line item 73.\\n- returns policy note 74: figures and commentary for line item 74.\\n- returns policy note 75: figures and commentary for line item 75.\\n- returns policy note 76: figures and commentary for line item 76.\\n- returns policy note 77: figures and commentary for line item 77.\\n- returns policy note 78: figures and commentary for line item 78.\\n- returns policy note 79: figures and commentary for line item 79.\\n- returns policy note 80: figures and commentary for line item 80.\\n- returns policy note 81: figures and commentary for line item 81.\\n- returns policy note 82: figures and commentary for line item 82.\\n- returns policy note 83: figures and commentary for line item 83.\\n- returns policy note 84: figures and commentary for line item 84.\\n- returns policy note 85: figures and commentary for line item 85.\\n- returns policy note 86: figures and commentary for line item 86.\\n- returns policy note 87: figures and commentary for line item 87.\\n- returns policy note 88: figures and commentary for line item 88.\\n- returns policy note 89: figures and commentary for line item 89.\\n- returns policy note 90: figures and commentary for line item 90.\\nAnswer concisely.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Question 0 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 6\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "f343d50ab261fe76d9e9ad835d0899e5",
+              "spanId": "9bb7f711a6ceea6b",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467740000000000",
+              "endTimeUnixNano": "1768467741900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-returns"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1522"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1514"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the returns agent.\\n- returns policy note 1: figures and commentary for line item 1.\\n- returns policy note 2: figures and commentary for line item 2.\\n- returns policy note 3: figures and commentary for line item 3.\\n- returns policy note 4: figures and commentary for line item 4.\\n- returns policy note 5: figures and commentary for line item 5.\\n- returns policy note 6: figures and commentary for line item 6.\\n- returns policy note 7: figures and commentary for line item 7.\\n- returns policy note 8: figures and commentary for line item 8.\\n- returns policy note 9: figures and commentary for line item 9.\\n- returns policy note 10: figures and commentary for line item 10.\\n- returns policy note 11: figures and commentary for line item 11.\\n- returns policy note 12: figures and commentary for line item 12.\\n- returns policy note 13: figures and commentary for line item 13.\\n- returns policy note 14: figures and commentary for line item 14.\\n- returns policy note 15: figures and commentary for line item 15.\\n- returns policy note 16: figures and commentary for line item 16.\\n- returns policy note 17: figures and commentary for line item 17.\\n- returns policy note 18: figures and commentary for line item 18.\\n- returns policy note 19: figures and commentary for line item 19.\\n- returns policy note 20: figures and commentary for line item 20.\\n- returns policy note 21: figures and commentary for line item 21.\\n- returns policy note 22: figures and commentary for line item 22.\\n- returns policy note 23: figures and commentary for line item 23.\\n- returns policy note 24: figures and commentary for line item 24.\\n- returns policy note 25: figures and commentary for line item 25.\\n- returns policy note 26: figures and commentary for line item 26.\\n- returns policy note 27: figures and commentary for line item 27.\\n- returns policy note 28: figures and commentary for line item 28.\\n- returns policy note 29: figures and commentary for line item 29.\\n- returns policy note 30: figures and commentary for line item 30.\\n- returns policy note 31: figures and commentary for line item 31.\\n- returns policy note 32: figures and commentary for line item 32.\\n- returns policy note 33: figures and commentary for line item 33.\\n- returns policy note 34: figures and commentary for line item 34.\\n- returns policy note 35: figures and commentary for line item 35.\\n- returns policy note 36: figures and commentary for line item 36.\\n- returns policy note 37: figures and commentary for line item 37.\\n- returns policy note 38: figures and commentary for line item 38.\\n- returns policy note 39: figures and commentary for line item 39.\\n- returns policy note 40: figures and commentary for line item 40.\\n- returns policy note 41: figures and commentary for line item 41.\\n- returns policy note 42: figures and commentary for line item 42.\\n- returns policy note 43: figures and commentary for line item 43.\\n- returns policy note 44: figures and commentary for line item 44.\\n- returns policy note 45: figures and commentary for line item 45.\\n- returns policy note 46: figures and commentary for line item 46.\\n- returns policy note 47: figures and commentary for line item 47.\\n- returns policy note 48: figures and commentary for line item 48.\\n- returns policy note 49: figures and commentary for line item 49.\\n- returns policy note 50: figures and commentary for line item 50.\\n- returns policy note 51: figures and commentary for line item 51.\\n- returns policy note 52: figures and commentary for line item 52.\\n- returns policy note 53: figures and commentary for line item 53.\\n- returns policy note 54: figures and commentary for line item 54.\\n- returns policy note 55: figures and commentary for line item 55.\\n- returns policy note 56: figures and commentary for line item 56.\\n- returns policy note 57: figures and commentary for line item 57.\\n- returns policy note 58: figures and commentary for line item 58.\\n- returns policy note 59: figures and commentary for line item 59.\\n- returns policy note 60: figures and commentary for line item 60.\\n- returns policy note 61: figures and commentary for line item 61.\\n- returns policy note 62: figures and commentary for line item 62.\\n- returns policy note 63: figures and commentary for line item 63.\\n- returns policy note 64: figures and commentary for line item 64.\\n- returns policy note 65: figures and commentary for line item 65.\\n- returns policy note 66: figures and commentary for line item 66.\\n- returns policy note 67: figures and commentary for line item 67.\\n- returns policy note 68: figures and commentary for line item 68.\\n- returns policy note 69: figures and commentary for line item 69.\\n- returns policy note 70: figures and commentary for line item 70.\\n- returns policy note 71: figures and commentary for line item 71.\\n- returns policy note 72: figures and commentary for line item 72.\\n- returns policy note 73: figures and commentary for line item 73.\\n- returns policy note 74: figures and commentary for line item 74.\\n- returns policy note 75: figures and commentary for line item 75.\\n- returns policy note 76: figures and commentary for line item 76.\\n- returns policy note 77: figures and commentary for line item 77.\\n- returns policy note 78: figures and commentary for line item 78.\\n- returns policy note 79: figures and commentary for line item 79.\\n- returns policy note 80: figures and commentary for line item 80.\\n- returns policy note 81: figures and commentary for line item 81.\\n- returns policy note 82: figures and commentary for line item 82.\\n- returns policy note 83: figures and commentary for line item 83.\\n- returns policy note 84: figures and commentary for line item 84.\\n- returns policy note 85: figures and commentary for line item 85.\\n- returns policy note 86: figures and commentary for line item 86.\\n- returns policy note 87: figures and commentary for line item 87.\\n- returns policy note 88: figures and commentary for line item 88.\\n- returns policy note 89: figures and commentary for line item 89.\\n- returns policy note 90: figures and commentary for line item 90.\\nAnswer concisely.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Question 1 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 7\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "f343d50ab261fe76d9e9ad835d0899e5",
+              "spanId": "0cfb056087207bf1",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467760000000000",
+              "endTimeUnixNano": "1768467761900000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "session-returns"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "1522"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "160"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "1514"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the returns agent.\\n- returns policy note 1: figures and commentary for line item 1.\\n- returns policy note 2: figures and commentary for line item 2.\\n- returns policy note 3: figures and commentary for line item 3.\\n- returns policy note 4: figures and commentary for line item 4.\\n- returns policy note 5: figures and commentary for line item 5.\\n- returns policy note 6: figures and commentary for line item 6.\\n- returns policy note 7: figures and commentary for line item 7.\\n- returns policy note 8: figures and commentary for line item 8.\\n- returns policy note 9: figures and commentary for line item 9.\\n- returns policy note 10: figures and commentary for line item 10.\\n- returns policy note 11: figures and commentary for line item 11.\\n- returns policy note 12: figures and commentary for line item 12.\\n- returns policy note 13: figures and commentary for line item 13.\\n- returns policy note 14: figures and commentary for line item 14.\\n- returns policy note 15: figures and commentary for line item 15.\\n- returns policy note 16: figures and commentary for line item 16.\\n- returns policy note 17: figures and commentary for line item 17.\\n- returns policy note 18: figures and commentary for line item 18.\\n- returns policy note 19: figures and commentary for line item 19.\\n- returns policy note 20: figures and commentary for line item 20.\\n- returns policy note 21: figures and commentary for line item 21.\\n- returns policy note 22: figures and commentary for line item 22.\\n- returns policy note 23: figures and commentary for line item 23.\\n- returns policy note 24: figures and commentary for line item 24.\\n- returns policy note 25: figures and commentary for line item 25.\\n- returns policy note 26: figures and commentary for line item 26.\\n- returns policy note 27: figures and commentary for line item 27.\\n- returns policy note 28: figures and commentary for line item 28.\\n- returns policy note 29: figures and commentary for line item 29.\\n- returns policy note 30: figures and commentary for line item 30.\\n- returns policy note 31: figures and commentary for line item 31.\\n- returns policy note 32: figures and commentary for line item 32.\\n- returns policy note 33: figures and commentary for line item 33.\\n- returns policy note 34: figures and commentary for line item 34.\\n- returns policy note 35: figures and commentary for line item 35.\\n- returns policy note 36: figures and commentary for line item 36.\\n- returns policy note 37: figures and commentary for line item 37.\\n- returns policy note 38: figures and commentary for line item 38.\\n- returns policy note 39: figures and commentary for line item 39.\\n- returns policy note 40: figures and commentary for line item 40.\\n- returns policy note 41: figures and commentary for line item 41.\\n- returns policy note 42: figures and commentary for line item 42.\\n- returns policy note 43: figures and commentary for line item 43.\\n- returns policy note 44: figures and commentary for line item 44.\\n- returns policy note 45: figures and commentary for line item 45.\\n- returns policy note 46: figures and commentary for line item 46.\\n- returns policy note 47: figures and commentary for line item 47.\\n- returns policy note 48: figures and commentary for line item 48.\\n- returns policy note 49: figures and commentary for line item 49.\\n- returns policy note 50: figures and commentary for line item 50.\\n- returns policy note 51: figures and commentary for line item 51.\\n- returns policy note 52: figures and commentary for line item 52.\\n- returns policy note 53: figures and commentary for line item 53.\\n- returns policy note 54: figures and commentary for line item 54.\\n- returns policy note 55: figures and commentary for line item 55.\\n- returns policy note 56: figures and commentary for line item 56.\\n- returns policy note 57: figures and commentary for line item 57.\\n- returns policy note 58: figures and commentary for line item 58.\\n- returns policy note 59: figures and commentary for line item 59.\\n- returns policy note 60: figures and commentary for line item 60.\\n- returns policy note 61: figures and commentary for line item 61.\\n- returns policy note 62: figures and commentary for line item 62.\\n- returns policy note 63: figures and commentary for line item 63.\\n- returns policy note 64: figures and commentary for line item 64.\\n- returns policy note 65: figures and commentary for line item 65.\\n- returns policy note 66: figures and commentary for line item 66.\\n- returns policy note 67: figures and commentary for line item 67.\\n- returns policy note 68: figures and commentary for line item 68.\\n- returns policy note 69: figures and commentary for line item 69.\\n- returns policy note 70: figures and commentary for line item 70.\\n- returns policy note 71: figures and commentary for line item 71.\\n- returns policy note 72: figures and commentary for line item 72.\\n- returns policy note 73: figures and commentary for line item 73.\\n- returns policy note 74: figures and commentary for line item 74.\\n- returns policy note 75: figures and commentary for line item 75.\\n- returns policy note 76: figures and commentary for line item 76.\\n- returns policy note 77: figures and commentary for line item 77.\\n- returns policy note 78: figures and commentary for line item 78.\\n- returns policy note 79: figures and commentary for line item 79.\\n- returns policy note 80: figures and commentary for line item 80.\\n- returns policy note 81: figures and commentary for line item 81.\\n- returns policy note 82: figures and commentary for line item 82.\\n- returns policy note 83: figures and commentary for line item 83.\\n- returns policy note 84: figures and commentary for line item 84.\\n- returns policy note 85: figures and commentary for line item 85.\\n- returns policy note 86: figures and commentary for line item 86.\\n- returns policy note 87: figures and commentary for line item 87.\\n- returns policy note 88: figures and commentary for line item 88.\\n- returns policy note 89: figures and commentary for line item 89.\\n- returns policy note 90: figures and commentary for line item 90.\\nAnswer concisely.\",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Question 2 about the last invoice.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 8\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -18,13 +18,15 @@ assumption string.
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from collections.abc import Sequence
 from dataclasses import dataclass
-from itertools import pairwise
+from difflib import SequenceMatcher
+from itertools import accumulate, pairwise
 from typing import ClassVar
 
 from tokenaudit.detect.findings import Finding
-from tokenaudit.model.records import BlockDigest, Request, Session
-from tokenaudit.rulebook import Rulebook
+from tokenaudit.model.records import BlockDigest, Request, Segment, Session
+from tokenaudit.rulebook import ModelRules, Rulebook
 
 CHARS_PER_TOKEN = 4
 TOKEN_ESTIMATE_NOTE = "block token counts estimated from lengths at ~4 chars/token"
@@ -46,12 +48,79 @@ class Detector(ABC):
         """Return findings for this session, or raise :class:`Abstain`."""
 
 
+class CrossSessionDetector(ABC):
+    """Same contract as :class:`Detector`, over all sessions at once."""
+
+    detector_id: ClassVar[str]
+
+    @abstractmethod
+    def check_sessions(self, sessions: Sequence[Session], rulebook: Rulebook) -> list[Finding]:
+        """Return findings across these sessions, or raise :class:`Abstain`."""
+
+
 def est_tokens(chars: int) -> int:
     return max(1, chars // CHARS_PER_TOKEN)
 
 
 def blocks_tokens(blocks: tuple[BlockDigest, ...]) -> int:
     return sum(est_tokens(b.chars) for b in blocks)
+
+
+def read_saving(rules: ModelRules | None) -> tuple[float, str]:
+    """Share of a token's price saved when it is read from cache instead."""
+    if rules is not None and rules.cache_read_multiplier is not None:
+        multiplier = rules.cache_read_multiplier
+        return 1 - multiplier, f"cached reads at {multiplier}x input for {rules.model}"
+    return 0.9, "cached reads assumed at 0.1x input (model's rate not in the rulebook)"
+
+
+def block_segments(block: BlockDigest) -> tuple[Segment, ...]:
+    """A block's line digests; one whole-block segment when none were kept."""
+    if block.segments:
+        return block.segments
+    return (Segment(block.sha256[:16], block.chars),) if block.chars else ()
+
+
+def request_segments(request: Request) -> tuple[Segment, ...]:
+    return tuple(s for b in request.blocks or () for s in block_segments(b))
+
+
+def offsets(segments: Sequence[Segment]) -> list[int]:
+    """Char offset at which each segment starts."""
+    return [0, *accumulate(s.chars for s in segments)][:-1] if segments else []
+
+
+def common_prefix_chars(a: Sequence[Segment], b: Sequence[Segment]) -> int:
+    total = 0
+    for x, y in zip(a, b, strict=False):
+        if x.sha256 != y.sha256:
+            break
+        total += x.chars
+    return total
+
+
+@dataclass(frozen=True)
+class SharedRun:
+    """The longest stretch of consecutive lines two prompts have in common."""
+
+    start_a: int  # char offset in the first prompt
+    start_b: int  # char offset in the second prompt
+    chars: int
+    index_a: int  # segment index in the first prompt
+    length: int  # segments
+
+
+def longest_shared_run(a: Sequence[Segment], b: Sequence[Segment]) -> SharedRun | None:
+    matcher = SequenceMatcher(None, [s.sha256 for s in a], [s.sha256 for s in b], autojunk=False)
+    off_a, off_b = offsets(a), offsets(b)
+    best: SharedRun | None = None
+    for match in matcher.get_matching_blocks():
+        if match.size == 0:
+            continue
+        chars = sum(s.chars for s in a[match.a : match.a + match.size])
+        if best is None or chars > best.chars:
+            best = SharedRun(off_a[match.a], off_b[match.b], chars, match.a, match.size)
+    return best
 
 
 def last_marked_index(blocks: tuple[BlockDigest, ...]) -> int | None:

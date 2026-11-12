@@ -51,9 +51,15 @@ class Baseline:
 
 
 def snapshot(
-    results: list[tuple[IngestResult, list[SessionDiagnosis]]], rulebook: Rulebook
+    results: list[tuple[IngestResult, list[SessionDiagnosis]]],
+    rulebook: Rulebook,
+    across: SessionDiagnosis | None = None,
 ) -> Baseline:
-    """Reduce a diagnosed run to the comparable aggregate numbers."""
+    """Reduce a diagnosed run to the comparable aggregate numbers.
+
+    Cross-session findings count toward which detectors fired, not toward
+    the health floor: their savings depend on when sessions ran.
+    """
     total_input = 0
     total_read = 0
     realized = 0
@@ -78,6 +84,11 @@ def snapshot(
                 current = worst.get(finding.detector_id)
                 if current is None or _SEVERITY_ORDER[finding.severity] > _SEVERITY_ORDER[current]:
                     worst[finding.detector_id] = finding.severity
+
+    for finding in across.findings if across else ():
+        current = worst.get(finding.detector_id)
+        if current is None or _SEVERITY_ORDER[finding.severity] > _SEVERITY_ORDER[current]:
+            worst[finding.detector_id] = finding.severity
 
     rate = round(total_read / total_input, 4) if total_input else None
     denominator = realized + potential_high

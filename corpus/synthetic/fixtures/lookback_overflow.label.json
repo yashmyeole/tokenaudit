@@ -12,6 +12,8 @@
   "must_not_contain": [
     "breakpoint_limit",
     "context_bloat",
+    "cross_session_drift",
+    "misordered_shared_context",
     "model_switch",
     "prefix_drift",
     "retry_storm",

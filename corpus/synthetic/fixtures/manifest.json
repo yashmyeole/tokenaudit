@@ -114,6 +114,52 @@
       "calls": 5
     },
     {
+      "fixture": "misordered_shared_context",
+      "schema": "otel-genai-current",
+      "provider_shape": "openai",
+      "contains": [
+        "misordered_shared_context"
+      ],
+      "calls": 3
+    },
+    {
+      "fixture": "shared_context_first",
+      "schema": "otel-genai-current",
+      "provider_shape": "openai",
+      "contains": [],
+      "calls": 3
+    },
+    {
+      "fixture": "shared_context_small",
+      "schema": "otel-genai-current",
+      "provider_shape": "openai",
+      "contains": [],
+      "calls": 3
+    },
+    {
+      "fixture": "cross_session_drift",
+      "schema": "otel-genai-current",
+      "provider_shape": "openai",
+      "contains": [
+        "cross_session_drift"
+      ],
+      "calls": 12
+    },
+    {
+      "fixture": "cross_session_stable",
+      "schema": "otel-genai-current",
+      "provider_shape": "openai",
+      "contains": [],
+      "calls": 12
+    },
+    {
+      "fixture": "cross_session_distinct",
+      "schema": "otel-genai-current",
+      "provider_shape": "openai",
+      "contains": [],
+      "calls": 9
+    },
+    {
       "fixture": "prefix_drift_legacy_flat",
       "schema": "otel-genai-legacy-flat",
       "provider_shape": "anthropic",

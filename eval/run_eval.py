@@ -7,7 +7,7 @@ docs: regenerating must reproduce the committed bytes, so the published
 numbers can never silently disagree with the code.
 
 Honesty framing baked into the output: these are correctness counts against
-a 16-fixture corpus with known answers — a floor, not field precision. An
+a small corpus with known answers — a floor, not field precision. An
 abstention on a fixture whose content is missing is CORRECT behavior, not a
 miss, and is reported in its own column.
 
@@ -21,7 +21,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from tokenaudit.detect.engine import DETECTORS, diagnose
+from tokenaudit.detect.engine import CROSS_SESSION_DETECTORS, DETECTORS, diagnose, diagnose_across
 from tokenaudit.ingest import ingest_path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,8 +29,10 @@ FIXTURES = ROOT / "corpus" / "synthetic" / "fixtures"
 
 
 def evaluate() -> dict[str, dict[str, Any]]:
+    detector_ids = [d.detector_id for d in DETECTORS]
+    detector_ids += [d.detector_id for d in CROSS_SESSION_DETECTORS]
     tallies: dict[str, dict[str, Any]] = {
-        d.detector_id: {
+        detector_id: {
             "positives_found": 0,
             "positives_missed": 0,
             "positives_abstained": 0,
@@ -39,22 +41,23 @@ def evaluate() -> dict[str, dict[str, Any]]:
             "negatives_abstained": 0,
             "fixtures": {},
         }
-        for d in DETECTORS
+        for detector_id in detector_ids
     }
     for label_path in sorted(FIXTURES.glob("*.label.json")):
         label = json.loads(label_path.read_text(encoding="utf-8"))
         fixture = label["fixture"]
-        (diagnosis,) = diagnose(ingest_path(FIXTURES / f"{fixture}.trace.json"))
-        fired = {finding.detector_id for finding in diagnosis.findings}
-        for detector in DETECTORS:
-            detector_id = detector.detector_id
+        result = ingest_path(FIXTURES / f"{fixture}.trace.json")
+        diagnoses = [*diagnose(result), diagnose_across([result])]
+        fired = {f.detector_id for d in diagnoses for f in d.findings}
+        checked = {c for d in diagnoses for c in d.checked}
+        for detector_id in tallies:
             expected = detector_id in label["contains"]
             if detector_id in fired:
                 outcome = "fired"
-            elif detector_id in diagnosis.abstained:
-                outcome = "abstained"
-            else:
+            elif detector_id in checked:
                 outcome = "clean"
+            else:
+                outcome = "abstained"
             tally = tallies[detector_id]
             tally["fixtures"][fixture] = {"expected": expected, "outcome": outcome}
             if expected and outcome == "fired":

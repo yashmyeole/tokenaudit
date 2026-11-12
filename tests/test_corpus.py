@@ -29,6 +29,8 @@ FAILURE_MODES = {
     "tool_schema_churn",
     "context_bloat",
     "retry_storm",
+    "misordered_shared_context",
+    "cross_session_drift",
 }
 
 

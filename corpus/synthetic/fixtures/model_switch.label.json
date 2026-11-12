@@ -13,7 +13,9 @@
   "must_not_contain": [
     "breakpoint_limit",
     "context_bloat",
+    "cross_session_drift",
     "lookback_overflow",
+    "misordered_shared_context",
     "prefix_drift",
     "retry_storm",
     "sub_minimum",

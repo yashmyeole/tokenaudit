@@ -1,7 +1,7 @@
 {
   "breakpoint_limit": {
     "false_alarms": 0,
-    "negatives_checked": 14,
+    "negatives_checked": 20,
     "positives_found": 1,
     "positives_total": 1
   },
@@ -11,45 +11,57 @@
     "positives_found": 1,
     "positives_total": 1
   },
+  "cross_session_drift": {
+    "false_alarms": 0,
+    "negatives_checked": 2,
+    "positives_found": 1,
+    "positives_total": 1
+  },
   "lookback_overflow": {
     "false_alarms": 0,
-    "negatives_checked": 14,
+    "negatives_checked": 20,
+    "positives_found": 1,
+    "positives_total": 1
+  },
+  "misordered_shared_context": {
+    "false_alarms": 0,
+    "negatives_checked": 20,
     "positives_found": 1,
     "positives_total": 1
   },
   "model_switch": {
     "false_alarms": 0,
-    "negatives_checked": 14,
+    "negatives_checked": 20,
     "positives_found": 1,
     "positives_total": 1
   },
   "prefix_drift": {
     "false_alarms": 0,
-    "negatives_checked": 12,
+    "negatives_checked": 18,
     "positives_found": 3,
     "positives_total": 4
   },
   "retry_storm": {
     "false_alarms": 0,
-    "negatives_checked": 14,
+    "negatives_checked": 20,
     "positives_found": 1,
     "positives_total": 1
   },
   "sub_minimum": {
     "false_alarms": 0,
-    "negatives_checked": 14,
+    "negatives_checked": 20,
     "positives_found": 1,
     "positives_total": 1
   },
   "tool_schema_churn": {
     "false_alarms": 0,
-    "negatives_checked": 14,
+    "negatives_checked": 20,
     "positives_found": 1,
     "positives_total": 1
   },
   "ttl_expiry": {
     "false_alarms": 0,
-    "negatives_checked": 12,
+    "negatives_checked": 18,
     "positives_found": 1,
     "positives_total": 1
   }

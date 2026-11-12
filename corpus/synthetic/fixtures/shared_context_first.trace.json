@@ -1,0 +1,275 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "tokenaudit-fixture-agent"
+            }
+          },
+          {
+            "key": "tokenaudit.fixture",
+            "value": {
+              "stringValue": "shared_context_first"
+            }
+          },
+          {
+            "key": "tokenaudit.synthetic",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tokenaudit-corpus-simulator",
+            "version": "0.1.0"
+          },
+          "spans": [
+            {
+              "traceId": "9145751310732ee49d89050eeaea3b36",
+              "spanId": "81acd552db54cc91",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467600000000000",
+              "endTimeUnixNano": "1768467603200000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-shared_context_first"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "2783"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "220"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"Shared reports\\n- market note 1: figures and commentary for line item 1.\\n- market note 2: figures and commentary for line item 2.\\n- market note 3: figures and commentary for line item 3.\\n- market note 4: figures and commentary for line item 4.\\n- market note 5: figures and commentary for line item 5.\\n- market note 6: figures and commentary for line item 6.\\n- market note 7: figures and commentary for line item 7.\\n- market note 8: figures and commentary for line item 8.\\n- market note 9: figures and commentary for line item 9.\\n- market note 10: figures and commentary for line item 10.\\n- market note 11: figures and commentary for line item 11.\\n- market note 12: figures and commentary for line item 12.\\n- market note 13: figures and commentary for line item 13.\\n- market note 14: figures and commentary for line item 14.\\n- market note 15: figures and commentary for line item 15.\\n- market note 16: figures and commentary for line item 16.\\n- market note 17: figures and commentary for line item 17.\\n- market note 18: figures and commentary for line item 18.\\n- market note 19: figures and commentary for line item 19.\\n- market note 20: figures and commentary for line item 20.\\n- market note 21: figures and commentary for line item 21.\\n- market note 22: figures and commentary for line item 22.\\n- market note 23: figures and commentary for line item 23.\\n- market note 24: figures and commentary for line item 24.\\n- market note 25: figures and commentary for line item 25.\\n- market note 26: figures and commentary for line item 26.\\n- market note 27: figures and commentary for line item 27.\\n- market note 28: figures and commentary for line item 28.\\n- market note 29: figures and commentary for line item 29.\\n- market note 30: figures and commentary for line item 30.\\n- market note 31: figures and commentary for line item 31.\\n- market note 32: figures and commentary for line item 32.\\n- market note 33: figures and commentary for line item 33.\\n- market note 34: figures and commentary for line item 34.\\n- market note 35: figures and commentary for line item 35.\\n- market note 36: figures and commentary for line item 36.\\n- market note 37: figures and commentary for line item 37.\\n- market note 38: figures and commentary for line item 38.\\n- market note 39: figures and commentary for line item 39.\\n- market note 40: figures and commentary for line item 40.\\n- market note 41: figures and commentary for line item 41.\\n- market note 42: figures and commentary for line item 42.\\n- market note 43: figures and commentary for line item 43.\\n- market note 44: figures and commentary for line item 44.\\n- market note 45: figures and commentary for line item 45.\\n- market note 46: figures and commentary for line item 46.\\n- market note 47: figures and commentary for line item 47.\\n- market note 48: figures and commentary for line item 48.\\n- market note 49: figures and commentary for line item 49.\\n- market note 50: figures and commentary for line item 50.\\n- market note 51: figures and commentary for line item 51.\\n- market note 52: figures and commentary for line item 52.\\n- market note 53: figures and commentary for line item 53.\\n- market note 54: figures and commentary for line item 54.\\n- market note 55: figures and commentary for line item 55.\\n- market note 56: figures and commentary for line item 56.\\n- market note 57: figures and commentary for line item 57.\\n- market note 58: figures and commentary for line item 58.\\n- market note 59: figures and commentary for line item 59.\\n- market note 60: figures and commentary for line item 60.\\n- market note 61: figures and commentary for line item 61.\\n- market note 62: figures and commentary for line item 62.\\n- market note 63: figures and commentary for line item 63.\\n- market note 64: figures and commentary for line item 64.\\n- market note 65: figures and commentary for line item 65.\\n- market note 66: figures and commentary for line item 66.\\n- market note 67: figures and commentary for line item 67.\\n- market note 68: figures and commentary for line item 68.\\n- market note 69: figures and commentary for line item 69.\\n- market note 70: figures and commentary for line item 70.\\n- market note 71: figures and commentary for line item 71.\\n- market note 72: figures and commentary for line item 72.\\n- market note 73: figures and commentary for line item 73.\\n- market note 74: figures and commentary for line item 74.\\n- market note 75: figures and commentary for line item 75.\\n- market note 76: figures and commentary for line item 76.\\n- market note 77: figures and commentary for line item 77.\\n- market note 78: figures and commentary for line item 78.\\n- market note 79: figures and commentary for line item 79.\\n- market note 80: figures and commentary for line item 80.\\n- market note 81: figures and commentary for line item 81.\\n- market note 82: figures and commentary for line item 82.\\n- market note 83: figures and commentary for line item 83.\\n- market note 84: figures and commentary for line item 84.\\n- market note 85: figures and commentary for line item 85.\\n- market note 86: figures and commentary for line item 86.\\n- market note 87: figures and commentary for line item 87.\\n- market note 88: figures and commentary for line item 88.\\n- market note 89: figures and commentary for line item 89.\\n- market note 90: figures and commentary for line item 90.\\n- market note 91: figures and commentary for line item 91.\\n- market note 92: figures and commentary for line item 92.\\n- market note 93: figures and commentary for line item 93.\\n- market note 94: figures and commentary for line item 94.\\n- market note 95: figures and commentary for line item 95.\\n- market note 96: figures and commentary for line item 96.\\n- news note 1: figures and commentary for line item 1.\\n- news note 2: figures and commentary for line item 2.\\n- news note 3: figures and commentary for line item 3.\\n- news note 4: figures and commentary for line item 4.\\n- news note 5: figures and commentary for line item 5.\\n- news note 6: figures and commentary for line item 6.\\n- news note 7: figures and commentary for line item 7.\\n- news note 8: figures and commentary for line item 8.\\n- news note 9: figures and commentary for line item 9.\\n- news note 10: figures and commentary for line item 10.\\n- news note 11: figures and commentary for line item 11.\\n- news note 12: figures and commentary for line item 12.\\n- news note 13: figures and commentary for line item 13.\\n- news note 14: figures and commentary for line item 14.\\n- news note 15: figures and commentary for line item 15.\\n- news note 16: figures and commentary for line item 16.\\n- news note 17: figures and commentary for line item 17.\\n- news note 18: figures and commentary for line item 18.\\n- news note 19: figures and commentary for line item 19.\\n- news note 20: figures and commentary for line item 20.\\n- news note 21: figures and commentary for line item 21.\\n- news note 22: figures and commentary for line item 22.\\n- news note 23: figures and commentary for line item 23.\\n- news note 24: figures and commentary for line item 24.\\n- news note 25: figures and commentary for line item 25.\\n- news note 26: figures and commentary for line item 26.\\n- news note 27: figures and commentary for line item 27.\\n- news note 28: figures and commentary for line item 28.\\n- news note 29: figures and commentary for line item 29.\\n- news note 30: figures and commentary for line item 30.\\n- news note 31: figures and commentary for line item 31.\\n- news note 32: figures and commentary for line item 32.\\n- news note 33: figures and commentary for line item 33.\\n- news note 34: figures and commentary for line item 34.\\n- news note 35: figures and commentary for line item 35.\\n- news note 36: figures and commentary for line item 36.\\n- news note 37: figures and commentary for line item 37.\\n- news note 38: figures and commentary for line item 38.\\n- news note 39: figures and commentary for line item 39.\\n- news note 40: figures and commentary for line item 40.\\n- news note 41: figures and commentary for line item 41.\\n- news note 42: figures and commentary for line item 42.\\n- news note 43: figures and commentary for line item 43.\\n- news note 44: figures and commentary for line item 44.\\n- news note 45: figures and commentary for line item 45.\\n- news note 46: figures and commentary for line item 46.\\n- news note 47: figures and commentary for line item 47.\\n- news note 48: figures and commentary for line item 48.\\n- news note 49: figures and commentary for line item 49.\\n- news note 50: figures and commentary for line item 50.\\n- news note 51: figures and commentary for line item 51.\\n- news note 52: figures and commentary for line item 52.\\n- news note 53: figures and commentary for line item 53.\\n- news note 54: figures and commentary for line item 54.\\n- news note 55: figures and commentary for line item 55.\\n- news note 56: figures and commentary for line item 56.\\n- news note 57: figures and commentary for line item 57.\\n- news note 58: figures and commentary for line item 58.\\n- news note 59: figures and commentary for line item 59.\\n- news note 60: figures and commentary for line item 60.\\n- news note 61: figures and commentary for line item 61.\\n- news note 62: figures and commentary for line item 62.\\n- news note 63: figures and commentary for line item 63.\\n- news note 64: figures and commentary for line item 64.\\n- news note 65: figures and commentary for line item 65.\\n- news note 66: figures and commentary for line item 66.\\n- news note 67: figures and commentary for line item 67.\\n- news note 68: figures and commentary for line item 68.\\n- news note 69: figures and commentary for line item 69.\\n- news note 70: figures and commentary for line item 70.\\n- news note 71: figures and commentary for line item 71.\\n- news note 72: figures and commentary for line item 72.\\n- news note 73: figures and commentary for line item 73.\\n- news note 74: figures and commentary for line item 74.\\n- news note 75: figures and commentary for line item 75.\\n- news note 76: figures and commentary for line item 76.\\n- news note 77: figures and commentary for line item 77.\\n- news note 78: figures and commentary for line item 78.\\n- news note 79: figures and commentary for line item 79.\\n- news note 80: figures and commentary for line item 80.\\n- news note 81: figures and commentary for line item 81.\\n- news note 82: figures and commentary for line item 82.\\n- news note 83: figures and commentary for line item 83.\\n- news note 84: figures and commentary for line item 84.\\n- news note 85: figures and commentary for line item 85.\",\"type\":\"text\"}],\"role\":\"user\"},{\"parts\":[{\"content\":\"You are the bull analyst.\\n- bull analyst instructions note 1: figures and commentary for line item 1.\\n- bull analyst instructions note 2: figures and commentary for line item 2.\\n- bull analyst instructions note 3: figures and commentary for line item 3.\\n- bull analyst instructions note 4: figures and commentary for line item 4.\\n- bull analyst instructions note 5: figures and commentary for line item 5.\\n- bull analyst instructions note 6: figures and commentary for line item 6.\\n- bull analyst instructions note 7: figures and commentary for line item 7.\\n- bull analyst instructions note 8: figures and commentary for line item 8.\\n\\nGive your view.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 0\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "9145751310732ee49d89050eeaea3b36",
+              "spanId": "c77f413fa82dba41",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467640000000000",
+              "endTimeUnixNano": "1768467643200000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-shared_context_first"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "2783"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "220"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "2621"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"Shared reports\\n- market note 1: figures and commentary for line item 1.\\n- market note 2: figures and commentary for line item 2.\\n- market note 3: figures and commentary for line item 3.\\n- market note 4: figures and commentary for line item 4.\\n- market note 5: figures and commentary for line item 5.\\n- market note 6: figures and commentary for line item 6.\\n- market note 7: figures and commentary for line item 7.\\n- market note 8: figures and commentary for line item 8.\\n- market note 9: figures and commentary for line item 9.\\n- market note 10: figures and commentary for line item 10.\\n- market note 11: figures and commentary for line item 11.\\n- market note 12: figures and commentary for line item 12.\\n- market note 13: figures and commentary for line item 13.\\n- market note 14: figures and commentary for line item 14.\\n- market note 15: figures and commentary for line item 15.\\n- market note 16: figures and commentary for line item 16.\\n- market note 17: figures and commentary for line item 17.\\n- market note 18: figures and commentary for line item 18.\\n- market note 19: figures and commentary for line item 19.\\n- market note 20: figures and commentary for line item 20.\\n- market note 21: figures and commentary for line item 21.\\n- market note 22: figures and commentary for line item 22.\\n- market note 23: figures and commentary for line item 23.\\n- market note 24: figures and commentary for line item 24.\\n- market note 25: figures and commentary for line item 25.\\n- market note 26: figures and commentary for line item 26.\\n- market note 27: figures and commentary for line item 27.\\n- market note 28: figures and commentary for line item 28.\\n- market note 29: figures and commentary for line item 29.\\n- market note 30: figures and commentary for line item 30.\\n- market note 31: figures and commentary for line item 31.\\n- market note 32: figures and commentary for line item 32.\\n- market note 33: figures and commentary for line item 33.\\n- market note 34: figures and commentary for line item 34.\\n- market note 35: figures and commentary for line item 35.\\n- market note 36: figures and commentary for line item 36.\\n- market note 37: figures and commentary for line item 37.\\n- market note 38: figures and commentary for line item 38.\\n- market note 39: figures and commentary for line item 39.\\n- market note 40: figures and commentary for line item 40.\\n- market note 41: figures and commentary for line item 41.\\n- market note 42: figures and commentary for line item 42.\\n- market note 43: figures and commentary for line item 43.\\n- market note 44: figures and commentary for line item 44.\\n- market note 45: figures and commentary for line item 45.\\n- market note 46: figures and commentary for line item 46.\\n- market note 47: figures and commentary for line item 47.\\n- market note 48: figures and commentary for line item 48.\\n- market note 49: figures and commentary for line item 49.\\n- market note 50: figures and commentary for line item 50.\\n- market note 51: figures and commentary for line item 51.\\n- market note 52: figures and commentary for line item 52.\\n- market note 53: figures and commentary for line item 53.\\n- market note 54: figures and commentary for line item 54.\\n- market note 55: figures and commentary for line item 55.\\n- market note 56: figures and commentary for line item 56.\\n- market note 57: figures and commentary for line item 57.\\n- market note 58: figures and commentary for line item 58.\\n- market note 59: figures and commentary for line item 59.\\n- market note 60: figures and commentary for line item 60.\\n- market note 61: figures and commentary for line item 61.\\n- market note 62: figures and commentary for line item 62.\\n- market note 63: figures and commentary for line item 63.\\n- market note 64: figures and commentary for line item 64.\\n- market note 65: figures and commentary for line item 65.\\n- market note 66: figures and commentary for line item 66.\\n- market note 67: figures and commentary for line item 67.\\n- market note 68: figures and commentary for line item 68.\\n- market note 69: figures and commentary for line item 69.\\n- market note 70: figures and commentary for line item 70.\\n- market note 71: figures and commentary for line item 71.\\n- market note 72: figures and commentary for line item 72.\\n- market note 73: figures and commentary for line item 73.\\n- market note 74: figures and commentary for line item 74.\\n- market note 75: figures and commentary for line item 75.\\n- market note 76: figures and commentary for line item 76.\\n- market note 77: figures and commentary for line item 77.\\n- market note 78: figures and commentary for line item 78.\\n- market note 79: figures and commentary for line item 79.\\n- market note 80: figures and commentary for line item 80.\\n- market note 81: figures and commentary for line item 81.\\n- market note 82: figures and commentary for line item 82.\\n- market note 83: figures and commentary for line item 83.\\n- market note 84: figures and commentary for line item 84.\\n- market note 85: figures and commentary for line item 85.\\n- market note 86: figures and commentary for line item 86.\\n- market note 87: figures and commentary for line item 87.\\n- market note 88: figures and commentary for line item 88.\\n- market note 89: figures and commentary for line item 89.\\n- market note 90: figures and commentary for line item 90.\\n- market note 91: figures and commentary for line item 91.\\n- market note 92: figures and commentary for line item 92.\\n- market note 93: figures and commentary for line item 93.\\n- market note 94: figures and commentary for line item 94.\\n- market note 95: figures and commentary for line item 95.\\n- market note 96: figures and commentary for line item 96.\\n- news note 1: figures and commentary for line item 1.\\n- news note 2: figures and commentary for line item 2.\\n- news note 3: figures and commentary for line item 3.\\n- news note 4: figures and commentary for line item 4.\\n- news note 5: figures and commentary for line item 5.\\n- news note 6: figures and commentary for line item 6.\\n- news note 7: figures and commentary for line item 7.\\n- news note 8: figures and commentary for line item 8.\\n- news note 9: figures and commentary for line item 9.\\n- news note 10: figures and commentary for line item 10.\\n- news note 11: figures and commentary for line item 11.\\n- news note 12: figures and commentary for line item 12.\\n- news note 13: figures and commentary for line item 13.\\n- news note 14: figures and commentary for line item 14.\\n- news note 15: figures and commentary for line item 15.\\n- news note 16: figures and commentary for line item 16.\\n- news note 17: figures and commentary for line item 17.\\n- news note 18: figures and commentary for line item 18.\\n- news note 19: figures and commentary for line item 19.\\n- news note 20: figures and commentary for line item 20.\\n- news note 21: figures and commentary for line item 21.\\n- news note 22: figures and commentary for line item 22.\\n- news note 23: figures and commentary for line item 23.\\n- news note 24: figures and commentary for line item 24.\\n- news note 25: figures and commentary for line item 25.\\n- news note 26: figures and commentary for line item 26.\\n- news note 27: figures and commentary for line item 27.\\n- news note 28: figures and commentary for line item 28.\\n- news note 29: figures and commentary for line item 29.\\n- news note 30: figures and commentary for line item 30.\\n- news note 31: figures and commentary for line item 31.\\n- news note 32: figures and commentary for line item 32.\\n- news note 33: figures and commentary for line item 33.\\n- news note 34: figures and commentary for line item 34.\\n- news note 35: figures and commentary for line item 35.\\n- news note 36: figures and commentary for line item 36.\\n- news note 37: figures and commentary for line item 37.\\n- news note 38: figures and commentary for line item 38.\\n- news note 39: figures and commentary for line item 39.\\n- news note 40: figures and commentary for line item 40.\\n- news note 41: figures and commentary for line item 41.\\n- news note 42: figures and commentary for line item 42.\\n- news note 43: figures and commentary for line item 43.\\n- news note 44: figures and commentary for line item 44.\\n- news note 45: figures and commentary for line item 45.\\n- news note 46: figures and commentary for line item 46.\\n- news note 47: figures and commentary for line item 47.\\n- news note 48: figures and commentary for line item 48.\\n- news note 49: figures and commentary for line item 49.\\n- news note 50: figures and commentary for line item 50.\\n- news note 51: figures and commentary for line item 51.\\n- news note 52: figures and commentary for line item 52.\\n- news note 53: figures and commentary for line item 53.\\n- news note 54: figures and commentary for line item 54.\\n- news note 55: figures and commentary for line item 55.\\n- news note 56: figures and commentary for line item 56.\\n- news note 57: figures and commentary for line item 57.\\n- news note 58: figures and commentary for line item 58.\\n- news note 59: figures and commentary for line item 59.\\n- news note 60: figures and commentary for line item 60.\\n- news note 61: figures and commentary for line item 61.\\n- news note 62: figures and commentary for line item 62.\\n- news note 63: figures and commentary for line item 63.\\n- news note 64: figures and commentary for line item 64.\\n- news note 65: figures and commentary for line item 65.\\n- news note 66: figures and commentary for line item 66.\\n- news note 67: figures and commentary for line item 67.\\n- news note 68: figures and commentary for line item 68.\\n- news note 69: figures and commentary for line item 69.\\n- news note 70: figures and commentary for line item 70.\\n- news note 71: figures and commentary for line item 71.\\n- news note 72: figures and commentary for line item 72.\\n- news note 73: figures and commentary for line item 73.\\n- news note 74: figures and commentary for line item 74.\\n- news note 75: figures and commentary for line item 75.\\n- news note 76: figures and commentary for line item 76.\\n- news note 77: figures and commentary for line item 77.\\n- news note 78: figures and commentary for line item 78.\\n- news note 79: figures and commentary for line item 79.\\n- news note 80: figures and commentary for line item 80.\\n- news note 81: figures and commentary for line item 81.\\n- news note 82: figures and commentary for line item 82.\\n- news note 83: figures and commentary for line item 83.\\n- news note 84: figures and commentary for line item 84.\\n- news note 85: figures and commentary for line item 85.\",\"type\":\"text\"}],\"role\":\"user\"},{\"parts\":[{\"content\":\"You are the bear analyst.\\n- bear analyst instructions note 1: figures and commentary for line item 1.\\n- bear analyst instructions note 2: figures and commentary for line item 2.\\n- bear analyst instructions note 3: figures and commentary for line item 3.\\n- bear analyst instructions note 4: figures and commentary for line item 4.\\n- bear analyst instructions note 5: figures and commentary for line item 5.\\n- bear analyst instructions note 6: figures and commentary for line item 6.\\n- bear analyst instructions note 7: figures and commentary for line item 7.\\n- bear analyst instructions note 8: figures and commentary for line item 8.\\n\\nGive your view.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 1\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "9145751310732ee49d89050eeaea3b36",
+              "spanId": "23ebadf25cd9d213",
+              "name": "chat gpt-5.6",
+              "kind": 3,
+              "startTimeUnixNano": "1768467680000000000",
+              "endTimeUnixNano": "1768467683200000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "openai"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "gpt-5.6"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-shared_context_first"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "2788"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "220"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_read.input_tokens",
+                  "value": {
+                    "intValue": "2621"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.cache_creation.input_tokens",
+                  "value": {
+                    "intValue": "0"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"Shared reports\\n- market note 1: figures and commentary for line item 1.\\n- market note 2: figures and commentary for line item 2.\\n- market note 3: figures and commentary for line item 3.\\n- market note 4: figures and commentary for line item 4.\\n- market note 5: figures and commentary for line item 5.\\n- market note 6: figures and commentary for line item 6.\\n- market note 7: figures and commentary for line item 7.\\n- market note 8: figures and commentary for line item 8.\\n- market note 9: figures and commentary for line item 9.\\n- market note 10: figures and commentary for line item 10.\\n- market note 11: figures and commentary for line item 11.\\n- market note 12: figures and commentary for line item 12.\\n- market note 13: figures and commentary for line item 13.\\n- market note 14: figures and commentary for line item 14.\\n- market note 15: figures and commentary for line item 15.\\n- market note 16: figures and commentary for line item 16.\\n- market note 17: figures and commentary for line item 17.\\n- market note 18: figures and commentary for line item 18.\\n- market note 19: figures and commentary for line item 19.\\n- market note 20: figures and commentary for line item 20.\\n- market note 21: figures and commentary for line item 21.\\n- market note 22: figures and commentary for line item 22.\\n- market note 23: figures and commentary for line item 23.\\n- market note 24: figures and commentary for line item 24.\\n- market note 25: figures and commentary for line item 25.\\n- market note 26: figures and commentary for line item 26.\\n- market note 27: figures and commentary for line item 27.\\n- market note 28: figures and commentary for line item 28.\\n- market note 29: figures and commentary for line item 29.\\n- market note 30: figures and commentary for line item 30.\\n- market note 31: figures and commentary for line item 31.\\n- market note 32: figures and commentary for line item 32.\\n- market note 33: figures and commentary for line item 33.\\n- market note 34: figures and commentary for line item 34.\\n- market note 35: figures and commentary for line item 35.\\n- market note 36: figures and commentary for line item 36.\\n- market note 37: figures and commentary for line item 37.\\n- market note 38: figures and commentary for line item 38.\\n- market note 39: figures and commentary for line item 39.\\n- market note 40: figures and commentary for line item 40.\\n- market note 41: figures and commentary for line item 41.\\n- market note 42: figures and commentary for line item 42.\\n- market note 43: figures and commentary for line item 43.\\n- market note 44: figures and commentary for line item 44.\\n- market note 45: figures and commentary for line item 45.\\n- market note 46: figures and commentary for line item 46.\\n- market note 47: figures and commentary for line item 47.\\n- market note 48: figures and commentary for line item 48.\\n- market note 49: figures and commentary for line item 49.\\n- market note 50: figures and commentary for line item 50.\\n- market note 51: figures and commentary for line item 51.\\n- market note 52: figures and commentary for line item 52.\\n- market note 53: figures and commentary for line item 53.\\n- market note 54: figures and commentary for line item 54.\\n- market note 55: figures and commentary for line item 55.\\n- market note 56: figures and commentary for line item 56.\\n- market note 57: figures and commentary for line item 57.\\n- market note 58: figures and commentary for line item 58.\\n- market note 59: figures and commentary for line item 59.\\n- market note 60: figures and commentary for line item 60.\\n- market note 61: figures and commentary for line item 61.\\n- market note 62: figures and commentary for line item 62.\\n- market note 63: figures and commentary for line item 63.\\n- market note 64: figures and commentary for line item 64.\\n- market note 65: figures and commentary for line item 65.\\n- market note 66: figures and commentary for line item 66.\\n- market note 67: figures and commentary for line item 67.\\n- market note 68: figures and commentary for line item 68.\\n- market note 69: figures and commentary for line item 69.\\n- market note 70: figures and commentary for line item 70.\\n- market note 71: figures and commentary for line item 71.\\n- market note 72: figures and commentary for line item 72.\\n- market note 73: figures and commentary for line item 73.\\n- market note 74: figures and commentary for line item 74.\\n- market note 75: figures and commentary for line item 75.\\n- market note 76: figures and commentary for line item 76.\\n- market note 77: figures and commentary for line item 77.\\n- market note 78: figures and commentary for line item 78.\\n- market note 79: figures and commentary for line item 79.\\n- market note 80: figures and commentary for line item 80.\\n- market note 81: figures and commentary for line item 81.\\n- market note 82: figures and commentary for line item 82.\\n- market note 83: figures and commentary for line item 83.\\n- market note 84: figures and commentary for line item 84.\\n- market note 85: figures and commentary for line item 85.\\n- market note 86: figures and commentary for line item 86.\\n- market note 87: figures and commentary for line item 87.\\n- market note 88: figures and commentary for line item 88.\\n- market note 89: figures and commentary for line item 89.\\n- market note 90: figures and commentary for line item 90.\\n- market note 91: figures and commentary for line item 91.\\n- market note 92: figures and commentary for line item 92.\\n- market note 93: figures and commentary for line item 93.\\n- market note 94: figures and commentary for line item 94.\\n- market note 95: figures and commentary for line item 95.\\n- market note 96: figures and commentary for line item 96.\\n- news note 1: figures and commentary for line item 1.\\n- news note 2: figures and commentary for line item 2.\\n- news note 3: figures and commentary for line item 3.\\n- news note 4: figures and commentary for line item 4.\\n- news note 5: figures and commentary for line item 5.\\n- news note 6: figures and commentary for line item 6.\\n- news note 7: figures and commentary for line item 7.\\n- news note 8: figures and commentary for line item 8.\\n- news note 9: figures and commentary for line item 9.\\n- news note 10: figures and commentary for line item 10.\\n- news note 11: figures and commentary for line item 11.\\n- news note 12: figures and commentary for line item 12.\\n- news note 13: figures and commentary for line item 13.\\n- news note 14: figures and commentary for line item 14.\\n- news note 15: figures and commentary for line item 15.\\n- news note 16: figures and commentary for line item 16.\\n- news note 17: figures and commentary for line item 17.\\n- news note 18: figures and commentary for line item 18.\\n- news note 19: figures and commentary for line item 19.\\n- news note 20: figures and commentary for line item 20.\\n- news note 21: figures and commentary for line item 21.\\n- news note 22: figures and commentary for line item 22.\\n- news note 23: figures and commentary for line item 23.\\n- news note 24: figures and commentary for line item 24.\\n- news note 25: figures and commentary for line item 25.\\n- news note 26: figures and commentary for line item 26.\\n- news note 27: figures and commentary for line item 27.\\n- news note 28: figures and commentary for line item 28.\\n- news note 29: figures and commentary for line item 29.\\n- news note 30: figures and commentary for line item 30.\\n- news note 31: figures and commentary for line item 31.\\n- news note 32: figures and commentary for line item 32.\\n- news note 33: figures and commentary for line item 33.\\n- news note 34: figures and commentary for line item 34.\\n- news note 35: figures and commentary for line item 35.\\n- news note 36: figures and commentary for line item 36.\\n- news note 37: figures and commentary for line item 37.\\n- news note 38: figures and commentary for line item 38.\\n- news note 39: figures and commentary for line item 39.\\n- news note 40: figures and commentary for line item 40.\\n- news note 41: figures and commentary for line item 41.\\n- news note 42: figures and commentary for line item 42.\\n- news note 43: figures and commentary for line item 43.\\n- news note 44: figures and commentary for line item 44.\\n- news note 45: figures and commentary for line item 45.\\n- news note 46: figures and commentary for line item 46.\\n- news note 47: figures and commentary for line item 47.\\n- news note 48: figures and commentary for line item 48.\\n- news note 49: figures and commentary for line item 49.\\n- news note 50: figures and commentary for line item 50.\\n- news note 51: figures and commentary for line item 51.\\n- news note 52: figures and commentary for line item 52.\\n- news note 53: figures and commentary for line item 53.\\n- news note 54: figures and commentary for line item 54.\\n- news note 55: figures and commentary for line item 55.\\n- news note 56: figures and commentary for line item 56.\\n- news note 57: figures and commentary for line item 57.\\n- news note 58: figures and commentary for line item 58.\\n- news note 59: figures and commentary for line item 59.\\n- news note 60: figures and commentary for line item 60.\\n- news note 61: figures and commentary for line item 61.\\n- news note 62: figures and commentary for line item 62.\\n- news note 63: figures and commentary for line item 63.\\n- news note 64: figures and commentary for line item 64.\\n- news note 65: figures and commentary for line item 65.\\n- news note 66: figures and commentary for line item 66.\\n- news note 67: figures and commentary for line item 67.\\n- news note 68: figures and commentary for line item 68.\\n- news note 69: figures and commentary for line item 69.\\n- news note 70: figures and commentary for line item 70.\\n- news note 71: figures and commentary for line item 71.\\n- news note 72: figures and commentary for line item 72.\\n- news note 73: figures and commentary for line item 73.\\n- news note 74: figures and commentary for line item 74.\\n- news note 75: figures and commentary for line item 75.\\n- news note 76: figures and commentary for line item 76.\\n- news note 77: figures and commentary for line item 77.\\n- news note 78: figures and commentary for line item 78.\\n- news note 79: figures and commentary for line item 79.\\n- news note 80: figures and commentary for line item 80.\\n- news note 81: figures and commentary for line item 81.\\n- news note 82: figures and commentary for line item 82.\\n- news note 83: figures and commentary for line item 83.\\n- news note 84: figures and commentary for line item 84.\\n- news note 85: figures and commentary for line item 85.\",\"type\":\"text\"}],\"role\":\"user\"},{\"parts\":[{\"content\":\"You are the research judge.\\n- research judge instructions note 1: figures and commentary for line item 1.\\n- research judge instructions note 2: figures and commentary for line item 2.\\n- research judge instructions note 3: figures and commentary for line item 3.\\n- research judge instructions note 4: figures and commentary for line item 4.\\n- research judge instructions note 5: figures and commentary for line item 5.\\n- research judge instructions note 6: figures and commentary for line item 6.\\n- research judge instructions note 7: figures and commentary for line item 7.\\n- research judge instructions note 8: figures and commentary for line item 8.\\n\\nGive your view.\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 2\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

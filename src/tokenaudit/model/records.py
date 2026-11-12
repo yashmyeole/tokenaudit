@@ -14,17 +14,31 @@ ever defaults a missing count to zero.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+
+
+@dataclass(frozen=True)
+class Segment:
+    """One line of a block: truncated hash and length (newline included)."""
+
+    sha256: str
+    chars: int
 
 
 @dataclass(frozen=True)
 class BlockDigest:
-    """Privacy-preserving digest of one prompt block: hash + length, no text."""
+    """Privacy-preserving digest of one prompt block: hash + length, no text.
+
+    ``segments`` holds per-line digests so detectors can see shared content
+    inside blocks that differ as a whole. They stay in memory and are left
+    out of anything the CLI prints: short lines are guessable from a hash.
+    """
 
     role: str
     sha256: str
     chars: int
     cache_marker: bool = False
+    segments: tuple[Segment, ...] = field(default=(), compare=False, repr=False)
 
 
 @dataclass(frozen=True)
