@@ -32,6 +32,12 @@
       "id": "msg_4ab26951741ad2ad",
       "type": "message",
       "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 0"
+        }
+      ],
       "usage": {
         "input_tokens": 12,
         "cache_read_input_tokens": 0,
@@ -73,6 +79,12 @@
       "id": "msg_454b1513a5c198a7",
       "type": "message",
       "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 1"
+        }
+      ],
       "usage": {
         "input_tokens": 12,
         "cache_read_input_tokens": 0,
@@ -114,6 +126,12 @@
       "id": "msg_6e7b2a5db9d78090",
       "type": "message",
       "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 2"
+        }
+      ],
       "usage": {
         "input_tokens": 12,
         "cache_read_input_tokens": 0,
@@ -155,6 +173,12 @@
       "id": "msg_6ad58eeafb5f4a4c",
       "type": "message",
       "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 3"
+        }
+      ],
       "usage": {
         "input_tokens": 12,
         "cache_read_input_tokens": 0,
@@ -196,6 +220,12 @@
       "id": "msg_a1d24a0646d67d5b",
       "type": "message",
       "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 4"
+        }
+      ],
       "usage": {
         "input_tokens": 12,
         "cache_read_input_tokens": 0,
@@ -237,6 +267,12 @@
       "id": "msg_0e5607d33b61f2e3",
       "type": "message",
       "model": "claude-sonnet-4-5",
+      "content": [
+        {
+          "type": "text",
+          "text": "reply 5"
+        }
+      ],
       "usage": {
         "input_tokens": 12,
         "cache_read_input_tokens": 0,

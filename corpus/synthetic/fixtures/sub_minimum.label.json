@@ -18,6 +18,7 @@
     "model_switch",
     "prefix_drift",
     "retry_storm",
+    "tool_schema_bloat",
     "tool_schema_churn",
     "ttl_expiry"
   ],

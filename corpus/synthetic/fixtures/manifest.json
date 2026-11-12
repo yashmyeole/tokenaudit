@@ -160,6 +160,29 @@
       "calls": 9
     },
     {
+      "fixture": "tool_schema_bloat",
+      "schema": "openinference",
+      "provider_shape": "anthropic",
+      "contains": [
+        "tool_schema_bloat"
+      ],
+      "calls": 6
+    },
+    {
+      "fixture": "tool_schema_lean",
+      "schema": "openinference",
+      "provider_shape": "anthropic",
+      "contains": [],
+      "calls": 6
+    },
+    {
+      "fixture": "tool_schema_rotating",
+      "schema": "openinference",
+      "provider_shape": "anthropic",
+      "contains": [],
+      "calls": 8
+    },
+    {
       "fixture": "prefix_drift_legacy_flat",
       "schema": "otel-genai-legacy-flat",
       "provider_shape": "anthropic",
@@ -203,6 +226,15 @@
         "misordered_shared_context"
       ],
       "calls": 3
+    },
+    {
+      "fixture": "tool_schema_bloat_provider_log",
+      "schema": "provider-log",
+      "provider_shape": "anthropic",
+      "contains": [
+        "tool_schema_bloat"
+      ],
+      "calls": 6
     }
   ]
 }

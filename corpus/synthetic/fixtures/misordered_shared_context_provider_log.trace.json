@@ -17,6 +17,13 @@
       "id": "resp_0139150ab8407230",
       "object": "response",
       "model": "gpt-5.6",
+      "output": [
+        {
+          "type": "message",
+          "role": "assistant",
+          "content": "reply 0"
+        }
+      ],
       "usage": {
         "input_tokens": 2784,
         "input_tokens_details": {
@@ -44,6 +51,13 @@
       "id": "resp_308427395aaf2899",
       "object": "response",
       "model": "gpt-5.6",
+      "output": [
+        {
+          "type": "message",
+          "role": "assistant",
+          "content": "reply 1"
+        }
+      ],
       "usage": {
         "input_tokens": 2784,
         "input_tokens_details": {
@@ -71,6 +85,13 @@
       "id": "resp_0a81639a8c8b1e34",
       "object": "response",
       "model": "gpt-5.6",
+      "output": [
+        {
+          "type": "message",
+          "role": "assistant",
+          "content": "reply 2"
+        }
+      ],
       "usage": {
         "input_tokens": 2789,
         "input_tokens_details": {

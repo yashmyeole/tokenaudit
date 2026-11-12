@@ -17,6 +17,7 @@
     "prefix_drift",
     "retry_storm",
     "sub_minimum",
+    "tool_schema_bloat",
     "tool_schema_churn",
     "ttl_expiry"
   ],

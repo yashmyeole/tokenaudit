@@ -19,6 +19,7 @@
     "prefix_drift",
     "retry_storm",
     "sub_minimum",
+    "tool_schema_bloat",
     "ttl_expiry"
   ],
   "evidence": {

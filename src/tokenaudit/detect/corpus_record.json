@@ -1,13 +1,13 @@
 {
   "breakpoint_limit": {
     "false_alarms": 0,
-    "negatives_checked": 22,
+    "negatives_checked": 26,
     "positives_found": 1,
     "positives_total": 1
   },
   "context_bloat": {
     "false_alarms": 0,
-    "negatives_checked": 13,
+    "negatives_checked": 17,
     "positives_found": 1,
     "positives_total": 1
   },
@@ -19,49 +19,55 @@
   },
   "lookback_overflow": {
     "false_alarms": 0,
-    "negatives_checked": 22,
+    "negatives_checked": 26,
     "positives_found": 1,
     "positives_total": 1
   },
   "misordered_shared_context": {
     "false_alarms": 0,
-    "negatives_checked": 21,
+    "negatives_checked": 25,
     "positives_found": 2,
     "positives_total": 2
   },
   "model_switch": {
     "false_alarms": 0,
-    "negatives_checked": 22,
+    "negatives_checked": 26,
     "positives_found": 1,
     "positives_total": 1
   },
   "prefix_drift": {
     "false_alarms": 0,
-    "negatives_checked": 19,
+    "negatives_checked": 23,
     "positives_found": 4,
     "positives_total": 5
   },
   "retry_storm": {
     "false_alarms": 0,
-    "negatives_checked": 22,
+    "negatives_checked": 26,
     "positives_found": 1,
     "positives_total": 1
   },
   "sub_minimum": {
     "false_alarms": 0,
-    "negatives_checked": 22,
+    "negatives_checked": 26,
     "positives_found": 1,
     "positives_total": 1
   },
+  "tool_schema_bloat": {
+    "false_alarms": 0,
+    "negatives_checked": 2,
+    "positives_found": 2,
+    "positives_total": 2
+  },
   "tool_schema_churn": {
     "false_alarms": 0,
-    "negatives_checked": 22,
+    "negatives_checked": 26,
     "positives_found": 1,
     "positives_total": 1
   },
   "ttl_expiry": {
     "false_alarms": 0,
-    "negatives_checked": 19,
+    "negatives_checked": 23,
     "positives_found": 1,
     "positives_total": 1
   }

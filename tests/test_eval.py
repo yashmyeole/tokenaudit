@@ -35,7 +35,7 @@ def test_results_show_no_misses_and_no_false_alarms() -> None:
     import json
 
     tallies = json.loads((EVAL / "results.json").read_text(encoding="utf-8"))
-    assert len(tallies) == 11
+    assert len(tallies) == 12
     for detector_id, tally in tallies.items():
         assert tally["positives_missed"] == 0, detector_id
         assert tally["false_alarms"] == 0, detector_id

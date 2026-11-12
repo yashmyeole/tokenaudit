@@ -90,7 +90,23 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
@@ -100,7 +116,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 22,
+    "negatives_clean": 26,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -196,7 +212,23 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
@@ -206,7 +238,7 @@
       }
     },
     "negatives_abstained": 10,
-    "negatives_clean": 13,
+    "negatives_clean": 17,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -302,7 +334,23 @@
         "expected": false,
         "outcome": "abstained"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "abstained"
       },
@@ -311,7 +359,7 @@
         "outcome": "abstained"
       }
     },
-    "negatives_abstained": 21,
+    "negatives_abstained": 25,
     "negatives_clean": 2,
     "positives_abstained": 0,
     "positives_found": 1,
@@ -408,7 +456,23 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
@@ -418,7 +482,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 22,
+    "negatives_clean": 26,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -514,7 +578,23 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
@@ -524,7 +604,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 21,
+    "negatives_clean": 25,
     "positives_abstained": 0,
     "positives_found": 2,
     "positives_missed": 0
@@ -620,7 +700,23 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
@@ -630,7 +726,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 22,
+    "negatives_clean": 26,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -726,7 +822,23 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
@@ -736,7 +848,7 @@
       }
     },
     "negatives_abstained": 0,
-    "negatives_clean": 19,
+    "negatives_clean": 23,
     "positives_abstained": 1,
     "positives_found": 4,
     "positives_missed": 0
@@ -832,7 +944,23 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
@@ -842,7 +970,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 22,
+    "negatives_clean": 26,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -938,7 +1066,23 @@
         "expected": true,
         "outcome": "fired"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
@@ -948,9 +1092,131 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 22,
+    "negatives_clean": 26,
     "positives_abstained": 0,
     "positives_found": 1,
+    "positives_missed": 0
+  },
+  "tool_schema_bloat": {
+    "false_alarms": 0,
+    "fixtures": {
+      "breakpoint_limit": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "context_bloat": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "cross_session_distinct": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "cross_session_drift": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "cross_session_stable": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "healthy_cached": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "healthy_incremental": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "healthy_small": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "lookback_overflow": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "misordered_shared_context": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "model_switch": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "openai_healthy_cached": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_legacy_flat": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_no_content": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "retry_storm": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "shared_context_first": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "shared_context_small": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "sub_minimum": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "tool_schema_bloat": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "tool_schema_churn": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "ttl_expiry": {
+        "expected": false,
+        "outcome": "abstained"
+      }
+    },
+    "negatives_abstained": 24,
+    "negatives_clean": 2,
+    "positives_abstained": 0,
+    "positives_found": 2,
     "positives_missed": 0
   },
   "tool_schema_churn": {
@@ -1044,9 +1310,25 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
         "expected": true,
         "outcome": "fired"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
+        "expected": false,
+        "outcome": "clean"
       },
       "ttl_expiry": {
         "expected": false,
@@ -1054,7 +1336,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 22,
+    "negatives_clean": 26,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -1150,7 +1432,23 @@
         "expected": false,
         "outcome": "clean"
       },
+      "tool_schema_bloat": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_bloat_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "tool_schema_churn": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_lean": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "tool_schema_rotating": {
         "expected": false,
         "outcome": "clean"
       },
@@ -1160,7 +1458,7 @@
       }
     },
     "negatives_abstained": 4,
-    "negatives_clean": 19,
+    "negatives_clean": 23,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0

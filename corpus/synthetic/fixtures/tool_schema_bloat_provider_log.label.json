@@ -1,0 +1,38 @@
+{
+  "fixture": "tool_schema_bloat_provider_log",
+  "schema": "provider-log",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [
+    "tool_schema_bloat"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "cross_session_drift",
+    "lookback_overflow",
+    "misordered_shared_context",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "tools_defined": 12,
+    "tools_called": 2,
+    "calls": 6
+  },
+  "notes": "Same session as tool_schema_bloat, as a raw Anthropic log: definitions in request.tools, calls as tool_use blocks in the response content.",
+  "totals": {
+    "calls": 6,
+    "input_tokens": 34926,
+    "cache_read_tokens": 29045,
+    "cache_creation_tokens": 5809,
+    "output_tokens": 1080
+  }
+}
