@@ -143,6 +143,26 @@ wrong being visible, not only what worked.
   both scripts now check that `api.openai.com` resolves before spending
   cooldowns or tokens.
 
+## Re-check on v0.7.1 (November 2026)
+
+Upstream moved 243 commits past the original patch, and v0.7.1 puts the date
+at the start of the analyst prompts on purpose, so tool calls anchor to it.
+The patch was rebuilt for the five debate prompts only
+(`cache_friendly_prompts_v0.7.patch`, against `9fa1196`). Running those nodes
+against a stub LLM shows every turn after the first now starts with the
+previous turn's full shared block; before, turns from different roles shared
+at most 11 leading characters.
+
+`run_recheck.sh` runs one live baseline/patched pair on that commit (`PAIRS=2`
+for a second pair in the opposite order). Each run gets its own decision log,
+because upstream now feeds earlier decisions for the same ticker into later
+runs, which would otherwise make the two arms see different prompts.
+
+Result (one pair, 2026-11-12): cache hit rate 15.7% -> 38.8%, +23,296 cached
+tokens, and both runs reached the same decision. One pair confirms the
+August result rather than measuring it precisely. Details:
+[results-v0.7.md](results-v0.7.md).
+
 ## Running it
 
     export OPENAI_API_KEY=...      # stays in your shell
