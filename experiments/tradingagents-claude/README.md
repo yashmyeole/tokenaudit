@@ -32,6 +32,15 @@ patched run can read another's 5-minute cache entries.
 
 If the data disagrees, the data wins and this section stays as written.
 
+## Outcome
+
+The baseline half held: 0% cache reads and `missing_cache_markers` on every
+unchanged run, and `misordered_shared_context` on both arms. The patched half
+didn't. Automatic caching reached a 14.8% read rate but wrote 85% of all input
+to the cache at 1.25x, and 89% of those writes were never read, so input cost
+rose 7.2%. Numbers: [results.md](results.md). Write-up and what to cache
+instead: [the case study](../../docs/case-studies/tradingagents-claude.md).
+
 ## Checked before spending anything
 
 Both checks ran against a local mock of the Messages API, so no key or spend

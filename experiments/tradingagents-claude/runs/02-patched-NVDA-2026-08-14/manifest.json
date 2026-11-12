@@ -1,0 +1,33 @@
+{
+  "duration_s": 254.8,
+  "instrumentors": [
+    "openinference-instrumentation-anthropic",
+    "openinference-instrumentation-langchain"
+  ],
+  "llm_provider": "anthropic",
+  "max_debate_rounds": 1,
+  "models": {
+    "deep_think": "claude-sonnet-5",
+    "quick_think": "claude-sonnet-5"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.13.7",
+  "run_id": "02-patched-NVDA-2026-08-14",
+  "smoke": false,
+  "span_count": 120,
+  "started_at": "2026-11-12T17:36:32Z",
+  "ticker": "NVDA",
+  "trade_date": "2026-08-14",
+  "tradingagents_commit": "d203011aeb8a6585be825dd33c08d7b1b2297ee2",
+  "versions": {
+    "anthropic": "1.2.0",
+    "langchain-anthropic": "1.7.10",
+    "langchain-core": "1.8.0",
+    "openai": "3.6.0",
+    "openinference-instrumentation-anthropic": "3.3.5",
+    "openinference-instrumentation-langchain": "0.1.73",
+    "openinference-instrumentation-openai": "0.1.57",
+    "opentelemetry-sdk": "1.44.0",
+    "tradingagents": "0.7.1"
+  }
+}
