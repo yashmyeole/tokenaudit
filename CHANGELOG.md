@@ -2,6 +2,22 @@
 
 ## Unreleased
 
+## 0.2.0 — 2026-11-10
+
+- Fix the GitHub Action for external users. It installed the latest PyPI
+  release, and 0.1.0 has no `check` command. It now installs the code at the
+  ref it is used from, so `@v0.2.0` runs 0.2.0. The `version` input still
+  pins a PyPI release.
+- Rulebook re-verified against current provider docs (version 2026.11.10):
+  - Anthropic: Opus, Sonnet and Haiku 5.5, Fable and Mythos 5.1/5.2.
+    Per-model read multipliers (0.05x and 0.025x) and base input prices.
+  - OpenAI: GPT-5.6 sizes, GPT-6 and GPT-6.1, 12h TTL. Pre-5.6 models no
+    longer publish a fixed minimum, so it is recorded as unknown.
+  - Google: added Gemini 4 Argon and 3.8 Flash; removed 3.7 and 3.5 Flash,
+    which are no longer in Google's table.
+- `sub_minimum` abstains when a model has no published minimum.
+- Release workflow: pushing a `vX.Y.Z` tag publishes to PyPI.
+- The sdist no longer includes the experiment traces.
 - **`ingest_text(text, source)`**: ingest trace content already in memory
   (an upload, a stream) — nothing touches disk. `ingest_path` now wraps it.
 - **Hosted demo** (`demo/`, not part of the package): a one-page FastAPI

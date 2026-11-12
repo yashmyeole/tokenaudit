@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "tokenaudit"
-version = "0.1.0"
+version = "0.2.0"
 description = "Root-cause diagnosis of wasted LLM tokens, from the traces your agents already emit"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -22,7 +22,7 @@ keywords = [
   "diagnosis",
 ]
 classifiers = [
-  "Development Status :: 2 - Pre-Alpha",
+  "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
@@ -51,6 +51,9 @@ Issues = "https://github.com/yashmyeole/tokenaudit/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/tokenaudit"]
+
+[tool.hatch.build.targets.sdist]
+exclude = ["/experiments"]
 
 [tool.ruff]
 line-length = 100

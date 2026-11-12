@@ -10,8 +10,8 @@ rulebook holds itself to three rules:
   a test fails CI when any entry is more than 90 days old. A rulebook that
   knows when it is rotting beats one that quietly goes stale.
 - **Unknown means unknown.** Where a provider does not publish a number
-  (Gemini's TTL and discount, exact retention for older OpenAI models), the
-  field is null with a note — never a guess.
+  (Gemini's TTL and discount, retention and minimums for older OpenAI
+  models), the field is null with a note — never a guess.
 - **Provider-level defaults, model-level overrides.** A model entry only
   states what differs; the loader merges. Field *name mappings* for traces
   live in ``ingest/dialects.py``, not here, so the two can never drift.
@@ -31,7 +31,7 @@ from functools import lru_cache
 from importlib.resources import files
 from typing import Any
 
-RULEBOOK_VERSION = "2026.08.29"
+RULEBOOK_VERSION = "2026.11.10"
 
 _PROVIDER_FILES = ("anthropic.json", "openai.json", "google.json")
 _PROVIDER_ALIASES = {
@@ -47,6 +47,7 @@ _PROVIDER_ALIASES = {
 # Model entries may override these provider-level fields.
 _OVERRIDABLE = (
     "min_cacheable_tokens",
+    "min_cacheable_notes",
     "max_explicit_breakpoints",
     "lookback_positions",
     "ttl",
@@ -57,6 +58,7 @@ _OVERRIDABLE = (
     "accounting_shape",
     "cache_read_multiplier",
     "base_input_price_per_mtok",
+    "price_notes",
 )
 
 _DATE_SUFFIX = re.compile(r"-(\d{8}|\d{4}-\d{2}-\d{2}|latest)$")
@@ -79,7 +81,7 @@ class ModelRules:
 
     provider: str
     model: str
-    min_cacheable_tokens: int
+    min_cacheable_tokens: int | None
     max_explicit_breakpoints: int | None
     lookback_positions: int | None
     ttl: tuple[TtlOption, ...]
@@ -92,6 +94,8 @@ class ModelRules:
     source_url: str
     verified_on: date
     notes: str | None = None
+    min_cacheable_notes: str | None = None
+    price_notes: str | None = None
 
 
 @dataclass(frozen=True)
@@ -131,7 +135,7 @@ class Rulebook:
         for rules in self.models.values():
             by_provider.setdefault(rules.provider, []).append(rules)
         for provider in sorted(by_provider):
-            entries = sorted(by_provider[provider], key=lambda r: (r.min_cacheable_tokens, r.model))
+            entries = sorted(by_provider[provider], key=_table_order)
             first = entries[0]
             lines.append(f"## {provider}")
             lines.append("")
@@ -167,12 +171,18 @@ class Rulebook:
                 )
                 lookback = "?" if r.lookback_positions is None else r.lookback_positions
                 read_mult = "?" if r.cache_read_multiplier is None else r.cache_read_multiplier
+                minimum = "?" if r.min_cacheable_tokens is None else r.min_cacheable_tokens
                 lines.append(
-                    f"| {r.model} | {r.min_cacheable_tokens} | {breakpoints} | {lookback} | "
+                    f"| {r.model} | {minimum} | {breakpoints} | {lookback} | "
                     f"{ttl} | {read_mult} | {write} |"
                 )
             lines.append("")
         return "\n".join(lines)
+
+
+def _table_order(rules: ModelRules) -> tuple[int, str]:
+    # models without a published minimum sort last
+    return (rules.min_cacheable_tokens or 1_000_000, rules.model)
 
 
 def _merged(provider_doc: dict[str, Any], model_doc: dict[str, Any], key: str) -> Any:
@@ -184,7 +194,11 @@ def _build_model(provider_doc: dict[str, Any], model: str, model_doc: dict[str, 
     merged = {key: _merged(provider_doc, model_doc, key) for key in _OVERRIDABLE}
 
     min_cacheable = merged["min_cacheable_tokens"]
-    if not isinstance(min_cacheable, int) or min_cacheable <= 0:
+    min_notes = merged["min_cacheable_notes"]
+    if min_cacheable is None:
+        if not isinstance(min_notes, str) or not min_notes.strip():
+            raise RulebookError(f"{provider}/{model}: null minimum needs min_cacheable_notes")
+    elif not isinstance(min_cacheable, int) or min_cacheable <= 0:
         raise RulebookError(f"{provider}/{model}: min_cacheable_tokens must be a positive int")
     accounting = merged["accounting_shape"]
     if accounting not in ("nested", "exclusive"):
@@ -221,6 +235,8 @@ def _build_model(provider_doc: dict[str, Any], model: str, model_doc: dict[str, 
         source_url=source_url,
         verified_on=verified,
         notes=provider_doc.get("notes"),
+        min_cacheable_notes=min_notes,
+        price_notes=merged["price_notes"],
     )
 
 

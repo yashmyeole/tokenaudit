@@ -44,14 +44,15 @@ one step:
 - uses: actions/checkout@v4
 - uses: actions/setup-python@v5
   with: { python-version: "3.12" }
-- uses: yashmyeole/tokenaudit@main   # pin a tag once released
+- uses: yashmyeole/tokenaudit@v0.2.0
   with:
     traces: traces/
     baseline: tokenaudit-baseline.json
 ```
 
 Optional inputs: `max-regression` (points, default `5.0`), `strict`
-(`true`/`false`), `version` (pin the PyPI release the action installs).
+(`true`/`false`), `version` (install a specific release from PyPI instead
+of the code at the referenced tag).
 
 Inside Actions, the CLI notices `$GITHUB_STEP_SUMMARY` and appends its
 markdown summary automatically, so the job's summary page shows the

@@ -22,3 +22,6 @@ htmlcov/
 
 # Capture workdir (throwaway venv + clone, never committed)
 corpus/captured/.work/
+
+# Local TradingAgents clone (separate repo)
+/TradingAgents/
