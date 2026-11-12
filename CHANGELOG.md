@@ -1,5 +1,22 @@
 # Changelog
 
+## Unreleased
+
+From the [TradingAgents on Claude case study](docs/case-studies/tradingagents-claude.md):
+
+- New detector `unread_cache_writes`: requests that write to the cache when
+  nothing later re-sends what they wrote, so the write premium buys nothing.
+  HIGH when the session's writes cost more than its reads saved. Defers to
+  prefix_drift, ttl_expiry, tool_schema_churn, breakpoint_limit and
+  lookback_overflow, which explain a missed read better.
+- `missing_cache_markers` counts tool definitions in the shared prefix (they
+  come first in an Anthropic prompt, and different tools share nothing) and
+  sizes each repeat from the earlier request's reported tokens instead of
+  characters. On the Claude runs its estimate went from 2k-5k to 8k-22k tokens
+  per run, in line with what caching actually read back.
+- `import tokenaudit.counterfactual` on its own no longer fails with a
+  circular import.
+
 ## 0.4.0 — 2026-11-12
 
 Upgrading adds findings to traces with these patterns, and changes the

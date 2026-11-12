@@ -56,3 +56,9 @@ Three calls made together for the 0.1.0 release, all in service of the same prin
 
 **Boundaries:** `tool_schema_bloat` prints tool names, which are identifiers a developer chose rather than prompt text. It counts a tool as used if any request with the same tool set called it, so a shared registry where every tool is used by some agent is not flagged; telling agents apart needs more than a trace carries. `missing_cache_markers` only counts block-aligned prefixes repeated within the cache lifetime, since a breakpoint sits at a block's end and a later repeat would have missed anyway. It leaves growing conversations to `context_bloat` and byte-identical re-sends to `retry_storm`, whose fixes fit those cases better.
 
+## 009 — Report cache writes that buy nothing; size prefixes from real token counts (2026-11-12)
+
+**Decision:** `unread_cache_writes` reports writes that no later request in the session sends again, priced at the write premium, and calls a session HIGH when that premium exceeds what its reads saved. It stays quiet when another detector already explains why the cache wasn't read. Prefix sizes in `missing_cache_markers` come from the earlier request's reported input tokens, scaled by its share of the request's characters.
+
+**Why:** the Claude case study turned caching on for every TradingAgents request and paid 7.2% more, and 0.4.0 called those runs clean. Caching is only cheaper when something reads the write back, and "turn on caching" is the fix people reach for first, so the tool has to say when it backfires. Character counts were off by 2x on prompts made of numbers and JSON, which made the missing-markers estimate a fraction of what caching delivered.
+

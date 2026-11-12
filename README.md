@@ -2,13 +2,15 @@
 
 **Root-cause diagnosis of wasted LLM tokens — from the traces your agents already emit.**
 
-> Status: alpha (0.2.0). Interfaces may change before 1.0.
+> Status: alpha (0.4.0). Interfaces may change before 1.0.
 
 Every LLM cost tool can tell you *how much* you spent and *who* spent it. Almost none can tell you *why a specific request wasted money*. The biggest lever on an LLM bill — prompt caching, up to a 10× discount on repeated input — fails silently: change one byte of a cached prefix, drop below a model's minimum cacheable size, let a timer expire, and the provider just bills you full price. No error, no warning. There are [documented](https://barndoor.ai/what-happens-to-your-llm-bill-when-prompt-caching-fails/) [cases](https://github.com/TauricResearch/TradingAgents/issues/750) of agents running at ~0% cache hit rate for months, at 30–40% unnecessary cost, because of a single line of prompt construction.
 
 tokenaudit reads the traces agents already produce and, for each expensive request, answers four questions: **what was wasted, why, what it cost, and what to change.**
 
 It works: diagnosing one of those documented cases produced a 9-file patch that took TradingAgents' cache hit rate from **7.5% to 32.4% (4.3×)** in a controlled, pre-registered before/after experiment — the [first case study](docs/case-studies/tradingagents.md).
+
+On Claude it found the opposite problem: switching on caching for every request made the same agent's input bill 7.2% higher, because most of its prompts are sent once and every cache write costs 1.25×. The [second case study](docs/case-studies/tradingagents-claude.md) shows where the money went and what to cache instead.
 
 ## Quickstart
 
@@ -27,7 +29,7 @@ minute.
 The plan, in one line each:
 
 - Ingest standard traces — OpenTelemetry GenAI in all three of its cache-field naming generations, OpenInference, raw provider SDK logs — into one normalized accounting model.
-- Run a library of deterministic detectors for the silent failure modes: prefix drift, sub-minimum cache blocks, model switches, TTL expiry, breakpoint and lookback limits, tool-schema churn and bloat, context bloat, retry storms, shared content sent behind different openings, per-session values that stop a prompt being reused across sessions, and prompts that never ask a cache-on-request provider to cache them.
+- Run a library of deterministic detectors for the silent failure modes: prefix drift, sub-minimum cache blocks, model switches, TTL expiry, breakpoint and lookback limits, tool-schema churn and bloat, context bloat, retry storms, shared content sent behind different openings, per-session values that stop a prompt being reused across sessions, prompts that never ask a cache-on-request provider to cache them, and cache writes nothing reads back.
 - Price each finding against a counterfactual — what the bill would have been under the fix — as a bounded range, never a point guess.
 - Publish per-detector precision and recall against a labeled corpus, so you know how much to trust each finding.
 
@@ -94,13 +96,13 @@ If you know a tool that already does this, please open an issue — I would genu
 - [x] `tokenaudit diagnose` CLI, HTML report, cache health score
 - [x] CI cost-regression mode: fail a build that tanks the cache hit rate ([docs/ci.md](docs/ci.md))
 - [x] Demo app: drag a trace in, get the report ([demo/](demo/))
-- [x] Case studies on public agents, with reproduction commands ([TradingAgents: 4.3× cache hit rate](docs/case-studies/tradingagents.md))
+- [x] Case studies on public agents, with reproduction commands ([TradingAgents: 4.3× cache hit rate](docs/case-studies/tradingagents.md), [TradingAgents on Claude: when caching raised the bill](docs/case-studies/tradingagents-claude.md))
 - [x] Detectors for misordered shared context and cross-session drift: they now find the TradingAgents problems on their own ([case study, section 6](docs/case-studies/tradingagents.md#6-what-tokenaudit-reports-now))
 - [x] Counterfactual pricing with per-model read and write rates and dollar ranges
 - [x] Raw provider SDK log ingest (OpenAI Responses, Chat Completions, Anthropic Messages), tool-schema bloat detector
 - [x] A detector for prompts that never ask Anthropic to cache them
 - [x] Public demo deployment: [tokenaudit-demo.onrender.com](https://tokenaudit-demo.onrender.com)
-- [ ] Case study on an Anthropic-model agent (the harness is ready: [experiments/tradingagents-claude](experiments/tradingagents-claude/))
+- [x] Case study on an Anthropic-model agent ([TradingAgents on Claude](docs/case-studies/tradingagents-claude.md))
 
 ## Development
 
