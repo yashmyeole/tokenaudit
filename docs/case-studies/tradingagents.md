@@ -121,8 +121,8 @@ claim.
 ## 5. Reproduce it
 
     # diagnose the committed baseline traces (no API key needed)
-    pip install tokenaudit
     git clone https://github.com/yashmyeole/tokenaudit && cd tokenaudit
+    pip install -e .
     tokenaudit diagnose corpus/captured/runs
 
     # rerun the whole before/after experiment (~$1 of gpt-5.4-mini, ~2h)
@@ -134,3 +134,28 @@ The committed [runs](../../experiments/tradingagents-cache-fix/runs/) are
 redacted (block hashes and token counts, no prompt text) and
 [results.md](../../experiments/tradingagents-cache-fix/results.md) is
 regenerated from them by `analyze.py`.
+
+## 6. What tokenaudit reports now
+
+The diagnosis in section 1 was done by hand. Whole-message hashes can't see
+the same reports inside two different messages, so up to 0.2 `tokenaudit
+diagnose` called these runs clean, and the committed CI baseline gave them a
+100% health score. Ingest now also keeps a digest per line (in memory only),
+and two detectors use it.
+
+`misordered_shared_context` flags 6 requests in each captured run: the bear
+researcher, the research manager, all three risk debaters and the portfolio
+manager, about 22-26k full-price-equivalent tokens per run. On the patched
+experiment runs it flags 3, the research manager, trader and portfolio
+manager, which the patch deliberately left alone (about 5-6k).
+
+`cross_session_drift` flags the market analyst's system prompt: its first
+line holds the date and ticker, and the ~1,100 tokens after it are identical
+in every run. It fires on the baseline arm and not on the patched arm, which
+moved the date to the end. The three captured runs were recorded back to
+back, about 2.5 minutes apart, so a shared cache entry would have been warm,
+and the finding is rated high.
+
+The traces didn't change; the old score couldn't see the waste. The health
+floor for these runs is now 25%, and both results are pinned by tests in
+`tests/test_detect.py`.
