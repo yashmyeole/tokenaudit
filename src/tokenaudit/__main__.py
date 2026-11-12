@@ -30,6 +30,7 @@ from tokenaudit.ci import (
     snapshot,
     write_baseline,
 )
+from tokenaudit.counterfactual import format_usd
 from tokenaudit.detect import SessionDiagnosis, diagnose, diagnose_across
 from tokenaudit.ingest import UnknownTraceFormatError, ingest_path
 from tokenaudit.model.records import IngestResult
@@ -107,7 +108,9 @@ def _render_diagnosis(diagnosis: SessionDiagnosis) -> str:
                 if impact.tokens_low == impact.tokens_high
                 else f"~{impact.tokens_low:,}-{impact.tokens_high:,} tokens"
             )
-            lines.append(f"      waste: {tokens} full-price equivalent ({impact.assumption})")
+            usd = format_usd(impact)
+            cost = f", {usd}" if usd else ""
+            lines.append(f"      waste: {tokens} full-price equivalent{cost} ({impact.assumption})")
         lines.append(f"      fix: {finding.fix.summary}")
     clean = [d for d in diagnosis.checked if d not in {f.detector_id for f in diagnosis.findings}]
     if clean:

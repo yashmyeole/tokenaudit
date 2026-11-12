@@ -9,6 +9,7 @@ that, and are a conservative approximation for sliding-window providers.
 
 from __future__ import annotations
 
+from tokenaudit.counterfactual import impact, rates
 from tokenaudit.detect.base import (
     TOKEN_ESTIMATE_NOTE,
     Abstain,
@@ -18,7 +19,7 @@ from tokenaudit.detect.base import (
     consecutive_pairs,
     last_marked_index,
 )
-from tokenaudit.detect.findings import Finding, Fix, Impact, Severity
+from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Session
 from tokenaudit.rulebook import Rulebook
 
@@ -61,20 +62,18 @@ class TtlExpiryDetector(Detector):
         if not events:
             return []
 
-        per_event: list[int] = []
+        first_pair, gap_s, ttl_s = events[0]
+        rules = rulebook.lookup(first_pair.second.model, first_pair.second.provider)
+        rate = rates(rules)
+        per_event: list[float] = []
         observed = 0
         for pair, _, _ in events:
             blocks = pair.second.blocks or ()
             end = last_marked_index(blocks)
             end = end if end is not None else len(blocks) - 2
-            per_event.append(blocks_tokens(blocks[: end + 1]))
+            per_event.append(blocks_tokens(blocks[: end + 1]) * rate.waste(pair.second))
             if (pair.second.usage.cache_creation or 0) > 0:
                 observed += 1
-        tokens_high = round(0.9 * sum(per_event))
-        tokens_low = round(0.9 * sum(sorted(per_event)[:observed]))
-
-        first_pair, gap_s, ttl_s = events[0]
-        rules = rulebook.lookup(first_pair.second.model, first_pair.second.provider)
         finding = Finding(
             detector_id=self.detector_id,
             severity=Severity.MEDIUM,
@@ -96,17 +95,13 @@ class TtlExpiryDetector(Detector):
                     "longer-TTL option would survive this gap - check the session config"
                 ),
             },
-            impact=Impact(
-                tokens_low=tokens_low,
-                tokens_high=tokens_high,
-                usd_low=None,
-                usd_high=None,
-                assumption=(
-                    "the expired prefix is re-billed instead of read (0.9x delta); "
-                    f"{TOKEN_ESTIMATE_NOTE}; low bound counts only events with an "
-                    "observed cache write after the gap"
-                ),
-                rulebook_version=rulebook.version,
+            impact=impact(
+                sum(sorted(per_event)[:observed]),
+                sum(per_event),
+                rate,
+                rulebook,
+                f"the expired prefix is re-billed instead of read; {TOKEN_ESTIMATE_NOTE}; "
+                "low bound counts only events with an observed cache write after the gap",
             ),
             fix=Fix(
                 summary=(

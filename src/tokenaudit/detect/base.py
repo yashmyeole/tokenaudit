@@ -26,7 +26,7 @@ from typing import ClassVar
 
 from tokenaudit.detect.findings import Finding
 from tokenaudit.model.records import BlockDigest, Request, Segment, Session
-from tokenaudit.rulebook import ModelRules, Rulebook
+from tokenaudit.rulebook import Rulebook
 
 CHARS_PER_TOKEN = 4
 TOKEN_ESTIMATE_NOTE = "block token counts estimated from lengths at ~4 chars/token"
@@ -64,14 +64,6 @@ def est_tokens(chars: int) -> int:
 
 def blocks_tokens(blocks: tuple[BlockDigest, ...]) -> int:
     return sum(est_tokens(b.chars) for b in blocks)
-
-
-def read_saving(rules: ModelRules | None) -> tuple[float, str]:
-    """Share of a token's price saved when it is read from cache instead."""
-    if rules is not None and rules.cache_read_multiplier is not None:
-        multiplier = rules.cache_read_multiplier
-        return 1 - multiplier, f"cached reads at {multiplier}x input for {rules.model}"
-    return 0.9, "cached reads assumed at 0.1x input (model's rate not in the rulebook)"
 
 
 def block_segments(block: BlockDigest) -> tuple[Segment, ...]:

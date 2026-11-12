@@ -122,7 +122,8 @@ def test_misordered_shared_context_finding_is_verifiable() -> None:
     assert finding.impact is not None
     assert finding.impact.tokens_low == 0  # the trace never reports cache reads
     assert finding.impact.tokens_high > 4000
-    assert "0.1x input for gpt-5.6" in finding.impact.assumption
+    assert "cached reads at 0.1x input" in finding.impact.assumption
+    assert "gpt-5.6" in finding.impact.assumption
 
 
 def test_cross_session_drift_finding_is_verifiable() -> None:

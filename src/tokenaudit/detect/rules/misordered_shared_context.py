@@ -15,6 +15,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from tokenaudit.counterfactual import impact, rates
 from tokenaudit.detect.base import (
     CHARS_PER_TOKEN,
     TOKEN_ESTIMATE_NOTE,
@@ -23,11 +24,10 @@ from tokenaudit.detect.base import (
     common_prefix_chars,
     est_tokens,
     longest_shared_run,
-    read_saving,
     request_segments,
     require_content,
 )
-from tokenaudit.detect.findings import Finding, Fix, Impact, Severity
+from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Request, Segment, Session
 from tokenaudit.rulebook import Rulebook
 
@@ -113,9 +113,9 @@ class MisorderedSharedContextDetector(Detector):
 
         example = max(matches, key=lambda m: m.misplaced_chars)
         rules = rulebook.lookup(example.request.model, example.request.provider)
-        saving, rate_note = read_saving(rules)
+        rate = rates(rules)
 
-        per_request = [round(saving * est_tokens(m.misplaced_chars)) for m in matches]
+        per_request = [est_tokens(m.misplaced_chars) * rate.waste(m.request) for m in matches]
         observed = [
             tokens
             for m, tokens in zip(matches, per_request, strict=True)
@@ -153,17 +153,14 @@ class MisorderedSharedContextDetector(Detector):
                     "example_earlier_offset_tokens": est_tokens(example.run.start_b),
                     "example_request_tokens": est_tokens(example.request_chars),
                 },
-                impact=Impact(
-                    tokens_low=sum(observed),
-                    tokens_high=tokens_high,
-                    usd_low=None,
-                    usd_high=None,
-                    assumption=(
-                        f"the shared run becomes a common prefix and is read from cache "
-                        f"({rate_note}); {TOKEN_ESTIMATE_NOTE}; low bound counts only "
-                        "requests whose reported cache reads stop before the shared run"
-                    ),
-                    rulebook_version=rulebook.version,
+                impact=impact(
+                    sum(observed),
+                    tokens_high,
+                    rate,
+                    rulebook,
+                    f"the shared run becomes a common prefix and is read from cache; "
+                    f"{TOKEN_ESTIMATE_NOTE}; low bound counts only requests whose reported "
+                    "cache reads stop before the shared run",
                 ),
                 fix=Fix(
                     summary=(

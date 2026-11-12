@@ -13,6 +13,7 @@ must-not."""
 
 from __future__ import annotations
 
+from tokenaudit.counterfactual import impact, rates
 from tokenaudit.detect.base import (
     TOKEN_ESTIMATE_NOTE,
     Abstain,
@@ -21,7 +22,7 @@ from tokenaudit.detect.base import (
     last_marked_index,
     require_content,
 )
-from tokenaudit.detect.findings import Finding, Fix, Impact, Severity
+from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Session
 from tokenaudit.rulebook import Rulebook
 
@@ -67,15 +68,15 @@ class SubMinimumDetector(Detector):
         if any((r.usage.cache_read or 0) > 0 or (r.usage.cache_creation or 0) > 0 for r in marked):
             return []
 
-        est = max(tokens for _, tokens in prefixes)
-        repeat_calls = len(marked) - 1
-        tokens_high = round(0.9 * est * repeat_calls)
-        stable = len({(r.blocks or ())[0].sha256 for r in marked}) == 1
-        tokens_low = tokens_high if stable else 0
-
         example, example_tokens = prefixes[0]
         rules = rules_by_model[example.model]
         assert rules is not None
+        rate = rates(rules)
+        est = max(tokens for _, tokens in prefixes)
+        repeat_calls = len(marked) - 1
+        high = est * repeat_calls * rate.waste()
+        stable = len({(r.blocks or ())[0].sha256 for r in marked}) == 1
+        low = high if stable else 0
         finding = Finding(
             detector_id=self.detector_id,
             severity=Severity.MEDIUM,
@@ -96,17 +97,14 @@ class SubMinimumDetector(Detector):
                 "observed_cache_writes": 0,
                 "prefix_stable_across_calls": stable,
             },
-            impact=Impact(
-                tokens_low=tokens_low,
-                tokens_high=tokens_high,
-                usd_low=None,
-                usd_high=None,
-                assumption=(
-                    "savings forgone if the prefix cleared the minimum and repeat calls read "
-                    f"it at the cached rate (0.9x delta); {TOKEN_ESTIMATE_NOTE}; low bound "
-                    "requires the prefix to be byte-stable across calls"
-                ),
-                rulebook_version=rulebook.version,
+            impact=impact(
+                low,
+                high,
+                rate,
+                rulebook,
+                "savings forgone if the prefix cleared the minimum and repeat calls read it "
+                f"at the cached rate; {TOKEN_ESTIMATE_NOTE}; low bound requires the prefix "
+                "to be byte-stable across calls",
             ),
             fix=Fix(
                 summary=(

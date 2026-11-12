@@ -20,6 +20,7 @@ from collections import defaultdict
 from collections.abc import Sequence
 from dataclasses import dataclass
 
+from tokenaudit.counterfactual import impact, rates
 from tokenaudit.detect.base import (
     TOKEN_ESTIMATE_NOTE,
     Abstain,
@@ -27,9 +28,8 @@ from tokenaudit.detect.base import (
     block_segments,
     common_prefix_chars,
     est_tokens,
-    read_saving,
 )
-from tokenaudit.detect.findings import Finding, Fix, Impact, Severity
+from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import BlockDigest, Request, Segment, Session
 from tokenaudit.rulebook import Rulebook
 
@@ -144,13 +144,13 @@ class CrossSessionDriftDetector(CrossSessionDetector):
 
         first = min(uses, key=lambda u: u.request.start_unix_nano)
         rules = rulebook.lookup(first.request.model, first.request.provider)
-        saving, rate_note = read_saving(rules)
+        rate = rates(rules)
         window_s = DEFAULT_WINDOW_S
         if rules and rules.ttl and rules.ttl[0].seconds:
             window_s = rules.ttl[0].seconds
         window_ns = window_s * 1_000_000_000
 
-        per_session_saving = round(saving * est_tokens(tail))
+        per_session_saving = est_tokens(tail) * rate.waste()
         later = sorted(
             (u for u in uses if u.session_key != first.session_key),
             key=lambda u: u.request.start_unix_nano,
@@ -200,17 +200,14 @@ class CrossSessionDriftDetector(CrossSessionDetector):
                     other.request.span_id,
                 ],
             },
-            impact=Impact(
-                tokens_low=tokens_low,
-                tokens_high=tokens_high,
-                usd_low=None,
-                usd_high=None,
-                assumption=(
-                    "each session after the first reads the shared tail from cache once "
-                    f"({rate_note}); {TOKEN_ESTIMATE_NOTE}; low bound counts only sessions "
-                    f"that started within {window_s}s of a session using another variant"
-                ),
-                rulebook_version=rulebook.version,
+            impact=impact(
+                tokens_low,
+                tokens_high,
+                rate,
+                rulebook,
+                "each session after the first reads the shared tail from cache once; "
+                f"{TOKEN_ESTIMATE_NOTE}; low bound counts only sessions that started within "
+                f"{window_s}s of a session using another variant",
             ),
             fix=Fix(
                 summary=(
