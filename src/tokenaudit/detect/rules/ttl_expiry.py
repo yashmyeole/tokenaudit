@@ -18,6 +18,7 @@ from tokenaudit.detect.base import (
     blocks_tokens,
     consecutive_pairs,
     last_marked_index,
+    require_timestamps,
 )
 from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Session
@@ -38,6 +39,7 @@ class TtlExpiryDetector(Detector):
     detector_id = "ttl_expiry"
 
     def check(self, session: Session, rulebook: Rulebook) -> list[Finding]:
+        require_timestamps(session.requests)
         pairs = [p for p in consecutive_pairs(session) if _stable_prefix(p)]
         if not pairs:
             raise Abstain("needs consecutive same-model requests with a stable captured prefix")

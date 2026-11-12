@@ -42,6 +42,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -63,6 +67,10 @@
         "outcome": "abstained"
       },
       "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_provider_log": {
         "expected": false,
         "outcome": "clean"
       },
@@ -92,7 +100,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 22,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -140,6 +148,10 @@
         "expected": false,
         "outcome": "abstained"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -161,6 +173,10 @@
         "outcome": "clean"
       },
       "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_provider_log": {
         "expected": false,
         "outcome": "clean"
       },
@@ -189,8 +205,8 @@
         "outcome": "clean"
       }
     },
-    "negatives_abstained": 9,
-    "negatives_clean": 12,
+    "negatives_abstained": 10,
+    "negatives_clean": 13,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -238,6 +254,10 @@
         "expected": false,
         "outcome": "abstained"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "abstained"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "abstained"
@@ -259,6 +279,10 @@
         "outcome": "abstained"
       },
       "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_provider_log": {
         "expected": false,
         "outcome": "abstained"
       },
@@ -287,7 +311,7 @@
         "outcome": "abstained"
       }
     },
-    "negatives_abstained": 19,
+    "negatives_abstained": 21,
     "negatives_clean": 2,
     "positives_abstained": 0,
     "positives_found": 1,
@@ -336,6 +360,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -357,6 +385,10 @@
         "outcome": "abstained"
       },
       "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_provider_log": {
         "expected": false,
         "outcome": "clean"
       },
@@ -386,7 +418,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 22,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -434,6 +466,10 @@
         "expected": true,
         "outcome": "fired"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": true,
+        "outcome": "fired"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -455,6 +491,10 @@
         "outcome": "abstained"
       },
       "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_provider_log": {
         "expected": false,
         "outcome": "clean"
       },
@@ -484,9 +524,9 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 21,
     "positives_abstained": 0,
-    "positives_found": 1,
+    "positives_found": 2,
     "positives_missed": 0
   },
   "model_switch": {
@@ -532,6 +572,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": true,
         "outcome": "fired"
@@ -553,6 +597,10 @@
         "outcome": "abstained"
       },
       "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_provider_log": {
         "expected": false,
         "outcome": "clean"
       },
@@ -582,7 +630,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 22,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -630,6 +678,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -651,6 +703,10 @@
         "outcome": "abstained"
       },
       "prefix_drift_openinference": {
+        "expected": true,
+        "outcome": "fired"
+      },
+      "prefix_drift_provider_log": {
         "expected": true,
         "outcome": "fired"
       },
@@ -680,9 +736,9 @@
       }
     },
     "negatives_abstained": 0,
-    "negatives_clean": 18,
+    "negatives_clean": 19,
     "positives_abstained": 1,
-    "positives_found": 3,
+    "positives_found": 4,
     "positives_missed": 0
   },
   "retry_storm": {
@@ -728,6 +784,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -749,6 +809,10 @@
         "outcome": "abstained"
       },
       "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_provider_log": {
         "expected": false,
         "outcome": "clean"
       },
@@ -778,7 +842,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 22,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -826,6 +890,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -847,6 +915,10 @@
         "outcome": "abstained"
       },
       "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_provider_log": {
         "expected": false,
         "outcome": "clean"
       },
@@ -876,7 +948,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 22,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -924,6 +996,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -945,6 +1021,10 @@
         "outcome": "abstained"
       },
       "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "clean"
+      },
+      "prefix_drift_provider_log": {
         "expected": false,
         "outcome": "clean"
       },
@@ -974,7 +1054,7 @@
       }
     },
     "negatives_abstained": 1,
-    "negatives_clean": 20,
+    "negatives_clean": 22,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0
@@ -1022,6 +1102,10 @@
         "expected": false,
         "outcome": "clean"
       },
+      "misordered_shared_context_provider_log": {
+        "expected": false,
+        "outcome": "clean"
+      },
       "model_switch": {
         "expected": false,
         "outcome": "clean"
@@ -1043,6 +1127,10 @@
         "outcome": "abstained"
       },
       "prefix_drift_openinference": {
+        "expected": false,
+        "outcome": "abstained"
+      },
+      "prefix_drift_provider_log": {
         "expected": false,
         "outcome": "abstained"
       },
@@ -1071,8 +1159,8 @@
         "outcome": "fired"
       }
     },
-    "negatives_abstained": 3,
-    "negatives_clean": 18,
+    "negatives_abstained": 4,
+    "negatives_clean": 19,
     "positives_abstained": 0,
     "positives_found": 1,
     "positives_missed": 0

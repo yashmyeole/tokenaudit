@@ -48,6 +48,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -429,6 +430,69 @@ def emit_openinference(
         span["attributes"] = attrs
         spans.append(span)
     return _wrap(fixture, spans)
+
+
+def _part(block: Block) -> dict[str, Any]:
+    part: dict[str, Any] = {"type": "text", "text": block.text}
+    if block.cache_marker:
+        part["cache_control"] = {"type": "ephemeral"}
+    return part
+
+
+def emit_provider_log(
+    fixture: str, provider: str, calls: list[Call], usages: list[Usage]
+) -> list[dict[str, Any]]:
+    """Raw provider log: logged request/response pairs, as an SDK user would keep them."""
+    records: list[dict[str, Any]] = []
+    for i, (call, usage) in enumerate(zip(calls, usages, strict=True)):
+        _, span_id = _ids(fixture, i)
+        if provider == "anthropic":
+            system = [_part(b) for b in call.blocks if b.role == "system"]
+            request: dict[str, Any] = {"model": call.model, "max_tokens": 1024}
+            if system:
+                request["system"] = system
+            request["messages"] = [
+                {"role": b.role, "content": [_part(b)]} for b in call.blocks if b.role != "system"
+            ]
+            response: dict[str, Any] = {
+                "id": f"msg_{span_id}",
+                "type": "message",
+                "model": call.model,
+                "usage": {
+                    "input_tokens": usage.uncached_input,
+                    "cache_read_input_tokens": usage.cache_read,
+                    "cache_creation_input_tokens": usage.cache_creation,
+                    "output_tokens": usage.output,
+                },
+            }
+        else:
+            request = {
+                "model": call.model,
+                "input": [{"role": b.role, "content": b.text} for b in call.blocks],
+            }
+            response = {
+                "id": f"resp_{span_id}",
+                "object": "response",
+                "model": call.model,
+                "usage": {
+                    "input_tokens": usage.total_input,
+                    "input_tokens_details": {"cached_tokens": usage.cache_read},
+                    "output_tokens": usage.output,
+                },
+            }
+        records.append(
+            {
+                "synthetic": True,
+                "timestamp": time.strftime(
+                    "%Y-%m-%dT%H:%M:%SZ", time.gmtime(BASE_EPOCH_S + call.t_offset_s)
+                ),
+                "duration_ms": call.duration_ms,
+                "session_id": call.conversation or f"conv-{fixture}",
+                "request": request,
+                "response": response,
+            }
+        )
+    return records
 
 
 def _wrap(fixture: str, spans: list[dict[str, Any]]) -> dict[str, Any]:
@@ -979,6 +1043,24 @@ def build_fixtures() -> list[Fixture]:
     )
     fixtures.append(nc)
 
+    raw = fx_prefix_drift()
+    raw.name = "prefix_drift_provider_log"
+    raw.schema = "provider-log"
+    raw.notes = (
+        "Same session as prefix_drift, as a raw Anthropic request/response log. Anthropic "
+        "reports input_tokens EXCLUDING cache reads and writes; ingest must convert."
+    )
+    fixtures.append(raw)
+
+    raw_openai = fx_misordered_shared_context()
+    raw_openai.name = "misordered_shared_context_provider_log"
+    raw_openai.schema = "provider-log"
+    raw_openai.notes = (
+        "Same session as misordered_shared_context, as a raw OpenAI Responses log with "
+        "nested usage (cached_tokens inside input_tokens)."
+    )
+    fixtures.append(raw_openai)
+
     return fixtures
 
 
@@ -987,12 +1069,15 @@ def build_fixtures() -> list[Fixture]:
 # --------------------------------------------------------------------------- #
 
 
-def render(fx: Fixture) -> tuple[dict[str, Any], dict[str, Any]]:
+def render(fx: Fixture) -> tuple[dict[str, Any] | list[dict[str, Any]], dict[str, Any]]:
     sim: AnthropicCacheSim | OpenAICacheSim
     sim = OpenAICacheSim() if fx.provider_shape == "openai" else AnthropicCacheSim()
     usages = [sim.simulate(c) for c in fx.calls]
 
-    if fx.schema == "otel-genai-current":
+    trace: dict[str, Any] | list[dict[str, Any]]
+    if fx.schema == "provider-log":
+        trace = emit_provider_log(fx.name, fx.provider_shape, fx.calls, usages)
+    elif fx.schema == "otel-genai-current":
         trace = emit_current(fx.name, fx.provider_shape, fx.calls, usages, fx.content_captured)
     elif fx.schema == "otel-genai-legacy-flat":
         trace = emit_legacy(fx.name, fx.provider_shape, fx.calls, usages)

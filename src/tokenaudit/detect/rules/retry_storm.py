@@ -10,7 +10,7 @@ reads is waste by definition, whatever the caching setup.
 from __future__ import annotations
 
 from tokenaudit.counterfactual import impact, rates
-from tokenaudit.detect.base import Detector, require_content
+from tokenaudit.detect.base import Detector, require_content, require_timestamps
 from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Request, Session
 from tokenaudit.rulebook import Rulebook
@@ -28,6 +28,7 @@ class RetryStormDetector(Detector):
 
     def check(self, session: Session, rulebook: Rulebook) -> list[Finding]:
         requests = require_content(session, minimum_requests=_MIN_DUPLICATES)
+        require_timestamps(requests)
 
         bursts: list[list[Request]] = []
         current: list[Request] = []

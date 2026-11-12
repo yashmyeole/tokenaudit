@@ -185,6 +185,24 @@
         "prefix_drift"
       ],
       "calls": 6
+    },
+    {
+      "fixture": "prefix_drift_provider_log",
+      "schema": "provider-log",
+      "provider_shape": "anthropic",
+      "contains": [
+        "prefix_drift"
+      ],
+      "calls": 6
+    },
+    {
+      "fixture": "misordered_shared_context_provider_log",
+      "schema": "provider-log",
+      "provider_shape": "openai",
+      "contains": [
+        "misordered_shared_context"
+      ],
+      "calls": 3
     }
   ]
 }

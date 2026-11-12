@@ -147,6 +147,11 @@ def consecutive_pairs(session: Session) -> list[Pair]:
     return pairs
 
 
+def require_timestamps(requests: Sequence[Request]) -> None:
+    if any("no_timestamp" in r.quality for r in requests):
+        raise Abstain("needs request timestamps, and this source has none")
+
+
 def require_content(session: Session, minimum_requests: int = 1) -> list[Request]:
     with_content = [r for r in session.requests if r.blocks]
     if len(with_content) < minimum_requests:

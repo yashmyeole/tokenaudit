@@ -1,0 +1,37 @@
+{
+  "fixture": "misordered_shared_context_provider_log",
+  "schema": "provider-log",
+  "provider_shape": "openai",
+  "models": [
+    "gpt-5.6"
+  ],
+  "content_captured": true,
+  "contains": [
+    "misordered_shared_context"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "cross_session_drift",
+    "lookback_overflow",
+    "model_switch",
+    "prefix_drift",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "agents": 3,
+    "shared_tokens": 2621,
+    "affected_calls": 2
+  },
+  "notes": "Same session as misordered_shared_context, as a raw OpenAI Responses log with nested usage (cached_tokens inside input_tokens).",
+  "totals": {
+    "calls": 3,
+    "input_tokens": 8357,
+    "cache_read_tokens": 0,
+    "cache_creation_tokens": 0,
+    "output_tokens": 660
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "fixture": "prefix_drift_provider_log",
+  "schema": "provider-log",
+  "provider_shape": "anthropic",
+  "models": [
+    "claude-sonnet-4-5"
+  ],
+  "content_captured": true,
+  "contains": [
+    "prefix_drift"
+  ],
+  "must_not_contain": [
+    "breakpoint_limit",
+    "context_bloat",
+    "cross_session_drift",
+    "lookback_overflow",
+    "misordered_shared_context",
+    "model_switch",
+    "retry_storm",
+    "sub_minimum",
+    "tool_schema_churn",
+    "ttl_expiry"
+  ],
+  "evidence": {
+    "drift_block_index": 0,
+    "calls": 6,
+    "drift_kind": "timestamp"
+  },
+  "notes": "Same session as prefix_drift, as a raw Anthropic request/response log. Anthropic reports input_tokens EXCLUDING cache reads and writes; ingest must convert.",
+  "totals": {
+    "calls": 6,
+    "input_tokens": 8562,
+    "cache_read_tokens": 0,
+    "cache_creation_tokens": 8490,
+    "output_tokens": 1080
+  }
+}

@@ -51,7 +51,7 @@ def _segments(role: str, text: str) -> tuple[Segment, ...]:
     return tuple(out)
 
 
-def _block(role: str, text: str, cache_marker: bool = False) -> BlockDigest:
+def block_digest(role: str, text: str, cache_marker: bool = False) -> BlockDigest:
     return BlockDigest(
         role=role,
         sha256=_digest(role, text),
@@ -103,7 +103,7 @@ def _blocks_from_structured(messages_json: str) -> tuple[BlockDigest, ...]:
         parts = message.get("parts", [])
         text = "".join(str(p.get("content", "")) for p in parts if isinstance(p, dict))
         marker = any(isinstance(p, dict) and "cache_control" in p for p in parts)
-        blocks.append(_block(role, text, marker))
+        blocks.append(block_digest(role, text, marker))
     return tuple(blocks)
 
 
@@ -167,7 +167,7 @@ def _blocks_from_indexed(
     for index in sorted(parts):
         role = parts[index].get("role", "")
         text = parts[index].get("content", "")
-        blocks.append(_block(role, text))
+        blocks.append(block_digest(role, text))
     return tuple(blocks)
 
 

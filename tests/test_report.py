@@ -42,7 +42,7 @@ def test_health_score_healthy_session_is_high() -> None:
 def test_corpus_record_attaches_measured_counts() -> None:
     line = describe("prefix_drift")
     assert line is not None
-    assert "3/4" in line and "0 false alarms" in line
+    assert "4/5" in line and "0 false alarms" in line
     assert describe("not_a_detector") is None
 
 

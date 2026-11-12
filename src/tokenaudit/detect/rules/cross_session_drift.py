@@ -28,6 +28,7 @@ from tokenaudit.detect.base import (
     block_segments,
     common_prefix_chars,
     est_tokens,
+    require_timestamps,
 )
 from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import BlockDigest, Request, Segment, Session
@@ -73,6 +74,7 @@ class CrossSessionDriftDetector(CrossSessionDetector):
         with_content = [s for s in sessions if any(r.blocks for r in s.requests)]
         if len(with_content) < 2:
             raise Abstain("needs at least 2 sessions with captured message content")
+        require_timestamps([r for s in with_content for r in s.requests])
 
         # First use of each distinct block per session, grouped by what comes
         # before it and how it ends: variants of one templated prompt share

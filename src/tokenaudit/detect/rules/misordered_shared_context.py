@@ -26,6 +26,7 @@ from tokenaudit.detect.base import (
     longest_shared_run,
     request_segments,
     require_content,
+    require_timestamps,
 )
 from tokenaudit.detect.findings import Finding, Fix, Severity
 from tokenaudit.model.records import Request, Segment, Session
@@ -72,6 +73,7 @@ class MisorderedSharedContextDetector(Detector):
 
     def check(self, session: Session, rulebook: Rulebook) -> list[Finding]:
         requests = require_content(session, minimum_requests=2)
+        require_timestamps(requests)
         segments = {r.span_id: request_segments(r) for r in requests}
 
         matches: list[_Match] = []

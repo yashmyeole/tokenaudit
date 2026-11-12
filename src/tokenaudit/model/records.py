@@ -102,7 +102,7 @@ class IngestResult:
     """Everything read from one trace source."""
 
     source: str
-    container: str  # "otlp-json" | "otel-sdk-jsonl"
+    container: str  # "otlp-json" | "otel-sdk-jsonl" | "provider-log"
     sessions: tuple[Session, ...]
     spans_total: int
     spans_skipped: int
