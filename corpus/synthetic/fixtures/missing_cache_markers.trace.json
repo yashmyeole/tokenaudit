@@ -1,0 +1,373 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "tokenaudit-fixture-agent"
+            }
+          },
+          {
+            "key": "tokenaudit.fixture",
+            "value": {
+              "stringValue": "missing_cache_markers"
+            }
+          },
+          {
+            "key": "tokenaudit.synthetic",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "tokenaudit-corpus-simulator",
+            "version": "0.1.0"
+          },
+          "spans": [
+            {
+              "traceId": "05a66d6cbea232797bd618b7cf2a93c5",
+              "spanId": "8a36395a2f9b9250",
+              "name": "chat claude-sonnet-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1768467600000000000",
+              "endTimeUnixNano": "1768467602800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-missing_cache_markers"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "2908"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "220"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the research desk. Policy section 1: standard operating guidance for research desk, item 1. Policy section 2: standard operating guidance for research desk, item 2. Policy section 3: standard operating guidance for research desk, item 3. Policy section 4: standard operating guidance for research desk, item 4. Policy section 5: standard operating guidance for research desk, item 5. Policy section 6: standard operating guidance for research desk, item 6. Policy section 7: standard operating guidance for research desk, item 7. Policy section 8: standard operating guidance for research desk, item 8. Policy section 9: standard operating guidance for research desk, item 9. Policy section 10: standard operating guidance for research desk, item 10. Policy section 11: standard operating guidance for research desk, item 11. Policy section 12: standard operating guidance for research desk, item 12. Policy section 13: standard operating guidance for research desk, item 13. Policy section 14: standard operating guidance for research desk, item 14. Policy section 15: standard operating guidance for research desk, item 15. Policy section 16: standard operating guidance for research desk, item 16. Policy section 17: standard operating guidance for research desk, item 17. Policy section 18: standard operating guidance for research desk, item 18. Policy section 19: standard operating guidance for research desk, item 19. Policy section 20: standard operating guidance for research desk, item 20. Policy section 21: standard operating guidance for research desk, item 21. Policy section 22: standard operating guidance for research desk, item 22. Policy section 23: standard operating guidance for research desk, item 23. Policy section 24: standard operating guidance for research desk, item 24. Policy section 25: standard operating guidance for research desk, item 25. Policy section 26: standard operating guidance for research desk, item 26. Policy section 27: standard operating guidance for research desk, item 27. Policy section 28: standard operating guidance for research desk, item 28. Policy section 29: standard operating guidance for research desk, item 29. Policy section 30: standard operating guidance for research desk, item 30. Policy section 31: standard operating guidance for research desk, item 31. Policy section 32: standard operating guidance for research desk, item 32. Policy section 33: standard operating guidance for research desk, item 33. Policy section 34: standard operating guidance for research desk, item 34. Policy section 35: standard operating guidance for research desk, item 35. Policy section 36: standard operating guidance for research desk, item 36. Policy section 37: standard operating guidance for research desk, item 37. Policy section 38: standard operating guidance for research desk, item 38. Policy section 39: standard operating guidance for research desk, item 39. Policy section 40: standard operating guidance for research desk, item 40. Policy section 41: standard operating guidance for research desk, item 41. Policy section 42: standard operating guidance for research desk, item 42. Policy section 43: standard operating guidance for research desk, item 43. Policy section 44: standard operating guidance for research desk, item 44. Policy section 45: standard operating guidance for research desk, item 45. Policy section 46: standard operating guidance for research desk, item 46. Policy section 47: standard operating guidance for research desk, item 47. Policy section 48: standard operating guidance for research desk, item 48. Policy section 49: standard operating guidance for research desk, item 49. Policy section 50: standard operating guidance for research desk, item 50. Policy section 51: standard operating guidance for research desk, item 51. Policy section 52: standard operating guidance for research desk, item 52. Policy section 53: standard operating guidance for research desk, item 53. Policy section 54: standard operating guidance for research desk, item 54. Policy section 55: standard operating guidance for research desk, item 55. Policy section 56: standard operating guidance for research desk, item 56. Policy section 57: standard operating guidance for research desk, item 57. Policy section 58: standard operating guidance for research desk, item 58. Policy section 59: standard operating guidance for research desk, item 59. Policy section 60: standard operating guidance for research desk, item 60. Policy section 61: standard operating guidance for research desk, item 61. Policy section 62: standard operating guidance for research desk, item 62. Policy section 63: standard operating guidance for research desk, item 63. Policy section 64: standard operating guidance for research desk, item 64. Policy section 65: standard operating guidance for research desk, item 65. Policy section 66: standard operating guidance for research desk, item 66. Policy section 67: standard operating guidance for research desk, item 67. Policy section 68: standard operating guidance for research desk, item 68. Policy section 69: standard operating guidance for research desk, item 69. Policy section 70: standard operating guidance for research desk, item 70. Policy section 71: standard operating guidance for research desk, item 71. Policy section 72: standard operating guidance for research desk, item 72. Policy section 73: standard operating guidance for research desk, item 73. Policy section 74: standard operating guidance for research desk, item 74. Policy section 75: standard operating guidance for research desk, item 75. Policy section 76: standard operating guidance for research desk, item 76. Policy section 77: standard operating guidance for research desk, item 77. Policy section 78: standard operating guidance for research desk, item 78. Policy section 79: standard operating guidance for research desk, item 79. Policy section 80: standard operating guidance for research desk, item 80. Policy section 81: standard operating guidance for research desk, item 81. Policy section 82: standard operating guidance for research desk, item 82. Policy section 83: standard operating guidance for research desk, item 83. Policy section 84: standard operating guidance for research desk, item 84. Policy section 85: standard operating guidance for research desk, item 85. Policy section 86: standard operating guidance for research desk, item 86. Policy section 87: standard operating guidance for research desk, item 87. Policy section 88: standard operating guidance for research desk, item 88. Policy section 89: standard operating guidance for research desk, item 89. Policy section 90: standard operating guidance for research desk, item 90. Policy section 91: standard operating guidance for research desk, item 91. Policy section 92: standard operating guidance for research desk, item 92. Policy section 93: standard operating guidance for research desk, item 93. Policy section 94: standard operating guidance for research desk, item 94. Policy section 95: standard operating guidance for research desk, item 95. Policy section 96: standard operating guidance for research desk, item 96. Policy section 97: standard operating guidance for research desk, item 97. Policy section 98: standard operating guidance for research desk, item 98. Policy section 99: standard operating guidance for research desk, item 99. Policy section 100: standard operating guidance for research desk, item 100. Policy section 101: standard operating guidance for research desk, item 101. Policy section 102: standard operating guidance for research desk, item 102. Policy section 103: standard operating guidance for research desk, item 103. Policy section 104: standard operating guidance for research desk, item 104. Policy section 105: standard operating guidance for research desk, item 105. Policy section 106: standard operating guidance for research desk, item 106. Policy section 107: standard operating guidance for research desk, item 107. Policy section 108: standard operating guidance for research desk, item 108. Policy section 109: standard operating guidance for research desk, item 109. Policy section 110: standard operating guidance for research desk, item 110. Policy section 111: standard operating guidance for research desk, item 111. Policy section 112: standard operating guidance for research desk, item 112. Policy section 113: standard operating guidance for research desk, item 113. Policy section 114: standard operating guidance for research desk, item 114. Policy section 115: standard operating guidance for research desk, item 115. Policy section 116: standard operating guidance for research desk, item 116. Policy section 117: standard operating guidance for research desk, item 117. Policy section 118: standard operating guidance for research desk, item 118. Policy section 119: standard operating guidance for research desk, item 119. Policy section 120: standard operating guidance for research desk, item 120. Policy section 121: standard operating guidance for research desk, item 121. Policy section 122: standard operating guidance for research desk, item 122. Policy section 123: standard operating guidance for research desk, item 123. Policy section 124: standard operating guidance for research desk, item 124. Policy section 125: standard operating guidance for research desk, item 125. Policy section 126: standard operating guidance for research desk, item 126. Policy section 127: standard operating guidance for research desk, item 127. Policy section 128: standard operating guidance for research desk, item 128. Policy section 129: standard operating guidance for research desk, item 129. Policy section 130: standard operating guidance for research desk, item 130. Policy section 131: standard operating guidance for research desk, item 131. Policy section 132: standard operating guidance for research desk, item 132. Policy section 133: standard operating guidance for research desk, item 133. Policy section 134: standard operating guidance for research desk, item 134. Policy section 135: standard operating guidance for research desk, item 135. Policy section 136: standard operating guidance for research desk, item 136. Policy section 137: standard operating guidance for research desk, item 137. Policy section 138: standard operating guidance for research desk, \",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Brief 0: Policy section 1: standard operating guidance for brief 0, item 1. Policy section 2: standard operating guidance for brief 0, item 2. Policy section 3: standard operating guidance for brief 0, item 3. Policy section 4: standard operating guidance for brief 0, item 4. Policy section 5: standard operating guidance for brief 0, item 5. Policy section 6: standard operating guidance for brief 0, item 6. Policy section 7: standard operating guidance for brief 0, item 7. Policy section 8: standard operating guidance for brief 0, item 8. Policy section 9: standard operating guidance for brief 0, item 9. Policy section 10: standard operating guidance for brief 0, item 10. Policy section 11: standard operating guidance for brief 0, item 11. Policy section 12: standard operating guidance for brief 0, item 12. Policy section 13: standard operating guidance for brief 0, item 13. Policy section 14: standard operating guidance for brief 0, item 14. Policy section 15: standard operating guidance for brief 0, item 15. Policy section 16: standard operating guidance for brief 0, item 16. Policy section 17: standard operating guidance for brief 0, item 17. Policy section 18: standard operating guidanc\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 0\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "05a66d6cbea232797bd618b7cf2a93c5",
+              "spanId": "58fe857dff1c398c",
+              "name": "chat claude-sonnet-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1768467630000000000",
+              "endTimeUnixNano": "1768467632800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-missing_cache_markers"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "2908"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "220"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the research desk. Policy section 1: standard operating guidance for research desk, item 1. Policy section 2: standard operating guidance for research desk, item 2. Policy section 3: standard operating guidance for research desk, item 3. Policy section 4: standard operating guidance for research desk, item 4. Policy section 5: standard operating guidance for research desk, item 5. Policy section 6: standard operating guidance for research desk, item 6. Policy section 7: standard operating guidance for research desk, item 7. Policy section 8: standard operating guidance for research desk, item 8. Policy section 9: standard operating guidance for research desk, item 9. Policy section 10: standard operating guidance for research desk, item 10. Policy section 11: standard operating guidance for research desk, item 11. Policy section 12: standard operating guidance for research desk, item 12. Policy section 13: standard operating guidance for research desk, item 13. Policy section 14: standard operating guidance for research desk, item 14. Policy section 15: standard operating guidance for research desk, item 15. Policy section 16: standard operating guidance for research desk, item 16. Policy section 17: standard operating guidance for research desk, item 17. Policy section 18: standard operating guidance for research desk, item 18. Policy section 19: standard operating guidance for research desk, item 19. Policy section 20: standard operating guidance for research desk, item 20. Policy section 21: standard operating guidance for research desk, item 21. Policy section 22: standard operating guidance for research desk, item 22. Policy section 23: standard operating guidance for research desk, item 23. Policy section 24: standard operating guidance for research desk, item 24. Policy section 25: standard operating guidance for research desk, item 25. Policy section 26: standard operating guidance for research desk, item 26. Policy section 27: standard operating guidance for research desk, item 27. Policy section 28: standard operating guidance for research desk, item 28. Policy section 29: standard operating guidance for research desk, item 29. Policy section 30: standard operating guidance for research desk, item 30. Policy section 31: standard operating guidance for research desk, item 31. Policy section 32: standard operating guidance for research desk, item 32. Policy section 33: standard operating guidance for research desk, item 33. Policy section 34: standard operating guidance for research desk, item 34. Policy section 35: standard operating guidance for research desk, item 35. Policy section 36: standard operating guidance for research desk, item 36. Policy section 37: standard operating guidance for research desk, item 37. Policy section 38: standard operating guidance for research desk, item 38. Policy section 39: standard operating guidance for research desk, item 39. Policy section 40: standard operating guidance for research desk, item 40. Policy section 41: standard operating guidance for research desk, item 41. Policy section 42: standard operating guidance for research desk, item 42. Policy section 43: standard operating guidance for research desk, item 43. Policy section 44: standard operating guidance for research desk, item 44. Policy section 45: standard operating guidance for research desk, item 45. Policy section 46: standard operating guidance for research desk, item 46. Policy section 47: standard operating guidance for research desk, item 47. Policy section 48: standard operating guidance for research desk, item 48. Policy section 49: standard operating guidance for research desk, item 49. Policy section 50: standard operating guidance for research desk, item 50. Policy section 51: standard operating guidance for research desk, item 51. Policy section 52: standard operating guidance for research desk, item 52. Policy section 53: standard operating guidance for research desk, item 53. Policy section 54: standard operating guidance for research desk, item 54. Policy section 55: standard operating guidance for research desk, item 55. Policy section 56: standard operating guidance for research desk, item 56. Policy section 57: standard operating guidance for research desk, item 57. Policy section 58: standard operating guidance for research desk, item 58. Policy section 59: standard operating guidance for research desk, item 59. Policy section 60: standard operating guidance for research desk, item 60. Policy section 61: standard operating guidance for research desk, item 61. Policy section 62: standard operating guidance for research desk, item 62. Policy section 63: standard operating guidance for research desk, item 63. Policy section 64: standard operating guidance for research desk, item 64. Policy section 65: standard operating guidance for research desk, item 65. Policy section 66: standard operating guidance for research desk, item 66. Policy section 67: standard operating guidance for research desk, item 67. Policy section 68: standard operating guidance for research desk, item 68. Policy section 69: standard operating guidance for research desk, item 69. Policy section 70: standard operating guidance for research desk, item 70. Policy section 71: standard operating guidance for research desk, item 71. Policy section 72: standard operating guidance for research desk, item 72. Policy section 73: standard operating guidance for research desk, item 73. Policy section 74: standard operating guidance for research desk, item 74. Policy section 75: standard operating guidance for research desk, item 75. Policy section 76: standard operating guidance for research desk, item 76. Policy section 77: standard operating guidance for research desk, item 77. Policy section 78: standard operating guidance for research desk, item 78. Policy section 79: standard operating guidance for research desk, item 79. Policy section 80: standard operating guidance for research desk, item 80. Policy section 81: standard operating guidance for research desk, item 81. Policy section 82: standard operating guidance for research desk, item 82. Policy section 83: standard operating guidance for research desk, item 83. Policy section 84: standard operating guidance for research desk, item 84. Policy section 85: standard operating guidance for research desk, item 85. Policy section 86: standard operating guidance for research desk, item 86. Policy section 87: standard operating guidance for research desk, item 87. Policy section 88: standard operating guidance for research desk, item 88. Policy section 89: standard operating guidance for research desk, item 89. Policy section 90: standard operating guidance for research desk, item 90. Policy section 91: standard operating guidance for research desk, item 91. Policy section 92: standard operating guidance for research desk, item 92. Policy section 93: standard operating guidance for research desk, item 93. Policy section 94: standard operating guidance for research desk, item 94. Policy section 95: standard operating guidance for research desk, item 95. Policy section 96: standard operating guidance for research desk, item 96. Policy section 97: standard operating guidance for research desk, item 97. Policy section 98: standard operating guidance for research desk, item 98. Policy section 99: standard operating guidance for research desk, item 99. Policy section 100: standard operating guidance for research desk, item 100. Policy section 101: standard operating guidance for research desk, item 101. Policy section 102: standard operating guidance for research desk, item 102. Policy section 103: standard operating guidance for research desk, item 103. Policy section 104: standard operating guidance for research desk, item 104. Policy section 105: standard operating guidance for research desk, item 105. Policy section 106: standard operating guidance for research desk, item 106. Policy section 107: standard operating guidance for research desk, item 107. Policy section 108: standard operating guidance for research desk, item 108. Policy section 109: standard operating guidance for research desk, item 109. Policy section 110: standard operating guidance for research desk, item 110. Policy section 111: standard operating guidance for research desk, item 111. Policy section 112: standard operating guidance for research desk, item 112. Policy section 113: standard operating guidance for research desk, item 113. Policy section 114: standard operating guidance for research desk, item 114. Policy section 115: standard operating guidance for research desk, item 115. Policy section 116: standard operating guidance for research desk, item 116. Policy section 117: standard operating guidance for research desk, item 117. Policy section 118: standard operating guidance for research desk, item 118. Policy section 119: standard operating guidance for research desk, item 119. Policy section 120: standard operating guidance for research desk, item 120. Policy section 121: standard operating guidance for research desk, item 121. Policy section 122: standard operating guidance for research desk, item 122. Policy section 123: standard operating guidance for research desk, item 123. Policy section 124: standard operating guidance for research desk, item 124. Policy section 125: standard operating guidance for research desk, item 125. Policy section 126: standard operating guidance for research desk, item 126. Policy section 127: standard operating guidance for research desk, item 127. Policy section 128: standard operating guidance for research desk, item 128. Policy section 129: standard operating guidance for research desk, item 129. Policy section 130: standard operating guidance for research desk, item 130. Policy section 131: standard operating guidance for research desk, item 131. Policy section 132: standard operating guidance for research desk, item 132. Policy section 133: standard operating guidance for research desk, item 133. Policy section 134: standard operating guidance for research desk, item 134. Policy section 135: standard operating guidance for research desk, item 135. Policy section 136: standard operating guidance for research desk, item 136. Policy section 137: standard operating guidance for research desk, item 137. Policy section 138: standard operating guidance for research desk, \",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Brief 1: Policy section 1: standard operating guidance for brief 1, item 1. Policy section 2: standard operating guidance for brief 1, item 2. Policy section 3: standard operating guidance for brief 1, item 3. Policy section 4: standard operating guidance for brief 1, item 4. Policy section 5: standard operating guidance for brief 1, item 5. Policy section 6: standard operating guidance for brief 1, item 6. Policy section 7: standard operating guidance for brief 1, item 7. Policy section 8: standard operating guidance for brief 1, item 8. Policy section 9: standard operating guidance for brief 1, item 9. Policy section 10: standard operating guidance for brief 1, item 10. Policy section 11: standard operating guidance for brief 1, item 11. Policy section 12: standard operating guidance for brief 1, item 12. Policy section 13: standard operating guidance for brief 1, item 13. Policy section 14: standard operating guidance for brief 1, item 14. Policy section 15: standard operating guidance for brief 1, item 15. Policy section 16: standard operating guidance for brief 1, item 16. Policy section 17: standard operating guidance for brief 1, item 17. Policy section 18: standard operating guidanc\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 1\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "05a66d6cbea232797bd618b7cf2a93c5",
+              "spanId": "f8ca2f0525a209c5",
+              "name": "chat claude-sonnet-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1768467660000000000",
+              "endTimeUnixNano": "1768467662800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-missing_cache_markers"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "2908"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "220"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the research desk. Policy section 1: standard operating guidance for research desk, item 1. Policy section 2: standard operating guidance for research desk, item 2. Policy section 3: standard operating guidance for research desk, item 3. Policy section 4: standard operating guidance for research desk, item 4. Policy section 5: standard operating guidance for research desk, item 5. Policy section 6: standard operating guidance for research desk, item 6. Policy section 7: standard operating guidance for research desk, item 7. Policy section 8: standard operating guidance for research desk, item 8. Policy section 9: standard operating guidance for research desk, item 9. Policy section 10: standard operating guidance for research desk, item 10. Policy section 11: standard operating guidance for research desk, item 11. Policy section 12: standard operating guidance for research desk, item 12. Policy section 13: standard operating guidance for research desk, item 13. Policy section 14: standard operating guidance for research desk, item 14. Policy section 15: standard operating guidance for research desk, item 15. Policy section 16: standard operating guidance for research desk, item 16. Policy section 17: standard operating guidance for research desk, item 17. Policy section 18: standard operating guidance for research desk, item 18. Policy section 19: standard operating guidance for research desk, item 19. Policy section 20: standard operating guidance for research desk, item 20. Policy section 21: standard operating guidance for research desk, item 21. Policy section 22: standard operating guidance for research desk, item 22. Policy section 23: standard operating guidance for research desk, item 23. Policy section 24: standard operating guidance for research desk, item 24. Policy section 25: standard operating guidance for research desk, item 25. Policy section 26: standard operating guidance for research desk, item 26. Policy section 27: standard operating guidance for research desk, item 27. Policy section 28: standard operating guidance for research desk, item 28. Policy section 29: standard operating guidance for research desk, item 29. Policy section 30: standard operating guidance for research desk, item 30. Policy section 31: standard operating guidance for research desk, item 31. Policy section 32: standard operating guidance for research desk, item 32. Policy section 33: standard operating guidance for research desk, item 33. Policy section 34: standard operating guidance for research desk, item 34. Policy section 35: standard operating guidance for research desk, item 35. Policy section 36: standard operating guidance for research desk, item 36. Policy section 37: standard operating guidance for research desk, item 37. Policy section 38: standard operating guidance for research desk, item 38. Policy section 39: standard operating guidance for research desk, item 39. Policy section 40: standard operating guidance for research desk, item 40. Policy section 41: standard operating guidance for research desk, item 41. Policy section 42: standard operating guidance for research desk, item 42. Policy section 43: standard operating guidance for research desk, item 43. Policy section 44: standard operating guidance for research desk, item 44. Policy section 45: standard operating guidance for research desk, item 45. Policy section 46: standard operating guidance for research desk, item 46. Policy section 47: standard operating guidance for research desk, item 47. Policy section 48: standard operating guidance for research desk, item 48. Policy section 49: standard operating guidance for research desk, item 49. Policy section 50: standard operating guidance for research desk, item 50. Policy section 51: standard operating guidance for research desk, item 51. Policy section 52: standard operating guidance for research desk, item 52. Policy section 53: standard operating guidance for research desk, item 53. Policy section 54: standard operating guidance for research desk, item 54. Policy section 55: standard operating guidance for research desk, item 55. Policy section 56: standard operating guidance for research desk, item 56. Policy section 57: standard operating guidance for research desk, item 57. Policy section 58: standard operating guidance for research desk, item 58. Policy section 59: standard operating guidance for research desk, item 59. Policy section 60: standard operating guidance for research desk, item 60. Policy section 61: standard operating guidance for research desk, item 61. Policy section 62: standard operating guidance for research desk, item 62. Policy section 63: standard operating guidance for research desk, item 63. Policy section 64: standard operating guidance for research desk, item 64. Policy section 65: standard operating guidance for research desk, item 65. Policy section 66: standard operating guidance for research desk, item 66. Policy section 67: standard operating guidance for research desk, item 67. Policy section 68: standard operating guidance for research desk, item 68. Policy section 69: standard operating guidance for research desk, item 69. Policy section 70: standard operating guidance for research desk, item 70. Policy section 71: standard operating guidance for research desk, item 71. Policy section 72: standard operating guidance for research desk, item 72. Policy section 73: standard operating guidance for research desk, item 73. Policy section 74: standard operating guidance for research desk, item 74. Policy section 75: standard operating guidance for research desk, item 75. Policy section 76: standard operating guidance for research desk, item 76. Policy section 77: standard operating guidance for research desk, item 77. Policy section 78: standard operating guidance for research desk, item 78. Policy section 79: standard operating guidance for research desk, item 79. Policy section 80: standard operating guidance for research desk, item 80. Policy section 81: standard operating guidance for research desk, item 81. Policy section 82: standard operating guidance for research desk, item 82. Policy section 83: standard operating guidance for research desk, item 83. Policy section 84: standard operating guidance for research desk, item 84. Policy section 85: standard operating guidance for research desk, item 85. Policy section 86: standard operating guidance for research desk, item 86. Policy section 87: standard operating guidance for research desk, item 87. Policy section 88: standard operating guidance for research desk, item 88. Policy section 89: standard operating guidance for research desk, item 89. Policy section 90: standard operating guidance for research desk, item 90. Policy section 91: standard operating guidance for research desk, item 91. Policy section 92: standard operating guidance for research desk, item 92. Policy section 93: standard operating guidance for research desk, item 93. Policy section 94: standard operating guidance for research desk, item 94. Policy section 95: standard operating guidance for research desk, item 95. Policy section 96: standard operating guidance for research desk, item 96. Policy section 97: standard operating guidance for research desk, item 97. Policy section 98: standard operating guidance for research desk, item 98. Policy section 99: standard operating guidance for research desk, item 99. Policy section 100: standard operating guidance for research desk, item 100. Policy section 101: standard operating guidance for research desk, item 101. Policy section 102: standard operating guidance for research desk, item 102. Policy section 103: standard operating guidance for research desk, item 103. Policy section 104: standard operating guidance for research desk, item 104. Policy section 105: standard operating guidance for research desk, item 105. Policy section 106: standard operating guidance for research desk, item 106. Policy section 107: standard operating guidance for research desk, item 107. Policy section 108: standard operating guidance for research desk, item 108. Policy section 109: standard operating guidance for research desk, item 109. Policy section 110: standard operating guidance for research desk, item 110. Policy section 111: standard operating guidance for research desk, item 111. Policy section 112: standard operating guidance for research desk, item 112. Policy section 113: standard operating guidance for research desk, item 113. Policy section 114: standard operating guidance for research desk, item 114. Policy section 115: standard operating guidance for research desk, item 115. Policy section 116: standard operating guidance for research desk, item 116. Policy section 117: standard operating guidance for research desk, item 117. Policy section 118: standard operating guidance for research desk, item 118. Policy section 119: standard operating guidance for research desk, item 119. Policy section 120: standard operating guidance for research desk, item 120. Policy section 121: standard operating guidance for research desk, item 121. Policy section 122: standard operating guidance for research desk, item 122. Policy section 123: standard operating guidance for research desk, item 123. Policy section 124: standard operating guidance for research desk, item 124. Policy section 125: standard operating guidance for research desk, item 125. Policy section 126: standard operating guidance for research desk, item 126. Policy section 127: standard operating guidance for research desk, item 127. Policy section 128: standard operating guidance for research desk, item 128. Policy section 129: standard operating guidance for research desk, item 129. Policy section 130: standard operating guidance for research desk, item 130. Policy section 131: standard operating guidance for research desk, item 131. Policy section 132: standard operating guidance for research desk, item 132. Policy section 133: standard operating guidance for research desk, item 133. Policy section 134: standard operating guidance for research desk, item 134. Policy section 135: standard operating guidance for research desk, item 135. Policy section 136: standard operating guidance for research desk, item 136. Policy section 137: standard operating guidance for research desk, item 137. Policy section 138: standard operating guidance for research desk, \",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Brief 2: Policy section 1: standard operating guidance for brief 2, item 1. Policy section 2: standard operating guidance for brief 2, item 2. Policy section 3: standard operating guidance for brief 2, item 3. Policy section 4: standard operating guidance for brief 2, item 4. Policy section 5: standard operating guidance for brief 2, item 5. Policy section 6: standard operating guidance for brief 2, item 6. Policy section 7: standard operating guidance for brief 2, item 7. Policy section 8: standard operating guidance for brief 2, item 8. Policy section 9: standard operating guidance for brief 2, item 9. Policy section 10: standard operating guidance for brief 2, item 10. Policy section 11: standard operating guidance for brief 2, item 11. Policy section 12: standard operating guidance for brief 2, item 12. Policy section 13: standard operating guidance for brief 2, item 13. Policy section 14: standard operating guidance for brief 2, item 14. Policy section 15: standard operating guidance for brief 2, item 15. Policy section 16: standard operating guidance for brief 2, item 16. Policy section 17: standard operating guidance for brief 2, item 17. Policy section 18: standard operating guidanc\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 2\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "05a66d6cbea232797bd618b7cf2a93c5",
+              "spanId": "393d50b3c4d6e27a",
+              "name": "chat claude-sonnet-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1768467690000000000",
+              "endTimeUnixNano": "1768467692800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-missing_cache_markers"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "2908"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "220"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the research desk. Policy section 1: standard operating guidance for research desk, item 1. Policy section 2: standard operating guidance for research desk, item 2. Policy section 3: standard operating guidance for research desk, item 3. Policy section 4: standard operating guidance for research desk, item 4. Policy section 5: standard operating guidance for research desk, item 5. Policy section 6: standard operating guidance for research desk, item 6. Policy section 7: standard operating guidance for research desk, item 7. Policy section 8: standard operating guidance for research desk, item 8. Policy section 9: standard operating guidance for research desk, item 9. Policy section 10: standard operating guidance for research desk, item 10. Policy section 11: standard operating guidance for research desk, item 11. Policy section 12: standard operating guidance for research desk, item 12. Policy section 13: standard operating guidance for research desk, item 13. Policy section 14: standard operating guidance for research desk, item 14. Policy section 15: standard operating guidance for research desk, item 15. Policy section 16: standard operating guidance for research desk, item 16. Policy section 17: standard operating guidance for research desk, item 17. Policy section 18: standard operating guidance for research desk, item 18. Policy section 19: standard operating guidance for research desk, item 19. Policy section 20: standard operating guidance for research desk, item 20. Policy section 21: standard operating guidance for research desk, item 21. Policy section 22: standard operating guidance for research desk, item 22. Policy section 23: standard operating guidance for research desk, item 23. Policy section 24: standard operating guidance for research desk, item 24. Policy section 25: standard operating guidance for research desk, item 25. Policy section 26: standard operating guidance for research desk, item 26. Policy section 27: standard operating guidance for research desk, item 27. Policy section 28: standard operating guidance for research desk, item 28. Policy section 29: standard operating guidance for research desk, item 29. Policy section 30: standard operating guidance for research desk, item 30. Policy section 31: standard operating guidance for research desk, item 31. Policy section 32: standard operating guidance for research desk, item 32. Policy section 33: standard operating guidance for research desk, item 33. Policy section 34: standard operating guidance for research desk, item 34. Policy section 35: standard operating guidance for research desk, item 35. Policy section 36: standard operating guidance for research desk, item 36. Policy section 37: standard operating guidance for research desk, item 37. Policy section 38: standard operating guidance for research desk, item 38. Policy section 39: standard operating guidance for research desk, item 39. Policy section 40: standard operating guidance for research desk, item 40. Policy section 41: standard operating guidance for research desk, item 41. Policy section 42: standard operating guidance for research desk, item 42. Policy section 43: standard operating guidance for research desk, item 43. Policy section 44: standard operating guidance for research desk, item 44. Policy section 45: standard operating guidance for research desk, item 45. Policy section 46: standard operating guidance for research desk, item 46. Policy section 47: standard operating guidance for research desk, item 47. Policy section 48: standard operating guidance for research desk, item 48. Policy section 49: standard operating guidance for research desk, item 49. Policy section 50: standard operating guidance for research desk, item 50. Policy section 51: standard operating guidance for research desk, item 51. Policy section 52: standard operating guidance for research desk, item 52. Policy section 53: standard operating guidance for research desk, item 53. Policy section 54: standard operating guidance for research desk, item 54. Policy section 55: standard operating guidance for research desk, item 55. Policy section 56: standard operating guidance for research desk, item 56. Policy section 57: standard operating guidance for research desk, item 57. Policy section 58: standard operating guidance for research desk, item 58. Policy section 59: standard operating guidance for research desk, item 59. Policy section 60: standard operating guidance for research desk, item 60. Policy section 61: standard operating guidance for research desk, item 61. Policy section 62: standard operating guidance for research desk, item 62. Policy section 63: standard operating guidance for research desk, item 63. Policy section 64: standard operating guidance for research desk, item 64. Policy section 65: standard operating guidance for research desk, item 65. Policy section 66: standard operating guidance for research desk, item 66. Policy section 67: standard operating guidance for research desk, item 67. Policy section 68: standard operating guidance for research desk, item 68. Policy section 69: standard operating guidance for research desk, item 69. Policy section 70: standard operating guidance for research desk, item 70. Policy section 71: standard operating guidance for research desk, item 71. Policy section 72: standard operating guidance for research desk, item 72. Policy section 73: standard operating guidance for research desk, item 73. Policy section 74: standard operating guidance for research desk, item 74. Policy section 75: standard operating guidance for research desk, item 75. Policy section 76: standard operating guidance for research desk, item 76. Policy section 77: standard operating guidance for research desk, item 77. Policy section 78: standard operating guidance for research desk, item 78. Policy section 79: standard operating guidance for research desk, item 79. Policy section 80: standard operating guidance for research desk, item 80. Policy section 81: standard operating guidance for research desk, item 81. Policy section 82: standard operating guidance for research desk, item 82. Policy section 83: standard operating guidance for research desk, item 83. Policy section 84: standard operating guidance for research desk, item 84. Policy section 85: standard operating guidance for research desk, item 85. Policy section 86: standard operating guidance for research desk, item 86. Policy section 87: standard operating guidance for research desk, item 87. Policy section 88: standard operating guidance for research desk, item 88. Policy section 89: standard operating guidance for research desk, item 89. Policy section 90: standard operating guidance for research desk, item 90. Policy section 91: standard operating guidance for research desk, item 91. Policy section 92: standard operating guidance for research desk, item 92. Policy section 93: standard operating guidance for research desk, item 93. Policy section 94: standard operating guidance for research desk, item 94. Policy section 95: standard operating guidance for research desk, item 95. Policy section 96: standard operating guidance for research desk, item 96. Policy section 97: standard operating guidance for research desk, item 97. Policy section 98: standard operating guidance for research desk, item 98. Policy section 99: standard operating guidance for research desk, item 99. Policy section 100: standard operating guidance for research desk, item 100. Policy section 101: standard operating guidance for research desk, item 101. Policy section 102: standard operating guidance for research desk, item 102. Policy section 103: standard operating guidance for research desk, item 103. Policy section 104: standard operating guidance for research desk, item 104. Policy section 105: standard operating guidance for research desk, item 105. Policy section 106: standard operating guidance for research desk, item 106. Policy section 107: standard operating guidance for research desk, item 107. Policy section 108: standard operating guidance for research desk, item 108. Policy section 109: standard operating guidance for research desk, item 109. Policy section 110: standard operating guidance for research desk, item 110. Policy section 111: standard operating guidance for research desk, item 111. Policy section 112: standard operating guidance for research desk, item 112. Policy section 113: standard operating guidance for research desk, item 113. Policy section 114: standard operating guidance for research desk, item 114. Policy section 115: standard operating guidance for research desk, item 115. Policy section 116: standard operating guidance for research desk, item 116. Policy section 117: standard operating guidance for research desk, item 117. Policy section 118: standard operating guidance for research desk, item 118. Policy section 119: standard operating guidance for research desk, item 119. Policy section 120: standard operating guidance for research desk, item 120. Policy section 121: standard operating guidance for research desk, item 121. Policy section 122: standard operating guidance for research desk, item 122. Policy section 123: standard operating guidance for research desk, item 123. Policy section 124: standard operating guidance for research desk, item 124. Policy section 125: standard operating guidance for research desk, item 125. Policy section 126: standard operating guidance for research desk, item 126. Policy section 127: standard operating guidance for research desk, item 127. Policy section 128: standard operating guidance for research desk, item 128. Policy section 129: standard operating guidance for research desk, item 129. Policy section 130: standard operating guidance for research desk, item 130. Policy section 131: standard operating guidance for research desk, item 131. Policy section 132: standard operating guidance for research desk, item 132. Policy section 133: standard operating guidance for research desk, item 133. Policy section 134: standard operating guidance for research desk, item 134. Policy section 135: standard operating guidance for research desk, item 135. Policy section 136: standard operating guidance for research desk, item 136. Policy section 137: standard operating guidance for research desk, item 137. Policy section 138: standard operating guidance for research desk, \",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Brief 3: Policy section 1: standard operating guidance for brief 3, item 1. Policy section 2: standard operating guidance for brief 3, item 2. Policy section 3: standard operating guidance for brief 3, item 3. Policy section 4: standard operating guidance for brief 3, item 4. Policy section 5: standard operating guidance for brief 3, item 5. Policy section 6: standard operating guidance for brief 3, item 6. Policy section 7: standard operating guidance for brief 3, item 7. Policy section 8: standard operating guidance for brief 3, item 8. Policy section 9: standard operating guidance for brief 3, item 9. Policy section 10: standard operating guidance for brief 3, item 10. Policy section 11: standard operating guidance for brief 3, item 11. Policy section 12: standard operating guidance for brief 3, item 12. Policy section 13: standard operating guidance for brief 3, item 13. Policy section 14: standard operating guidance for brief 3, item 14. Policy section 15: standard operating guidance for brief 3, item 15. Policy section 16: standard operating guidance for brief 3, item 16. Policy section 17: standard operating guidance for brief 3, item 17. Policy section 18: standard operating guidanc\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 3\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            },
+            {
+              "traceId": "05a66d6cbea232797bd618b7cf2a93c5",
+              "spanId": "c891fd1b8bd3fdba",
+              "name": "chat claude-sonnet-4-5",
+              "kind": 3,
+              "startTimeUnixNano": "1768467720000000000",
+              "endTimeUnixNano": "1768467722800000000",
+              "attributes": [
+                {
+                  "key": "gen_ai.operation.name",
+                  "value": {
+                    "stringValue": "chat"
+                  }
+                },
+                {
+                  "key": "gen_ai.provider.name",
+                  "value": {
+                    "stringValue": "anthropic"
+                  }
+                },
+                {
+                  "key": "gen_ai.request.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.response.model",
+                  "value": {
+                    "stringValue": "claude-sonnet-4-5"
+                  }
+                },
+                {
+                  "key": "gen_ai.conversation.id",
+                  "value": {
+                    "stringValue": "conv-missing_cache_markers"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.input_tokens",
+                  "value": {
+                    "intValue": "2908"
+                  }
+                },
+                {
+                  "key": "gen_ai.usage.output_tokens",
+                  "value": {
+                    "intValue": "220"
+                  }
+                },
+                {
+                  "key": "gen_ai.input.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"You are the research desk. Policy section 1: standard operating guidance for research desk, item 1. Policy section 2: standard operating guidance for research desk, item 2. Policy section 3: standard operating guidance for research desk, item 3. Policy section 4: standard operating guidance for research desk, item 4. Policy section 5: standard operating guidance for research desk, item 5. Policy section 6: standard operating guidance for research desk, item 6. Policy section 7: standard operating guidance for research desk, item 7. Policy section 8: standard operating guidance for research desk, item 8. Policy section 9: standard operating guidance for research desk, item 9. Policy section 10: standard operating guidance for research desk, item 10. Policy section 11: standard operating guidance for research desk, item 11. Policy section 12: standard operating guidance for research desk, item 12. Policy section 13: standard operating guidance for research desk, item 13. Policy section 14: standard operating guidance for research desk, item 14. Policy section 15: standard operating guidance for research desk, item 15. Policy section 16: standard operating guidance for research desk, item 16. Policy section 17: standard operating guidance for research desk, item 17. Policy section 18: standard operating guidance for research desk, item 18. Policy section 19: standard operating guidance for research desk, item 19. Policy section 20: standard operating guidance for research desk, item 20. Policy section 21: standard operating guidance for research desk, item 21. Policy section 22: standard operating guidance for research desk, item 22. Policy section 23: standard operating guidance for research desk, item 23. Policy section 24: standard operating guidance for research desk, item 24. Policy section 25: standard operating guidance for research desk, item 25. Policy section 26: standard operating guidance for research desk, item 26. Policy section 27: standard operating guidance for research desk, item 27. Policy section 28: standard operating guidance for research desk, item 28. Policy section 29: standard operating guidance for research desk, item 29. Policy section 30: standard operating guidance for research desk, item 30. Policy section 31: standard operating guidance for research desk, item 31. Policy section 32: standard operating guidance for research desk, item 32. Policy section 33: standard operating guidance for research desk, item 33. Policy section 34: standard operating guidance for research desk, item 34. Policy section 35: standard operating guidance for research desk, item 35. Policy section 36: standard operating guidance for research desk, item 36. Policy section 37: standard operating guidance for research desk, item 37. Policy section 38: standard operating guidance for research desk, item 38. Policy section 39: standard operating guidance for research desk, item 39. Policy section 40: standard operating guidance for research desk, item 40. Policy section 41: standard operating guidance for research desk, item 41. Policy section 42: standard operating guidance for research desk, item 42. Policy section 43: standard operating guidance for research desk, item 43. Policy section 44: standard operating guidance for research desk, item 44. Policy section 45: standard operating guidance for research desk, item 45. Policy section 46: standard operating guidance for research desk, item 46. Policy section 47: standard operating guidance for research desk, item 47. Policy section 48: standard operating guidance for research desk, item 48. Policy section 49: standard operating guidance for research desk, item 49. Policy section 50: standard operating guidance for research desk, item 50. Policy section 51: standard operating guidance for research desk, item 51. Policy section 52: standard operating guidance for research desk, item 52. Policy section 53: standard operating guidance for research desk, item 53. Policy section 54: standard operating guidance for research desk, item 54. Policy section 55: standard operating guidance for research desk, item 55. Policy section 56: standard operating guidance for research desk, item 56. Policy section 57: standard operating guidance for research desk, item 57. Policy section 58: standard operating guidance for research desk, item 58. Policy section 59: standard operating guidance for research desk, item 59. Policy section 60: standard operating guidance for research desk, item 60. Policy section 61: standard operating guidance for research desk, item 61. Policy section 62: standard operating guidance for research desk, item 62. Policy section 63: standard operating guidance for research desk, item 63. Policy section 64: standard operating guidance for research desk, item 64. Policy section 65: standard operating guidance for research desk, item 65. Policy section 66: standard operating guidance for research desk, item 66. Policy section 67: standard operating guidance for research desk, item 67. Policy section 68: standard operating guidance for research desk, item 68. Policy section 69: standard operating guidance for research desk, item 69. Policy section 70: standard operating guidance for research desk, item 70. Policy section 71: standard operating guidance for research desk, item 71. Policy section 72: standard operating guidance for research desk, item 72. Policy section 73: standard operating guidance for research desk, item 73. Policy section 74: standard operating guidance for research desk, item 74. Policy section 75: standard operating guidance for research desk, item 75. Policy section 76: standard operating guidance for research desk, item 76. Policy section 77: standard operating guidance for research desk, item 77. Policy section 78: standard operating guidance for research desk, item 78. Policy section 79: standard operating guidance for research desk, item 79. Policy section 80: standard operating guidance for research desk, item 80. Policy section 81: standard operating guidance for research desk, item 81. Policy section 82: standard operating guidance for research desk, item 82. Policy section 83: standard operating guidance for research desk, item 83. Policy section 84: standard operating guidance for research desk, item 84. Policy section 85: standard operating guidance for research desk, item 85. Policy section 86: standard operating guidance for research desk, item 86. Policy section 87: standard operating guidance for research desk, item 87. Policy section 88: standard operating guidance for research desk, item 88. Policy section 89: standard operating guidance for research desk, item 89. Policy section 90: standard operating guidance for research desk, item 90. Policy section 91: standard operating guidance for research desk, item 91. Policy section 92: standard operating guidance for research desk, item 92. Policy section 93: standard operating guidance for research desk, item 93. Policy section 94: standard operating guidance for research desk, item 94. Policy section 95: standard operating guidance for research desk, item 95. Policy section 96: standard operating guidance for research desk, item 96. Policy section 97: standard operating guidance for research desk, item 97. Policy section 98: standard operating guidance for research desk, item 98. Policy section 99: standard operating guidance for research desk, item 99. Policy section 100: standard operating guidance for research desk, item 100. Policy section 101: standard operating guidance for research desk, item 101. Policy section 102: standard operating guidance for research desk, item 102. Policy section 103: standard operating guidance for research desk, item 103. Policy section 104: standard operating guidance for research desk, item 104. Policy section 105: standard operating guidance for research desk, item 105. Policy section 106: standard operating guidance for research desk, item 106. Policy section 107: standard operating guidance for research desk, item 107. Policy section 108: standard operating guidance for research desk, item 108. Policy section 109: standard operating guidance for research desk, item 109. Policy section 110: standard operating guidance for research desk, item 110. Policy section 111: standard operating guidance for research desk, item 111. Policy section 112: standard operating guidance for research desk, item 112. Policy section 113: standard operating guidance for research desk, item 113. Policy section 114: standard operating guidance for research desk, item 114. Policy section 115: standard operating guidance for research desk, item 115. Policy section 116: standard operating guidance for research desk, item 116. Policy section 117: standard operating guidance for research desk, item 117. Policy section 118: standard operating guidance for research desk, item 118. Policy section 119: standard operating guidance for research desk, item 119. Policy section 120: standard operating guidance for research desk, item 120. Policy section 121: standard operating guidance for research desk, item 121. Policy section 122: standard operating guidance for research desk, item 122. Policy section 123: standard operating guidance for research desk, item 123. Policy section 124: standard operating guidance for research desk, item 124. Policy section 125: standard operating guidance for research desk, item 125. Policy section 126: standard operating guidance for research desk, item 126. Policy section 127: standard operating guidance for research desk, item 127. Policy section 128: standard operating guidance for research desk, item 128. Policy section 129: standard operating guidance for research desk, item 129. Policy section 130: standard operating guidance for research desk, item 130. Policy section 131: standard operating guidance for research desk, item 131. Policy section 132: standard operating guidance for research desk, item 132. Policy section 133: standard operating guidance for research desk, item 133. Policy section 134: standard operating guidance for research desk, item 134. Policy section 135: standard operating guidance for research desk, item 135. Policy section 136: standard operating guidance for research desk, item 136. Policy section 137: standard operating guidance for research desk, item 137. Policy section 138: standard operating guidance for research desk, \",\"type\":\"text\"}],\"role\":\"system\"},{\"parts\":[{\"content\":\"Brief 4: Policy section 1: standard operating guidance for brief 4, item 1. Policy section 2: standard operating guidance for brief 4, item 2. Policy section 3: standard operating guidance for brief 4, item 3. Policy section 4: standard operating guidance for brief 4, item 4. Policy section 5: standard operating guidance for brief 4, item 5. Policy section 6: standard operating guidance for brief 4, item 6. Policy section 7: standard operating guidance for brief 4, item 7. Policy section 8: standard operating guidance for brief 4, item 8. Policy section 9: standard operating guidance for brief 4, item 9. Policy section 10: standard operating guidance for brief 4, item 10. Policy section 11: standard operating guidance for brief 4, item 11. Policy section 12: standard operating guidance for brief 4, item 12. Policy section 13: standard operating guidance for brief 4, item 13. Policy section 14: standard operating guidance for brief 4, item 14. Policy section 15: standard operating guidance for brief 4, item 15. Policy section 16: standard operating guidance for brief 4, item 16. Policy section 17: standard operating guidance for brief 4, item 17. Policy section 18: standard operating guidanc\",\"type\":\"text\"}],\"role\":\"user\"}]"
+                  }
+                },
+                {
+                  "key": "gen_ai.output.messages",
+                  "value": {
+                    "stringValue": "[{\"parts\":[{\"content\":\"reply 4\",\"type\":\"text\"}],\"role\":\"assistant\"}]"
+                  }
+                }
+              ],
+              "status": {
+                "code": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

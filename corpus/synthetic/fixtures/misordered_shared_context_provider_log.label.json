@@ -14,6 +14,7 @@
     "context_bloat",
     "cross_session_drift",
     "lookback_overflow",
+    "missing_cache_markers",
     "model_switch",
     "prefix_drift",
     "retry_storm",

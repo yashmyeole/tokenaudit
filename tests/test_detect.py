@@ -38,6 +38,7 @@ PER_SESSION = {
     "retry_storm",
     "misordered_shared_context",
     "tool_schema_bloat",
+    "missing_cache_markers",
 }
 IMPLEMENTED = PER_SESSION | {"cross_session_drift"}
 
@@ -154,6 +155,26 @@ def test_tool_schema_bloat_abstains_without_tool_calls() -> None:
     blind = replace(session, requests=tuple(replace(r, tool_calls=None) for r in session.requests))
     with pytest.raises(Exception, match="tool calls"):
         ToolSchemaBloatDetector().check(blind, load_rulebook())
+
+
+def test_missing_cache_markers_finding_is_verifiable() -> None:
+    diagnosis = _diagnose_fixture("missing_cache_markers")
+    (finding,) = diagnosis.findings
+    assert finding.detector_id == "missing_cache_markers"
+    assert finding.severity is Severity.HIGH
+    assert finding.evidence["requests_affected"] == 4
+    assert finding.evidence["largest_repeated_prefix_tokens"] >= 2600
+    assert finding.evidence["distinct_prefixes"] == 1
+    assert finding.impact is not None
+    # four repeats at 0.9x, less one 0.25x write premium
+    assert finding.impact.tokens_low < finding.impact.tokens_high
+    assert finding.fix.doc_url is not None
+
+
+def test_missing_cache_markers_ignores_repeats_after_the_cache_would_expire() -> None:
+    diagnosis = _diagnose_fixture("unmarked_far_apart")
+    assert diagnosis.findings == ()
+    assert "missing_cache_markers" in diagnosis.checked
 
 
 def test_cross_session_drift_finding_is_verifiable() -> None:

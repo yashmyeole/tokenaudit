@@ -99,6 +99,7 @@ FAILURE_MODES = (
     "misordered_shared_context",
     "cross_session_drift",
     "tool_schema_bloat",
+    "missing_cache_markers",
 )
 
 # Fixed simulated clock: 2026-01-15T09:00:00Z. Never use the wall clock.
@@ -1139,6 +1140,52 @@ def fx_tool_schema_rotating() -> Fixture:
     )
 
 
+def _unmarked_agents(gap_s: int) -> list[Call]:
+    system = Block("system", "You are the research desk. " + filler("research desk", 2600))
+    return [
+        Call(
+            (system, Block("user", f"Brief {i}: " + filler(f"brief {i}", 300))),
+            "claude-sonnet-4-5",
+            i * gap_s,
+            2800,
+            220,
+        )
+        for i in range(5)
+    ]
+
+
+def fx_missing_cache_markers() -> Fixture:
+    return Fixture(
+        name="missing_cache_markers",
+        schema="otel-genai-current",
+        provider_shape="anthropic",
+        contains=["missing_cache_markers"],
+        evidence={"calls": 5, "repeated_prefix_tokens": 2606, "gap_s": 30},
+        notes=(
+            "Five requests 30 seconds apart share a 2,600-token system prompt on a "
+            "provider that only caches marked prefixes, and nothing is marked. Every "
+            "repeat is billed at full price."
+        ),
+        calls=_unmarked_agents(30),
+    )
+
+
+def fx_unmarked_far_apart() -> Fixture:
+    return Fixture(
+        name="unmarked_far_apart",
+        schema="otel-genai-current",
+        provider_shape="anthropic",
+        contains=[],
+        evidence={"calls": 5, "gap_s": 900},
+        notes=(
+            "The same unmarked requests fifteen minutes apart. Near-miss: a 5-minute "
+            "cache entry would have expired before each repeat, so markers would not "
+            "have helped and a correct tool reports nothing here."
+        ),
+        calls=_unmarked_agents(900),
+    )
+
+
 def build_fixtures() -> list[Fixture]:
     fixtures = [
         fx_prefix_drift(),
@@ -1163,6 +1210,8 @@ def build_fixtures() -> list[Fixture]:
         fx_tool_schema_bloat(),
         fx_tool_schema_lean(),
         fx_tool_schema_rotating(),
+        fx_missing_cache_markers(),
+        fx_unmarked_far_apart(),
     ]
 
     # Schema variants of prefix_drift: same session, older/other trace dialects,

@@ -23,6 +23,7 @@ from tokenaudit.detect.rules.context_bloat import ContextBloatDetector
 from tokenaudit.detect.rules.cross_session_drift import CrossSessionDriftDetector
 from tokenaudit.detect.rules.lookback_overflow import LookbackOverflowDetector
 from tokenaudit.detect.rules.misordered_shared_context import MisorderedSharedContextDetector
+from tokenaudit.detect.rules.missing_cache_markers import MissingCacheMarkersDetector
 from tokenaudit.detect.rules.model_switch import ModelSwitchDetector
 from tokenaudit.detect.rules.prefix_drift import PrefixDriftDetector
 from tokenaudit.detect.rules.retry_storm import RetryStormDetector
@@ -42,6 +43,7 @@ DETECTORS: tuple[Detector, ...] = (
     LookbackOverflowDetector(),
     ToolSchemaChurnDetector(),
     ToolSchemaBloatDetector(),
+    MissingCacheMarkersDetector(),
     ContextBloatDetector(),
     RetryStormDetector(),
     MisorderedSharedContextDetector(),
